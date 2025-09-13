@@ -1,36 +1,33 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
-
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+hong_blog/
+├── app/ # App Router 엔트리
+│ ├── layout.tsx # 전역 레이아웃
+│ ├── page.tsx # 홈
+│ ├── users/
+│ │ ├── page.tsx # 서버 컴포넌트 (라우트 진입점)
+│ │ └── ClientPage.tsx # 클라 컴포넌트 시작점
+│ └── posts/
+│ ├── page.tsx
+│ └── ClientPage.tsx
+│
+├── lib/ # 서버측 로직 (MVC: Model & Service)
+│ ├── db/ # Supabase client
+│ │ └── supabase.ts
+│ ├── repositories/ # DB 접근 계층
+│ ├── services/ # 비즈니스 로직 계층
+│ └── utils/ # 공통 유틸
+│
+├── fetchers/ # 클라 API 요청 (axios/fetch)
+├── actions/ # React Query / Server Actions
+├── types/ # 공통 타입 정의
+│
+├── components/ # UI & Domain 컴포넌트
+│ ├── ui/ # Atomic 단위 (Button, Input 등)
+│ ├── domain/ # 도메인 단위 (user, post 등)
+│ ├── layout/ # Header, Footer 등
+│ └── templates/ # 페이지 뼈대
+│
+├── rules/ # 규칙/정책 문서 (mdc 파일 등)
+├── public/ # 정적 자원
+├── styles/ # 글로벌 스타일
+├── next.config.mjs
+└── tsconfig.json
