@@ -1,0 +1,159 @@
+---
+description: 커서 개발 규칙
+globs:
+alwaysApply: true
+---
+
+# Next.js + Supabase 블로그 프로젝트 규칙 (Cursor Rules)
+
+---
+
+## 1. 프로젝트 폴더 구조 규칙
+
+- **app/**: Next.js App Router 엔트리 포인트
+    - `page.tsx`: 서버 컴포넌트 (라우트 진입점)
+    - `ClientPage.tsx`: 클라이언트 컴포넌트 시작점 (상태, 이벤트 처리)
+- **lib/**: 서버 측 로직 (MVC 기반)
+    - **db/**: Supabase client 설정
+    - **repositories/**: DB 접근 계층
+    - **services/**: 비즈니스 로직 계층
+    - **utils/**: 공통 유틸 함수
+- **fetchers/**: 클라이언트에서 서버 API 호출 (fetch/axios)
+- **actions/**: React Query / Server Actions (fetchers 래핑)
+- **types/**: 전역 타입 정의 (TS interfaces, DTO)
+- **components/**:
+    - **ui/**: Atomic Design (atoms → molecules → organisms)
+    - **domain/**: 도메인 단위 컴포넌트 (예: user, post)
+    - **layout/**: Header, Footer 등 레이아웃 요소
+    - **templates/**: 페이지 뼈대
+- **rules/**: 규칙/정책 문서 (mdc 파일 등)
+- **public/**: 정적 자원
+- **styles/**: 글로벌 스타일
+
+---
+
+## 2. API 개발 규칙 (Server-side)
+
+- DB 접근은 반드시 **repositories** 계층에서만 수행한다.
+- 비즈니스 로직은 **services** 계층에서 처리한다.
+- `lib/db/supabase.ts`에 Supabase 클라이언트 초기화를 정의한다.
+- 서비스 → 레포지토리 호출, 페이지/액션 → 서비스 호출 구조를 따른다.
+- API 응답에 DTO를 사용하여, 프론트엔드와 명확하게 타입을 맞춘다.
+
+==
+
+## 3. API 응답 규칙
+
+- 모든 API 응답은 반드시 아래 형식을 따른다:
+
+{
+result: {
+success: boolean; // 성공 여부
+message?: string; // 상태/에러 메시지
+code?: string; // 에러 코드 (옵션)
+},
+data: T | null // 실제 응답 데이터
+}
+
+- 성공 시: success=true, data에 실제 값 포함
+- 실패 시: success=false, data=null, code/message에 에러 상세 포함
+- 프론트는 항상 `result.success`를 먼저 확인하여 분기 처리한다
+
+---
+
+## 4. 프론트엔드 개발 규칙 (Client-side)
+
+- **데이터 패칭**
+    - 서버 컴포넌트(`page.tsx`)에서 SSR/SSG를 활용한 데이터 패칭.
+    - 클라 상호작용이 필요한 경우 `ClientPage.tsx`를 만들어 넘긴다.
+- **ClientPage 패턴**
+    - `page.tsx`: 서버 전용 로직 (데이터 패칭, Supabase 호출).
+    - `ClientPage.tsx`: `"use client"` 선언, 상태 관리 및 이벤트 핸들링.
+- **상태 관리**
+    - React Query(Server Actions 포함) 또는 Zustand 활용 가능.
+- **UI 구조**
+    - `components/ui`: 원자적, 재사용 가능 컴포넌트 (버튼, 입력창 등).
+    - `components/domain`: 특정 도메인 관련 컴포넌트 (예: `user/UserCard`).
+    - `components/templates`: 페이지 레이아웃/뼈대 담당.
+    - `components/layout`: Header, Footer, Sidebar 등 전역 레이아웃 요소.
+
+---
+
+## 5. 코드 스타일 & 공통 원칙
+
+- 타입스크립트 필수 사용.
+- 모든 컴포넌트는 기본적으로 **Server Component**로 작성하고, 필요한 경우에만 `"use client"` 추가.
+- API 호출은 **fetchers**에서만 정의하고, **actions**에서 래핑해 상태 관리와 결합.
+- 도메인/기능별로 최대한 모듈화하여, UI → 도메인 → 서비스 → 레포지토리 계층을 지킨다.
+
+## 6. Swagger 작성 규칙
+
+- 모든 API 엔드포인트를 추가할 때 Swagger 문서를 반드시 작성한다.
+- Swagger 문서는 `/api-docs/v1` (버전 1), `/api-docs/v2` (버전 2) 경로에서 확인 가능하다.
+- API 구현 시 아래 항목을 반드시 포함한다:
+    - `summary`: API 설명
+    - `tags`: 도메인 구분 (예: User, Post)
+    - `parameters`: 요청 파라미터 정의
+    - `requestBody`: 요청 바디 스키마 정의
+    - `responses`: 성공/실패 응답 예시
+    - 응답 스키마는 프로젝트 표준 `result + data` 형태를 따른다.
+
+### Swagger 예시 (게시물 조회)
+
+```yaml
+paths:
+    /api/posts/{id}:
+        get:
+            summary: 특정 게시물 조회
+            tags:
+                - Post
+            parameters:
+                - in: path
+                  name: id
+                  schema:
+                      type: integer
+                  required: true
+                  description: 게시물 ID
+            responses:
+                "200":
+                    description: 조회 성공
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    result:
+                                        type: object
+                                        properties:
+                                            success:
+                                                type: boolean
+                                            message:
+                                                type: string
+                                    data:
+                                        type: object
+                                        properties:
+                                            id:
+                                                type: integer
+                                            title:
+                                                type: string
+                                            author:
+                                                type: string
+                "404":
+                    description: 게시물 없음
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    result:
+                                        type: object
+                                        properties:
+                                            success:
+                                                type: boolean
+                                            message:
+                                                type: string
+                                            code:
+                                                type: string
+                                    data:
+                                        type: "null"
+```
