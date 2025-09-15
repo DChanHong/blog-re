@@ -1,8 +1,41 @@
 import * as cheerio from "cheerio";
-import puppeteer from "puppeteer-core";
+import puppeteer, { type Page } from "puppeteer-core";
 import type { BlogCrawl } from "@/types/blog";
 
-export const openBrowser = async (url: string): Promise<string> => {
+const ARTICLE_SELECTOR = "main section > div:nth-child(2) > div:nth-child(3) > div";
+
+async function delay(ms: number): Promise<void> {
+    await new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+async function autoScrollAndWait(
+    page: Page,
+    targetCount?: number,
+    maxScrolls: number = 40,
+): Promise<void> {
+    let lastCount = 0;
+    for (let i = 0; i < maxScrolls; i++) {
+        const count = await page.$$eval(ARTICLE_SELECTOR, (els) => els.length);
+        console.log(`[crawler] scroll#${i} items=${count}`);
+        if (targetCount && count >= targetCount) {
+            console.log(`[crawler] reached targetCount=${targetCount}`);
+            break;
+        }
+        if (count === lastCount && i > 0) {
+            // no growth, try one more scroll
+        }
+        lastCount = count;
+        await page.evaluate(() => {
+            window.scrollTo(0, document.body.scrollHeight);
+        });
+        await delay(900);
+    }
+}
+
+export const openBrowser = async (
+    url: string,
+    options?: { targetCount?: number; maxScrolls?: number },
+): Promise<string> => {
     try {
         console.log(`[crawler] openBrowser url=${url}`);
         const browser = await puppeteer.launch({
@@ -21,8 +54,11 @@ export const openBrowser = async (url: string): Promise<string> => {
             throw gotoError;
         }
 
+        await autoScrollAndWait(page, options?.targetCount, options?.maxScrolls);
+
         const content = await page.content();
-        console.log(`[crawler] content length=${content.length}`);
+        const countAfter = await page.$$eval(ARTICLE_SELECTOR, (els) => els.length);
+        console.log(`[crawler] content length=${content.length} items=${countAfter}`);
         await page.close();
         await browser.close();
         return content;
@@ -32,16 +68,15 @@ export const openBrowser = async (url: string): Promise<string> => {
     }
 };
 
-export const getHtml = async (url: string): Promise<BlogCrawl[]> => {
-    console.log(`[crawler] getHtml url=${url}`);
-    const html = await openBrowser(url);
+export const getHtml = async (url: string, expectedCount?: number): Promise<BlogCrawl[]> => {
+    console.log(`[crawler] getHtml url=${url} expectedCount=${expectedCount ?? "-"}`);
+    const html = await openBrowser(url, { targetCount: expectedCount });
     if (!html) {
         console.warn(`[crawler] empty html for url=${url}`);
         return [];
     }
 
     const $ = cheerio.load(html);
-    const ARTICLE_SELECTOR = "main section > div:nth-child(2) > div:nth-child(3) > div";
     const nodes = $(ARTICLE_SELECTOR);
     console.log(`[crawler] article nodes=${nodes.length}`);
 
