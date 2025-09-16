@@ -175,22 +175,36 @@ export const openApiV1 = {
         },
         "/api/velog/posts": {
             get: {
-                summary: "Fetch posts filtered by tags",
+                summary: "Fetch posts filtered by tags or recent posts",
                 tags: ["Velog"],
                 parameters: [
                     {
                         in: "query",
+                        name: "recent",
+                        schema: { type: "string", enum: ["true"] },
+                        required: false,
+                        description: "Use recent=true to fetch latest posts",
+                    },
+                    {
+                        in: "query",
+                        name: "limit",
+                        schema: { type: "integer", default: 6 },
+                        required: false,
+                        description: "Number of recent posts to return (max 50). Default 6",
+                    },
+                    {
+                        in: "query",
                         name: "tags",
                         schema: { type: "string" },
-                        required: true,
-                        description: "Comma-separated list of tags",
+                        required: false,
+                        description: "Comma-separated list of tags (ignored when recent=true)",
                     },
                     {
                         in: "query",
                         name: "mode",
                         schema: { type: "string", enum: ["any", "all"] },
                         required: false,
-                        description: "any: overlaps, all: contains",
+                        description: "any: overlaps, all: contains (ignored when recent=true)",
                     },
                 ],
                 responses: {

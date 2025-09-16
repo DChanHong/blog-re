@@ -1,6 +1,6 @@
 import { getHtml } from "@/lib/utils/crawler";
-import { getExistingKeys, insertRows } from "@/lib/repositories/velogRepository";
-import type { BlogCrawl, BlogListRow } from "@/types/blog";
+import { getExistingKeys, insertRows, fetchRecentPosts } from "@/lib/repositories/velogRepository";
+import type { BlogCrawl, VelogInsertRow } from "@/types/blog";
 
 function createDate(now: Date, daysAgo: number) {
     const date = new Date(now);
@@ -31,7 +31,7 @@ export async function crawlAndPersist(url: string, expectedCount?: number) {
 
     const existingKeys = await getExistingKeys();
     console.log(`[service] existing keys=${existingKeys.size}`);
-    const toInsert: BlogListRow[] = articles
+    const toInsert: VelogInsertRow[] = articles
         .filter((a) => !existingKeys.has(`${a.title}|${a.detail_link}`))
         .map((item) => ({
             title: item.title ?? "",
@@ -53,4 +53,10 @@ export async function crawl(url: string): Promise<BlogCrawl[]> {
     const articles: BlogCrawl[] = await getHtml(url);
     console.log(`[service] crawl only articles=${articles.length}`);
     return articles;
+}
+
+export async function getRecentPosts(limit: number) {
+    // 최근 포스트 조회 서비스 레이어
+    const safeLimit = Number.isFinite(limit) && limit > 0 ? Math.min(limit, 50) : 6;
+    return fetchRecentPosts(safeLimit);
 }

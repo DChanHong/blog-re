@@ -4,7 +4,6 @@ import Link from "next/link";
 import { IoClose } from "react-icons/io5";
 import { AiFillHome } from "react-icons/ai";
 import { BsBook } from "react-icons/bs";
-import { SearchBar } from ".";
 
 interface MobileNavProps {
     /** Whether the mobile nav is visible. */
@@ -20,61 +19,69 @@ interface MobileNavProps {
  */
 export default function MobileNav({ isOpen, onClose }: MobileNavProps) {
     return (
-        <nav
-            className={`block z-10 w-full fixed border-2 bg-white top-0 min-h-[100%] h-[100%] sm:hidden ${
-                isOpen ? "nav_open" : "nav_closed"
-            }`}
-        >
-            <p className="flex flex-row-reverse m-1">
-                <button
-                    type="button"
+        <div className="sm:hidden">
+            <div
+                className={`fixed inset-0 z-40 ${isOpen ? "pointer-events-auto" : "pointer-events-none"}`}
+                aria-hidden={!isOpen}
+            >
+                {/* Backdrop */}
+                <div
+                    className={`absolute inset-0 bg-black/40 backdrop-blur-sm transition-opacity ${
+                        isOpen ? "opacity-100" : "opacity-0"
+                    }`}
                     onClick={onClose}
-                    className="w-[2em] hover:bg-[#EFEFEF] rounded-xl"
+                />
+
+                {/* Sliding panel */}
+                <nav
+                    className={`absolute inset-x-0 top-0 h-[85%] bg-white rounded-b-2xl shadow-2xl transform transition-transform duration-300 ${
+                        isOpen ? "translate-y-0" : "-translate-y-full"
+                    }`}
+                    role="dialog"
+                    aria-modal="true"
                 >
-                    <IoClose className="w-full h-full" />
-                </button>
-            </p>
+                    {/* Handle bar + close */}
+                    <div className="flex items-center justify-between p-3">
+                        {/* <div className="mx-auto h-1.5 w-10 rounded-full bg-gray-300" /> */}
+                        <button
+                            type="button"
+                            onClick={onClose}
+                            className="ml-auto grid place-items-center w-9 h-9 rounded-lg hover:bg-gray-100 active:scale-[0.98]"
+                            aria-label="Close navigation"
+                        >
+                            <IoClose className="w-6 h-6" />
+                        </button>
+                    </div>
 
-            <SearchBar />
-
-            <ul>
-                <li>
-                    <Link
-                        className="flex items-center px-6 py-2 mt-4 mx-1 hover:bg-[#EFEFEF] hover:rounded-xl"
-                        href={"/"}
-                        onClick={onClose}
-                    >
-                        <p className="w-[2rem] mr-4">
-                            <AiFillHome className="w-full h-full" />
-                        </p>
-                        <p className="text-[1rem] text-center">Home</p>
-                    </Link>
-                </li>
-
-                <li>
-                    <Link
-                        className="flex items-center px-6 py-2 mt-4 mx-1 hover:bg-[#EFEFEF] hover:rounded-xl"
-                        href={"/blog"}
-                        onClick={onClose}
-                    >
-                        <p className="w-[2rem] mr-4">
-                            <BsBook className="w-full h-full" />
-                        </p>
-                        <p className="text-[1rem] text-center">Blog</p>
-                    </Link>
-                </li>
-            </ul>
-
-            <style jsx>{`
-                .nav_open {
-                    transform: translateY(0);
-                    transition: transform 0.3s ease-in-out;
-                }
-                .nav_closed {
-                    transform: translateY(-100%);
-                    transition: transform 0.3s ease-in-out;
-                }
-            `}</style>
-        </nav>
+                    {/* Links */}
+                    <ul className="mt-3 px-2 space-y-2 overflow-y-auto max-h-[calc(100%-120px)] pb-6">
+                        <li>
+                            <Link
+                                className="flex items-center px-4 py-3 mx-1 rounded-xl bg-gray-50 hover:bg-gray-100 active:scale-[0.99] transition"
+                                href={"/"}
+                                onClick={onClose}
+                            >
+                                <span className="w-[2rem] mr-3 text-gray-700">
+                                    <AiFillHome className="w-full h-full" />
+                                </span>
+                                <span className="text-[1.05rem] font-medium">Home</span>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
+                                className="flex items-center px-4 py-3 mx-1 rounded-xl bg-gray-50 hover:bg-gray-100 active:scale-[0.99] transition"
+                                href={"/blog"}
+                                onClick={onClose}
+                            >
+                                <span className="w-[2rem] mr-3 text-gray-700">
+                                    <BsBook className="w-full h-full" />
+                                </span>
+                                <span className="text-[1.05rem] font-medium">Blog</span>
+                            </Link>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
     );
 }

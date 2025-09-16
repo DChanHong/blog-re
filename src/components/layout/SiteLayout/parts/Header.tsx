@@ -19,26 +19,26 @@ interface HeaderProps {
 export default function Header({ onToggleSideNav }: HeaderProps) {
     return (
         <header className={`fixed h-[100px] top-0 w-full z-10 bg-black text-white`}>
-            <div className={`relative flex h-full items-center sm:justify-normal justify-between`}>
-                <h1 className={`font-bold text-[15px] xs:text-[25px] mx-8`}>
+            <div
+                className={`mx-[30px] sm:mx-[50px] relative flex h-full items-center gap-[10px] sm:gap-[50px] justify-between sm:justify-normal`}
+            >
+                <h1 className={`font-bold text-[25px] `}>
                     <Link href={"/"}>
                         <span className="text-container">Hong Engineering</span>
                     </Link>
                 </h1>
-
-                <ul className="flex">
-                    <li className={`hidden sm:block font-semibold text-[25px] mx-4`}>
-                        <Link href={"/blog"}>
-                            <span className="text-container">Blog</span>
-                        </Link>
-                    </li>
-
-                    <li className={`block sm:hidden font-semibold text-[1.4em] mx-4`}>
-                        <button onClick={onToggleSideNav} type="button" className="w-[2rem]">
-                            <GiHamburgerMenu size={32} className="underline_on_hover" />
-                        </button>
-                    </li>
-                </ul>
+                <p className={`font-semibold text-[25px] hidden sm:block`}>
+                    <Link href={"/blog"}>
+                        <span className="text-container">Blog</span>
+                    </Link>
+                </p>
+                <button
+                    type={"button"}
+                    onClick={onToggleSideNav}
+                    className="w-[2rem] sm:hidden cursor-pointer"
+                >
+                    <GiHamburgerMenu size={32} className="underline_on_hover" />
+                </button>
             </div>
             <style jsx>{`
                 .underline_on_hover {

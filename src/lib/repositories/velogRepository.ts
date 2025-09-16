@@ -2,7 +2,7 @@ import {
     createSupabaseServerClient,
     createSupabaseServiceRoleClient,
 } from "@/lib/db/supabaseServer";
-import type { BlogListRow } from "@/types/blog";
+import type { VelogInsertRow } from "@/types/blog";
 
 export async function getExistingTitles(): Promise<string[]> {
     console.log(`[repo] getExistingTitles`);
@@ -33,7 +33,7 @@ export async function getExistingKeys(): Promise<Set<string>> {
     return keys;
 }
 
-export async function insertRows(rows: BlogListRow[]): Promise<number> {
+export async function insertRows(rows: VelogInsertRow[]): Promise<number> {
     console.log(`[repo] insertRows count=${rows.length}`);
     if (rows.length === 0) return 0;
     const supabase = createSupabaseServiceRoleClient();
@@ -76,6 +76,18 @@ export async function fetchPostsByTagsAll(tags: string[]) {
     console.log(`[repo] fetchPostsByTagsAll tags=${tags.join(",")}`);
     const supabase = createSupabaseServerClient();
     const { data, error } = await supabase.from("velog").select("*").contains("tags", tags);
+    if (error) throw error;
+    return data;
+}
+
+export async function fetchRecentPosts(limit: number) {
+    console.log(`[repo] fetchRecentPosts limit=${limit}`);
+    const supabase = createSupabaseServerClient();
+    const { data, error } = await supabase
+        .from("velog")
+        .select("*")
+        .order("created_at", { ascending: false })
+        .limit(limit);
     if (error) throw error;
     return data;
 }
