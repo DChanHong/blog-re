@@ -95,11 +95,11 @@ export default function ChatBot() {
             {/* 오버레이 + 패널 (모달처럼, 열릴 때만 렌더) */}
             {isOpen && (
                 <div
-                    className={`fixed inset-0 z-40 bg-black/40 backdrop-blur-[2px] flex items-end justify-center animate-[fadeIn_0.2s_ease]`}
+                    className={`fixed inset-0 z-40 bg-black/40 backdrop-blur-[2px] flex items-center justify-center p-4 animate-[fadeIn_0.2s_ease]`}
                     onClick={close}
                 >
                     <div
-                        className={`bg-white dark:bg-[#1e1e1e] w-full max-w-[680px] h-[70vh] md:h-[60vh] overflow-hidden p-0 rounded-t-2xl md:rounded-2xl md:mb-[6vh] z-50 flex flex-col shadow-2xl border border-black/10 dark:border-white/10 animate-[chatbotSlideUp_0.5s_ease]`}
+                        className={`bg-white dark:bg-[#1e1e1e] w-full max-w-[680px] h-[80vh] sm:h-[75vh] md:h-[70vh] lg:h-[65vh] overflow-hidden p-0 rounded-2xl z-50 flex flex-col shadow-2xl border border-black/10 dark:border-white/10 animate-[chatbotSlideIn_0.4s_ease-out]`}
                         onClick={(e) => e.stopPropagation()}
                     >
                         {/* 헤더 */}
@@ -229,6 +229,17 @@ export default function ChatBot() {
                             38px 0 0 2px,
                             -14px 0 0 -2px,
                             -38px 0 0 -2px;
+                    }
+                }
+
+                @keyframes chatbotSlideIn {
+                    0% {
+                        transform: scale(0.9) translateY(20px);
+                        opacity: 0;
+                    }
+                    100% {
+                        transform: scale(1) translateY(0);
+                        opacity: 1;
                     }
                 }
 
