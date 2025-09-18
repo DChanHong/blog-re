@@ -38,16 +38,6 @@ export default function BlogPage({ searchParams }: BlogPageProps) {
     return (
         <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-[120px] pb-12">
-                {/* 페이지 헤더 */}
-                {/* <div className="text-center mb-12">
-                    <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-                        개발 블로그
-                    </h1>
-                    <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                        개발 경험과 기술적 인사이트를 공유합니다
-                    </p>
-                </div> */}
-
                 <Suspense
                     fallback={
                         <div className="flex justify-center items-center py-20">

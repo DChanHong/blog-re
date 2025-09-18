@@ -2,9 +2,10 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { BlogPost } from "@/types/blog";
-import { getBlogPostsAction, getBlogCategoriesAction, getBlogTagsAction } from "@/actions/blog";
+import type { VelogPostDto } from "@/types/blog";
+import { useBlogPostsQuery, useBlogCategoriesQuery, useBlogTagsQuery } from "@/actions/blog";
 import Pagination from "@/components/ui/Pagination";
+import PostCard from "@/components/domain/blog/PostCard";
 
 interface BlogListPageProps {
     currentPage: number;
@@ -14,83 +15,51 @@ interface BlogListPageProps {
 }
 
 export default function BlogListPage({ currentPage, category, tag, search }: BlogListPageProps) {
-    const [posts, setPosts] = useState<BlogPost[]>([]);
+    const [posts, setPosts] = useState<VelogPostDto[]>([]);
     const [totalPages, setTotalPages] = useState(0);
     const [totalPosts, setTotalPosts] = useState(0);
-    const [loading, setLoading] = useState(true);
     const [categories, setCategories] = useState<string[]>([]);
     const [tags, setTags] = useState<string[]>([]);
 
-    // 블로그 포스트 데이터 가져오기
+    // React Query: 블로그 포스트 데이터
+    const postsQuery = useBlogPostsQuery({
+        page: currentPage,
+        limit: 8,
+        ...(category ? { category } : {}),
+        ...(tag ? { tag } : {}),
+        ...(search ? { search } : {}),
+    });
+
     useEffect(() => {
-        const fetchPosts = async () => {
-            setLoading(true);
-            try {
-                const result = await getBlogPostsAction({
-                    page: currentPage,
-                    limit: 12, // 한 페이지당 12개 포스트
-                    ...(category && { category }),
-                    ...(tag && { tag }),
-                    ...(search && { search }),
-                });
+        const res = postsQuery.data;
+        if (!res) return;
+        if (res.result.success && res.data && res.data.pagination) {
+            setPosts(res.data.posts);
+            console.log(res.data.posts);
+            setTotalPages(res.data.pagination.totalPages);
+            setTotalPosts(res.data.pagination.totalPosts);
+        } else {
+            setPosts([]);
+            setTotalPages(0);
+            setTotalPosts(0);
+        }
+    }, [postsQuery.data]);
 
-                if (result.success && result.data && result.data.pagination) {
-                    setPosts(result.data.posts);
-                    setTotalPages(result.data.pagination.totalPages);
-                    setTotalPosts(result.data.pagination.totalPosts);
-                } else {
-                    console.error(
-                        "블로그 포스트 가져오기 실패:",
-                        result.success ? "데이터 없음" : "요청 실패",
-                    );
-                    setPosts([]);
-                    setTotalPages(0);
-                    setTotalPosts(0);
-                }
-            } catch (error) {
-                console.error("블로그 포스트 가져오기 실패:", error);
-                setPosts([]);
-                setTotalPages(0);
-                setTotalPosts(0);
-            } finally {
-                setLoading(false);
-            }
-        };
+    // React Query: 카테고리/태그 메타데이터
+    const categoriesQuery = useBlogCategoriesQuery();
+    const tagsQuery = useBlogTagsQuery();
 
-        fetchPosts();
-    }, [currentPage, category, tag, search]);
-
-    // 카테고리와 태그 목록 가져오기
     useEffect(() => {
-        const fetchMetadata = async () => {
-            try {
-                const [categoriesResult, tagsResult] = await Promise.all([
-                    getBlogCategoriesAction(),
-                    getBlogTagsAction(),
-                ]);
+        if (categoriesQuery.data?.result.success) {
+            setCategories(categoriesQuery.data.data || []);
+        }
+    }, [categoriesQuery.data]);
 
-                if (categoriesResult.success) {
-                    setCategories(categoriesResult.data || []);
-                }
-
-                if (tagsResult.success) {
-                    setTags(tagsResult.data || []);
-                }
-            } catch (error) {
-                console.error("메타데이터 가져오기 실패:", error);
-            }
-        };
-
-        fetchMetadata();
-    }, []);
-
-    if (loading) {
-        return (
-            <div className="flex justify-center items-center py-20">
-                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
-            </div>
-        );
-    }
+    useEffect(() => {
+        if (tagsQuery.data?.result.success) {
+            setTags(tagsQuery.data.data || []);
+        }
+    }, [tagsQuery.data]);
 
     return (
         <div className="grid lg:grid-cols-4 gap-8">
@@ -217,95 +186,15 @@ export default function BlogListPage({ currentPage, category, tag, search }: Blo
                 </div>
 
                 {/* 포스트 그리드 */}
-                {posts.length > 0 ? (
+                {postsQuery.isFetching && posts.length === 0 ? (
+                    <div className="flex justify-center items-center py-20">
+                        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+                    </div>
+                ) : posts.length > 0 ? (
                     <>
                         <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6 mb-12">
                             {posts.map((post) => (
-                                <article
-                                    key={post.id}
-                                    className="bg-white rounded-2xl shadow-sm border hover:shadow-md transition-all duration-200 overflow-hidden group"
-                                >
-                                    {/* 썸네일 */}
-                                    <div className="aspect-video bg-gradient-to-br from-blue-100 to-purple-100 relative overflow-hidden">
-                                        {post.thumbnail ? (
-                                            <img
-                                                src={post.thumbnail}
-                                                alt={post.title}
-                                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200"
-                                            />
-                                        ) : (
-                                            <div className="w-full h-full flex items-center justify-center">
-                                                <svg
-                                                    className="w-12 h-12 text-blue-400"
-                                                    fill="none"
-                                                    stroke="currentColor"
-                                                    viewBox="0 0 24 24"
-                                                >
-                                                    <path
-                                                        strokeLinecap="round"
-                                                        strokeLinejoin="round"
-                                                        strokeWidth={2}
-                                                        d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"
-                                                    />
-                                                </svg>
-                                            </div>
-                                        )}
-                                    </div>
-
-                                    {/* 콘텐츠 */}
-                                    <div className="p-6">
-                                        {/* 카테고리 & 날짜 */}
-                                        <div className="flex items-center justify-between mb-3">
-                                            <span className="px-3 py-1 text-xs font-medium bg-blue-100 text-blue-700 rounded-full">
-                                                {post.category}
-                                            </span>
-                                            <time className="text-xs text-gray-500">
-                                                {new Date(post.publishedAt).toLocaleDateString(
-                                                    "ko-KR",
-                                                )}
-                                            </time>
-                                        </div>
-
-                                        {/* 제목 */}
-                                        <h2 className="text-lg font-bold text-gray-900 mb-2 line-clamp-2 group-hover:text-blue-600 transition-colors">
-                                            <a
-                                                href={post.slug}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                            >
-                                                {post.title}
-                                            </a>
-                                        </h2>
-
-                                        {/* 요약 */}
-                                        <p className="text-gray-600 text-sm line-clamp-3 mb-4">
-                                            {post.summary}
-                                        </p>
-
-                                        {/* 태그 */}
-                                        <div className="flex flex-wrap gap-1 mb-4">
-                                            {post.tags.slice(0, 3).map((tagItem) => (
-                                                <span
-                                                    key={tagItem}
-                                                    className="px-2 py-1 text-xs bg-gray-100 text-gray-600 rounded"
-                                                >
-                                                    #{tagItem}
-                                                </span>
-                                            ))}
-                                            {post.tags.length > 3 && (
-                                                <span className="px-2 py-1 text-xs text-gray-400">
-                                                    +{post.tags.length - 3}
-                                                </span>
-                                            )}
-                                        </div>
-
-                                        {/* 읽기 시간 & 조회수 */}
-                                        <div className="flex items-center justify-between text-xs text-gray-500">
-                                            <span>{post.readingTime}분 읽기</span>
-                                            <span>조회 {post.views.toLocaleString()}</span>
-                                        </div>
-                                    </div>
-                                </article>
+                                <PostCard key={post.id} post={post} />
                             ))}
                         </div>
 

@@ -5,11 +5,11 @@ import { getBlogPosts } from "@/lib/services/blogService";
 export async function GET(request: NextRequest) {
     try {
         const { searchParams } = new URL(request.url);
-        
+
         // 쿼리 파라미터 파싱
         const params: BlogSearchParams = {
             page: parseInt(searchParams.get("page") || "1"),
-            limit: parseInt(searchParams.get("limit") || "12"),
+            limit: parseInt(searchParams.get("limit") || "8"),
             category: searchParams.get("category") || undefined,
             tag: searchParams.get("tag") || undefined,
             search: searchParams.get("search") || undefined,

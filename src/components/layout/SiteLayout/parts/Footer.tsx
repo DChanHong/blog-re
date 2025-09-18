@@ -15,7 +15,7 @@ export default function Footer() {
                 className={`flex items-center align-item justify-evenly bg-[#F9F9F9] dark:bg-[#000] h-[100px]`}
             >
                 <ul>
-                    <li className={`font-bold text-[14px] xs:text-[20px]`}>성찬홍's More Info</li>
+                    <li className={`font-bold text-[25px] xs:text-[25px]`}>성찬홍's More Info</li>
                 </ul>
                 <ul className={`flex space-x-4`}>
                     <li className="w-[30px] xs:w-[40px]">

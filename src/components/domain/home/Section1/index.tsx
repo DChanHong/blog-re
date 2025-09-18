@@ -22,7 +22,7 @@ export default function Section1({ title = "Hong Developer", className = "" }: S
 
     return (
         <section
-            className={`w-full flex items-center justify-center font-bold text-center text-[36px] xs:text-[46px] md:text-[70px] bg-[#010118] mt-[100px] text-white h-[25vh] md:h-[40vh] lg:h-[50vh] 2xl:h-[70vh] ${className}`}
+            className={`w-full flex max-h-[750px] items-center justify-center font-bold text-center text-[36px] xs:text-[46px] md:text-[70px] bg-[#010118] mt-[100px] text-white h-[25vh] md:h-[40vh] lg:h-[50vh] 2xl:h-[70vh] ${className}`}
         >
             <h2
                 ref={headingRef}

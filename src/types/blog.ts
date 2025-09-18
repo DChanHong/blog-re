@@ -69,7 +69,7 @@ export interface BlogListResponse {
         code?: string;
     };
     data: {
-        posts: BlogPost[];
+        posts: VelogPostDto[];
         pagination: {
             currentPage: number;
             totalPages: number;

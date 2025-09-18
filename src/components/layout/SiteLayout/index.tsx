@@ -12,7 +12,7 @@ export default function SiteLayout({ children }: SiteLayoutProps) {
 
     return (
         <>
-            <div className={`min-h-[100%] dark:bg-[#2e2e2e] dark:text-[#b7babe] pb-[100px]`}>
+            <div className={`min-h-[100%] bg-gradient-to-br from-slate-50 to-blue-50`}>
                 <Header onToggleSideNav={() => setIsSideNavOpen((p) => !p)} />
 
                 <MobileNav isOpen={isSideNavOpen} onClose={() => setIsSideNavOpen(false)} />
