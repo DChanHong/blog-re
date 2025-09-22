@@ -6,8 +6,125 @@ export const openApiV1 = {
         description: "API documentation for re-hong-blog",
     },
     servers: [{ url: "/" }],
-    tags: [{ name: "Velog", description: "Velog crawling and posts" }],
+    tags: [
+        { name: "Velog", description: "Velog crawling and posts" },
+        { name: "Chatbot", description: "Chatbot asking endpoint" },
+    ],
     paths: {
+        "/api/chatbot/ask": {
+            post: {
+                summary: "Ask chatbot with resume context and rate limit",
+                tags: ["Chatbot"],
+                requestBody: {
+                    required: true,
+                    content: {
+                        "application/json": {
+                            schema: {
+                                type: "object",
+                                properties: {
+                                    question: { type: "string" },
+                                    threadId: { type: "string" },
+                                    history: {
+                                        type: "array",
+                                        items: {
+                                            type: "object",
+                                            properties: {
+                                                role: {
+                                                    type: "string",
+                                                    enum: ["user", "assistant"],
+                                                },
+                                                content: { type: "string" },
+                                            },
+                                            required: ["role", "content"],
+                                        },
+                                    },
+                                },
+                                required: ["question"],
+                            },
+                        },
+                    },
+                },
+                responses: {
+                    "200": {
+                        description: "Answer generated",
+                        content: {
+                            "application/json": {
+                                schema: {
+                                    type: "object",
+                                    properties: {
+                                        result: {
+                                            type: "object",
+                                            properties: {
+                                                success: { type: "boolean" },
+                                                message: { type: "string" },
+                                            },
+                                            required: ["success"],
+                                        },
+                                        data: {
+                                            type: "object",
+                                            properties: {
+                                                answer: { type: "string" },
+                                                threadId: { type: "string" },
+                                                limited: { type: "boolean" },
+                                                retryAfterMinutes: { type: "integer" },
+                                            },
+                                            required: ["answer", "threadId"],
+                                        },
+                                    },
+                                    required: ["result", "data"],
+                                },
+                            },
+                        },
+                    },
+                    "429": {
+                        description: "Rate limited",
+                        content: {
+                            "application/json": {
+                                schema: {
+                                    type: "object",
+                                    properties: {
+                                        result: {
+                                            type: "object",
+                                            properties: {
+                                                success: { type: "boolean" },
+                                                message: { type: "string" },
+                                                code: { type: "string" },
+                                            },
+                                            required: ["success", "message"],
+                                        },
+                                        data: { type: "null" },
+                                    },
+                                    required: ["result", "data"],
+                                },
+                            },
+                        },
+                    },
+                    "500": {
+                        description: "Unexpected error",
+                        content: {
+                            "application/json": {
+                                schema: {
+                                    type: "object",
+                                    properties: {
+                                        result: {
+                                            type: "object",
+                                            properties: {
+                                                success: { type: "boolean" },
+                                                message: { type: "string" },
+                                                code: { type: "string" },
+                                            },
+                                            required: ["success", "message"],
+                                        },
+                                        data: { type: "null" },
+                                    },
+                                    required: ["result", "data"],
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
         "/api/velog/crawl": {
             get: {
                 summary: "Crawl velog posts and persist new ones",

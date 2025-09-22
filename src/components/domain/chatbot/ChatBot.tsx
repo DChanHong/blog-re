@@ -2,16 +2,36 @@
 
 // 우측 하단 챗봇 버튼 + 하단에서 슬라이드업 되는 채팅창
 
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { useChatbotStore } from "@/store/chatbotStore";
 import { IoIosClose } from "react-icons/io";
 import { CiSearch } from "react-icons/ci";
 import Image from "next/image";
+import { askChatbotApi } from "@/fetchers/chatbot";
+import type { ChatHistoryMessage } from "@/types/chatbot";
 
 export default function ChatBot() {
     const inputRef = useRef<HTMLInputElement | null>(null);
-    const { isOpen, toggle, close, messages, addMessage, isLoading, setLoading } =
-        useChatbotStore();
+    const {
+        isOpen,
+        toggle,
+        close,
+        messages,
+        addMessage,
+        isLoading,
+        setLoading,
+        threadId,
+        setThreadId,
+    } = useChatbotStore();
+
+    // localStorage에서 threadId 복원
+    useEffect(() => {
+        try {
+            const saved = localStorage.getItem("chatbot_thread_id");
+            if (saved) setThreadId(saved);
+        } catch {}
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     const handleAsk = async () => {
         if (!inputRef.current) return;
@@ -22,10 +42,28 @@ export default function ChatBot() {
         addMessage({ isAnswer: false, message: question });
         setLoading(true);
 
-        // TODO: 여기에 실제 API 연동 로직을 연결
-        // 데모용 딜레이 + 에코 응답
-        await new Promise((r) => setTimeout(r, 600));
-        addMessage({ isAnswer: true, message: `답변: ${question}` });
+        // 히스토리 구성 (최근 몇 개만)
+        const history: ChatHistoryMessage[] = messages.slice(-10).map((m) => ({
+            role: m.isAnswer ? "assistant" : "user",
+            content: m.message,
+        }));
+
+        try {
+            const resp = await askChatbotApi({
+                question,
+                threadId: threadId || undefined,
+                history,
+            });
+            addMessage({ isAnswer: true, message: resp.answer });
+            if (resp.threadId && resp.threadId !== threadId) {
+                setThreadId(resp.threadId);
+                try {
+                    localStorage.setItem("chatbot_thread_id", resp.threadId);
+                } catch {}
+            }
+        } catch (e: any) {
+            addMessage({ isAnswer: true, message: e?.message || "오류가 발생했습니다." });
+        }
         setLoading(false);
         inputRef.current.value = "";
     };

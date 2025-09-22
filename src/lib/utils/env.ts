@@ -18,3 +18,7 @@ export const SUPABASE_ANON_KEY = requireEnv(
 export const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
 export const NEXT_PUBLIC_API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "";
+
+// GPT 호출용 OpenAI 설정 (옵션)
+export const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
+export const OPENAI_MODEL = process.env.OPENAI_MODEL || "gpt-4o-mini";

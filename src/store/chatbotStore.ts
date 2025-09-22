@@ -15,11 +15,13 @@ interface ChatbotState {
     isOpen: boolean;
     isLoading: boolean;
     messages: ChatMessageItem[];
+    threadId: string | null;
     open: () => void;
     close: () => void;
     toggle: () => void;
     addMessage: (msg: ChatMessageItem) => void;
     setLoading: (v: boolean) => void;
+    setThreadId: (id: string | null) => void;
     reset: () => void;
 }
 
@@ -27,10 +29,12 @@ export const useChatbotStore = create<ChatbotState>((set) => ({
     isOpen: false,
     isLoading: false,
     messages: [],
+    threadId: null,
     open: () => set({ isOpen: true }),
     close: () => set({ isOpen: false }),
     toggle: () => set((s) => ({ isOpen: !s.isOpen })),
     addMessage: (msg) => set((s) => ({ messages: [...s.messages, msg] })),
     setLoading: (v) => set({ isLoading: v }),
+    setThreadId: (id) => set({ threadId: id }),
     reset: () => set({ isOpen: false, isLoading: false, messages: [] }),
 }));
