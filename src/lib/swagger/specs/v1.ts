@@ -23,23 +23,14 @@ export const openApiV1 = {
                                 type: "object",
                                 properties: {
                                     question: { type: "string" },
-                                    threadId: { type: "string" },
-                                    history: {
-                                        type: "array",
-                                        items: {
-                                            type: "object",
-                                            properties: {
-                                                role: {
-                                                    type: "string",
-                                                    enum: ["user", "assistant"],
-                                                },
-                                                content: { type: "string" },
-                                            },
-                                            required: ["role", "content"],
-                                        },
-                                    },
                                 },
                                 required: ["question"],
+                            },
+                            examples: {
+                                default: {
+                                    summary: "단일 thread 운영",
+                                    value: { question: "최근 주요 프로젝트는 무엇인가요?" },
+                                },
                             },
                         },
                     },

@@ -5,7 +5,9 @@ import { CiSearch } from "react-icons/ci";
 import "swiper/css";
 import { FreeMode, Mousewheel } from "swiper/modules";
 import type { ChatbotFaqDto } from "@/types/chatbot";
+import { useIncrementFaqHitMutation } from "@/actions/chatbot";
 import type { ChatMessageItem } from "@/store/chatbotStore";
+import { ChatLoadingWithStyles as ChatLoading } from "./ChatLoading";
 
 interface ChatBoxProps {
     isOpen: boolean;
@@ -33,6 +35,7 @@ export const ChatBox = ({
     onAsk,
     onClose,
 }: ChatBoxProps) => {
+    const incHit = useIncrementFaqHitMutation();
     if (!isOpen) return null;
     return (
         <>
@@ -78,89 +81,81 @@ export const ChatBox = ({
                             <div className={`text-xs text-black/60 dark:text-white/60 mb-2`}>
                                 추천 질문
                             </div>
-                            {isFaqLoading ? (
-                                <div className={`h-[36px] flex items-center gap-2`}>
-                                    <span className="typing">
-                                        <span className="dot" />
-                                        <span className="dot" />
-                                        <span className="dot" />
-                                    </span>
-                                </div>
-                            ) : (
-                                <div
-                                    className={`w-full`}
-                                    onMouseDown={(e) => {
+                            <div
+                                className={`w-full`}
+                                onMouseDown={(e) => {
+                                    // setIsDragging은 props로 전달받아야 함
+                                    e.stopPropagation();
+                                }}
+                                onMouseUp={(e) => {
+                                    setTimeout(() => {}, 100);
+                                    e.stopPropagation();
+                                }}
+                                onMouseLeave={(e) => {
+                                    setTimeout(() => {}, 100);
+                                    e.stopPropagation();
+                                }}
+                            >
+                                <Swiper
+                                    modules={[FreeMode, Mousewheel]}
+                                    slidesPerView={"auto"}
+                                    spaceBetween={8}
+                                    freeMode={{
+                                        enabled: true,
+                                        momentum: true,
+                                        momentumVelocityRatio: 0.5,
+                                        sticky: false,
+                                    }}
+                                    direction="horizontal"
+                                    grabCursor={true}
+                                    simulateTouch={true}
+                                    mousewheel={{
+                                        enabled: true,
+                                        forceToAxis: true,
+                                    }}
+                                    allowTouchMove={true}
+                                    threshold={5}
+                                    touchRatio={1}
+                                    touchAngle={45}
+                                    onTouchMove={() => {
                                         // setIsDragging은 props로 전달받아야 함
-                                        e.stopPropagation();
                                     }}
-                                    onMouseUp={(e) => {
+                                    onTouchEnd={() => {
                                         setTimeout(() => {}, 100);
-                                        e.stopPropagation();
                                     }}
-                                    onMouseLeave={(e) => {
-                                        setTimeout(() => {}, 100);
-                                        e.stopPropagation();
+                                    onMomentumBounce={() => {
+                                        // setIsDragging은 props로 전달받아야 함
+                                    }}
+                                    className={`w-full`}
+                                    style={{
+                                        overflow: "visible",
+                                        height: "auto",
+                                        minHeight: "44px",
                                     }}
                                 >
-                                    <Swiper
-                                        modules={[FreeMode, Mousewheel]}
-                                        slidesPerView={"auto"}
-                                        spaceBetween={8}
-                                        freeMode={{
-                                            enabled: true,
-                                            momentum: true,
-                                            momentumVelocityRatio: 0.5,
-                                            sticky: false,
-                                        }}
-                                        direction="horizontal"
-                                        grabCursor={true}
-                                        simulateTouch={true}
-                                        mousewheel={{
-                                            enabled: true,
-                                            forceToAxis: true,
-                                        }}
-                                        allowTouchMove={true}
-                                        threshold={5}
-                                        touchRatio={1}
-                                        touchAngle={45}
-                                        onTouchMove={() => {
-                                            // setIsDragging은 props로 전달받아야 함
-                                        }}
-                                        onTouchEnd={() => {
-                                            setTimeout(() => {}, 100);
-                                        }}
-                                        onMomentumBounce={() => {
-                                            // setIsDragging은 props로 전달받아야 함
-                                        }}
-                                        className={`w-full`}
-                                        style={{
-                                            overflow: "visible",
-                                            height: "auto",
-                                            minHeight: "44px",
-                                        }}
-                                    >
-                                        {faqList.map((f) => (
-                                            <SwiperSlide key={f.id} style={{ width: "auto" }}>
-                                                <button
-                                                    type="button"
-                                                    onClick={(e) => {
-                                                        e.stopPropagation();
-                                                        if (!isDragging) {
-                                                            onPresetClick(f.question, f.answer);
-                                                        }
-                                                    }}
-                                                    onMouseDown={(e) => e.stopPropagation()}
-                                                    onMouseUp={(e) => e.stopPropagation()}
-                                                    className={`px-3 py-1 rounded-full text-sm bg-[#F3F5F8] dark:bg-[#0f172a] text-black/80 dark:text-[#cbd5e1] hover:bg-[#e7ebf2] dark:hover:bg-[#0b1222] transition-colors cursor-pointer whitespace-nowrap`}
-                                                    aria-label={`Ask: ${f.question}`}
-                                                >
-                                                    {f.question}
-                                                </button>
-                                            </SwiperSlide>
-                                        ))}
-                                    </Swiper>
-                                </div>
-                            )}
+                                    {faqList.map((f) => (
+                                        <SwiperSlide key={f.id} style={{ width: "auto" }}>
+                                            <button
+                                                type="button"
+                                                onClick={(e) => {
+                                                    e.stopPropagation();
+                                                    if (!isDragging) {
+                                                        // 히트 증가 트리거 (실패해도 UX 방해하지 않음)
+                                                        if (f.id) incHit.mutate(f.id);
+                                                        onPresetClick(f.question, f.answer);
+                                                    }
+                                                }}
+                                                onMouseDown={(e) => e.stopPropagation()}
+                                                onMouseUp={(e) => e.stopPropagation()}
+                                                className={`px-3 py-1 rounded-full text-sm bg-[#F3F5F8] dark:bg-[#0f172a] text-black/80 dark:text-[#cbd5e1] hover:bg-[#e7ebf2] dark:hover:bg-[#0b1222] transition-colors cursor-pointer whitespace-nowrap`}
+                                                aria-label={`Ask: ${f.question}`}
+                                            >
+                                                {f.question}
+                                            </button>
+                                        </SwiperSlide>
+                                    ))}
+                                </Swiper>
+                            </div>
                         </div>
 
                         {/* 메시지 영역 */}
@@ -182,20 +177,7 @@ export const ChatBox = ({
                                         </span>
                                     </li>
                                 ))}
-                                {isLoading && (
-                                    <li className={`flex justify-start`}>
-                                        <span
-                                            className={`px-3 py-2 rounded-2xl max-w-[80%] break-words whitespace-pre-line text-sm md:text-[15px] bg-[#EFF4FB] dark:bg-[#111826] text-black dark:text-[#cbd5e1]`}
-                                        >
-                                            {/* AI 타이핑 로딩 표시 */}
-                                            <span className="typing">
-                                                <span className="dot" />
-                                                <span className="dot" />
-                                                <span className="dot" />
-                                            </span>
-                                        </span>
-                                    </li>
-                                )}
+                                {isLoading && <ChatLoading type="message" />}
                             </ul>
                         </div>
 
@@ -211,11 +193,7 @@ export const ChatBox = ({
                                         disabled={isLoading}
                                     />
                                 ) : (
-                                    <div
-                                        className={`flex-1 flex items-center justify-center p-3 rounded-xl border border-black/10 dark:border-white/10`}
-                                    >
-                                        <span className="loader" />
-                                    </div>
+                                    <ChatLoading type="input" />
                                 )}
                                 {!isLoading ? (
                                     <button
@@ -236,57 +214,6 @@ export const ChatBox = ({
             )}
 
             <style jsx>{`
-                .loader {
-                    width: 12px;
-                    height: 12px;
-                    border-radius: 50%;
-                    display: block;
-                    margin: auto;
-                    position: absolute;
-                    top: 30%;
-                    color: #3c50e0;
-                    box-sizing: border-box;
-                    animation: animloader 2s linear infinite;
-                }
-
-                @keyframes animloader {
-                    0% {
-                        box-shadow:
-                            14px 0 0 -2px,
-                            38px 0 0 -2px,
-                            -14px 0 0 -2px,
-                            -38px 0 0 -2px;
-                    }
-                    25% {
-                        box-shadow:
-                            14px 0 0 -2px,
-                            38px 0 0 -2px,
-                            -14px 0 0 -2px,
-                            -38px 0 0 2px;
-                    }
-                    50% {
-                        box-shadow:
-                            14px 0 0 -2px,
-                            38px 0 0 -2px,
-                            -14px 0 0 2px,
-                            -38px 0 0 -2px;
-                    }
-                    75% {
-                        box-shadow:
-                            14px 0 0 2px,
-                            38px 0 0 -2px,
-                            -14px 0 0 -2px,
-                            -38px 0 0 -2px;
-                    }
-                    100% {
-                        box-shadow:
-                            14px 0 0 -2px,
-                            38px 0 0 2px,
-                            -14px 0 0 -2px,
-                            -38px 0 0 -2px;
-                    }
-                }
-
                 @keyframes chatbotSlideIn {
                     0% {
                         transform: scale(0.9) translateY(20px);
@@ -326,39 +253,6 @@ export const ChatBox = ({
                     100% {
                         transform: scale(1.3);
                         opacity: 0;
-                    }
-                }
-
-                /* AI 타이핑 로딩 점 애니메이션 */
-                .typing {
-                    display: inline-flex;
-                    align-items: center;
-                    gap: 6px;
-                    height: 18px;
-                }
-                .typing .dot {
-                    width: 6px;
-                    height: 6px;
-                    border-radius: 50%;
-                    background: #94a3b8; /* slate-400 */
-                    animation: typingBlink 1s infinite ease-in-out;
-                }
-                .typing .dot:nth-child(2) {
-                    animation-delay: 0.15s;
-                }
-                .typing .dot:nth-child(3) {
-                    animation-delay: 0.3s;
-                }
-                @keyframes typingBlink {
-                    0%,
-                    80%,
-                    100% {
-                        opacity: 0.25;
-                        transform: translateY(0);
-                    }
-                    40% {
-                        opacity: 1;
-                        transform: translateY(-2px);
                     }
                 }
             `}</style>

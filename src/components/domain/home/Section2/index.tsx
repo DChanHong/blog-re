@@ -8,9 +8,11 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import { CiSearch } from "react-icons/ci";
 import { useChatbotStore } from "@/store/chatbotStore";
 import type { ChatbotFaqDto } from "@/types/chatbot";
+import { useIncrementFaqHitMutation } from "@/actions/chatbot";
 
 interface SavedQuestionItem {
     idx: number;
+    id: string;
     savedQuetions: string; // 원본 철자 유지
     savedAnswer: string;
 }
@@ -34,6 +36,7 @@ export default function Section2({ categories, faqs }: Section2Props) {
     };
 
     const [activeCategory, setActiveCategory] = useState<string | undefined>(categories?.[0]);
+    const incHit = useIncrementFaqHitMutation();
 
     useEffect(() => {
         // 카테고리 목록이 갱신되면 기본 선택값 갱신
@@ -53,11 +56,16 @@ export default function Section2({ categories, faqs }: Section2Props) {
                 if (sa !== sb) return sa - sb;
                 return (a.created_at || "").localeCompare(b.created_at || "");
             })
-            .map((f, idx) => ({ idx, savedQuetions: f.question, savedAnswer: f.answer }));
+            .map((f, idx) => ({ idx, id: f.id, savedQuetions: f.question, savedAnswer: f.answer }));
     }, [faqs, activeCategory]);
 
     // 저장된 질문 실행: 질문/답변 메시지 푸시 후 챗봇 열기
-    const handleSaved = async (savedQuetions: string, savedAnswer: string) => {
+    const handleSaved = async (savedQuetions: string, savedAnswer: string, faqId?: string) => {
+        if (faqId) {
+            try {
+                incHit.mutate(faqId);
+            } catch {}
+        }
         open();
         addMessage({ isAnswer: false, message: savedQuetions });
         setLoading(true);
@@ -120,7 +128,9 @@ export default function Section2({ categories, faqs }: Section2Props) {
                             key={item.idx}
                             className="cursor-pointer px-4 py-2 rounded-[20px] font-semibold bg-gray-100 hover:bg-[#0A0044] hover:text-slate-200 transition-colors duration-300"
                             type="button"
-                            onClick={() => handleSaved(item.savedQuetions, item.savedAnswer)}
+                            onClick={() =>
+                                handleSaved(item.savedQuetions, item.savedAnswer, item.id)
+                            }
                         >
                             {item.savedQuetions}
                         </button>

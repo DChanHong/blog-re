@@ -22,3 +22,4 @@ export const NEXT_PUBLIC_API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 
 // GPT 호출용 OpenAI 설정 (옵션)
 export const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 export const OPENAI_MODEL = process.env.OPENAI_MODEL || "gpt-4o-mini";
+export const OPENAI_PROJECT = process.env.OPENAI_PROJECT;

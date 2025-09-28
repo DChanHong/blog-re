@@ -1,12 +1,12 @@
 import type { ChatbotAskRequest, ChatbotAnswerDto, ChatbotFaqDto } from "@/types/chatbot";
 import { NEXT_PUBLIC_API_BASE_URL } from "@/lib/utils/env";
-import { apiRequest } from "@/lib/utils/apiClient";
+import { apiRequest, toJsonBody } from "@/lib/utils/apiClient";
 
 export async function askChatbotApi(payload: ChatbotAskRequest): Promise<ChatbotAnswerDto> {
     const res = await fetch(`${NEXT_PUBLIC_API_BASE_URL || ""}/api/chatbot/ask`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
+        body: JSON.stringify({ question: payload.question }),
     });
     const json = await res.json();
     if (!res.ok || !json?.result?.success) {
@@ -30,5 +30,15 @@ export async function fetchChatbotCategories() {
     return apiRequest<string[]>(`/api/chatbot/categories`, {
         method: "GET",
         cache: process.env.NODE_ENV === "development" ? "no-store" : undefined,
+    });
+}
+
+// FAQ 클릭 히트 증가
+export async function incrementChatbotFaqHit(faqId: string) {
+    return apiRequest<null>(`/api/chatbot/faqs`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: toJsonBody({ faqId }),
+        cache: "no-store",
     });
 }

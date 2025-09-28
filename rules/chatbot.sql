@@ -57,3 +57,26 @@ create table if not exists public.chatbot_faq_log (
 
 -- RLS: 공개 접근 금지 (정책 미생성) → 서비스 롤만 사용
 alter table public.chatbot_faq_log enable row level security;
+
+
+-- ============================================
+-- AI 대화 로그 저장 테이블 (Assistants API용)
+-- - Assistants API를 통한 AI 질문/답변 저장
+-- ============================================
+create table if not exists public.chatbot_conversations (
+    id uuid primary key default gen_random_uuid(),
+    thread_id varchar(255) not null, -- Assistants API thread ID
+    user_message text not null,
+    assistant_message text not null,
+    ip varchar(64) null,
+    user_agent text null,
+    created_at timestamptz not null default now()
+);
+
+-- RLS: 공개 접근 금지 (정책 미생성) → 서비스 롤만 사용
+alter table public.chatbot_conversations enable row level security;
+
+-- 인덱스 추가 (성능 최적화)
+create index if not exists idx_chatbot_conversations_thread_id on public.chatbot_conversations using btree (thread_id);
+create index if not exists idx_chatbot_conversations_created_at on public.chatbot_conversations using btree (created_at);
+create index if not exists idx_chatbot_conversations_ip on public.chatbot_conversations using btree (ip);

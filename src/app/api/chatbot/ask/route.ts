@@ -14,10 +14,7 @@ export async function POST(request: Request) {
             );
         }
 
-        const result = await askChatbot(request, question, {
-            threadId: body.threadId,
-            history: body.history,
-        });
+        const result = await askChatbot(request, question);
         if (result.type === "ok") {
             return NextResponse.json<ApiResponse<ChatbotAnswerDto>>(ok(result.data));
         }

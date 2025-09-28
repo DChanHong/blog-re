@@ -110,8 +110,6 @@ export default function ChatBot() {
         try {
             const resp = await askChatbotApi({
                 question,
-                threadId: threadId || undefined,
-                history,
             });
             addMessage({ isAnswer: true, message: resp.answer });
             if (resp.threadId && resp.threadId !== threadId) {

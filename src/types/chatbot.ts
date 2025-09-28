@@ -7,8 +7,6 @@ export interface ChatHistoryMessage {
 
 export interface ChatbotAskRequest {
     question: string;
-    threadId?: string;
-    history?: ChatHistoryMessage[];
 }
 
 export interface ChatbotAnswerDto {
@@ -31,5 +29,17 @@ export interface ChatbotFaqDto {
     answer: string;
     category?: string | null;
     sorting?: number | null;
+    hit?: number | null;
     created_at?: string;
+}
+
+// AI 대화 로그 DTO
+export interface ChatbotConversationDto {
+    id: string;
+    thread_id: string;
+    user_message: string;
+    assistant_message: string;
+    ip?: string | null;
+    user_agent?: string | null;
+    created_at: string;
 }
