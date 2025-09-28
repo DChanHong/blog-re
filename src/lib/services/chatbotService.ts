@@ -1,5 +1,11 @@
 import { OPENAI_API_KEY, OPENAI_MODEL } from "@/lib/utils/env";
-import { getRateLimitByIp, upsertRateLimit } from "@/lib/repositories/chatbotRepository";
+import {
+    getRateLimitByIp,
+    upsertRateLimit,
+    fetchFaqs,
+    fetchFaqCategories,
+    type FaqRow,
+} from "@/lib/repositories/chatbotRepository";
 import type { AskResult, ChatHistoryMessage } from "@/types/chatbot";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
@@ -150,4 +156,16 @@ export async function askChatbot(
         const msg = e instanceof Error ? e.message : "Unknown error";
         return { type: "error", message: msg };
     }
+}
+
+// ============================================
+// FAQ 서비스: 카테고리/정렬 기반 FAQ 목록과 카테고리 목록 제공
+// ============================================
+
+export async function getFaqList(params?: { category?: string | null }): Promise<FaqRow[]> {
+    return await fetchFaqs({ category: params?.category ?? undefined });
+}
+
+export async function getFaqCategories(): Promise<string[]> {
+    return await fetchFaqCategories();
 }

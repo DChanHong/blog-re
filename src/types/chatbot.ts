@@ -23,3 +23,13 @@ export type AskResult =
     | { type: "rate_limited"; message: string; retryAfterMinutes: number }
     | { type: "config_missing"; message: string }
     | { type: "error"; message: string };
+
+// FAQ DTO (프론트엔드 전송용)
+export interface ChatbotFaqDto {
+    id: string;
+    question: string;
+    answer: string;
+    category?: string | null;
+    sorting?: number | null;
+    created_at?: string;
+}

@@ -5,7 +5,7 @@ import SiteLayout from "@/components/layout/SiteLayout";
 import ReactQueryProvider from "@/components/providers/ReactQueryProvider";
 import dynamic from "next/dynamic";
 
-const ChatBot = dynamic(() => import("@/components/domain/chatbot/ChatBot"), { ssr: true });
+const ChatBot = dynamic(() => import("@/components/domain/chatbot"), { ssr: true });
 
 const geistSans = Geist({
     variable: "--font-geist-sans",

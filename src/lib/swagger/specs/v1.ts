@@ -8,7 +8,7 @@ export const openApiV1 = {
     servers: [{ url: "/" }],
     tags: [
         { name: "Velog", description: "Velog crawling and posts" },
-        { name: "Chatbot", description: "Chatbot asking endpoint" },
+        { name: "Chatbot", description: "Chatbot asking endpoint and FAQs" },
     ],
     paths: {
         "/api/chatbot/ask": {
@@ -116,6 +116,96 @@ export const openApiV1 = {
                                             required: ["success", "message"],
                                         },
                                         data: { type: "null" },
+                                    },
+                                    required: ["result", "data"],
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+        "/api/chatbot/faqs": {
+            get: {
+                summary: "List FAQs (optional filter by category)",
+                tags: ["Chatbot"],
+                parameters: [
+                    {
+                        in: "query",
+                        name: "category",
+                        schema: { type: "string" },
+                        required: false,
+                        description:
+                            "Filter by category (e.g., basic, career, projects, tech_stack)",
+                    },
+                ],
+                responses: {
+                    "200": {
+                        description: "FAQs fetched",
+                        content: {
+                            "application/json": {
+                                schema: {
+                                    type: "object",
+                                    properties: {
+                                        result: {
+                                            type: "object",
+                                            properties: {
+                                                success: { type: "boolean" },
+                                                message: { type: "string" },
+                                            },
+                                            required: ["success"],
+                                        },
+                                        data: {
+                                            type: "array",
+                                            items: {
+                                                type: "object",
+                                                properties: {
+                                                    id: { type: "string", format: "uuid" },
+                                                    question: { type: "string" },
+                                                    answer: { type: "string" },
+                                                    category: { type: "string", nullable: true },
+                                                    sorting: { type: "integer", nullable: true },
+                                                    created_at: {
+                                                        type: "string",
+                                                        format: "date-time",
+                                                    },
+                                                },
+                                                required: ["id", "question", "answer"],
+                                            },
+                                        },
+                                    },
+                                    required: ["result", "data"],
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+        "/api/chatbot/categories": {
+            get: {
+                summary: "List distinct FAQ categories",
+                tags: ["Chatbot"],
+                responses: {
+                    "200": {
+                        description: "Categories fetched",
+                        content: {
+                            "application/json": {
+                                schema: {
+                                    type: "object",
+                                    properties: {
+                                        result: {
+                                            type: "object",
+                                            properties: {
+                                                success: { type: "boolean" },
+                                                message: { type: "string" },
+                                            },
+                                            required: ["success"],
+                                        },
+                                        data: {
+                                            type: "array",
+                                            items: { type: "string" },
+                                        },
                                     },
                                     required: ["result", "data"],
                                 },
