@@ -1,3 +1,4 @@
+```text
 hong_blog/
 ├── app/ # App Router 엔트리
 │ ├── layout.tsx # 전역 레이아웃
@@ -6,8 +7,8 @@ hong_blog/
 │ │ ├── page.tsx # 서버 컴포넌트 (라우트 진입점)
 │ │ └── ClientPage.tsx # 클라 컴포넌트 시작점
 │ └── posts/
-│ ├── page.tsx
-│ └── ClientPage.tsx
+│   ├── page.tsx
+│   └── ClientPage.tsx
 │
 ├── lib/ # 서버측 로직 (MVC: Model & Service)
 │ ├── db/ # Supabase client
@@ -31,3 +32,4 @@ hong_blog/
 ├── styles/ # 글로벌 스타일
 ├── next.config.mjs
 └── tsconfig.json
+```
