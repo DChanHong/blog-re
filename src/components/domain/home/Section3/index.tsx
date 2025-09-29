@@ -18,7 +18,7 @@ const Section3 = ({ blogList }: Props) => {
 
     return (
         <div
-            className={`w-full m-auto max-w-[1800px] flex justify-center mt-[80px] mb-20 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
+            className={`w-full m-auto max-w-[1800px] flex justify-center mt-[20px] mb-20 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
             ref={targetRef}
         >
             <div className={` w-11/12 md:w-11/12 lg2:w-11/12 3xl:w-10/12 6xl:w-11/12`}>
