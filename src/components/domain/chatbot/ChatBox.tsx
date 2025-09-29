@@ -45,12 +45,12 @@ export const ChatBox = ({
                     onClick={() => !isDragging && onClose()}
                 >
                     <div
-                        className={`bg-white dark:bg-[#1e1e1e] w-full max-w-[680px] h-[80vh] sm:h-[80vh] md:h-[80vh] lg:h-[80vh] overflow-hidden p-0 rounded-2xl z-50 flex flex-col shadow-2xl border border-black/10 dark:border-white/10 animate-[chatbotSlideIn_0.4s_ease-out]`}
+                        className={`bg-white w-full max-w-[680px] h-[80vh] sm:h-[80vh] md:h-[80vh] lg:h-[80vh] overflow-hidden p-0 rounded-2xl z-50 flex flex-col shadow-2xl border border-black/10 animate-[chatbotSlideIn_0.4s_ease-out]`}
                         onClick={(e) => e.stopPropagation()}
                     >
                         {/* 헤더 */}
                         <div
-                            className={`flex items-center justify-between px-5 py-3 border-b border-black/10 dark:border-white/10`}
+                            className={`flex items-center justify-between px-5 py-3 border-b border-black/10`}
                         >
                             <div className={`flex items-center gap-2 font-semibold`}>
                                 <span
@@ -61,7 +61,7 @@ export const ChatBox = ({
                             <button
                                 type="button"
                                 onClick={onClose}
-                                className={`rounded-full hover:bg-black/5 dark:hover:bg-white/10 p-1 cursor-pointer`}
+                                className={`rounded-full hover:bg-black/5 p-1 cursor-pointer`}
                                 aria-label="Close chatbot"
                             >
                                 <IoIosClose size={28} />
@@ -78,9 +78,7 @@ export const ChatBox = ({
                                 }
                             }}
                         >
-                            <div className={`text-xs text-black/60 dark:text-white/60 mb-2`}>
-                                추천 질문
-                            </div>
+                            <div className={`text-xs text-black/60 mb-2`}>추천 질문</div>
                             <div
                                 className={`w-full`}
                                 onMouseDown={(e) => {
@@ -147,7 +145,7 @@ export const ChatBox = ({
                                                 }}
                                                 onMouseDown={(e) => e.stopPropagation()}
                                                 onMouseUp={(e) => e.stopPropagation()}
-                                                className={`px-3 py-1 rounded-full text-sm bg-[#F3F5F8] dark:bg-[#0f172a] text-black/80 dark:text-[#cbd5e1] hover:bg-[#e7ebf2] dark:hover:bg-[#0b1222] transition-colors cursor-pointer whitespace-nowrap`}
+                                                className={`px-3 py-1 rounded-full text-sm bg-[#F3F5F8] text-black/80 hover:bg-[#e7ebf2] transition-colors cursor-pointer whitespace-nowrap`}
                                                 aria-label={`Ask: ${f.question}`}
                                             >
                                                 {f.question}
@@ -169,7 +167,7 @@ export const ChatBox = ({
                                         <span
                                             className={`px-3 py-2 rounded-2xl max-w-[80%] break-words whitespace-pre-line text-sm md:text-[15px] ${
                                                 item.isAnswer
-                                                    ? "bg-[#EFF4FB] dark:bg-[#111826] text-black dark:text-[#cbd5e1]"
+                                                    ? "bg-[#EFF4FB] text-black"
                                                     : "bg-gradient-to-br from-indigo-500 to-blue-500 text-white"
                                             }`}
                                         >
@@ -182,11 +180,11 @@ export const ChatBox = ({
                         </div>
 
                         {/* 입력 영역 */}
-                        <div className={`px-4 py-3 border-t border-black/10 dark:border-white/10`}>
+                        <div className={`px-4 py-3 border-t border-black/10`}>
                             <div className={`flex items-center gap-2`}>
                                 {!isLoading ? (
                                     <input
-                                        className={`flex-1 p-3 rounded-xl border border-black/10 dark:border-white/10 bg-white dark:bg-[#121212] outline-none focus:ring-2 focus:ring-blue-400/50`}
+                                        className={`flex-1 p-3 rounded-xl border border-black/10 bg-white outline-none focus:ring-2 focus:ring-blue-400/50`}
                                         placeholder="ex) 찬홍님의 이력은 어떻게 되나요?"
                                         ref={inputRef}
                                         onKeyUp={onKeyUp}
@@ -205,7 +203,7 @@ export const ChatBox = ({
                                         <CiSearch size={22} />
                                     </button>
                                 ) : (
-                                    <div className="h-[44px] w-[44px] rounded-xl grid place-items-center border border-black/10 dark:border-white/10" />
+                                    <div className="h-[44px] w-[44px] rounded-xl grid place-items-center border border-black/10" />
                                 )}
                             </div>
                         </div>

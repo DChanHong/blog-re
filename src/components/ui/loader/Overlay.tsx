@@ -25,10 +25,10 @@ export default function OverlayLoader({
     if (!show) return null;
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-blue-950/10 backdrop-blur-sm">
-            <div className="flex flex-col items-center gap-3 p-6 rounded-xl bg-white/80 dark:bg-black/60 shadow-lg">
+            <div className="flex flex-col items-center gap-3 p-6 rounded-xl bg-white/80 shadow-lg">
                 <Spinner size="lg" {...spinnerProps} />
                 {label ? (
-                    <p className="text-blue-700 dark:text-blue-300 text-sm font-medium">{label}</p>
+                    <p className="text-blue-700 text-sm font-medium">{label}</p>
                 ) : null}
             </div>
         </div>
