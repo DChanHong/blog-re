@@ -26,7 +26,7 @@ const Section3 = ({ blogList }: Props) => {
                     <h2
                         className={`font-bold mb-4 text-[20px] md:text-[30px] 3xl:text-[40px] 6xl:text-[50px] pb-4 border-b-2`}
                     >
-                        <span className="text-container">Recent Blog Posts</span>
+                        <span className="text-container">최신 글 보기</span>
                     </h2>
                 </Link>
 

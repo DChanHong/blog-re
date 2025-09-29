@@ -100,7 +100,7 @@ export default function Section2({ categories, faqs }: Section2Props) {
         <section className={` w-full max-w-[1800px] m-auto flex justify-center mt-[40px] mb-20`}>
             <div className={`w-11/12 md:w-11/12 lg2:w-11/12 3xl:w-10/12 6xl:w-11/12 p-4`}>
                 <div className={"text-center text-[28px] md:text-[34px] font-bold"}>
-                    Ask a question about chanhong's information
+                    {`'성찬홍'에 대해 무엇이든 물어보세요.`}
                 </div>
 
                 {/* 카테고리 탭 */}
