@@ -9,7 +9,7 @@ export const ChatLoading = ({ type = "message" }: ChatLoadingProps) => {
     if (type === "input") {
         return (
             <div
-                className={`flex-1 flex items-center justify-center p-3 rounded-xl border border-black/10 dark:border-white/10`}
+                className={`flex-1 flex items-center justify-center p-3 rounded-xl border border-black/10`}
             >
                 <span className="loader" />
             </div>
@@ -19,7 +19,7 @@ export const ChatLoading = ({ type = "message" }: ChatLoadingProps) => {
     return (
         <li className={`flex justify-start`}>
             <span
-                className={`px-3 py-2 rounded-2xl max-w-[80%] break-words whitespace-pre-line text-sm md:text-[15px] bg-[#EFF4FB] dark:bg-[#111826] text-black dark:text-[#cbd5e1]`}
+                className={`px-3 py-2 rounded-2xl max-w-[80%] break-words whitespace-pre-line text-sm md:text-[15px] bg-[#EFF4FB] text-black`}
             >
                 {/* AI 타이핑 로딩 표시 */}
                 <span className="typing">
@@ -128,7 +128,7 @@ const ChatLoadingWithStyles = ({ type = "message" }: ChatLoadingProps) => {
             <>
                 <style jsx>{chatLoadingStyles}</style>
                 <div
-                    className={`flex-1 flex items-center justify-center p-3 rounded-xl border border-black/10 dark:border-white/10`}
+                    className={`flex-1 flex items-center justify-center p-3 rounded-xl border border-black/10`}
                 >
                     <span className="loader" />
                 </div>
@@ -141,7 +141,7 @@ const ChatLoadingWithStyles = ({ type = "message" }: ChatLoadingProps) => {
             <style jsx>{chatLoadingStyles}</style>
             <li className={`flex justify-start`}>
                 <span
-                    className={`px-3 py-2 rounded-2xl max-w-[80%] break-words whitespace-pre-line text-sm md:text-[15px] bg-[#EFF4FB] dark:bg-[#111826] text-black dark:text-[#cbd5e1]`}
+                    className={`px-3 py-2 rounded-2xl max-w-[80%] break-words whitespace-pre-line text-sm md:text-[15px] bg-[#EFF4FB] text-black`}
                 >
                     {/* AI 타이핑 로딩 표시 */}
                     <span className="typing">

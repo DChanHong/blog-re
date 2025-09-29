@@ -12,7 +12,7 @@ export default function Footer() {
     return (
         <footer>
             <div
-                className={`flex items-center align-item justify-evenly bg-[#F9F9F9] dark:bg-[#000] h-[100px]`}
+                className={`flex items-center align-item justify-evenly bg-[#F9F9F9] h-[100px]`}
             >
                 <ul>
                     <li className={`font-bold text-[25px] xs:text-[25px]`}>성찬홍's More Info</li>
