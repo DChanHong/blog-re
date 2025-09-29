@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     metadataBase: new URL("https://blog.chanhong.pro"),
     title: {
         default: "성찬홍 | 프론트엔드 엔지니어",
-        template: "%s | 성찬홍",
+        template: "%s | Chanhong Studio",
     },
     description: "성찬홍의 이력에 대한 정보",
     openGraph: {
