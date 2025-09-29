@@ -97,7 +97,7 @@ export default function Section2({ categories, faqs }: Section2Props) {
     };
 
     return (
-        <section className={`w-full max-w-[1800px] m-auto flex justify-center mt-[40px] mb-20`}>
+        <section className={` w-full max-w-[1800px] m-auto flex justify-center mt-[40px] mb-20`}>
             <div className={`w-11/12 md:w-11/12 lg2:w-11/12 3xl:w-10/12 6xl:w-11/12 p-4`}>
                 <div className={"text-center text-[28px] md:text-[34px] font-bold"}>
                     Ask a question about chanhong's information

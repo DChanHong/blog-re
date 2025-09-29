@@ -18,8 +18,35 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-    title: "chanhong blog",
-    description: "chanhong blog",
+    metadataBase: new URL("https://blog.chanhong.pro"),
+    title: {
+        default: "성찬홍 | 프론트엔드 엔지니어",
+        template: "%s | 성찬홍",
+    },
+    description: "성찬홍의 이력에 대한 정보",
+    openGraph: {
+        title: "성찬홍 | 프론트엔드 엔지니어",
+        description: "성찬홍의 이력에 대한 정보",
+        url: "/",
+        siteName: "성찬홍's Info",
+        images: [
+            {
+                url: "/default.webp",
+                width: 1200,
+                height: 630,
+                alt: "성찬홍's Info 썸네일",
+            },
+        ],
+        locale: "ko_KR",
+        type: "website",
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "성찬홍 | 프론트엔지니어",
+        description: "성찬홍의 이력에 대한 정보",
+        images: ["/default.webp"],
+    },
+    icons: { icon: "/favicon.ico" },
 };
 
 export default function RootLayout({
