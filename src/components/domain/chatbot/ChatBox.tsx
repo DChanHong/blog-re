@@ -42,7 +42,7 @@ export const ChatBox = ({
             {isOpen && (
                 <div
                     className={`fixed inset-0 z-40 bg-black/40 backdrop-blur-[2px] flex items-center justify-center p-4 animate-[fadeIn_0.2s_ease]`}
-                    onClick={() => !isDragging && onClose()}
+                    onClick={() => onClose()}
                 >
                     <div
                         className={`bg-white w-full max-w-[680px] h-[80vh] sm:h-[80vh] md:h-[80vh] lg:h-[80vh] overflow-hidden p-0 rounded-2xl z-50 flex flex-col shadow-2xl border border-black/10 animate-[chatbotSlideIn_0.4s_ease-out]`}
@@ -69,31 +69,9 @@ export const ChatBox = ({
                         </div>
 
                         {/* 추천 질문 영역 (가로 스와이프) */}
-                        <div
-                            className={`px-4 pt-3 `}
-                            style={{ pointerEvents: isDragging ? "none" : "auto" }}
-                            onClick={(e) => {
-                                if (isDragging) {
-                                    e.stopPropagation();
-                                }
-                            }}
-                        >
+                        <div className={`px-4 pt-3 `}>
                             <div className={`text-xs text-black/60 mb-2`}>추천 질문</div>
-                            <div
-                                className={`w-full`}
-                                onMouseDown={(e) => {
-                                    // setIsDragging은 props로 전달받아야 함
-                                    e.stopPropagation();
-                                }}
-                                onMouseUp={(e) => {
-                                    setTimeout(() => {}, 100);
-                                    e.stopPropagation();
-                                }}
-                                onMouseLeave={(e) => {
-                                    setTimeout(() => {}, 100);
-                                    e.stopPropagation();
-                                }}
-                            >
+                            <div className={`w-full`}>
                                 <Swiper
                                     modules={[FreeMode, Mousewheel]}
                                     slidesPerView={"auto"}
@@ -112,23 +90,22 @@ export const ChatBox = ({
                                         forceToAxis: true,
                                     }}
                                     allowTouchMove={true}
-                                    threshold={5}
+                                    threshold={6}
+                                    preventClicks={true}
+                                    preventClicksPropagation={true}
+                                    nested={true}
+                                    touchStartPreventDefault={true}
+                                    touchMoveStopPropagation={true}
+                                    passiveListeners={false}
+                                    touchEventsTarget="container"
                                     touchRatio={1}
                                     touchAngle={45}
-                                    onTouchMove={() => {
-                                        // setIsDragging은 props로 전달받아야 함
-                                    }}
-                                    onTouchEnd={() => {
-                                        setTimeout(() => {}, 100);
-                                    }}
-                                    onMomentumBounce={() => {
-                                        // setIsDragging은 props로 전달받아야 함
-                                    }}
                                     className={`w-full`}
                                     style={{
                                         overflow: "visible",
                                         height: "auto",
                                         minHeight: "44px",
+                                        touchAction: "pan-x",
                                     }}
                                 >
                                     {faqList.map((f) => (
@@ -137,11 +114,9 @@ export const ChatBox = ({
                                                 type="button"
                                                 onClick={(e) => {
                                                     e.stopPropagation();
-                                                    if (!isDragging) {
-                                                        // 히트 증가 트리거 (실패해도 UX 방해하지 않음)
-                                                        if (f.id) incHit.mutate(f.id);
-                                                        onPresetClick(f.question, f.answer);
-                                                    }
+                                                    // 히트 증가 트리거 (실패해도 UX 방해하지 않음)
+                                                    if (f.id) incHit.mutate(f.id);
+                                                    onPresetClick(f.question, f.answer);
                                                 }}
                                                 onMouseDown={(e) => e.stopPropagation()}
                                                 onMouseUp={(e) => e.stopPropagation()}
