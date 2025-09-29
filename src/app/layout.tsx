@@ -31,7 +31,7 @@ export const metadata: Metadata = {
         siteName: "성찬홍's Info",
         images: [
             {
-                url: "/default.webp",
+                url: "https://blog.chanhong.pro/og_front.png",
                 width: 1200,
                 height: 630,
                 alt: "성찬홍's Info 썸네일",
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
         card: "summary_large_image",
         title: "성찬홍 | 프론트엔지니어",
         description: "성찬홍의 이력에 대한 정보",
-        images: ["/default.webp"],
+        images: ["/og_front.png"],
     },
     icons: { icon: "/favicon.ico" },
 };
