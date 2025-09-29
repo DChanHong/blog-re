@@ -18,7 +18,7 @@ const Section3 = ({ blogList }: Props) => {
 
     return (
         <div
-            className={`w-full m-auto max-w-[1800px] flex justify-center mt-[80px] mb-20 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
+            className={`w-full m-auto max-w-[1800px] flex justify-center mt-[20px] mb-20 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
             ref={targetRef}
         >
             <div className={` w-11/12 md:w-11/12 lg2:w-11/12 3xl:w-10/12 6xl:w-11/12`}>
@@ -26,7 +26,7 @@ const Section3 = ({ blogList }: Props) => {
                     <h2
                         className={`font-bold mb-4 text-[20px] md:text-[30px] 3xl:text-[40px] 6xl:text-[50px] pb-4 border-b-2`}
                     >
-                        <span className="text-container">Recent Blog Posts</span>
+                        <span className="text-container">최신 글 보기</span>
                     </h2>
                 </Link>
 
