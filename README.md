@@ -1,3 +1,5 @@
+나의 블로그
+
 ```text
 hong_blog/
 ├── app/ # App Router 엔트리
