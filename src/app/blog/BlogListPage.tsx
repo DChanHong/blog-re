@@ -20,6 +20,8 @@ export default function BlogListPage({ currentPage, category, tag, search }: Blo
     const [totalPosts, setTotalPosts] = useState(0);
     const [categories, setCategories] = useState<string[]>([]);
     const [tags, setTags] = useState<string[]>([]);
+    // md 이하에서 카테고리 접기/펼치기 상태
+    const [isCategoryOpen, setIsCategoryOpen] = useState(false);
 
     // React Query: 블로그 포스트 데이터
     const postsQuery = useBlogPostsQuery({
@@ -62,9 +64,9 @@ export default function BlogListPage({ currentPage, category, tag, search }: Blo
     }, [tagsQuery.data]);
 
     return (
-        <div className="grid lg:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-4 gap-8">
             {/* 사이드바 - 필터 */}
-            <aside className="lg:col-span-1">
+            <aside className="md:col-span-1">
                 <div className="bg-white rounded-2xl shadow-sm border p-6 sticky top-[120px]">
                     {/* 검색 */}
                     <div className="mb-6">
@@ -105,8 +107,22 @@ export default function BlogListPage({ currentPage, category, tag, search }: Blo
 
                     {/* 카테고리 */}
                     <div className="mb-6">
-                        <h3 className="font-semibold text-gray-900 mb-3">카테고리</h3>
-                        <div className="space-y-2">
+                        <div className="flex items-center justify-between mb-3">
+                            <h3 className="font-semibold text-gray-900">카테고리</h3>
+                            <button
+                                type="button"
+                                className="md:hidden text-sm text-gray-600 px-2 py-1 rounded hover:bg-gray-100 cursor-pointer"
+                                onClick={() => setIsCategoryOpen((prev) => !prev)}
+                                aria-controls="category-panel"
+                                aria-expanded={isCategoryOpen}
+                            >
+                                {isCategoryOpen ? "접기" : "펼치기"}
+                            </button>
+                        </div>
+                        <div
+                            id="category-panel"
+                            className={`${isCategoryOpen ? "min-h-[200px]" : "max-h-56"} md:block space-y-2  overflow-y-auto pr-1  md:min-h-0 md:max-h-none md:overflow-visible`}
+                        >
                             <Link
                                 href="/blog"
                                 className={`block px-3 py-2 rounded-lg text-sm transition-colors ${
@@ -134,7 +150,7 @@ export default function BlogListPage({ currentPage, category, tag, search }: Blo
                     </div>
 
                     {/* 태그 */}
-                    <div>
+                    <div className={``}>
                         <h3 className="font-semibold text-gray-900 mb-3">태그</h3>
                         <div className="flex flex-wrap gap-2">
                             {tags.slice(0, 20).map((tagItem) => (
@@ -156,7 +172,7 @@ export default function BlogListPage({ currentPage, category, tag, search }: Blo
             </aside>
 
             {/* 메인 콘텐츠 */}
-            <main className="lg:col-span-3">
+            <main className="md:col-span-3">
                 {/* 결과 정보 */}
                 <div className="flex justify-between items-center mb-8">
                     <div>
