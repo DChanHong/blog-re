@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
 interface PaginationProps {
@@ -38,10 +39,22 @@ export default function Pagination({
         return queryString ? `${baseUrl}?${queryString}` : baseUrl;
     };
 
-    // 페이지 번호 배열 생성 (최대 7개 표시)
+    // 480px 이하에서는 더 적은 버튼 수로 표시
+    const [isCompact, setIsCompact] = useState(false);
+
+    useEffect(() => {
+        if (typeof window === "undefined") return;
+        const mql = window.matchMedia("(max-width: 480px)");
+        const handleChange = () => setIsCompact(mql.matches);
+        handleChange();
+        mql.addEventListener("change", handleChange);
+        return () => mql.removeEventListener("change", handleChange);
+    }, []);
+
+    // 페이지 번호 배열 생성 (기본 최대 7개, compact에서는 5개 수준으로 표시)
     const getPageNumbers = () => {
         const pages: (number | string)[] = [];
-        const maxVisible = 7;
+        const maxVisible = isCompact ? 5 : 7;
 
         if (totalPages <= maxVisible) {
             // 전체 페이지가 7개 이하면 모두 표시
@@ -50,29 +63,53 @@ export default function Pagination({
             }
         } else {
             // 복잡한 페이지네이션 로직
-            if (currentPage <= 4) {
-                // 현재 페이지가 앞쪽에 있을 때
-                for (let i = 1; i <= 5; i++) {
-                    pages.push(i);
-                }
-                pages.push("...");
-                pages.push(totalPages);
-            } else if (currentPage >= totalPages - 3) {
-                // 현재 페이지가 뒤쪽에 있을 때
-                pages.push(1);
-                pages.push("...");
-                for (let i = totalPages - 4; i <= totalPages; i++) {
-                    pages.push(i);
+            if (isCompact) {
+                // compact 모드: 버튼 수 최소화
+                if (currentPage <= 3) {
+                    // 앞쪽에 있을 때: 1,2,3 ... last
+                    for (let i = 1; i <= 3; i++) {
+                        pages.push(i);
+                    }
+                    pages.push("...");
+                    pages.push(totalPages);
+                } else if (currentPage >= totalPages - 2) {
+                    // 뒤쪽에 있을 때: 1 ... last-2,last-1,last
+                    pages.push(1);
+                    pages.push("...");
+                    for (let i = Math.max(1, totalPages - 2); i <= totalPages; i++) {
+                        pages.push(i);
+                    }
+                } else {
+                    // 가운데: 1 ... current ... last
+                    pages.push(1);
+                    pages.push("...");
+                    pages.push(currentPage);
+                    pages.push("...");
+                    pages.push(totalPages);
                 }
             } else {
-                // 현재 페이지가 중간에 있을 때
-                pages.push(1);
-                pages.push("...");
-                for (let i = currentPage - 1; i <= currentPage + 1; i++) {
-                    pages.push(i);
+                // 기본 모드: 최대 7개
+                if (currentPage <= 4) {
+                    for (let i = 1; i <= 5; i++) {
+                        pages.push(i);
+                    }
+                    pages.push("...");
+                    pages.push(totalPages);
+                } else if (currentPage >= totalPages - 3) {
+                    pages.push(1);
+                    pages.push("...");
+                    for (let i = totalPages - 4; i <= totalPages; i++) {
+                        pages.push(i);
+                    }
+                } else {
+                    pages.push(1);
+                    pages.push("...");
+                    for (let i = currentPage - 1; i <= currentPage + 1; i++) {
+                        pages.push(i);
+                    }
+                    pages.push("...");
+                    pages.push(totalPages);
                 }
-                pages.push("...");
-                pages.push(totalPages);
             }
         }
 
@@ -84,7 +121,10 @@ export default function Pagination({
     const pages = getPageNumbers();
 
     return (
-        <nav className="flex justify-center items-center space-x-2" aria-label="페이지네이션">
+        <nav
+            className="flex flex-wrap justify-center items-center gap-2 w-full"
+            aria-label="페이지네이션"
+        >
             {/* 이전 페이지 버튼 */}
             <Link
                 href={createUrl(Math.max(1, currentPage - 1))}
