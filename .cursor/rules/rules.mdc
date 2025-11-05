@@ -103,7 +103,7 @@ data: T | null // 실제 응답 데이터
 ### Swagger 예시 (게시물 조회)
 
 ```yaml
-paths:
+paths:<Section4 />
     /api/posts/{id}:
         get:
             summary: 특정 게시물 조회
