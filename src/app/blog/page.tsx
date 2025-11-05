@@ -37,7 +37,7 @@ export default function BlogPage({ searchParams }: BlogPageProps) {
     const search = searchParams.search || "";
 
     return (
-        <PageContainer outerClassName={`h-screen`}>
+        <PageContainer outerClassName="min-h-[calc(100vh)]">
             <Suspense
                 fallback={
                     <div className="flex justify-center items-center py-20">
