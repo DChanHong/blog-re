@@ -4,6 +4,7 @@ import Link from "next/link";
 import { IoClose } from "react-icons/io5";
 import { AiFillHome } from "react-icons/ai";
 import { BsBook } from "react-icons/bs";
+import { FaUser } from "react-icons/fa";
 
 interface MobileNavProps {
     /** Whether the mobile nav is visible. */
@@ -77,6 +78,18 @@ export default function MobileNav({ isOpen, onClose }: MobileNavProps) {
                                     <BsBook className="w-full h-full" />
                                 </span>
                                 <span className="text-[1.05rem] font-medium">Blog</span>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
+                                className="flex items-center px-4 py-3 mx-1 rounded-xl bg-gray-50 hover:bg-gray-100 active:scale-[0.99] transition"
+                                href={"/career"}
+                                onClick={onClose}
+                            >
+                                <span className="w-[2rem] mr-3 text-gray-700">
+                                    <FaUser className="w-full h-full" />
+                                </span>
+                                <span className="text-[1.05rem] font-medium">Career</span>
                             </Link>
                         </li>
                     </ul>

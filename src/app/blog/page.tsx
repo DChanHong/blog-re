@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { Suspense } from "react";
 import BlogListPage from "./BlogListPage";
+import PageContainer from "@/components/layout/PageContainer";
 
 export const metadata: Metadata = {
     title: "블로그 | 찬홍의 개발 이야기",
@@ -36,23 +37,21 @@ export default function BlogPage({ searchParams }: BlogPageProps) {
     const search = searchParams.search || "";
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-[120px] pb-12">
-                <Suspense
-                    fallback={
-                        <div className="flex justify-center items-center py-20">
-                            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
-                        </div>
-                    }
-                >
-                    <BlogListPage
-                        currentPage={currentPage}
-                        category={category}
-                        tag={tag}
-                        search={search}
-                    />
-                </Suspense>
-            </div>
-        </div>
+        <PageContainer>
+            <Suspense
+                fallback={
+                    <div className="flex justify-center items-center py-20">
+                        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+                    </div>
+                }
+            >
+                <BlogListPage
+                    currentPage={currentPage}
+                    category={category}
+                    tag={tag}
+                    search={search}
+                />
+            </Suspense>
+        </PageContainer>
     );
 }

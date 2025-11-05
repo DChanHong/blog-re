@@ -27,11 +27,14 @@ export default function Header({ onToggleSideNav }: HeaderProps) {
                         <span className="text-container">Chanhong Studio</span>
                     </Link>
                 </h1>
-                <p className={`font-semibold text-[25px] hidden sm:block`}>
+                <div className={`font-semibold text-[25px] hidden sm:flex gap-[30px]`}>
                     <Link href={"/blog"}>
                         <span className="text-container">Blog</span>
                     </Link>
-                </p>
+                    <Link href={"/career"}>
+                        <span className="text-container">Career</span>
+                    </Link>
+                </div>
                 <button
                     type={"button"}
                     onClick={onToggleSideNav}
