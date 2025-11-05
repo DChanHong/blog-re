@@ -111,7 +111,7 @@ export default function Section2({ categories, faqs }: Section2Props) {
                             className={`cursor-pointer px-3 py-1 rounded-[14px] text-sm font-semibold border transition-colors ${
                                 activeCategory === cat
                                     ? "bg-[#0A0044] text-white border-[#0A0044]"
-                                    : "bg-white text-black border-gray-300 hover:bg-gray-100"
+                                    : "bg-white text-black border-[#0A0044] hover:bg-[#0A0044] hover:text-white"
                             }`}
                             type="button"
                             onClick={() => setActiveCategory(cat)}
@@ -148,7 +148,7 @@ export default function Section2({ categories, faqs }: Section2Props) {
                             type="text"
                             placeholder="찬홍님에 대해 궁금한 점을 입력해보세요."
                             className={
-                                "w-full p-4 text-[16px] md:text-[18px] lg:text-[20px] outline-none"
+                                "w-full p-4 text-[16px] md:text-[18px] lg:text-[20px] outline-none bg-white"
                             }
                             onKeyUp={handleKeyUp}
                             ref={inputRef}
@@ -156,7 +156,7 @@ export default function Section2({ categories, faqs }: Section2Props) {
                         <button
                             onClick={handleAsk}
                             type={`button`}
-                            className={`w-[54px] grid place-items-center`}
+                            className={`w-[54px] grid place-items-center bg-white`}
                         >
                             <CiSearch size={28} />
                         </button>

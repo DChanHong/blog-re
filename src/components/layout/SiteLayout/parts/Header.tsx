@@ -24,7 +24,7 @@ export default function Header({ onToggleSideNav }: HeaderProps) {
             >
                 <h1 className={`font-bold text-[25px] `}>
                     <Link href={"/"}>
-                        <span className="text-container">Chanhong Studio</span>
+                        <span className="text-container">{`Chanhong Studio`}</span>
                     </Link>
                 </h1>
                 <div className={`font-semibold text-[25px] hidden sm:flex gap-[30px]`}>
