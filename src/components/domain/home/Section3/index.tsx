@@ -1,9 +1,7 @@
 "use client";
 import React, { useRef } from "react";
-import Link from "next/link";
-import Image from "next/image";
-import { FaArrowRight } from "react-icons/fa";
 import useElementObserve from "@/hooks/useElementObserve";
+import Section4CtaButton from "@/components/ui/Buttons/section-4-cta-button";
 import PostCard from "@/components/domain/blog/PostCard";
 import type { VelogPostDto } from "@/types/blog";
 
@@ -23,13 +21,18 @@ const Section3 = ({ blogList }: Props) => {
             ref={targetRef}
         >
             <div className={`w-[95%]`}>
-                <Link href={"/blog"}>
-                    <h2
-                        className={`font-bold mb-4 text-[20px] md:text-[30px] 3xl:text-[40px] 6xl:text-[50px] pb-4 border-b-2`}
-                    >
-                        <span className="text-container">📰 최신 글 보기</span>
-                    </h2>
-                </Link>
+                {/* 헤더 영역 - Section4 스타일 적용 */}
+                <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 gap-4">
+                    <div>
+                        <h2 className="text-3xl md:text-5xl font-bold text-white mb-2">
+                            Latest <span className="text-blue-400">Blog</span> Posts
+                        </h2>
+                        <p className="text-gray-400 text-sm md:text-lg max-w-lg">
+                            기술적인 고민과 해결 과정을 기록합니다.
+                        </p>
+                    </div>
+                    <Section4CtaButton href="/blog" text="블로그 전체 보기" />
+                </div>
 
                 <div
                     className={`grid gap-6 
@@ -42,37 +45,7 @@ const Section3 = ({ blogList }: Props) => {
                         <PostCard key={`${item.detail_link}-${index}`} post={item} />
                     ))}
                 </div>
-
-                <Link
-                    href={"/blog"}
-                    className="w-full inline-flex items-center justify-center my-4 px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
-                >
-                    <span className="mr-3 text-xl">더보기</span>
-                    <FaArrowRight className="w-5 h-5" />
-                </Link>
             </div>
-            <style jsx>
-                {`
-                    .text-container {
-                        position: relative;
-                    }
-
-                    .text-container::before {
-                        content: "";
-                        position: absolute;
-                        bottom: -20%;
-                        left: 0;
-                        width: 0;
-                        height: 4px;
-                        background-color: black;
-                        transition: width 0.3s ease;
-                    }
-
-                    .text-container:hover::before {
-                        width: 100%;
-                    }
-                `}
-            </style>
         </div>
     );
 };

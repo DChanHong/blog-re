@@ -4,8 +4,9 @@
 // - 저장된 질문 클릭 시 챗봇을 열고, 질문/답변을 메시지로 세팅
 // - 직접 입력 시에도 챗봇 열림 + 데모 응답 제공 (API 연동 전)
 
-import React, { useEffect, useMemo, useRef, useState } from "react";
-import { CiSearch } from "react-icons/ci";
+import React, { useEffect, useMemo, useState } from "react";
+import { GlowingInput } from "@/components/ui/glowing-input";
+import { Button } from "@/components/ui/Buttons/neon-button";
 import { useChatbotStore } from "@/store/chatbotStore";
 import type { ChatbotFaqDto } from "@/types/chatbot";
 import { useIncrementFaqHitMutation } from "@/actions/chatbot";
@@ -25,7 +26,6 @@ interface Section2Props {
 export default function Section2({ categories, faqs }: Section2Props) {
     // 전역 챗봇 상태
     const { open, addMessage, setLoading } = useChatbotStore();
-    const inputRef = useRef<HTMLInputElement | null>(null);
 
     // 카테고리 라벨 맵핑 (DB 키 → 한글 라벨)
     const categoryLabelMap: Record<string, string> = {
@@ -74,28 +74,6 @@ export default function Section2({ categories, faqs }: Section2Props) {
         setLoading(false);
     };
 
-    // 직접 질문하기
-    const handleAsk = async () => {
-        if (!inputRef.current) return;
-        const question = inputRef.current.value.trim();
-        if (!question) return;
-
-        open();
-        addMessage({ isAnswer: false, message: question });
-        setLoading(true);
-        await new Promise((r) => setTimeout(r, 600));
-        // API 연동 전 데모 응답
-        addMessage({ isAnswer: true, message: `답변: ${question}` });
-        setLoading(false);
-        inputRef.current.value = "";
-    };
-
-    const handleKeyUp: React.KeyboardEventHandler<HTMLInputElement> = async (e) => {
-        if (e.key === "Enter") {
-            await handleAsk();
-        }
-    };
-
     return (
         <section className={` w-full max-w-[1800px] m-auto flex justify-center mt-[40px] mb-20`}>
             <div className={`w-11/12 md:w-11/12 lg2:w-11/12 3xl:w-10/12 6xl:w-11/12 p-4`}>
@@ -106,62 +84,52 @@ export default function Section2({ categories, faqs }: Section2Props) {
                 {/* 카테고리 탭 */}
                 <div className={"flex flex-wrap justify-center gap-2 my-4"}>
                     {categories.map((cat) => (
-                        <button
+                        <Button
                             key={cat}
-                            className={`cursor-pointer px-3 py-1 rounded-[14px] text-sm font-semibold border transition-colors ${
+                            className={`cursor-pointer transition-all ${
                                 activeCategory === cat
-                                    ? "bg-[#0A0044] text-white border-[#0A0044]"
-                                    : "bg-white text-black border-[#0A0044] hover:bg-[#0A0044] hover:text-white"
+                                    ? "border-blue-500 text-blue-400 shadow-[0_0_10px_rgba(59,130,246,0.5)]"
+                                    : "text-gray-400 hover:text-white"
                             }`}
-                            type="button"
+                            variant="default"
+                            size="default"
                             onClick={() => setActiveCategory(cat)}
                         >
                             {categoryLabelMap[cat] || cat}
-                        </button>
+                        </Button>
                     ))}
                 </div>
 
                 {/* 저장된 질문 버튼들 */}
                 <div className={"flex flex-wrap justify-center gap-2 my-6"}>
                     {questionList.map((item) => (
-                        <button
+                        <Button
                             key={item.idx}
-                            className="cursor-pointer px-4 py-2 rounded-[20px] font-semibold bg-gray-100 hover:bg-[#0A0044] hover:text-slate-200 transition-colors duration-300"
-                            type="button"
+                            className="cursor-pointer font-semibold text-gray-300 hover:text-white border-white/30 hover:border-white/50"
+                            variant="ghost"
+                            size="default"
                             onClick={() =>
                                 handleSaved(item.savedQuetions, item.savedAnswer, item.id)
                             }
                         >
                             {item.savedQuetions}
-                        </button>
+                        </Button>
                     ))}
                 </div>
 
                 {/* 검색 인풋 */}
-                <div className={"flex justify-center items-center"}>
-                    <div
-                        className={
-                            "w-full md:w-[780px] lg:w-[1000px] flex border-2 mt-4 outline-[1px] focus-within:border-[#0A0044] rounded-xl overflow-hidden"
-                        }
-                    >
-                        <input
-                            type="text"
-                            placeholder="찬홍님에 대해 궁금한 점을 입력해보세요."
-                            className={
-                                "w-full p-4 text-[16px] md:text-[18px] lg:text-[20px] outline-none bg-white"
-                            }
-                            onKeyUp={handleKeyUp}
-                            ref={inputRef}
-                        />
-                        <button
-                            onClick={handleAsk}
-                            type={`button`}
-                            className={`w-[54px] grid place-items-center bg-white`}
-                        >
-                            <CiSearch size={28} />
-                        </button>
-                    </div>
-                </div>
+                <GlowingInput
+                    placeholder="찬홍님에 대해 궁금한 점을 입력해보세요."
+                    onSubmit={(value) => {
+                        open();
+                        addMessage({ isAnswer: false, message: value });
+                        setLoading(true);
+                        setTimeout(() => {
+                            addMessage({ isAnswer: true, message: `답변: ${value}` });
+                            setLoading(false);
+                        }, 600);
+                    }}
+                />
             </div>
         </section>
     );
