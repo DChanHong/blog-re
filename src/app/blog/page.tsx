@@ -30,6 +30,8 @@ interface BlogPageProps {
     };
 }
 
+import { DottedSurface } from "@/components/ui/dotted-surface";
+
 export default function BlogPage({ searchParams }: BlogPageProps) {
     const currentPage = Number(searchParams.page) || 1;
     const category = searchParams.category || "";
@@ -37,21 +39,24 @@ export default function BlogPage({ searchParams }: BlogPageProps) {
     const search = searchParams.search || "";
 
     return (
-        <PageContainer outerClassName="min-h-[calc(100vh)]">
-            <Suspense
-                fallback={
-                    <div className="flex justify-center items-center py-20">
-                        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
-                    </div>
-                }
-            >
-                <BlogListPage
-                    currentPage={currentPage}
-                    category={category}
-                    tag={tag}
-                    search={search}
-                />
-            </Suspense>
-        </PageContainer>
+        <>
+            <DottedSurface className="fixed inset-0 pointer-events-none bg-gray-950" />
+            <PageContainer outerClassName="min-h-[calc(100vh)] relative z-10">
+                <Suspense
+                    fallback={
+                        <div className="flex justify-center items-center py-20">
+                            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+                        </div>
+                    }
+                >
+                    <BlogListPage
+                        currentPage={currentPage}
+                        category={category}
+                        tag={tag}
+                        search={search}
+                    />
+                </Suspense>
+            </PageContainer>
+        </>
     );
 }
