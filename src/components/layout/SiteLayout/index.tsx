@@ -18,7 +18,7 @@ export default function SiteLayout({ children }: SiteLayoutProps) {
                 {/* MobileNav 제거 (Navbar 자체 내장) */}
 
 
-                <div className={`h-full min-h-[calc(100vh-210px)]`}>{children}</div>
+                <div className={`h-full min-h-[calc(100vh-210px)] pb-32`}>{children}</div>
             </div>
 
             <Footer />
