@@ -4,6 +4,7 @@ import "./globals.css";
 import SiteLayout from "@/components/layout/SiteLayout";
 import ReactQueryProvider from "@/components/providers/ReactQueryProvider";
 import dynamic from "next/dynamic";
+import { WebVitals } from "@/components/analytics/WebVitals";
 
 const ChatBot = dynamic(() => import("@/components/domain/chatbot"), { ssr: true });
 
@@ -60,6 +61,7 @@ export default function RootLayout({
                 <ReactQueryProvider>
                     <SiteLayout>{children}</SiteLayout>
                     <ChatBot />
+                    <WebVitals />
                 </ReactQueryProvider>
             </body>
         </html>

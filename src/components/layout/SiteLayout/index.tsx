@@ -15,9 +15,10 @@ export default function SiteLayout({ children }: SiteLayoutProps) {
             <div className={`min-h-[100%] bg-gradient-to-br from-slate-50 to-blue-50`}>
                 <Header onToggleSideNav={() => setIsSideNavOpen((p) => !p)} />
 
-                <MobileNav isOpen={isSideNavOpen} onClose={() => setIsSideNavOpen(false)} />
+                {/* MobileNav 제거 (Navbar 자체 내장) */}
 
-                <div className={`h-full min-h-[calc(100vh-210px)]`}>{children}</div>
+
+                <div className={`h-full min-h-[calc(100vh-210px)] pb-32`}>{children}</div>
             </div>
 
             <Footer />
