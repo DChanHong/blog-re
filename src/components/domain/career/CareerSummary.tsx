@@ -31,12 +31,12 @@ export default function CareerSummary({ summaryItems }: CareerSummaryProps) {
 
     return (
         <section className="mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">💼 경력 요약</h2>
-            <div className="bg-white rounded-xl shadow-lg p-8">
-                <ul className="space-y-4 text-gray-700">
+            <h2 className="text-3xl font-bold text-white mb-8 text-center">💼 경력 요약</h2>
+            <div className="bg-white/5 backdrop-blur-md rounded-xl border border-white/10 p-8">
+                <ul className="space-y-4 text-gray-300">
                     {summaryItems.map((item) => (
                         <li key={item.id} className="flex items-center">
-                            <span className="text-blue-600 mr-3 mt-1">▶</span>
+                            <span className="text-blue-400 mr-3 mt-1">▶</span>
                             {renderContentWithHighlight(item.content, item.highlight)}
                         </li>
                     ))}
