@@ -19,10 +19,10 @@ interface TechStackProps {
 export default function TechStack({ categories }: TechStackProps) {
     return (
         <section className="mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">🛠️ 기술 스택</h2>
+            <h2 className="text-3xl font-bold text-white mb-8 text-center">🛠️ 기술 스택</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {categories.map((category, index) => (
-                    <div key={index} className="bg-white rounded-xl shadow-lg p-6">
+                    <div key={index} className="bg-white/5 backdrop-blur-md rounded-xl border border-white/10 p-6">
                         <h3 className={`text-xl font-bold ${category.color} mb-4`}>
                             {category.name}
                         </h3>
@@ -32,7 +32,7 @@ export default function TechStack({ categories }: TechStackProps) {
                                     <span
                                         className={`w-2 h-2 ${category.dotColor} rounded-full mr-3`}
                                     ></span>
-                                    <span className="text-gray-700">{tech}</span>
+                                    <span className="text-gray-300">{tech}</span>
                                 </div>
                             ))}
                         </div>

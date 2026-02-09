@@ -128,11 +128,10 @@ export default function Pagination({
             {/* 이전 페이지 버튼 */}
             <Link
                 href={createUrl(Math.max(1, currentPage - 1))}
-                className={`flex items-center justify-center w-10 h-10 rounded-lg border transition-colors ${
-                    currentPage === 1
-                        ? "border-gray-200 text-gray-400 cursor-not-allowed"
-                        : "border-gray-300 text-gray-600 hover:bg-gray-50 hover:border-gray-400"
-                }`}
+                className={`flex items-center justify-center w-10 h-10 rounded-lg border transition-colors ${currentPage === 1
+                        ? "border-white/10 text-gray-600 cursor-not-allowed"
+                        : "border-white/20 text-gray-400 hover:bg-white/10 hover:border-white/30"
+                    }`}
                 aria-disabled={currentPage === 1}
             >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -152,7 +151,7 @@ export default function Pagination({
                     return (
                         <span
                             key={`ellipsis-${index}`}
-                            className="flex items-center justify-center w-10 h-10 text-gray-500"
+                            className="flex items-center justify-center w-10 h-10 text-gray-400"
                         >
                             ...
                         </span>
@@ -166,11 +165,10 @@ export default function Pagination({
                     <Link
                         key={pageNum}
                         href={createUrl(pageNum)}
-                        className={`flex items-center justify-center w-10 h-10 rounded-lg border font-medium transition-colors ${
-                            isActive
+                        className={`flex items-center justify-center w-10 h-10 rounded-lg border font-medium transition-colors ${isActive
                                 ? "border-blue-500 bg-blue-500 text-white"
-                                : "border-gray-300 text-gray-700 hover:bg-gray-50 hover:border-gray-400"
-                        }`}
+                                : "border-white/20 text-gray-400 hover:bg-white/10 hover:border-white/30"
+                            }`}
                         aria-current={isActive ? "page" : undefined}
                     >
                         {pageNum}
@@ -181,11 +179,10 @@ export default function Pagination({
             {/* 다음 페이지 버튼 */}
             <Link
                 href={createUrl(Math.min(totalPages, currentPage + 1))}
-                className={`flex items-center justify-center w-10 h-10 rounded-lg border transition-colors ${
-                    currentPage === totalPages
-                        ? "border-gray-200 text-gray-400 cursor-not-allowed"
-                        : "border-gray-300 text-gray-600 hover:bg-gray-50 hover:border-gray-400"
-                }`}
+                className={`flex items-center justify-center w-10 h-10 rounded-lg border transition-colors ${currentPage === totalPages
+                        ? "border-white/10 text-gray-600 cursor-not-allowed"
+                        : "border-white/20 text-gray-400 hover:bg-white/10 hover:border-white/30"
+                    }`}
                 aria-disabled={currentPage === totalPages}
             >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -200,7 +197,7 @@ export default function Pagination({
             </Link>
 
             {/* 페이지 정보 */}
-            <div className="hidden sm:flex items-center ml-4 text-sm text-gray-600">
+            <div className="hidden sm:flex items-center ml-4 text-sm text-gray-400">
                 <span>
                     {currentPage} / {totalPages}
                 </span>

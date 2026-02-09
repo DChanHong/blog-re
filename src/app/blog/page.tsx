@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { Suspense } from "react";
 import BlogListPage from "./BlogListPage";
 import PageContainer from "@/components/layout/PageContainer";
+import { SparklesCore } from "@/components/ui/sparkles";
 
 export const metadata: Metadata = {
     title: "블로그 | 찬홍의 개발 이야기",
@@ -30,8 +31,6 @@ interface BlogPageProps {
     };
 }
 
-import { DottedSurface } from "@/components/ui/dotted-surface";
-
 export default function BlogPage({ searchParams }: BlogPageProps) {
     const currentPage = Number(searchParams.page) || 1;
     const category = searchParams.category || "";
@@ -40,7 +39,18 @@ export default function BlogPage({ searchParams }: BlogPageProps) {
 
     return (
         <>
-            <DottedSurface className="fixed inset-0 pointer-events-none bg-gray-950" />
+            {/* SparklesCore 배경 */}
+            <div className="fixed top-0 left-0 w-full h-full pointer-events-none z-0 bg-black">
+                <SparklesCore
+                    id="tsparticlesblog"
+                    background="black"
+                    minSize={0.6}
+                    maxSize={1.4}
+                    particleDensity={100}
+                    className="w-full h-full"
+                    particleColor="#FFFFFF"
+                />
+            </div>
             <PageContainer outerClassName="min-h-[calc(100vh)] relative z-10">
                 <Suspense
                     fallback={

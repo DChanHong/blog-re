@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { Suspense } from "react";
 import CareerPage from "./CareerPage";
 import PageContainer from "@/components/layout/PageContainer";
+import { SparklesCore } from "@/components/ui/sparkles";
 
 // 정적 페이지로 생성
 export const dynamic = "force-static";
@@ -31,16 +32,30 @@ export const metadata: Metadata = {
  */
 export default function Career() {
     return (
-        <PageContainer>
-            <Suspense
-                fallback={
-                    <div className="flex justify-center items-center py-20">
-                        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
-                    </div>
-                }
-            >
-                <CareerPage />
-            </Suspense>
-        </PageContainer>
+        <>
+            {/* SparklesCore 배경 */}
+            <div className="fixed top-0 left-0 w-full h-full pointer-events-none z-0 bg-black">
+                <SparklesCore
+                    id="tsparticlescareer"
+                    background="black"
+                    minSize={0.6}
+                    maxSize={1.4}
+                    particleDensity={100}
+                    className="w-full h-full"
+                    particleColor="#FFFFFF"
+                />
+            </div>
+            <PageContainer outerClassName="min-h-[calc(100vh)] relative z-10">
+                <Suspense
+                    fallback={
+                        <div className="flex justify-center items-center py-20">
+                            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+                        </div>
+                    }
+                >
+                    <CareerPage />
+                </Suspense>
+            </PageContainer>
+        </>
     );
 }

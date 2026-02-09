@@ -67,16 +67,16 @@ export default function BlogListPage({ currentPage, category, tag, search }: Blo
         <div className="grid md:grid-cols-4 gap-8">
             {/* 사이드바 - 필터 */}
             <aside className="md:col-span-1">
-                <div className="bg-white rounded-2xl shadow-sm border p-6 sticky top-[120px]">
+                <div className="bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 p-6 sticky top-[120px]">
                     {/* 검색 */}
                     <div className="mb-6">
-                        <h3 className="font-semibold text-gray-900 mb-3">검색</h3>
+                        <h3 className="font-semibold text-white mb-3">검색</h3>
                         <div className="relative">
                             <input
                                 type="text"
                                 placeholder="포스트 검색..."
                                 defaultValue={search}
-                                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                className="w-full px-4 py-2 bg-white/10 border border-white/10 text-white placeholder-gray-400 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                                 onKeyUp={(e) => {
                                     if (e.key === "Enter") {
                                         const searchValue = (e.target as HTMLInputElement).value;
@@ -108,10 +108,10 @@ export default function BlogListPage({ currentPage, category, tag, search }: Blo
                     {/* 카테고리 */}
                     <div className="mb-6">
                         <div className="flex items-center justify-between mb-3">
-                            <h3 className="font-semibold text-gray-900">카테고리</h3>
+                            <h3 className="font-semibold text-white">카테고리</h3>
                             <button
                                 type="button"
-                                className="md:hidden text-sm text-gray-600 px-2 py-1 rounded hover:bg-gray-100 cursor-pointer"
+                                className="md:hidden text-sm text-gray-400 px-2 py-1 rounded hover:bg-white/10 cursor-pointer"
                                 onClick={() => setIsCategoryOpen((prev) => !prev)}
                                 aria-controls="category-panel"
                                 aria-expanded={isCategoryOpen}
@@ -127,8 +127,8 @@ export default function BlogListPage({ currentPage, category, tag, search }: Blo
                                 href="/blog"
                                 className={`block px-3 py-2 rounded-lg text-sm transition-colors ${
                                     !category
-                                        ? "bg-blue-100 text-blue-700"
-                                        : "text-gray-600 hover:bg-gray-100"
+                                        ? "bg-blue-500/20 text-blue-400"
+                                        : "text-gray-400 hover:bg-white/10"
                                 }`}
                             >
                                 전체
@@ -139,8 +139,8 @@ export default function BlogListPage({ currentPage, category, tag, search }: Blo
                                     href={`/blog?category=${encodeURIComponent(cat)}`}
                                     className={`block px-3 py-2 rounded-lg text-sm transition-colors ${
                                         category === cat
-                                            ? "bg-blue-100 text-blue-700"
-                                            : "text-gray-600 hover:bg-gray-100"
+                                            ? "bg-blue-500/20 text-blue-400"
+                                            : "text-gray-400 hover:bg-white/10"
                                     }`}
                                 >
                                     {cat}
@@ -151,7 +151,7 @@ export default function BlogListPage({ currentPage, category, tag, search }: Blo
 
                     {/* 태그 */}
                     <div className={``}>
-                        <h3 className="font-semibold text-gray-900 mb-3">태그</h3>
+                        <h3 className="font-semibold text-white mb-3">태그</h3>
                         <div className="flex flex-wrap gap-2">
                             {tags.slice(0, 20).map((tagItem) => (
                                 <Link
@@ -159,8 +159,8 @@ export default function BlogListPage({ currentPage, category, tag, search }: Blo
                                     href={`/blog?tag=${encodeURIComponent(tagItem)}`}
                                     className={`px-3 py-1 text-xs rounded-full transition-colors ${
                                         tag === tagItem
-                                            ? "bg-blue-100 text-blue-700"
-                                            : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                                            ? "bg-blue-500/20 text-blue-400"
+                                            : "bg-white/10 text-gray-400 hover:bg-white/20"
                                     }`}
                                 >
                                     #{tagItem}
@@ -176,25 +176,25 @@ export default function BlogListPage({ currentPage, category, tag, search }: Blo
                 {/* 결과 정보 */}
                 <div className="flex justify-between items-center mb-8">
                     <div>
-                        <p className="text-gray-600">
-                            총 <span className="font-semibold text-blue-600">{totalPosts}</span>개의
+                        <p className="text-gray-400">
+                            총 <span className="font-semibold text-blue-400">{totalPosts}</span>개의
                             포스트
                             {search && (
                                 <span>
                                     {" "}
-                                    - "<span className="font-semibold">{search}</span>" 검색 결과
+                                    - "<span className="font-semibold text-white">{search}</span>" 검색 결과
                                 </span>
                             )}
                             {category && (
                                 <span>
                                     {" "}
-                                    - <span className="font-semibold">{category}</span> 카테고리
+                                    - <span className="font-semibold text-white">{category}</span> 카테고리
                                 </span>
                             )}
                             {tag && (
                                 <span>
                                     {" "}
-                                    - <span className="font-semibold">#{tag}</span> 태그
+                                    - <span className="font-semibold text-white">#{tag}</span> 태그
                                 </span>
                             )}
                         </p>
@@ -204,7 +204,7 @@ export default function BlogListPage({ currentPage, category, tag, search }: Blo
                 {/* 포스트 그리드 */}
                 {postsQuery.isFetching && posts.length === 0 ? (
                     <div className="flex justify-center items-center py-20">
-                        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+                        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-400"></div>
                     </div>
                 ) : posts.length > 0 ? (
                     <>
@@ -227,7 +227,7 @@ export default function BlogListPage({ currentPage, category, tag, search }: Blo
                 ) : (
                     <div className="text-center py-20">
                         <svg
-                            className="mx-auto h-12 w-12 text-gray-400 mb-4"
+                            className="mx-auto h-12 w-12 text-gray-500 mb-4"
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
@@ -239,10 +239,10 @@ export default function BlogListPage({ currentPage, category, tag, search }: Blo
                                 d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
                             />
                         </svg>
-                        <h3 className="text-lg font-medium text-gray-900 mb-2">
+                        <h3 className="text-lg font-medium text-white mb-2">
                             포스트가 없습니다
                         </h3>
-                        <p className="text-gray-500">
+                        <p className="text-gray-400">
                             {search || category || tag
                                 ? "검색 조건에 맞는 포스트가 없습니다."
                                 : "아직 작성된 포스트가 없습니다."}

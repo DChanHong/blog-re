@@ -24,7 +24,7 @@ interface PersonalInfoHeaderProps {
 export default function PersonalInfoHeader({ personalInfo }: PersonalInfoHeaderProps) {
     return (
         <header className="text-center mb-16">
-            <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-2xl p-8 mb-8">
+            <div className="bg-gradient-to-r from-blue-600/80 to-purple-600/80 backdrop-blur-md text-white rounded-2xl p-8 mb-8 border border-white/10">
                 <h1 className="text-5xl font-bold mb-4">{personalInfo.name}</h1>
                 <p className="text-2xl mb-2">{personalInfo.position}</p>
                 <p className="text-lg opacity-90">
@@ -33,25 +33,25 @@ export default function PersonalInfoHeader({ personalInfo }: PersonalInfoHeaderP
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
-                <div className="bg-white rounded-lg p-4 shadow-md">
-                    <p className="text-gray-600">대학교</p>
-                    <p className="font-semibold">{personalInfo.university}</p>
+                <div className="bg-white/5 backdrop-blur-md rounded-lg p-4 border border-white/10">
+                    <p className="text-gray-400">대학교</p>
+                    <p className="font-semibold text-white">{personalInfo.university}</p>
                 </div>
-                <div className="bg-white rounded-lg p-4 shadow-md">
-                    <p className="text-gray-600">연락처</p>
-                    <p className="font-semibold">{personalInfo.phone}</p>
+                <div className="bg-white/5 backdrop-blur-md rounded-lg p-4 border border-white/10">
+                    <p className="text-gray-400">연락처</p>
+                    <p className="font-semibold text-white">{personalInfo.phone}</p>
                 </div>
-                <div className="bg-white rounded-lg p-4 shadow-md">
-                    <p className="text-gray-600">이메일</p>
-                    <p className="font-semibold text-blue-600">{personalInfo.email}</p>
+                <div className="bg-white/5 backdrop-blur-md rounded-lg p-4 border border-white/10">
+                    <p className="text-gray-400">이메일</p>
+                    <p className="font-semibold text-blue-400">{personalInfo.email}</p>
                 </div>
-                <div className="bg-white rounded-lg p-4 shadow-md">
-                    <p className="text-gray-600">GitHub</p>
+                <div className="bg-white/5 backdrop-blur-md rounded-lg p-4 border border-white/10">
+                    <p className="text-gray-400">GitHub</p>
                     <a
                         href={personalInfo.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="font-semibold text-blue-600 hover:underline"
+                        className="font-semibold text-blue-400 hover:underline"
                     >
                         GitHub 프로필
                     </a>
