@@ -11,16 +11,43 @@ function createDate(now: Date, daysAgo: number) {
 
 function parseCreatedAt(label: string): Date {
     const now = new Date();
-    const yesterday = new Date();
-    yesterday.setDate(yesterday.getDate() - 1);
-    yesterday.setHours(18, 0, 0, 0);
 
-    if (label === "어제") return yesterday;
-    if (label.includes("전")) {
-        const days = Number(label.substring(0, 1));
-        return createDate(now, days);
+    if (!label || label.trim() === "") return now;
+
+    if (label === "방금") return now;
+
+    if (label === "어제") {
+        const yesterday = new Date(now);
+        yesterday.setDate(now.getDate() - 1);
+        yesterday.setHours(18, 0, 0, 0);
+        return yesterday;
     }
-    return new Date(label.replace("년 ", "-").replace("월 ", "-").replace("일", ""));
+
+    if (label.includes("전")) {
+        const numMatch = label.match(/(\d+)/);
+        const num = numMatch ? Number(numMatch[1]) : 0;
+
+        if (label.includes("분")) {
+            const d = new Date(now);
+            d.setMinutes(d.getMinutes() - num);
+            return d;
+        }
+        if (label.includes("시간")) {
+            const d = new Date(now);
+            d.setHours(d.getHours() - num);
+            return d;
+        }
+        // "N일 전"
+        return createDate(now, num);
+    }
+
+    // "2024년 1월 15일" 형식
+    const parsed = new Date(label.replace("년 ", "-").replace("월 ", "-").replace("일", ""));
+    if (isNaN(parsed.getTime())) {
+        console.warn(`[service] parseCreatedAt: invalid label="${label}", fallback to now`);
+        return now;
+    }
+    return parsed;
 }
 
 export async function crawlAndPersist(url: string, expectedCount?: number) {
