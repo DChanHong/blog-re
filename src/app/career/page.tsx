@@ -1,5 +1,4 @@
 import { Metadata } from "next";
-import { Suspense } from "react";
 import CareerPage from "./CareerPage";
 import PageContainer from "@/components/layout/PageContainer";
 import { SparklesCore } from "@/components/ui/sparkles";
@@ -8,19 +7,21 @@ import { SparklesCore } from "@/components/ui/sparkles";
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-    title: "성찬홍 경력 | Chanhong Studio",
-    description: "성찬홍의 개발 경력과 프로젝트 이력을 소개합니다.",
-    keywords: ["성찬홍", "개발자", "경력", "프로젝트", "포트폴리오"],
+    title: "성찬홍 | Frontend Engineer Career",
+    description:
+        "Next.js, WebSocket, React Query, Zustand를 기반으로 실시간 상담 플랫폼, 뉴스 CMS, ERP를 개발한 성찬홍의 경력 포트폴리오입니다.",
+    keywords: ["성찬홍", "프론트엔드 개발자", "Next.js", "WebSocket", "React Query", "포트폴리오"],
     openGraph: {
-        title: "성찬홍 경력 | Chanhong Studio",
-        description: "성찬홍의 개발 경력과 프로젝트 이력을 소개합니다.",
+        title: "성찬홍 | Frontend Engineer Career",
+        description: "실시간 플랫폼과 운영형 웹 서비스를 개발해 온 프론트엔드 엔지니어",
+        url: "/career",
         type: "website",
         locale: "ko_KR",
     },
     twitter: {
         card: "summary_large_image",
-        title: "성찬홍 경력 | Chanhong Studio",
-        description: "성찬홍의 개발 경력과 프로젝트 이력을 소개합니다.",
+        title: "성찬홍 | Frontend Engineer Career",
+        description: "실시간 플랫폼과 운영형 웹 서비스를 개발해 온 프론트엔드 엔지니어",
     },
 };
 
@@ -32,30 +33,24 @@ export const metadata: Metadata = {
  */
 export default function Career() {
     return (
-        <>
-            {/* SparklesCore 배경 */}
-            <div className="fixed top-0 left-0 w-full h-full pointer-events-none z-0 bg-black">
+        <div className="relative min-h-screen overflow-hidden bg-black">
+            <div className="pointer-events-none fixed inset-0 z-0 bg-black" aria-hidden="true">
                 <SparklesCore
                     id="tsparticlescareer"
                     background="black"
                     minSize={0.6}
                     maxSize={1.4}
                     particleDensity={100}
-                    className="w-full h-full"
+                    className="h-full w-full"
                     particleColor="#FFFFFF"
                 />
             </div>
-            <PageContainer outerClassName="min-h-[calc(100vh)] relative z-10">
-                <Suspense
-                    fallback={
-                        <div className="flex justify-center items-center py-20">
-                            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
-                        </div>
-                    }
-                >
-                    <CareerPage />
-                </Suspense>
+            <PageContainer
+                outerClassName="relative z-10 min-h-screen"
+                innerClassName="mx-auto max-w-[1540px] px-4 pb-20 pt-[108px] sm:px-6 lg:px-8 lg:pb-28 lg:pt-[132px]"
+            >
+                <CareerPage />
             </PageContainer>
-        </>
+        </div>
     );
 }
