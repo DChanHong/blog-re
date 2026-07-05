@@ -1,134 +1,294 @@
-"use client";
-
-interface ProjectData {
-    title: string;
-    period: string;
-    role: string;
-    description: string;
-    contributions: string[];
-    achievements: string[];
-    techStack: string[];
-    status: "current" | "completed";
-}
+import { ArrowDown, Check, ChevronDown, CircleAlert, Layers3 } from "lucide-react";
+import type { CareerProject, ProjectStatus } from "@/data/careerData";
 
 interface ProjectTimelineProps {
-    projects: ProjectData[];
+    projects: CareerProject[];
 }
 
-/**
- * ProjectTimeline - 프로젝트 타임라인 컴포넌트
- *
- * 프로젝트별 경력을 타임라인 형태로 표시하는 섹션입니다.
- */
-export default function ProjectTimeline({ projects }: ProjectTimelineProps) {
+const statusStyles: Record<ProjectStatus, string> = {
+    "운영 중": "border-emerald-400/30 bg-emerald-400/10 text-emerald-300",
+    완료: "border-blue-400/30 bg-blue-400/10 text-blue-300",
+    "출시 보류": "border-amber-400/30 bg-amber-400/10 text-amber-300",
+};
+
+function ProjectArchitecture({ items }: { items: string[] }) {
     return (
-        <section className="mb-16">
-            <h2 className="text-3xl font-bold text-white mb-8 text-center">
-                🚀 프로젝트 타임라인
-            </h2>
-            <div className="relative">
-                {/* 타임라인 라인 */}
-                <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 to-purple-500"></div>
+        <div className="rounded-2xl border border-white/10 bg-slate-950/80 p-5 sm:p-6">
+            <div className="mb-5 flex items-center gap-2">
+                <Layers3 className="h-4 w-4 text-blue-300" aria-hidden="true" />
+                <h4 className="text-sm font-semibold text-white">서비스 흐름</h4>
+            </div>
+            <ol className="grid gap-2 lg:grid-flow-col lg:auto-cols-fr">
+                {items.map((item, index) => (
+                    <li
+                        key={item}
+                        className="relative flex min-w-0 flex-col items-center gap-2 lg:block"
+                    >
+                        <div className="min-w-0 flex-1 rounded-xl border border-white/10 bg-white/[0.04] px-3 py-3 text-center text-xs leading-5 text-slate-300 lg:min-h-20 lg:px-2 lg:flex lg:items-center lg:justify-center">
+                            {item}
+                        </div>
+                        {index < items.length - 1 && (
+                            <ArrowDown
+                                className="h-4 w-4 shrink-0 text-slate-600 lg:absolute lg:-right-3 lg:top-1/2 lg:z-10 lg:-translate-y-1/2 lg:-rotate-90"
+                                aria-hidden="true"
+                            />
+                        )}
+                    </li>
+                ))}
+            </ol>
+        </div>
+    );
+}
 
-                {projects.map((project, index) => (
-                    <div key={index} className="relative mb-12 ml-16">
-                        {/* 타임라인 도트 */}
-                        <div
-                            className={`absolute -left-10 top-6 w-4 h-4 rounded-full border-4 border-gray-900 shadow-lg ${
-                                project.status === "current"
-                                    ? "bg-green-500 animate-pulse"
-                                    : "bg-blue-500"
-                            }`}
-                        ></div>
+function ProjectDetails({ project }: { project: CareerProject }) {
+    return (
+        <div className="border-t border-white/10 px-5 py-7 sm:px-8 sm:py-9">
+            <div className="grid gap-8 xl:grid-cols-[minmax(0,0.75fr)_minmax(0,1.25fr)]">
+                <div>
+                    <p className="text-xs font-semibold tracking-[0.16em] text-blue-400 uppercase">
+                        Context
+                    </p>
+                    <h4 className="mt-2 text-lg font-semibold text-white">프로젝트 배경</h4>
+                    <p className="mt-3 text-sm leading-7 text-slate-400">{project.background}</p>
+                </div>
+                <div>
+                    <p className="text-xs font-semibold tracking-[0.16em] text-blue-400 uppercase">
+                        Contribution
+                    </p>
+                    <h4 className="mt-2 text-lg font-semibold text-white">담당 범위</h4>
+                    <ul className="mt-4 grid gap-3 sm:grid-cols-2">
+                        {project.responsibilities.map((responsibility) => (
+                            <li
+                                key={responsibility}
+                                className="flex gap-3 text-sm leading-6 text-slate-300"
+                            >
+                                <Check
+                                    className="mt-1 h-4 w-4 shrink-0 text-blue-400"
+                                    aria-hidden="true"
+                                />
+                                <span>{responsibility}</span>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            </div>
 
-                        {/* 프로젝트 카드 */}
-                        <div className="bg-white/5 backdrop-blur-md rounded-xl border border-white/10 hover:border-white/20 transition-all duration-300 overflow-hidden">
-                            <div
-                                className={`p-6 ${
-                                    project.status === "current"
-                                        ? "bg-gradient-to-r from-green-500/10 to-blue-500/10"
-                                        : "bg-gradient-to-r from-blue-500/10 to-purple-500/10"
+            {project.architecture && (
+                <div className="mt-9">
+                    <ProjectArchitecture items={project.architecture} />
+                </div>
+            )}
+
+            {project.challenges.length > 0 && (
+                <div className="mt-10">
+                    <div className="mb-5">
+                        <p className="text-xs font-semibold tracking-[0.16em] text-blue-400 uppercase">
+                            Problem solving
+                        </p>
+                        <h4 className="mt-2 text-xl font-semibold text-white">문제와 해결</h4>
+                    </div>
+                    <div className="grid gap-4 lg:grid-cols-2">
+                        {project.challenges.map((challenge, index) => (
+                            <article
+                                key={challenge.title}
+                                className={`rounded-2xl border border-white/10 bg-white/[0.03] p-5 sm:p-6 ${
+                                    project.challenges.length % 2 === 1 &&
+                                    index === project.challenges.length - 1
+                                        ? "lg:col-span-2"
+                                        : ""
                                 }`}
                             >
-                                <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                                    <h3 className="text-2xl font-bold text-white mb-2 md:mb-0">
-                                        {project.title}
-                                        {project.status === "current" && (
-                                            <span className="ml-2 px-2 py-1 text-xs bg-green-500 text-white rounded-full">
-                                                진행중
-                                            </span>
-                                        )}
-                                    </h3>
-                                    <div className="text-right">
-                                        <p className="text-lg font-semibold text-blue-400">
-                                            {project.period}
-                                        </p>
-                                        <p className="text-sm text-gray-400">{project.role}</p>
-                                    </div>
+                                <div className="flex items-start justify-between gap-4">
+                                    <h5 className="font-semibold text-white">{challenge.title}</h5>
+                                    <span className="font-mono text-xs text-slate-600">
+                                        {String(index + 1).padStart(2, "0")}
+                                    </span>
                                 </div>
-
-                                <p className="text-gray-300 mb-6 leading-relaxed">
-                                    {project.description}
-                                </p>
-
-                                <div className="grid md:grid-cols-2 gap-6">
+                                <dl className="mt-5 space-y-4 text-sm leading-6">
                                     <div>
-                                        <h4 className="font-semibold text-white mb-3">
-                                            주요 기여
-                                        </h4>
-                                        <ul className="space-y-2">
-                                            {project.contributions.map((contribution, idx) => (
-                                                <li
-                                                    key={idx}
-                                                    className="flex items-start text-sm text-gray-300"
-                                                >
-                                                    <span className="text-blue-400 mr-2 mt-1">
-                                                        •
-                                                    </span>
-                                                    <span>{contribution}</span>
-                                                </li>
-                                            ))}
-                                        </ul>
+                                        <dt className="mb-1 text-xs font-semibold text-slate-500">
+                                            문제
+                                        </dt>
+                                        <dd className="text-slate-400">{challenge.problem}</dd>
                                     </div>
-
                                     <div>
-                                        <h4 className="font-semibold text-white mb-3">성과</h4>
-                                        <ul className="space-y-2">
-                                            {project.achievements.map((achievement, idx) => (
-                                                <li
-                                                    key={idx}
-                                                    className="flex items-start text-sm text-gray-300"
-                                                >
-                                                    <span className="text-green-400 mr-2 mt-1">
-                                                        ✓
-                                                    </span>
-                                                    <span>{achievement}</span>
-                                                </li>
-                                            ))}
-                                        </ul>
+                                        <dt className="mb-1 text-xs font-semibold text-blue-400">
+                                            접근
+                                        </dt>
+                                        <dd className="text-slate-300">{challenge.action}</dd>
                                     </div>
-                                </div>
-
-                                <div className="mt-6">
-                                    <h4 className="font-semibold text-white mb-3">사용 기술</h4>
-                                    <div className="flex flex-wrap gap-2">
-                                        {project.techStack.map((tech, idx) => (
-                                            <span
-                                                key={idx}
-                                                className="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm font-medium"
-                                            >
-                                                {tech}
-                                            </span>
-                                        ))}
+                                    <div>
+                                        <dt className="mb-1 text-xs font-semibold text-emerald-400">
+                                            결과
+                                        </dt>
+                                        <dd className="text-slate-300">{challenge.result}</dd>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
+                                </dl>
+                            </article>
+                        ))}
                     </div>
-                ))}
+                </div>
+            )}
+
+            <div className="mt-10 grid gap-5 lg:grid-cols-2">
+                <div className="rounded-2xl border border-emerald-400/15 bg-emerald-400/[0.04] p-5 sm:p-6">
+                    <h4 className="text-sm font-semibold text-emerald-300">성과와 영향</h4>
+                    <ul className="mt-4 space-y-3">
+                        {project.achievements.map((achievement) => (
+                            <li
+                                key={achievement}
+                                className="flex gap-3 text-sm leading-6 text-slate-300"
+                            >
+                                <Check
+                                    className="mt-1 h-4 w-4 shrink-0 text-emerald-400"
+                                    aria-hidden="true"
+                                />
+                                <span>{achievement}</span>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+
+                {project.retrospective && (
+                    <div className="rounded-2xl border border-violet-400/15 bg-violet-400/[0.04] p-5 sm:p-6">
+                        <h4 className="text-sm font-semibold text-violet-300">회고</h4>
+                        <p className="mt-4 text-sm leading-7 text-slate-300">
+                            {project.retrospective}
+                        </p>
+                    </div>
+                )}
             </div>
+
+            {project.scopeNote && (
+                <div className="mt-5 flex gap-3 rounded-xl border border-amber-300/15 bg-amber-300/[0.04] px-4 py-3.5">
+                    <CircleAlert
+                        className="mt-0.5 h-4 w-4 shrink-0 text-amber-300"
+                        aria-hidden="true"
+                    />
+                    <p className="text-xs leading-5 text-slate-400">
+                        <strong className="mr-1 font-semibold text-amber-200">담당 범위.</strong>
+                        {project.scopeNote}
+                    </p>
+                </div>
+            )}
+        </div>
+    );
+}
+
+export default function ProjectTimeline({ projects }: ProjectTimelineProps) {
+    return (
+        <section id="projects" className="scroll-mt-32 pb-20 md:pb-28">
+            <div className="mb-12 max-w-3xl">
+                <p className="text-sm font-semibold tracking-[0.2em] text-blue-400 uppercase">
+                    Selected projects
+                </p>
+                <h2 className="mt-3 text-3xl font-bold tracking-tight text-white sm:text-4xl">
+                    운영 문제를 해결한 프로젝트
+                </h2>
+                <p className="mt-4 text-base leading-7 text-slate-400 sm:text-lg">
+                    구현 기능보다 왜 필요했고, 어떤 경계를 설계했으며, 운영 결과가 어떻게
+                    달라졌는지를 중심으로 정리했습니다.
+                </p>
+            </div>
+
+            <ol className="relative ml-3 border-l border-white/10 sm:ml-5">
+                {projects.map((project, index) => (
+                    <li
+                        key={project.id}
+                        id={project.id}
+                        className="relative scroll-mt-32 pb-10 pl-6 sm:pl-10"
+                    >
+                        <span
+                            aria-hidden="true"
+                            className={`absolute -left-[7px] top-7 h-3.5 w-3.5 rounded-full border-[3px] border-slate-950 ${
+                                project.status === "운영 중" ? "bg-emerald-400" : "bg-blue-400"
+                            }`}
+                        />
+
+                        <article className="overflow-hidden rounded-3xl border border-white/10 bg-slate-950/75 shadow-xl shadow-black/10 backdrop-blur-lg transition hover:border-white/20">
+                            <div className="p-5 sm:p-8">
+                                <div className="flex flex-col gap-6 xl:flex-row xl:items-start xl:justify-between">
+                                    <div className="min-w-0 max-w-3xl">
+                                        <div className="flex flex-wrap items-center gap-2.5">
+                                            <span
+                                                className={`rounded-full border px-3 py-1 text-xs font-semibold ${statusStyles[project.status]}`}
+                                            >
+                                                {project.status}
+                                            </span>
+                                            <span className="font-mono text-xs text-slate-500">
+                                                {project.period}
+                                            </span>
+                                            {project.featured && (
+                                                <span className="text-xs font-medium text-violet-300">
+                                                    Featured
+                                                </span>
+                                            )}
+                                        </div>
+                                        <h3 className="mt-4 text-2xl font-bold tracking-tight text-white sm:text-3xl">
+                                            {project.title}
+                                        </h3>
+                                        <p className="mt-2 text-sm font-medium text-blue-300">
+                                            {project.subtitle}
+                                        </p>
+                                        <p className="mt-5 text-sm leading-7 text-slate-400 sm:text-base">
+                                            {project.summary}
+                                        </p>
+                                    </div>
+
+                                    <div className="shrink-0 xl:w-72">
+                                        <p className="text-xs font-semibold tracking-[0.14em] text-slate-600 uppercase">
+                                            Role
+                                        </p>
+                                        <p className="mt-2 text-sm leading-6 text-slate-300">
+                                            {project.role}
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <dl className="mt-7 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 lg:grid-cols-4">
+                                    {project.metrics.map((metric) => (
+                                        <div
+                                            key={`${metric.value}-${metric.label}`}
+                                            className="bg-slate-950/90 px-4 py-4"
+                                        >
+                                            <dd className="text-lg font-bold text-white">
+                                                {metric.value}
+                                            </dd>
+                                            <dt className="mt-1 text-xs leading-5 text-slate-500">
+                                                {metric.label}
+                                            </dt>
+                                        </div>
+                                    ))}
+                                </dl>
+
+                                <ul className="mt-6 flex flex-wrap gap-2" aria-label="사용 기술">
+                                    {project.techStack.map((tech) => (
+                                        <li
+                                            key={tech}
+                                            className="rounded-lg border border-white/10 bg-white/[0.04] px-2.5 py-1.5 text-xs text-slate-400"
+                                        >
+                                            {tech}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+
+                            <details className="group" open={index === 0}>
+                                <summary className="flex cursor-pointer list-none items-center justify-between border-t border-white/10 px-5 py-4 text-sm font-semibold text-slate-300 transition hover:bg-white/[0.03] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-blue-400 sm:px-8 [&::-webkit-details-marker]:hidden">
+                                    <span>프로젝트 상세 보기</span>
+                                    <ChevronDown
+                                        className="h-4 w-4 transition-transform group-open:rotate-180"
+                                        aria-hidden="true"
+                                    />
+                                </summary>
+                                <ProjectDetails project={project} />
+                            </details>
+                        </article>
+                    </li>
+                ))}
+            </ol>
         </section>
     );
 }
 
-export type { ProjectData };
+export type { CareerProject };

@@ -23,19 +23,20 @@ export const metadata: Metadata = {
 };
 
 interface BlogPageProps {
-    searchParams: {
+    searchParams: Promise<{
         page?: string;
         category?: string;
         tag?: string;
         search?: string;
-    };
+    }>;
 }
 
-export default function BlogPage({ searchParams }: BlogPageProps) {
-    const currentPage = Number(searchParams.page) || 1;
-    const category = searchParams.category || "";
-    const tag = searchParams.tag || "";
-    const search = searchParams.search || "";
+export default async function BlogPage({ searchParams }: BlogPageProps) {
+    const resolvedSearchParams = await searchParams;
+    const currentPage = Number(resolvedSearchParams.page) || 1;
+    const category = resolvedSearchParams.category || "";
+    const tag = resolvedSearchParams.tag || "";
+    const search = resolvedSearchParams.search || "";
 
     return (
         <>
