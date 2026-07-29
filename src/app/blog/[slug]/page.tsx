@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import PageContainer from "@/components/layout/PageContainer";
 import { getPostBySlug } from "@/lib/services/velogService";
+import { absoluteUrl, cleanDescription, getCanonicalUrl, SEO_CONFIG } from "@/lib/seo";
 
 interface BlogDetailPageProps {
     params: Promise<{
@@ -12,22 +13,56 @@ interface BlogDetailPageProps {
 
 export async function generateMetadata({ params }: BlogDetailPageProps): Promise<Metadata> {
     const { slug } = await params;
-    const post = await getPostBySlug(decodeURIComponent(slug));
+    const decodedSlug = decodeURIComponent(slug);
+    const post = await getPostBySlug(decodedSlug);
 
     if (!post) {
         return {
             title: "블로그 글을 찾을 수 없습니다",
+            robots: SEO_CONFIG.robots.noIndex,
         };
     }
 
+    const canonicalUrl = getCanonicalUrl(`/blog/${post.slug || decodedSlug}`);
+    const description = cleanDescription(
+        post.intro || post.content_text || SEO_CONFIG.description,
+    );
+    const imageUrl = absoluteUrl(post.img_src || SEO_CONFIG.defaultOgImage.path);
+    const modifiedTime = post.detail_crawled_at || post.inserted_at || post.created_at;
+
     return {
         title: post.title,
-        description: post.intro || post.content_text?.slice(0, 140),
+        description,
+        keywords: post.tags,
+        alternates: {
+            canonical: canonicalUrl,
+        },
+        robots: SEO_CONFIG.robots.index,
         openGraph: {
             title: post.title,
-            description: post.intro || undefined,
-            images: post.img_src ? [{ url: post.img_src }] : undefined,
+            description,
+            url: canonicalUrl,
+            siteName: SEO_CONFIG.siteName,
+            images: [
+                {
+                    url: imageUrl,
+                    width: SEO_CONFIG.defaultOgImage.width,
+                    height: SEO_CONFIG.defaultOgImage.height,
+                    alt: post.title,
+                },
+            ],
+            locale: SEO_CONFIG.locale,
             type: "article",
+            publishedTime: post.created_at,
+            modifiedTime,
+            authors: [SEO_CONFIG.authorName],
+            tags: post.tags,
+        },
+        twitter: {
+            card: "summary_large_image",
+            title: post.title,
+            description,
+            images: [imageUrl],
         },
     };
 }
