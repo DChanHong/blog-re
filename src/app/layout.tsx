@@ -5,7 +5,7 @@ import SiteLayout from "@/components/layout/SiteLayout";
 import ReactQueryProvider from "@/components/providers/ReactQueryProvider";
 import dynamic from "next/dynamic";
 import { WebVitals } from "@/components/analytics/WebVitals";
-import { absoluteUrl, SEO_CONFIG, SITE_URL } from "@/lib/seo/config";
+import { absoluteUrl, SEO_CONFIG, SITE_URL } from "@/lib/seo";
 
 const ChatBot = dynamic(() => import("@/components/domain/chatbot"), { ssr: true });
 
@@ -21,8 +21,13 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
     metadataBase: SITE_URL,
+    applicationName: SEO_CONFIG.siteName,
     title: SEO_CONFIG.title,
     description: SEO_CONFIG.description,
+    robots: SEO_CONFIG.robots.index,
+    appleWebApp: {
+        title: SEO_CONFIG.siteName,
+    },
     openGraph: {
         title: SEO_CONFIG.title.default,
         description: SEO_CONFIG.description,

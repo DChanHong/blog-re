@@ -21,11 +21,3 @@ export const SEO_CONFIG = {
 } as const;
 
 export const SITE_URL = new URL(SEO_CONFIG.siteUrl);
-
-export function absoluteUrl(pathOrUrl: string): string {
-    try {
-        return new URL(pathOrUrl).toString();
-    } catch {
-        return new URL(pathOrUrl, SITE_URL).toString();
-    }
-}
