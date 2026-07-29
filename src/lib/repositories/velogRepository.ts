@@ -182,3 +182,17 @@ export async function fetchRecentPosts(limit: number) {
     if (error) throw error;
     return (data || []).map(mapVelogPost);
 }
+
+export async function fetchPostsForSitemap(): Promise<
+    Pick<VelogPostDto, "slug" | "created_at" | "inserted_at" | "detail_crawled_at">[]
+> {
+    console.log(`[repo] fetchPostsForSitemap`);
+    const supabase = createSupabaseServerClient();
+    const { data, error } = await supabase
+        .from("velog")
+        .select("slug, created_at, inserted_at, detail_crawled_at")
+        .not("slug", "is", null)
+        .order("created_at", { ascending: false });
+    if (error) throw error;
+    return data || [];
+}

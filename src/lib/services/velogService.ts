@@ -6,6 +6,7 @@ import {
     getExistingKeys,
     insertRows,
     fetchRecentPosts,
+    fetchPostsForSitemap,
     updatePostDetailByDetailLink,
     updatePostDetailErrorByDetailLink,
 } from "@/lib/repositories/velogRepository";
@@ -210,4 +211,8 @@ export async function refreshPostDetails(limit: number = 10) {
 
 export async function getPostBySlug(slug: string) {
     return fetchPostBySlug(slug);
+}
+
+export async function getPostsForSitemap() {
+    return fetchPostsForSitemap();
 }
