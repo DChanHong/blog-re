@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import { Suspense } from "react";
 import BlogListPage from "./BlogListPage";
 import PageContainer from "@/components/layout/PageContainer";
-import { SparklesCore } from "@/components/ui/sparkles";
+import { SparklesClient } from "@/components/ui/sparkles-client";
 
 export const metadata: Metadata = {
     title: "블로그 | 찬홍의 개발 이야기",
@@ -42,7 +42,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
         <>
             {/* SparklesCore 배경 */}
             <div className="fixed top-0 left-0 w-full h-full pointer-events-none z-0 bg-black">
-                <SparklesCore
+                <SparklesClient
                     id="tsparticlesblog"
                     background="black"
                     minSize={0.6}
