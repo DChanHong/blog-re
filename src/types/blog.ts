@@ -7,6 +7,18 @@ export interface BlogCrawl {
     intro: string;
 }
 
+export interface CrawledVelogDetail {
+    title: string;
+    description: string;
+    image: string;
+    author: string;
+    publishedAt: string;
+    tags: string[];
+    sourceUrl: string;
+    contentHtml: string;
+    contentText: string;
+}
+
 // Supabase velog 테이블에 insert 할 때 사용하는 타입
 export interface VelogInsertRow {
     title: string;
@@ -15,6 +27,12 @@ export interface VelogInsertRow {
     tags: string[];
     detail_link: string;
     intro: string;
+    slug?: string | null;
+    content_html?: string | null;
+    content_text?: string | null;
+    source_url?: string | null;
+    detail_crawled_at?: string | Date | null;
+    detail_crawl_error?: string | null;
 }
 
 // API 응답에 사용하는 DTO 타입
@@ -27,6 +45,12 @@ export interface VelogPostDto {
     detail_link: string;
     intro: string;
     inserted_at?: string;
+    slug?: string | null;
+    content_html?: string | null;
+    content_text?: string | null;
+    source_url?: string | null;
+    detail_crawled_at?: string | null;
+    detail_crawl_error?: string | null;
 }
 
 // 블로그 포스트 관련 타입 정의

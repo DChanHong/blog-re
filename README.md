@@ -29,7 +29,7 @@ hong_blog/
 │ ├── layout/ # Header, Footer 등
 │ └── templates/ # 페이지 뼈대
 │
-├── rules/ # 규칙/정책 문서 (mdc 파일 등)
+├── migrations/ # Supabase 테이블 스키마 SQL
 ├── public/ # 정적 자원
 ├── styles/ # 글로벌 스타일
 ├── next.config.mjs

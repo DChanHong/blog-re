@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { VelogPostDto } from "@/types/blog";
 
 interface PostCardProps {
@@ -6,11 +7,19 @@ interface PostCardProps {
 
 // 블로그 포스트 카드 컴포넌트 (전체 박스 클릭 가능)
 export default function PostCard({ post }: PostCardProps) {
+    const sourceHref =
+        post.source_url ||
+        (post.detail_link?.startsWith("http")
+            ? post.detail_link
+            : `https://velog.io${post.detail_link?.startsWith("/") ? "" : "/"}${post.detail_link}`);
+    const href = post.slug ? `/blog/${encodeURIComponent(post.slug)}` : sourceHref;
+    const isInternal = href.startsWith("/blog/");
+
     return (
-        <a
-            href={post.detail_link}
-            target="_blank"
-            rel="noopener noreferrer"
+        <Link
+            href={href}
+            target={isInternal ? undefined : "_blank"}
+            rel={isInternal ? undefined : "noopener noreferrer"}
             className="block bg-gray-900/40 backdrop-blur-md rounded-2xl border border-white/10 hover:border-purple-500/50 hover:shadow-[0_0_20px_rgba(124,58,237,0.2)] transition-all duration-300 overflow-hidden group focus:outline-none focus:ring-2 focus:ring-purple-500 outline-none"
             aria-label={post.title}
         >
@@ -83,6 +92,6 @@ export default function PostCard({ post }: PostCardProps) {
                     )}
                 </div>
             </div>
-        </a>
+        </Link>
     );
 }

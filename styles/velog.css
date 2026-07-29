@@ -1,0 +1,99 @@
+.velog-crawled-content {
+    color: rgb(229 231 235);
+    font-size: 1rem;
+    line-height: 1.85;
+}
+
+.velog-crawled-content h2 {
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    color: white;
+    font-size: 1.75rem;
+    font-weight: 800;
+}
+
+.velog-crawled-content h3 {
+    margin-top: 1rem;
+    margin-bottom: 0.75rem;
+    color: rgb(243 244 246);
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.velog-crawled-content p,
+.velog-crawled-content ul,
+.velog-crawled-content ol,
+.velog-crawled-content blockquote,
+.velog-crawled-content pre {
+    margin-bottom: 1.25rem;
+}
+
+.velog-crawled-content ul,
+.velog-crawled-content ol {
+    padding-left: 1.5rem;
+}
+
+.velog-crawled-content ul {
+    list-style: disc;
+}
+
+.velog-crawled-content ol {
+    list-style: decimal;
+}
+
+.velog-crawled-content li {
+    margin-bottom: 0.5rem;
+}
+
+.velog-crawled-content img {
+    margin: 1.5rem 0;
+    width: 100%;
+    border-radius: 0.75rem;
+}
+
+.velog-crawled-content table {
+    margin: 1.5rem 0;
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    border-collapse: collapse;
+}
+
+.velog-crawled-content th,
+.velog-crawled-content td {
+    border: 1px solid rgb(255 255 255 / 0.12);
+    padding: 0.75rem;
+    vertical-align: top;
+}
+
+.velog-crawled-content th {
+    background: rgb(255 255 255 / 0.08);
+    color: white;
+    font-weight: 700;
+}
+
+.velog-crawled-content blockquote {
+    border-left: 3px solid rgb(168 85 247);
+    padding: 0.25rem 0 0.25rem 1rem;
+    color: rgb(209 213 219);
+    background: rgb(255 255 255 / 0.04);
+}
+
+.velog-crawled-content pre {
+    overflow: auto;
+    border-radius: 0.75rem;
+    background: rgb(17 24 39);
+    padding: 1rem;
+}
+
+.velog-crawled-content code {
+    border-radius: 0.25rem;
+    background: rgb(255 255 255 / 0.08);
+    padding: 0.1rem 0.3rem;
+}
+
+.velog-crawled-content a {
+    color: rgb(196 181 253);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}

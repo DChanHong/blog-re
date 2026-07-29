@@ -10,7 +10,13 @@ create table if not exists public.velog (
     tags text[] null,
     detail_link text not null,
     intro text null,
-    inserted_at timestamptz not null default now()
+    inserted_at timestamptz not null default now(),
+    slug text null,
+    content_html text null,
+    content_text text null,
+    source_url text null,
+    detail_crawled_at timestamptz null,
+    detail_crawl_error text null
 );
 
 -- Drop composite unique if exists (we'll enforce uniqueness in application layer)

@@ -56,6 +56,12 @@ export async function fetchBlogPosts(params: FetchBlogPostsParams) {
         detail_link: row.detail_link,
         intro: row.intro,
         inserted_at: row.inserted_at,
+        slug: row.slug,
+        content_html: row.content_html,
+        content_text: row.content_text,
+        source_url: row.source_url,
+        detail_crawled_at: row.detail_crawled_at,
+        detail_crawl_error: row.detail_crawl_error,
     }));
     
     console.log(`[blogRepo] fetchBlogPosts found=${posts.length}, total=${count}`);
