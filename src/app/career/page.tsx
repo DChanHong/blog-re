@@ -2,7 +2,16 @@ import { Metadata } from "next";
 import CareerPage from "./CareerPage";
 import PageContainer from "@/components/layout/PageContainer";
 import { SparklesCore } from "@/components/ui/sparkles";
-import { absoluteUrl, getCanonicalUrl, SEO_CONFIG } from "@/lib/seo";
+import { JsonLdScript } from "@/components/seo/JsonLdScript";
+import {
+    absoluteUrl,
+    createBreadcrumbJsonLd,
+    createImageObjectJsonLd,
+    createOrganizationJsonLd,
+    createWebPageJsonLd,
+    getCanonicalUrl,
+    SEO_CONFIG,
+} from "@/lib/seo";
 
 // 정적 페이지로 생성
 export const dynamic = "force-static";
@@ -54,6 +63,27 @@ export const metadata: Metadata = {
 export default function Career() {
     return (
         <div className="relative min-h-screen overflow-hidden bg-black">
+            <JsonLdScript
+                schemas={[
+                    createWebPageJsonLd({
+                        url: "/career",
+                        name: title,
+                        description,
+                        imageUrl: SEO_CONFIG.defaultOgImage.path,
+                    }),
+                    createImageObjectJsonLd({
+                        url: "/career",
+                        name: title,
+                        description,
+                        imageUrl: SEO_CONFIG.defaultOgImage.path,
+                    }),
+                    createOrganizationJsonLd(),
+                    createBreadcrumbJsonLd([
+                        { name: "홈", path: "/" },
+                        { name: "커리어", path: "/career" },
+                    ]),
+                ]}
+            />
             <div className="pointer-events-none fixed inset-0 z-0 bg-black" aria-hidden="true">
                 <SparklesCore
                     id="tsparticlescareer"

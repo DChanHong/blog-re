@@ -7,7 +7,15 @@ import FaqContainer from "@/components/home/FaqContainer";
 import BlogContainer from "@/components/home/BlogContainer";
 import FaqSkeleton from "@/components/skeletons/FaqSkeleton";
 import BlogSkeleton from "@/components/skeletons/BlogSkeleton";
-import { absoluteUrl, getCanonicalUrl, SEO_CONFIG } from "@/lib/seo";
+import { JsonLdScript } from "@/components/seo/JsonLdScript";
+import {
+    absoluteUrl,
+    createBreadcrumbJsonLd,
+    createOrganizationJsonLd,
+    createWebSiteJsonLd,
+    getCanonicalUrl,
+    SEO_CONFIG,
+} from "@/lib/seo";
 
 // ISR 1일 (86400초)
 export const revalidate = 86400;
@@ -45,17 +53,26 @@ export const metadata: Metadata = {
 
 export default function Home() {
     return (
-        <ClientPage
-            section2Slot={
-                <Suspense fallback={<FaqSkeleton />}>
-                    <FaqContainer />
-                </Suspense>
-            }
-            section3Slot={
-                <Suspense fallback={<BlogSkeleton />}>
-                    <BlogContainer />
-                </Suspense>
-            }
-        />
+        <>
+            <JsonLdScript
+                schemas={[
+                    createWebSiteJsonLd(),
+                    createOrganizationJsonLd(),
+                    createBreadcrumbJsonLd([{ name: "홈", path: "/" }]),
+                ]}
+            />
+            <ClientPage
+                section2Slot={
+                    <Suspense fallback={<FaqSkeleton />}>
+                        <FaqContainer />
+                    </Suspense>
+                }
+                section3Slot={
+                    <Suspense fallback={<BlogSkeleton />}>
+                        <BlogContainer />
+                    </Suspense>
+                }
+            />
+        </>
     );
 }

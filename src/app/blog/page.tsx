@@ -3,7 +3,16 @@ import { Suspense } from "react";
 import BlogListPage from "./BlogListPage";
 import PageContainer from "@/components/layout/PageContainer";
 import { SparklesClient } from "@/components/ui/sparkles-client";
-import { absoluteUrl, getCanonicalUrl, SEO_CONFIG } from "@/lib/seo";
+import { JsonLdScript } from "@/components/seo/JsonLdScript";
+import {
+    absoluteUrl,
+    createBreadcrumbJsonLd,
+    createCollectionPageJsonLd,
+    createImageObjectJsonLd,
+    createOrganizationJsonLd,
+    getCanonicalUrl,
+    SEO_CONFIG,
+} from "@/lib/seo";
 
 const title = "블로그 | 찬홍의 개발 이야기";
 const description =
@@ -61,6 +70,27 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
 
     return (
         <>
+            <JsonLdScript
+                schemas={[
+                    createCollectionPageJsonLd({
+                        url: "/blog",
+                        name: title,
+                        description,
+                        imageUrl: SEO_CONFIG.defaultOgImage.path,
+                    }),
+                    createImageObjectJsonLd({
+                        url: "/blog",
+                        name: title,
+                        description,
+                        imageUrl: SEO_CONFIG.defaultOgImage.path,
+                    }),
+                    createOrganizationJsonLd(),
+                    createBreadcrumbJsonLd([
+                        { name: "홈", path: "/" },
+                        { name: "블로그", path: "/blog" },
+                    ]),
+                ]}
+            />
             {/* SparklesCore 배경 */}
             <div className="fixed top-0 left-0 w-full h-full pointer-events-none z-0 bg-black">
                 <SparklesClient

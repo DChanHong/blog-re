@@ -3,7 +3,17 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import PageContainer from "@/components/layout/PageContainer";
 import { getPostBySlug } from "@/lib/services/velogService";
-import { absoluteUrl, cleanDescription, getCanonicalUrl, SEO_CONFIG } from "@/lib/seo";
+import { JsonLdScript } from "@/components/seo/JsonLdScript";
+import {
+    absoluteUrl,
+    cleanDescription,
+    createArticleJsonLd,
+    createBreadcrumbJsonLd,
+    createImageObjectJsonLd,
+    createOrganizationJsonLd,
+    getCanonicalUrl,
+    SEO_CONFIG,
+} from "@/lib/seo";
 
 interface BlogDetailPageProps {
     params: Promise<{
@@ -69,14 +79,49 @@ export async function generateMetadata({ params }: BlogDetailPageProps): Promise
 
 export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
     const { slug } = await params;
-    const post = await getPostBySlug(decodeURIComponent(slug));
+    const decodedSlug = decodeURIComponent(slug);
+    const post = await getPostBySlug(decodedSlug);
 
     if (!post) {
         notFound();
     }
 
+    const postPath = `/blog/${post.slug || decodedSlug}`;
+    const description = cleanDescription(
+        post.intro || post.content_text || SEO_CONFIG.description,
+    );
+    const imageUrl = post.img_src || SEO_CONFIG.defaultOgImage.path;
+    const modifiedTime = post.detail_crawled_at || post.inserted_at || post.created_at;
+    const wordCount = post.content_text?.trim().split(/\s+/).filter(Boolean).length;
+
     return (
         <PageContainer outerClassName="min-h-screen bg-black text-white">
+            <JsonLdScript
+                schemas={[
+                    createArticleJsonLd({
+                        url: postPath,
+                        name: post.title,
+                        description,
+                        imageUrl,
+                        publishedTime: post.created_at,
+                        modifiedTime,
+                        tags: post.tags,
+                        wordCount,
+                    }),
+                    createImageObjectJsonLd({
+                        url: postPath,
+                        name: post.title,
+                        description,
+                        imageUrl,
+                    }),
+                    createOrganizationJsonLd(),
+                    createBreadcrumbJsonLd([
+                        { name: "홈", path: "/" },
+                        { name: "블로그", path: "/blog" },
+                        { name: post.title, path: postPath },
+                    ]),
+                ]}
+            />
             <article className="mx-auto max-w-3xl py-12">
                 <div className="mb-8 border-b border-white/10 pb-8">
                     <Link
