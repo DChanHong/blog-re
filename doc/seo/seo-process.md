@@ -1,15 +1,15 @@
-# SEO Process Agent
+# SEO Process
 
 ## Purpose
 
 Apply SEO improvements to this Next.js App Router project in small, verifiable steps.
 
-Use this agent when the user wants to improve metadata, Open Graph, Twitter Card, JSON-LD, sitemap, robots, or SEO validation for the blog and portfolio pages.
+Use this document when improving metadata, Open Graph, Twitter Card, JSON-LD, sitemap, robots, or SEO validation for the blog and portfolio pages.
 
 ## Project Context
 
 - Framework: Next.js App Router
-- Base URL: `https://blog.chanhong.pro`
+- Base URL: `https://blog.dev-hong.it.kr`
 - Primary content:
   - Home: `/`
   - Blog list: `/blog`
@@ -27,21 +27,6 @@ Use this agent when the user wants to improve metadata, Open Graph, Twitter Card
   - `slug`
   - `content_text`
   - `content_html`
-
-## Source References
-
-The source SEO notes live outside the repo:
-
-```txt
-/Users/hong/Desktop/seo-process/01-meta-tags.md
-/Users/hong/Desktop/seo-process/02-json-ld.md
-/Users/hong/Desktop/seo-process/03-og-twitter.md
-/Users/hong/Desktop/seo-process/04-sitemap.md
-/Users/hong/Desktop/seo-process/05-robots-txt.md
-/Users/hong/Desktop/seo-process/06-seo-component-pattern.md
-```
-
-When applying SEO work, inspect these files first if more detail is needed.
 
 ## Step 1. SEO Utilities
 
@@ -231,7 +216,7 @@ Recommended rules:
   - `/admin`
   - `/login`
 - Add sitemap:
-  - `https://blog.chanhong.pro/sitemap.xml`
+  - `https://blog.dev-hong.it.kr/sitemap.xml`
 
 Validation:
 
@@ -258,48 +243,28 @@ curl -I "$BASE_URL/sitemap.xml"
 curl -I "$BASE_URL/robots.txt"
 ```
 
-Check a blog detail page:
-
-```bash
-curl -I "$BASE_URL/blog/{slug}"
-```
-
-Inspect metadata:
-
-```bash
-curl -s "$BASE_URL/blog/{slug}" | rg "canonical|og:title|og:type|twitter:card|application/ld\\+json"
-```
-
 Deployment checks:
 
-- Google Rich Results Test
-- Google Search Console sitemap submission
-- Facebook Sharing Debugger
-- Twitter Card Validator
+- Verify canonical URLs point to production.
+- Verify OG images are absolute and render correctly.
+- Verify sitemap is reachable.
+- Verify robots includes the sitemap.
+- Submit sitemap in Google Search Console after deployment.
 
 ## Recommended Implementation Order
 
-1. Add SEO utilities.
-2. Improve blog detail `generateMetadata`.
-3. Add JSON-LD for blog detail.
-4. Add sitemap.
-5. Add robots.
-6. Improve home/blog/career metadata.
-7. Validate and commit.
+1. Add shared SEO constants and text cleanup utilities.
+2. Add base metadata to layout and public pages.
+3. Add dynamic blog detail metadata.
+4. Add JSON-LD.
+5. Add sitemap.
+6. Add robots.
+7. Validate locally and after deployment.
 
 ## Commit Guidance
 
-Prefer small commits:
+Keep SEO commits small enough to review:
 
-```txt
-feat: add seo utilities
-feat: improve blog article metadata
-feat: add sitemap and robots
-feat: add json ld schemas
-```
-
-For broad one-pass cleanup:
-
-```txt
-feat: add seo metadata and indexing routes
-```
+- `feat: add seo metadata helpers`
+- `feat: add page metadata and json ld`
+- `feat: add sitemap and robots routes`

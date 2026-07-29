@@ -19,7 +19,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-    metadataBase: new URL("https://blog.chanhong.pro"),
+    metadataBase: new URL("https://blog.dev-hong.it.kr"),
     title: {
         default: "성찬홍 | 프론트엔드 엔지니어",
         template: "%s | Chanhong Studio",
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
         siteName: "성찬홍's Info",
         images: [
             {
-                url: "https://blog.chanhong.pro/og_front.png",
+                url: "https://blog.dev-hong.it.kr/og_front.png",
                 width: 1200,
                 height: 630,
                 alt: "성찬홍's Info 썸네일",
