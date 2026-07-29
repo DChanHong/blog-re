@@ -2,7 +2,26 @@ import {
     createSupabaseServerClient,
     createSupabaseServiceRoleClient,
 } from "@/lib/db/supabaseServer";
-import type { VelogInsertRow } from "@/types/blog";
+import type { VelogInsertRow, VelogPostDto } from "@/types/blog";
+
+function mapVelogPost(row: any): VelogPostDto {
+    return {
+        id: row.id?.toString(),
+        title: row.title,
+        img_src: row.img_src,
+        created_at: row.created_at,
+        tags: row.tags || [],
+        detail_link: row.detail_link,
+        intro: row.intro,
+        inserted_at: row.inserted_at,
+        slug: row.slug,
+        content_html: row.content_html,
+        content_text: row.content_text,
+        source_url: row.source_url,
+        detail_crawled_at: row.detail_crawled_at,
+        detail_crawl_error: row.detail_crawl_error,
+    };
+}
 
 export async function getExistingTitles(): Promise<string[]> {
     console.log(`[repo] getExistingTitles`);
@@ -47,6 +66,78 @@ export async function insertRows(rows: VelogInsertRow[]): Promise<number> {
     return inserted;
 }
 
+export async function fetchPostsMissingDetail(limit: number): Promise<VelogPostDto[]> {
+    console.log(`[repo] fetchPostsMissingDetail limit=${limit}`);
+    const supabase = createSupabaseServiceRoleClient();
+    const { data, error } = await supabase
+        .from("velog")
+        .select("*")
+        .or("content_html.is.null,content_html.eq.")
+        .not("detail_link", "is", null)
+        .order("created_at", { ascending: false })
+        .limit(limit);
+    if (error) throw error;
+    return (data || []).map(mapVelogPost);
+}
+
+export async function fetchPostsForDetailRefresh(limit: number): Promise<VelogPostDto[]> {
+    console.log(`[repo] fetchPostsForDetailRefresh limit=${limit}`);
+    const supabase = createSupabaseServiceRoleClient();
+    const { data, error } = await supabase
+        .from("velog")
+        .select("*")
+        .not("detail_link", "is", null)
+        .order("detail_crawled_at", { ascending: true, nullsFirst: true })
+        .order("created_at", { ascending: false })
+        .limit(limit);
+    if (error) throw error;
+    return (data || []).map(mapVelogPost);
+}
+
+export async function updatePostDetailByDetailLink(
+    detailLink: string,
+    values: Pick<
+        VelogPostDto,
+        "slug" | "content_html" | "content_text" | "source_url" | "detail_crawled_at" | "detail_crawl_error"
+    >,
+): Promise<void> {
+    console.log(`[repo] updatePostDetailByDetailLink detailLink=${detailLink}`);
+    const supabase = createSupabaseServiceRoleClient();
+    const { error } = await supabase
+        .from("velog")
+        .update(values)
+        .eq("detail_link", detailLink);
+    if (error) throw error;
+}
+
+export async function updatePostDetailErrorByDetailLink(
+    detailLink: string,
+    errorMessage: string,
+): Promise<void> {
+    console.log(`[repo] updatePostDetailErrorByDetailLink detailLink=${detailLink}`);
+    const supabase = createSupabaseServiceRoleClient();
+    const { error } = await supabase
+        .from("velog")
+        .update({
+            detail_crawl_error: errorMessage,
+            detail_crawled_at: new Date().toISOString(),
+        })
+        .eq("detail_link", detailLink);
+    if (error) throw error;
+}
+
+export async function fetchPostBySlug(slug: string): Promise<VelogPostDto | null> {
+    console.log(`[repo] fetchPostBySlug slug=${slug}`);
+    const supabase = createSupabaseServerClient();
+    const { data, error } = await supabase
+        .from("velog")
+        .select("*")
+        .eq("slug", slug)
+        .maybeSingle();
+    if (error && error.code !== "PGRST116") throw error;
+    return data ? mapVelogPost(data) : null;
+}
+
 export async function fetchAllTags(): Promise<string[]> {
     console.log(`[repo] fetchAllTags`);
     const supabase = createSupabaseServerClient();
@@ -89,5 +180,5 @@ export async function fetchRecentPosts(limit: number) {
         .order("created_at", { ascending: false })
         .limit(limit);
     if (error) throw error;
-    return data;
+    return (data || []).map(mapVelogPost);
 }
