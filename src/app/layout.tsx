@@ -5,6 +5,7 @@ import SiteLayout from "@/components/layout/SiteLayout";
 import ReactQueryProvider from "@/components/providers/ReactQueryProvider";
 import dynamic from "next/dynamic";
 import { WebVitals } from "@/components/analytics/WebVitals";
+import { absoluteUrl, SEO_CONFIG, SITE_URL } from "@/lib/seo/config";
 
 const ChatBot = dynamic(() => import("@/components/domain/chatbot"), { ssr: true });
 
@@ -19,33 +20,30 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-    metadataBase: new URL("https://blog.dev-hong.it.kr"),
-    title: {
-        default: "성찬홍 | 프론트엔드 엔지니어",
-        template: "%s | Chanhong Studio",
-    },
-    description: "성찬홍의 이력에 대한 정보",
+    metadataBase: SITE_URL,
+    title: SEO_CONFIG.title,
+    description: SEO_CONFIG.description,
     openGraph: {
-        title: "성찬홍 | 프론트엔드 엔지니어",
-        description: "성찬홍의 이력에 대한 정보",
+        title: SEO_CONFIG.title.default,
+        description: SEO_CONFIG.description,
         url: "/",
-        siteName: "성찬홍's Info",
+        siteName: SEO_CONFIG.siteName,
         images: [
             {
-                url: "https://blog.dev-hong.it.kr/og_front.png",
-                width: 1200,
-                height: 630,
-                alt: "성찬홍's Info 썸네일",
+                url: absoluteUrl(SEO_CONFIG.defaultOgImage.path),
+                width: SEO_CONFIG.defaultOgImage.width,
+                height: SEO_CONFIG.defaultOgImage.height,
+                alt: SEO_CONFIG.defaultOgImage.alt,
             },
         ],
-        locale: "ko_KR",
+        locale: SEO_CONFIG.locale,
         type: "website",
     },
     twitter: {
         card: "summary_large_image",
-        title: "성찬홍 | 프론트엔지니어",
-        description: "성찬홍의 이력에 대한 정보",
-        images: ["/og_front.png"],
+        title: SEO_CONFIG.title.default,
+        description: SEO_CONFIG.description,
+        images: [SEO_CONFIG.defaultOgImage.path],
     },
     icons: { icon: "/favicon.ico" },
 };
