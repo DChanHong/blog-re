@@ -10,6 +10,7 @@ export async function generateStaticParams() {
     const posts = await getPostsForSitemap();
     return posts
         .filter((p) => p.slug)
+        .filter((p) => encodeURIComponent(p.slug!).length <= 240)
         .map((p) => ({ slug: encodeURIComponent(p.slug!) }));
 }
 import { JsonLdScript } from "@/components/seo/JsonLdScript";
