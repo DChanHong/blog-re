@@ -2,7 +2,16 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import PageContainer from "@/components/layout/PageContainer";
-import { getPostBySlug } from "@/lib/services/velogService";
+import { getPostBySlug, getPostsForSitemap } from "@/lib/services/velogService";
+
+export const revalidate = 86400; // 24시간 ISR
+
+export async function generateStaticParams() {
+    const posts = await getPostsForSitemap();
+    return posts
+        .filter((p) => p.slug)
+        .map((p) => ({ slug: encodeURIComponent(p.slug!) }));
+}
 import { JsonLdScript } from "@/components/seo/JsonLdScript";
 import {
     absoluteUrl,
