@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import type { VelogPostDto } from "@/types/blog";
 
@@ -5,8 +8,8 @@ interface PostCardProps {
     post: VelogPostDto;
 }
 
-// 블로그 포스트 카드 컴포넌트 (전체 박스 클릭 가능)
 export default function PostCard({ post }: PostCardProps) {
+    const [imageLoaded, setImageLoaded] = useState(false);
     const sourceHref =
         post.source_url ||
         (post.detail_link?.startsWith("http")
@@ -27,10 +30,15 @@ export default function PostCard({ post }: PostCardProps) {
             <div className="aspect-video bg-gray-800 relative overflow-hidden">
                 {post.img_src ? (
                     <>
+                        {!imageLoaded && (
+                            <div className="absolute inset-0 bg-gray-700/50 animate-pulse" />
+                        )}
                         <img
                             src={post.img_src}
                             alt={post.title}
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            className={`w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ${imageLoaded ? "opacity-100" : "opacity-0"}`}
+                            onLoad={() => setImageLoaded(true)}
+                            onError={() => setImageLoaded(true)}
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent opacity-60" />
                     </>
