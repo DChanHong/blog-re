@@ -8,7 +8,7 @@ const AnimatedNavLink = ({ href, children }: { href: string; children: React.Rea
     return (
         <Link
             href={href}
-            className="text-gray-300 hover:text-white transition-colors duration-300 text-sm font-medium"
+            className="text-slate-600 hover:text-slate-900 transition-colors duration-300 text-sm font-medium"
         >
             {children}
         </Link>
@@ -46,10 +46,10 @@ export function Navbar() {
 
     const logoElement = (
         <Link href="/" className="relative w-5 h-5 flex items-center justify-center">
-            <span className="absolute w-1.5 h-1.5 rounded-full bg-gray-200 top-0 left-1/2 transform -translate-x-1/2 opacity-80"></span>
-            <span className="absolute w-1.5 h-1.5 rounded-full bg-gray-200 left-0 top-1/2 transform -translate-y-1/2 opacity-80"></span>
-            <span className="absolute w-1.5 h-1.5 rounded-full bg-gray-200 right-0 top-1/2 transform -translate-y-1/2 opacity-80"></span>
-            <span className="absolute w-1.5 h-1.5 rounded-full bg-gray-200 bottom-0 left-1/2 transform -translate-x-1/2 opacity-80"></span>
+            <span className="absolute w-1.5 h-1.5 rounded-full bg-slate-500 top-0 left-1/2 transform -translate-x-1/2 opacity-80"></span>
+            <span className="absolute w-1.5 h-1.5 rounded-full bg-slate-500 left-0 top-1/2 transform -translate-y-1/2 opacity-80"></span>
+            <span className="absolute w-1.5 h-1.5 rounded-full bg-slate-500 right-0 top-1/2 transform -translate-y-1/2 opacity-80"></span>
+            <span className="absolute w-1.5 h-1.5 rounded-full bg-slate-500 bottom-0 left-1/2 transform -translate-x-1/2 opacity-80"></span>
         </Link>
     );
 
@@ -65,8 +65,8 @@ export function Navbar() {
                        flex flex-col items-center
                        pl-6 pr-6 py-3 backdrop-blur-md
                        ${headerShapeClass}
-                       border border-[#333] bg-[#1f1f1f80]
-                       w-[calc(100%-2rem)] sm:w-auto
+                       border border-slate-200 bg-white/90
+                       w-[calc(100%-2rem)] sm:w-auto shadow-sm shadow-slate-200
                        transition-[border-radius] duration-300 ease-in-out`}
         >
             <div className="flex items-center justify-between w-full gap-x-6 sm:gap-x-8">
@@ -81,7 +81,7 @@ export function Navbar() {
                 </nav>
 
                 <button
-                    className="sm:hidden flex items-center justify-center w-8 h-8 text-gray-300 focus:outline-none"
+                    className="sm:hidden flex items-center justify-center w-8 h-8 text-slate-600 focus:outline-none"
                     onClick={toggleMenu}
                     aria-label={isOpen ? "Close Menu" : "Open Menu"}
                 >
@@ -128,7 +128,7 @@ export function Navbar() {
                         <Link
                             key={link.href}
                             href={link.href}
-                            className="text-gray-300 hover:text-white transition-colors w-full text-center py-2"
+                            className="text-slate-600 hover:text-slate-900 transition-colors w-full text-center py-2"
                             onClick={() => setIsOpen(false)}
                         >
                             {link.label}

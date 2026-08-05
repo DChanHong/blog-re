@@ -47,7 +47,7 @@ const SectionWithMockup: React.FC<SectionWithMockupProps> = ({
                      whileInView="visible"
                      viewport={{ once: true, amount: 0.2 }}
                 >
-                    {/* Left Content (Text area in original) */}
+                    {/* Left Content */}
                     <motion.div
                         className={`flex flex-col items-start gap-4 mt-10 md:mt-0 w-full mx-auto md:mx-0 ${textOrderClass}`}
                         variants={itemVariants}
@@ -55,22 +55,22 @@ const SectionWithMockup: React.FC<SectionWithMockupProps> = ({
                         {leftNode}
                     </motion.div>
 
-                    {/* Right Content (Mockup area in original) */}
+                    {/* Right Content */}
                     <motion.div
                         className={`relative mt-10 md:mt-0 mx-auto ${imageOrderClass} w-full`}
                         variants={itemVariants}
                     >
                         {/* Decorative Background Element */}
                         <motion.div
-                             className={`absolute w-full h-full bg-[#090909] rounded-[32px] z-0`}
+                             className="absolute w-full h-full bg-blue-100 rounded-[32px] z-0"
                              style={{
                                 top: reverseLayout ? 'auto' : '10%',
                                 bottom: reverseLayout ? '10%' : 'auto',
                                 left: reverseLayout ? 'auto' : '-10%',
                                 right: reverseLayout ? '-10%' : 'auto',
                                 transform: reverseLayout ? 'translate(0, 0)' : 'translateY(10%)',
-                                filter: 'blur(20px)',
-                                opacity: 0.5
+                                filter: 'blur(40px)',
+                                opacity: 0.6
                             }}
                             initial={{ y: reverseLayout ? 0 : 0 }}
                             whileInView={{ y: reverseLayout ? -20 : -30 }}
@@ -80,7 +80,7 @@ const SectionWithMockup: React.FC<SectionWithMockupProps> = ({
 
                         {/* Main Mockup Card Container */}
                         <motion.div
-                            className="relative w-full bg-[#ffffff0a] rounded-[32px] backdrop-blur-[15px] backdrop-brightness-[100%] border-0 z-10 overflow-hidden min-h-[400px]"
+                            className="relative w-full bg-white rounded-[32px] border border-slate-200 shadow-xl shadow-slate-200/80 z-10 overflow-hidden min-h-[400px]"
                             initial={{ y: reverseLayout ? 0 : 0 }}
                             whileInView={{ y: reverseLayout ? 20 : 30 }}
                              transition={{ duration: 1.2, ease: "easeOut", delay: 0.1 }}
@@ -94,12 +94,12 @@ const SectionWithMockup: React.FC<SectionWithMockupProps> = ({
                 </motion.div>
             </div>
 
-            {/* Decorative bottom gradient */}
+            {/* Decorative bottom divider */}
             <div
                 className="absolute w-full h-px bottom-0 left-0 z-0"
                 style={{
                     background:
-                        "radial-gradient(50% 50% at 50% 50%, rgba(255,255,255,0.24) 0%, rgba(255,255,255,0) 100%)",
+                        "radial-gradient(50% 50% at 50% 50%, rgba(148,163,184,0.4) 0%, rgba(148,163,184,0) 100%)",
                 }}
             />
         </section>

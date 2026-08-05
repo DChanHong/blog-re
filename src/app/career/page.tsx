@@ -1,7 +1,6 @@
 import { Metadata } from "next";
 import CareerPage from "./CareerPage";
 import PageContainer from "@/components/layout/PageContainer";
-import { SparklesCore } from "@/components/ui/sparkles";
 import { JsonLdScript } from "@/components/seo/JsonLdScript";
 import {
     absoluteUrl,
@@ -62,7 +61,7 @@ export const metadata: Metadata = {
  */
 export default function Career() {
     return (
-        <div className="relative min-h-screen overflow-hidden bg-black">
+        <>
             <JsonLdScript
                 schemas={[
                     createWebPageJsonLd({
@@ -84,23 +83,12 @@ export default function Career() {
                     ]),
                 ]}
             />
-            <div className="pointer-events-none fixed inset-0 z-0 bg-black" aria-hidden="true">
-                <SparklesCore
-                    id="tsparticlescareer"
-                    background="black"
-                    minSize={0.6}
-                    maxSize={1.4}
-                    particleDensity={100}
-                    className="h-full w-full"
-                    particleColor="#FFFFFF"
-                />
-            </div>
             <PageContainer
                 outerClassName="relative z-10 min-h-screen"
                 innerClassName="mx-auto max-w-[1540px] px-4 pb-20 pt-[108px] sm:px-6 lg:px-8 lg:pb-28 lg:pt-[132px]"
             >
                 <CareerPage />
             </PageContainer>
-        </div>
+        </>
     );
 }

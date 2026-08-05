@@ -43,32 +43,32 @@ export default function Section4() {
             className="flex h-full w-full flex-col justify-center"
             aria-labelledby="career-preview-title"
         >
-            <div className="overflow-hidden rounded-[2rem] border border-white/10 bg-slate-950/65 shadow-2xl shadow-blue-950/10 backdrop-blur-xl">
+            <div className="overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-xl shadow-slate-200/60">
                 <div className="px-5 pt-6 sm:px-7 sm:pt-7 lg:px-8 lg:pt-8">
                     <div className="flex flex-wrap items-center gap-2.5">
-                        <span className="inline-flex items-center gap-2 rounded-full border border-emerald-400/20 bg-emerald-400/10 px-3 py-1.5 text-xs font-semibold text-emerald-300">
+                        <span className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1.5 text-xs font-semibold text-emerald-600">
                             <span
-                                className="h-1.5 w-1.5 rounded-full bg-emerald-400"
+                                className="h-1.5 w-1.5 rounded-full bg-emerald-500"
                                 aria-hidden="true"
                             />
                             Frontend Engineer
                         </span>
-                        <span className="text-xs text-slate-500">2023.09 — Present</span>
+                        <span className="text-xs text-slate-400">2023.09 — Present</span>
                     </div>
 
                     <h3
                         id="career-preview-title"
-                        className="mt-5 text-2xl font-bold tracking-[-0.03em] text-white sm:text-3xl"
+                        className="mt-5 text-2xl font-bold tracking-[-0.03em] text-slate-900 sm:text-3xl"
                     >
                         주요 프로젝트
                     </h3>
-                    <p className="mt-2 text-sm leading-6 text-slate-400">
+                    <p className="mt-2 text-sm leading-6 text-slate-500">
                         프로젝트를 선택하면 담당 역할과 해당 프로젝트의 성과를 확인할 수 있습니다.
                     </p>
                 </div>
 
                 <div
-                    className="mt-6 overflow-x-auto border-y border-white/10 bg-black/20 px-2 py-2"
+                    className="mt-6 overflow-x-auto border-y border-slate-100 bg-slate-50 px-2 py-2"
                     role="tablist"
                     aria-label="주요 프로젝트 선택"
                 >
@@ -91,8 +91,8 @@ export default function Section4() {
                                     onKeyDown={(event) => moveTabFocus(event, index)}
                                     className={`rounded-xl px-3.5 py-2.5 text-xs font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 sm:text-sm ${
                                         isActive
-                                            ? "bg-blue-400/15 text-blue-200"
-                                            : "text-slate-500 hover:bg-white/[0.05] hover:text-slate-200"
+                                            ? "bg-blue-50 text-blue-600"
+                                            : "text-slate-500 hover:bg-slate-100 hover:text-slate-900"
                                     }`}
                                 >
                                     {presentation?.label ?? project.title}
@@ -109,32 +109,32 @@ export default function Section4() {
                     className="p-5 sm:p-7 lg:p-8"
                 >
                     <div className="flex items-start gap-4">
-                        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-blue-400/20 bg-blue-400/10 text-blue-300">
+                        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-blue-200 bg-blue-50 text-blue-600">
                             <ActiveIcon className="h-5 w-5" aria-hidden="true" />
                         </span>
                         <div className="min-w-0 flex-1">
                             <div className="flex flex-wrap items-center gap-2 text-xs">
-                                <span className="font-medium text-blue-300">
+                                <span className="font-medium text-blue-600">
                                     {activeProject.status}
                                 </span>
-                                <span className="text-slate-700">/</span>
-                                <span className="font-mono text-slate-500">
+                                <span className="text-slate-300">/</span>
+                                <span className="font-mono text-slate-400">
                                     {activeProject.period}
                                 </span>
                             </div>
-                            <h4 className="mt-2 text-xl font-bold leading-snug text-white sm:text-2xl">
+                            <h4 className="mt-2 text-xl font-bold leading-snug text-slate-900 sm:text-2xl">
                                 {activeProject.title}
                             </h4>
-                            <p className="mt-1 text-xs font-medium text-slate-500 sm:text-sm">
+                            <p className="mt-1 text-xs font-medium text-slate-400 sm:text-sm">
                                 {activeProject.role}
                             </p>
                         </div>
                     </div>
 
-                    <p className="mt-5 text-sm leading-7 text-slate-300">{activeProject.summary}</p>
+                    <p className="mt-5 text-sm leading-7 text-slate-600">{activeProject.summary}</p>
 
                     <dl
-                        className={`mt-6 grid gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 ${
+                        className={`mt-6 grid gap-px overflow-hidden rounded-2xl border border-slate-200 bg-slate-200 ${
                             activeProject.metrics.length >= 4
                                 ? "grid-cols-2 sm:grid-cols-4"
                                 : "grid-cols-3"
@@ -143,12 +143,12 @@ export default function Section4() {
                         {activeProject.metrics.map((metric) => (
                             <div
                                 key={`${metric.value}-${metric.label}`}
-                                className="min-w-0 bg-slate-950/95 px-3 py-4 text-center"
+                                className="min-w-0 bg-white px-3 py-4 text-center"
                             >
-                                <dd className="text-base font-bold tracking-tight text-white sm:text-lg">
+                                <dd className="text-base font-bold tracking-tight text-slate-900 sm:text-lg">
                                     {metric.value}
                                 </dd>
-                                <dt className="mt-1 text-[10px] leading-4 text-slate-500 sm:text-xs">
+                                <dt className="mt-1 text-[10px] leading-4 text-slate-400 sm:text-xs">
                                     {metric.label}
                                 </dt>
                             </div>
@@ -159,10 +159,10 @@ export default function Section4() {
                         {activeProject.responsibilities.slice(0, 2).map((responsibility) => (
                             <li
                                 key={responsibility}
-                                className="flex gap-2.5 text-xs leading-5 text-slate-400 sm:text-sm sm:leading-6"
+                                className="flex gap-2.5 text-xs leading-5 text-slate-500 sm:text-sm sm:leading-6"
                             >
                                 <Check
-                                    className="mt-0.5 h-4 w-4 shrink-0 text-emerald-400"
+                                    className="mt-0.5 h-4 w-4 shrink-0 text-emerald-500"
                                     aria-hidden="true"
                                 />
                                 <span>{responsibility}</span>
@@ -170,12 +170,12 @@ export default function Section4() {
                         ))}
                     </ul>
 
-                    <div className="mt-6 flex flex-wrap items-center justify-between gap-4 border-t border-white/10 pt-5">
+                    <div className="mt-6 flex flex-wrap items-center justify-between gap-4 border-t border-slate-100 pt-5">
                         <ul className="flex flex-wrap gap-1.5" aria-label="프로젝트 기술">
                             {activeProject.techStack.slice(0, 5).map((technology) => (
                                 <li
                                     key={technology}
-                                    className="rounded-md bg-white/[0.05] px-2 py-1 text-[10px] text-slate-500"
+                                    className="rounded-md bg-slate-100 px-2 py-1 text-[10px] text-slate-500"
                                 >
                                     {technology}
                                 </li>
@@ -183,7 +183,7 @@ export default function Section4() {
                         </ul>
                         <Link
                             href={`/career#${activeProject.id}`}
-                            className="group inline-flex items-center gap-1.5 text-xs font-semibold text-blue-300 transition hover:text-blue-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
+                            className="group inline-flex items-center gap-1.5 text-xs font-semibold text-blue-600 transition hover:text-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
                         >
                             프로젝트 상세 보기
                             <ArrowUpRight

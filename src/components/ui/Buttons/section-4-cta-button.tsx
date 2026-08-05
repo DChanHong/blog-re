@@ -17,10 +17,10 @@ const Section4CtaButton: React.FC<Section4CtaButtonProps> = ({
 }) => {
   return (
     <div className={cn("relative inline-flex items-center justify-center gap-4 group", className)}>
-      <div className="absolute inset-0 duration-1000 opacity-60 transition-all bg-gradient-to-r from-indigo-500 via-pink-500 to-yellow-400 rounded-md blur-lg filter group-hover:opacity-100 group-hover:duration-200" />
+      <div className="absolute inset-0 duration-1000 opacity-40 transition-all bg-gradient-to-r from-indigo-400 via-blue-400 to-cyan-400 rounded-md blur-lg filter group-hover:opacity-70 group-hover:duration-200" />
       <Link
         href={href}
-        className="group relative inline-flex items-center justify-center rounded-md bg-gray-900 px-8 py-3 text-lg font-semibold text-white transition-all duration-200 hover:bg-gray-800 hover:shadow-lg hover:-translate-y-0.5 hover:shadow-gray-600/30"
+        className="group relative inline-flex items-center justify-center rounded-md bg-blue-600 px-8 py-3 text-lg font-semibold text-white transition-all duration-200 hover:bg-blue-700 hover:shadow-lg hover:-translate-y-0.5 hover:shadow-blue-400/30"
         role="button"
       >
         {text}

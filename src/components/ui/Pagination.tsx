@@ -129,8 +129,8 @@ export default function Pagination({
             <Link
                 href={createUrl(Math.max(1, currentPage - 1))}
                 className={`flex items-center justify-center w-10 h-10 rounded-lg border transition-colors ${currentPage === 1
-                        ? "border-white/10 text-gray-600 cursor-not-allowed"
-                        : "border-white/20 text-gray-400 hover:bg-white/10 hover:border-white/30"
+                        ? "border-slate-100 text-slate-300 cursor-not-allowed"
+                        : "border-slate-200 text-slate-500 hover:bg-slate-50 hover:border-slate-300"
                     }`}
                 aria-disabled={currentPage === 1}
             >
@@ -151,7 +151,7 @@ export default function Pagination({
                     return (
                         <span
                             key={`ellipsis-${index}`}
-                            className="flex items-center justify-center w-10 h-10 text-gray-400"
+                            className="flex items-center justify-center w-10 h-10 text-slate-400"
                         >
                             ...
                         </span>
@@ -167,7 +167,7 @@ export default function Pagination({
                         href={createUrl(pageNum)}
                         className={`flex items-center justify-center w-10 h-10 rounded-lg border font-medium transition-colors ${isActive
                                 ? "border-blue-500 bg-blue-500 text-white"
-                                : "border-white/20 text-gray-400 hover:bg-white/10 hover:border-white/30"
+                                : "border-slate-200 text-slate-500 hover:bg-slate-50 hover:border-slate-300"
                             }`}
                         aria-current={isActive ? "page" : undefined}
                     >
@@ -180,8 +180,8 @@ export default function Pagination({
             <Link
                 href={createUrl(Math.min(totalPages, currentPage + 1))}
                 className={`flex items-center justify-center w-10 h-10 rounded-lg border transition-colors ${currentPage === totalPages
-                        ? "border-white/10 text-gray-600 cursor-not-allowed"
-                        : "border-white/20 text-gray-400 hover:bg-white/10 hover:border-white/30"
+                        ? "border-slate-100 text-slate-300 cursor-not-allowed"
+                        : "border-slate-200 text-slate-500 hover:bg-slate-50 hover:border-slate-300"
                     }`}
                 aria-disabled={currentPage === totalPages}
             >
@@ -197,7 +197,7 @@ export default function Pagination({
             </Link>
 
             {/* 페이지 정보 */}
-            <div className="hidden sm:flex items-center ml-4 text-sm text-gray-400">
+            <div className="hidden sm:flex items-center ml-4 text-sm text-slate-400">
                 <span>
                     {currentPage} / {totalPages}
                 </span>

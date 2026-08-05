@@ -23,11 +23,11 @@ export default function PostCard({ post }: PostCardProps) {
             href={href}
             target={isInternal ? undefined : "_blank"}
             rel={isInternal ? undefined : "noopener noreferrer"}
-            className="block bg-gray-900/40 backdrop-blur-md rounded-2xl border border-white/10 hover:border-purple-500/50 hover:shadow-[0_0_20px_rgba(124,58,237,0.2)] transition-all duration-300 overflow-hidden group focus:outline-none focus:ring-2 focus:ring-purple-500 outline-none"
+            className="block bg-white rounded-2xl border border-slate-200 hover:border-blue-200 hover:shadow-md transition-all duration-300 overflow-hidden group focus:outline-none focus:ring-2 focus:ring-blue-400 outline-none"
             aria-label={post.title}
         >
             {/* 썸네일 */}
-            <div className="aspect-video bg-gray-800 relative overflow-hidden">
+            <div className="aspect-video bg-slate-100 relative overflow-hidden">
                 {post.img_src ? (
                     <>
                         {!imageLoaded && (
@@ -40,12 +40,12 @@ export default function PostCard({ post }: PostCardProps) {
                             onLoad={() => setImageLoaded(true)}
                             onError={() => setImageLoaded(true)}
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent opacity-60" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/30 to-transparent opacity-60" />
                     </>
                 ) : (
-                    <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-800 to-gray-900">
+                    <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-slate-100 to-slate-200">
                         <svg
-                            className="w-12 h-12 text-gray-600 group-hover:text-purple-400 transition-colors duration-300"
+                            className="w-12 h-12 text-slate-300 group-hover:text-blue-400 transition-colors duration-300"
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
@@ -65,22 +65,22 @@ export default function PostCard({ post }: PostCardProps) {
             <div className="p-6">
                 {/* 카테고리(첫 태그) & 날짜 */}
                 <div className="flex items-center justify-between mb-4">
-                    <span className="px-3 py-1 text-xs font-medium bg-purple-500/10 text-purple-300 border border-purple-500/20 rounded-full">
+                    <span className="px-3 py-1 text-xs font-medium bg-blue-50 text-blue-600 border border-blue-200 rounded-full">
                         {(post.tags && post.tags[0]) || "Blog"}
                     </span>
-                    <time className="text-xs text-gray-400">
+                    <time className="text-xs text-slate-400">
                         {new Date(post.created_at).toLocaleDateString("ko-KR")}
                     </time>
                 </div>
 
                 {/* 제목 */}
-                <h2 className="text-lg font-bold text-white mb-3 line-clamp-2 group-hover:text-purple-300 transition-colors">
+                <h2 className="text-lg font-bold text-slate-900 mb-3 line-clamp-2 group-hover:text-blue-600 transition-colors">
                     {post.title}
                 </h2>
 
                 {/* 요약 */}
                 {post.intro && (
-                    <p className="text-gray-400 text-sm line-clamp-3 mb-5 leading-relaxed">{post.intro}</p>
+                    <p className="text-slate-500 text-sm line-clamp-3 mb-5 leading-relaxed">{post.intro}</p>
                 )}
 
                 {/* 태그 */}
@@ -88,13 +88,13 @@ export default function PostCard({ post }: PostCardProps) {
                     {post.tags?.slice(0, 3).map((tagItem) => (
                         <span
                             key={tagItem}
-                            className="px-2 py-1 text-xs bg-white/5 text-gray-400 rounded hover:bg-white/10 transition-colors border border-white/5"
+                            className="px-2 py-1 text-xs bg-slate-50 text-slate-400 rounded hover:bg-slate-100 transition-colors border border-slate-100"
                         >
                             #{tagItem}
                         </span>
                     ))}
                     {post.tags && post.tags.length > 3 && (
-                        <span className="px-2 py-1 text-xs text-gray-500">
+                        <span className="px-2 py-1 text-xs text-slate-400">
                             +{post.tags.length - 3}
                         </span>
                     )}
