@@ -88,8 +88,8 @@ export default function Section2({ categories, faqs }: Section2Props) {
                             key={cat}
                             className={`cursor-pointer transition-all ${
                                 activeCategory === cat
-                                    ? "border-blue-500 text-blue-400 shadow-[0_0_10px_rgba(59,130,246,0.5)]"
-                                    : "text-gray-400 hover:text-white"
+                                    ? "border-blue-500 text-blue-600 shadow-[0_0_10px_rgba(59,130,246,0.3)]"
+                                    : "border-slate-400 text-slate-600 hover:border-slate-600 hover:text-slate-900"
                             }`}
                             variant="default"
                             size="default"
@@ -105,7 +105,7 @@ export default function Section2({ categories, faqs }: Section2Props) {
                     {questionList.map((item) => (
                         <Button
                             key={item.idx}
-                            className="cursor-pointer font-semibold text-gray-300 hover:text-white border-white/30 hover:border-white/50"
+                            className="cursor-pointer font-semibold text-slate-700 hover:text-slate-900 border-slate-400 hover:border-slate-600"
                             variant="ghost"
                             size="default"
                             onClick={() =>

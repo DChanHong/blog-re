@@ -8,13 +8,7 @@ interface SiteLayoutProps {
     children: React.ReactNode;
 }
 
-const LAYOUT_VARIANTS = [
-    {
-        match: (pathname: string) => pathname.startsWith("/blog/"),
-        rootClassName: "min-h-[100%] bg-black",
-        contentClassName: "h-full min-h-[calc(100vh-210px)]",
-    },
-];
+const LAYOUT_VARIANTS: { match: (pathname: string) => boolean; rootClassName: string; contentClassName: string }[] = [];
 
 const DEFAULT_LAYOUT_VARIANT = {
     rootClassName: "min-h-[100%] bg-gradient-to-br from-slate-50 to-blue-50",

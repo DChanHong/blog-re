@@ -95,7 +95,7 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
     const wordCount = post.content_text?.trim().split(/\s+/).filter(Boolean).length;
 
     return (
-        <PageContainer outerClassName="min-h-screen bg-black text-white">
+        <PageContainer outerClassName="min-h-screen">
             <JsonLdScript
                 schemas={[
                     createArticleJsonLd({
@@ -123,26 +123,26 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
                 ]}
             />
             <article className="mx-auto max-w-3xl py-12">
-                <div className="mb-8 border-b border-white/10 pb-8">
+                <div className="mb-8 border-b border-slate-200 pb-8">
                     <Link
                         href="/blog"
-                        className="mb-6 inline-flex text-sm text-purple-300 underline-offset-4 hover:underline"
+                        className="mb-6 inline-flex text-sm text-blue-600 underline-offset-4 hover:underline"
                     >
                         블로그 목록으로
                     </Link>
 
-                    <h1 className="mb-5 text-3xl font-bold leading-tight md:text-5xl">
+                    <h1 className="mb-5 text-3xl font-bold leading-tight text-slate-900 md:text-5xl">
                         {post.title}
                     </h1>
 
-                    <div className="mb-6 flex flex-wrap items-center gap-3 text-sm text-gray-400">
+                    <div className="mb-6 flex flex-wrap items-center gap-3 text-sm text-slate-400">
                         <time>{new Date(post.created_at).toLocaleDateString("ko-KR")}</time>
                         {post.source_url && (
                             <a
                                 href={post.source_url}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-purple-300 underline-offset-4 hover:underline"
+                                className="text-blue-600 underline-offset-4 hover:underline"
                             >
                                 원문 보기
                             </a>
@@ -154,7 +154,7 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
                             {post.tags.map((tag) => (
                                 <span
                                     key={tag}
-                                    className="rounded-full border border-purple-400/30 bg-purple-500/10 px-3 py-1 text-sm text-purple-200"
+                                    className="rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-sm text-blue-600"
                                 >
                                     #{tag}
                                 </span>
@@ -163,7 +163,7 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
                     )}
 
                     {post.intro && (
-                        <p className="mt-6 rounded-lg border border-white/10 bg-white/5 p-4 text-gray-300">
+                        <p className="mt-6 rounded-lg border border-slate-200 bg-slate-50 p-4 text-slate-600">
                             {post.intro}
                         </p>
                     )}
@@ -175,7 +175,7 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
                         dangerouslySetInnerHTML={{ __html: post.content_html }}
                     />
                 ) : (
-                    <div className="rounded-lg border border-yellow-400/30 bg-yellow-500/10 p-6 text-yellow-100">
+                    <div className="rounded-lg border border-amber-200 bg-amber-50 p-6 text-amber-700">
                         아직 상세 본문이 크롤링되지 않았습니다.
                     </div>
                 )}

@@ -24,10 +24,10 @@ const Section3 = ({ blogList }: Props) => {
                 {/* 헤더 영역 - Section4 스타일 적용 */}
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 gap-4">
                     <div>
-                        <h2 className="text-3xl md:text-5xl font-bold text-white mb-2">
-                            Latest <span className="text-blue-400">Blog</span> Posts
+                        <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-2">
+                            Latest <span className="text-blue-600">Blog</span> Posts
                         </h2>
-                        <p className="text-gray-400 text-sm md:text-lg max-w-lg">
+                        <p className="text-slate-500 text-sm md:text-lg max-w-lg">
                             기술적인 고민과 해결 과정을 기록합니다.
                         </p>
                     </div>
