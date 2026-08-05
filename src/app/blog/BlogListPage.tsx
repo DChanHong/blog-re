@@ -6,6 +6,7 @@ import type { VelogPostDto } from "@/types/blog";
 import { useBlogPostsQuery, useBlogCategoriesQuery, useBlogTagsQuery } from "@/actions/blog";
 import Pagination from "@/components/ui/Pagination";
 import PostCard from "@/components/domain/blog/PostCard";
+import PostCardSkeleton from "@/components/domain/blog/PostCardSkeleton";
 
 interface BlogListPageProps {
     currentPage: number;
@@ -26,7 +27,7 @@ export default function BlogListPage({ currentPage, category, tag, search }: Blo
     // React Query: 블로그 포스트 데이터
     const postsQuery = useBlogPostsQuery({
         page: currentPage,
-        limit: 8,
+        limit: 9,
         ...(category ? { category } : {}),
         ...(tag ? { tag } : {}),
         ...(search ? { search } : {}),
@@ -203,15 +204,21 @@ export default function BlogListPage({ currentPage, category, tag, search }: Blo
 
                 {/* 포스트 그리드 */}
                 {postsQuery.isFetching && posts.length === 0 ? (
-                    <div className="flex justify-center items-center py-20">
-                        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-400"></div>
+                    <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6 mb-12">
+                        {Array.from({ length: 9 }).map((_, i) => (
+                            <PostCardSkeleton key={i} />
+                        ))}
                     </div>
                 ) : posts.length > 0 ? (
                     <>
                         <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6 mb-12">
-                            {posts.map((post) => (
-                                <PostCard key={post.id} post={post} />
-                            ))}
+                            {postsQuery.isFetching
+                                ? Array.from({ length: 9 }).map((_, i) => (
+                                      <PostCardSkeleton key={i} />
+                                  ))
+                                : posts.map((post) => (
+                                      <PostCard key={post.id} post={post} />
+                                  ))}
                         </div>
 
                         {/* 페이지네이션 */}

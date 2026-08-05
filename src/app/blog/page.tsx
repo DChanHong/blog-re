@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { Suspense } from "react";
 import BlogListPage from "./BlogListPage";
+import PostCardSkeleton from "@/components/domain/blog/PostCardSkeleton";
 import PageContainer from "@/components/layout/PageContainer";
 import { JsonLdScript } from "@/components/seo/JsonLdScript";
 import {
@@ -93,8 +94,33 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
             <PageContainer outerClassName="min-h-[calc(100vh)]">
                 <Suspense
                     fallback={
-                        <div className="flex justify-center items-center py-20">
-                            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+                        <div className="grid md:grid-cols-4 gap-8">
+                            {/* 사이드바 스켈레톤 */}
+                            <aside className="md:col-span-1">
+                                <div className="bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 p-6 animate-pulse space-y-4">
+                                    <div className="h-4 w-16 bg-gray-700/60 rounded" />
+                                    <div className="h-10 bg-gray-700/40 rounded-lg" />
+                                    <div className="h-4 w-20 bg-gray-700/60 rounded mt-6" />
+                                    {Array.from({ length: 5 }).map((_, i) => (
+                                        <div key={i} className="h-8 bg-gray-700/30 rounded-lg" />
+                                    ))}
+                                    <div className="h-4 w-10 bg-gray-700/60 rounded mt-6" />
+                                    <div className="flex flex-wrap gap-2">
+                                        {Array.from({ length: 6 }).map((_, i) => (
+                                            <div key={i} className="h-6 w-14 bg-gray-700/30 rounded-full" />
+                                        ))}
+                                    </div>
+                                </div>
+                            </aside>
+                            {/* 카드 스켈레톤 */}
+                            <main className="md:col-span-3">
+                                <div className="h-5 w-32 bg-gray-700/40 rounded mb-8 animate-pulse" />
+                                <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
+                                    {Array.from({ length: 9 }).map((_, i) => (
+                                        <PostCardSkeleton key={i} />
+                                    ))}
+                                </div>
+                            </main>
                         </div>
                     }
                 >
