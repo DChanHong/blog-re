@@ -1,5 +1,11 @@
 import { ArrowUpRight, BookOpenText, Github } from "lucide-react";
-import { careerMetrics, personalInfoData } from "@/data/careerData";
+import { personalInfoData } from "@/data/careerData";
+
+const highlights = [
+    { value: "약 3년", label: "실서비스 개발 경력", caption: "2023.09부터" },
+    { value: "4개", label: "참여·주도한 프로젝트", caption: "법률·ERP·CMS·실시간 상담" },
+    { value: "2개", label: "현재 운영 중인 서비스", caption: "실시간 상담 · ERP" },
+];
 
 export default function CareerHighlight() {
     return (
@@ -22,7 +28,7 @@ export default function CareerHighlight() {
                             {personalInfoData.name}
                         </h2>
                         <p className="mt-3 max-w-2xl text-sm leading-7 text-slate-600 sm:text-base sm:leading-8">
-                            {personalInfoData.introduction}
+                            프론트엔드를 출발점으로 API 설계와 실시간 플랫폼, 백엔드 개발까지 담당 범위를 넓혀왔습니다. 운영되는 서비스와 함께 역할을 확장하며 성장해왔습니다.
                         </p>
                         <div className="mt-5 flex flex-wrap gap-2">
                             <a
@@ -54,14 +60,14 @@ export default function CareerHighlight() {
                         <p className="mt-2 text-base font-semibold text-slate-900">{personalInfoData.company}</p>
                         <div className="my-4 h-px bg-slate-200" />
                         <p className="text-xs leading-5 text-slate-500">
-                            프론트엔드를 중심으로 사용자 서비스, 관리자 CMS, ERP와 실시간 상담 플랫폼을 개발하고 있습니다.
+                            사용자 서비스, 관리자 CMS, ERP, 실시간 상담 플랫폼 등 운영 중인 웹 서비스 개발을 담당하고 있습니다.
                         </p>
                     </div>
                 </div>
 
                 {/* 핵심 지표 */}
-                <dl className="relative mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
-                    {careerMetrics.map((m) => (
+                <dl className="relative mt-6 grid grid-cols-1 gap-3 sm:grid-cols-3">
+                    {highlights.map((m) => (
                         <div key={m.label} className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
                             <dt className="text-xs font-medium text-slate-500">{m.label}</dt>
                             <dd className="mt-1.5 text-xl font-bold tracking-tight text-slate-900 sm:text-2xl">
