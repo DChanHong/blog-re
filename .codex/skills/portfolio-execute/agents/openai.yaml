@@ -1,0 +1,4 @@
+interface:
+  display_name: "Portfolio Plan Execute"
+  short_description: "승인된 포트폴리오 개편 plan 하나를 코드와 문서에 구현"
+  default_prompt: "Use $portfolio-execute to implement one approved portfolio reorganization plan."
