@@ -5,7 +5,6 @@ import { CiSearch } from "react-icons/ci";
 import "swiper/css";
 import { FreeMode, Mousewheel } from "swiper/modules";
 import type { ChatbotFaqDto } from "@/types/chatbot";
-import { useIncrementFaqHitMutation } from "@/actions/chatbot";
 import type { ChatMessageItem } from "@/store/chatbotStore";
 import { ChatLoadingWithStyles as ChatLoading } from "./ChatLoading";
 
@@ -35,7 +34,6 @@ export const ChatBox = ({
     onAsk,
     onClose,
 }: ChatBoxProps) => {
-    const incHit = useIncrementFaqHitMutation();
     if (!isOpen) return null;
     return (
         <>
@@ -115,7 +113,6 @@ export const ChatBox = ({
                                                 onClick={(e) => {
                                                     e.stopPropagation();
                                                     // 히트 증가 트리거 (실패해도 UX 방해하지 않음)
-                                                    if (f.id) incHit.mutate(f.id);
                                                     onPresetClick(f.question, f.answer);
                                                 }}
                                                 onMouseDown={(e) => e.stopPropagation()}

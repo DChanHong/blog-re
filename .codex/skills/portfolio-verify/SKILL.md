@@ -24,6 +24,7 @@ Read the full plan, its implementation log, applicable repository instructions, 
 - Do not expand the plan or silently waive failures.
 - Ignore unrelated pre-existing worktree changes, but call out overlap that makes the verdict unreliable.
 - For an audit or baseline-only plan that explicitly requires existing validation failures to be recorded rather than fixed, execute every required command and verify that its result is reported accurately. A pre-existing nonzero result does not by itself fail that audit plan.
+- For an implementation plan whose approved baseline records repository-wide validation failures, execute every required command and compare it with that baseline. A pre-existing failure may be accepted only when the implementation log demonstrates that the result did not worsen and focused checks for every changed file pass; new failures in the changed scope still fail verification.
 
 ## Required Checks
 

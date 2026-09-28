@@ -9,7 +9,6 @@ import { GlowingInput } from "@/components/ui/glowing-input";
 import { Button } from "@/components/ui/Buttons/neon-button";
 import { useChatbotStore } from "@/store/chatbotStore";
 import type { ChatbotFaqDto } from "@/types/chatbot";
-import { useIncrementFaqHitMutation } from "@/actions/chatbot";
 
 interface SavedQuestionItem {
     idx: number;
@@ -36,7 +35,6 @@ export default function Section2({ categories, faqs }: Section2Props) {
     };
 
     const [activeCategory, setActiveCategory] = useState<string | undefined>(categories?.[0]);
-    const incHit = useIncrementFaqHitMutation();
 
     useEffect(() => {
         // 카테고리 목록이 갱신되면 기본 선택값 갱신
@@ -60,12 +58,7 @@ export default function Section2({ categories, faqs }: Section2Props) {
     }, [faqs, activeCategory]);
 
     // 저장된 질문 실행: 질문/답변 메시지 푸시 후 챗봇 열기
-    const handleSaved = async (savedQuetions: string, savedAnswer: string, faqId?: string) => {
-        if (faqId) {
-            try {
-                incHit.mutate(faqId);
-            } catch {}
-        }
+    const handleSaved = async (savedQuetions: string, savedAnswer: string) => {
         open();
         addMessage({ isAnswer: false, message: savedQuetions });
         setLoading(true);
@@ -108,9 +101,7 @@ export default function Section2({ categories, faqs }: Section2Props) {
                             className="cursor-pointer font-semibold text-slate-700 hover:text-slate-900 border-slate-400 hover:border-slate-600"
                             variant="ghost"
                             size="default"
-                            onClick={() =>
-                                handleSaved(item.savedQuetions, item.savedAnswer, item.id)
-                            }
+                            onClick={() => handleSaved(item.savedQuetions, item.savedAnswer)}
                         >
                             {item.savedQuetions}
                         </Button>

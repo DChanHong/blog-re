@@ -1,6 +1,6 @@
 # 01. Production Security and Schema Alignment
 
-Status: Approved
+Status: Implemented - Pending Verification
 
 ## Goal
 
@@ -63,6 +63,7 @@ Status: Approved
 - 보안 롤백은 민감 테이블을 다시 공개하지 않는 roll-forward 원칙을 사용한다.
 - 운영 적용 전후의 policy, grant, index, row count, route 결과를 별도 보안 검증 문서에 남긴다.
 - 보안 회귀 스크립트를 `npm run verify:security`로 실행할 수 있게 한다.
+- OpenAI Assistants API 종료로 인한 `/api/chatbot/ask` 404는 이 plan에서 Responses API로 재설계하지 않는다. 이 plan은 rate-limit/settings/conversation의 service-role 경계와 저장소 전환까지만 검증하고, Chatbot 응답 기능 복구는 `06-ask-chatbot-decision-and-implementation.md`로 이관한다.
 
 ### Approved Recommendations
 
@@ -308,7 +309,8 @@ npm run verify:security
 ### Service Role and Functional Smoke
 
 - service role로 sensitive table의 aggregate count 조회 가능
-- `/api/chatbot/ask`의 rate-limit/settings/conversation 저장 경로가 RLS 변경 후에도 정상
+- `/api/chatbot/ask`의 rate-limit/settings/conversation DB 접근 코드가 service-role client를 사용함
+- Assistants API가 2026-08-26 종료되어 실제 답변 smoke는 404/500으로 실패하며, Responses API 이전과 기능 복구는 Plan 06에서 수행
 - FAQ GET/category 정상
 - Blog page/list/detail 및 Blog API 정상
 - Home/Career 기본 smoke 정상
@@ -348,7 +350,8 @@ npm run verify:security
 - required constraints/indexes가 운영과 canonical migration에 모두 존재한다.
 - `chatbot_faq_log`가 새로 생성되지 않고, 기존 환경에 있다면 삭제되지 않는다.
 - conversation 저장·조회·통계가 service-role client를 사용한다.
-- `/api/chatbot/ask`의 rate-limit, settings, conversation 저장 기능이 정상 작동한다.
+- rate-limit, settings, conversation repository가 service-role client를 사용하고 운영 RLS 이후 service-role aggregate 접근이 유지된다.
+- `/api/chatbot/ask`의 OpenAI 응답 기능은 Assistants API 종료에 따른 Plan 06 이전 대상으로 기록되며, 이 plan의 완료 조건에서는 제외된다.
 - `POST /api/chatbot/faqs`가 제거되고 FAQ GET은 유지된다.
 - crawler/test-detail API route가 local과 production에서 404를 반환한다.
 - API Docs UI/JSON route가 local과 production에서 404를 반환한다.
@@ -403,3 +406,31 @@ npm run verify:security
    - Chatbot 존치, conversation 수집·익명화·보관 기간, OpenAI assistant/thread 생명주기를 결정한다.
 4. `07-seo-performance-and-quality-gates.md`
    - 전체 lint/format/CI, lockfile root, API payload/TTFB, SEO 이전을 완성한다.
+
+## Implementation Log
+
+### 2026-09-29
+
+- 운영 Supabase identity와 필수 5개 테이블을 확인하고, 민감 row body 없이 적용 전 row count/RLS/policy/grant/index/column metadata를 snapshot했다.
+- production forward migration을 transaction으로 적용했으며 동일 migration의 두 번째 실행도 성공했다.
+- 적용 전후 행 수는 `velog=97`, `chatbot_faq=15`, `chatbot_rate_limit=6`, `chatbot_conversations=8`, `chatbot_settings=1`로 일치했다.
+- public 테이블은 anon/authenticated SELECT만, sensitive 테이블은 service role만 접근하도록 정규화하고 필수 index를 생성했다.
+- canonical Chatbot/Velog schema를 운영 결과에 맞췄고 `chatbot_faq_log`는 생성하지 않았다.
+- conversation 저장/조회/통계를 service-role client로 전환하고 FAQ hit mutation의 route/service/repository/client 호출부를 제거했다.
+- crawler/test route와 API Docs UI/JSON route를 제거하고 internal OpenAPI spec, robots, Swagger dependency를 정리했다.
+- 기존 사용자 작업인 detail crawler service/repository 코드는 보존하고 공개 crawler route만 계획대로 제거했다.
+- 보안 회귀 스크립트와 `npm run verify:security`를 추가하고 verifier의 기존 repository-wide baseline 비악화 규칙을 보완했다.
+- OpenAI 공식 문서에서 Assistants API가 2026-08-26 종료됐음을 확인했다. 사용자 승인에 따라 Responses API 이전과 Chatbot 응답 복구는 Plan 06으로 이관했다.
+
+### Focused Checks
+
+- production migration: 2회 연속 성공
+- postflight catalog/row counts 및 anon/service-role regression: 성공
+- `git diff --check`, `npx tsc --noEmit`: 성공
+- `npm run lint`: 기존 baseline과 동일하게 `eslint-plugin-prettier` 누락으로 exit 2
+- `npm run build`: 성공, 111개 static page 생성
+- local `npm run verify:security`: 성공
+- local core page/API smoke: Home, Blog, Career, robots, Chatbot categories, Velog posts 모두 200
+- local route removal: crawler/test/API Docs 404, FAQ POST 405, FAQ GET 200
+- Chatbot answer smoke: Assistants API 종료로 500; 승인된 결정에 따라 Plan 06으로 이관
+- production application route smoke: 사용자 GitHub push 및 Vercel 배포 후 검증 필요

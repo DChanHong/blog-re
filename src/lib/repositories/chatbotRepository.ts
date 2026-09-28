@@ -91,20 +91,6 @@ export async function fetchFaqs(params?: { category?: string | null }) {
     return (data || []) as FaqRow[];
 }
 
-// FAQ 클릭 시 hit 카운트 증가 (원자적 upsert 아님: 기존 행 업데이트)
-export async function incrementFaqHit(faqId: string): Promise<void> {
-    const supabase = createSupabaseServiceRoleClient();
-    const { data: row, error: selErr } = await supabase
-        .from("chatbot_faq")
-        .select("hit")
-        .eq("id", faqId)
-        .single();
-    if (selErr) throw selErr;
-    const next = (Number(row?.hit ?? 0) || 0) + 1;
-    const { error } = await supabase.from("chatbot_faq").update({ hit: next }).eq("id", faqId);
-    if (error) throw error;
-}
-
 export async function fetchFaqCategories(): Promise<string[]> {
     const supabase = createSupabaseServerClient();
     const { data, error } = await supabase
@@ -128,7 +114,7 @@ export async function saveConversation(params: {
     ip?: string;
     user_agent?: string;
 }) {
-    const supabase = createSupabaseServerClient();
+    const supabase = createSupabaseServiceRoleClient();
     const { data, error } = await supabase
         .from("chatbot_conversations")
         .insert({
@@ -146,7 +132,7 @@ export async function saveConversation(params: {
 
 // AI 대화 로그 조회 (특정 thread)
 export async function getConversationsByThread(threadId: string) {
-    const supabase = createSupabaseServerClient();
+    const supabase = createSupabaseServiceRoleClient();
     const { data, error } = await supabase
         .from("chatbot_conversations")
         .select("*")
@@ -158,7 +144,7 @@ export async function getConversationsByThread(threadId: string) {
 
 // AI 대화 로그 통계 (전체)
 export async function getConversationStats() {
-    const supabase = createSupabaseServerClient();
+    const supabase = createSupabaseServiceRoleClient();
     const { data, error } = await supabase
         .from("chatbot_conversations")
         .select("created_at", { count: "exact" });

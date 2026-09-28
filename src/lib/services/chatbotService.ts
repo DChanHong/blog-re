@@ -3,7 +3,6 @@ import {
     getRateLimitByIp,
     upsertRateLimit,
     fetchFaqs,
-    incrementFaqHit,
     fetchFaqCategories,
     saveConversation,
     getActiveChatbotSettings,
@@ -396,19 +395,6 @@ export async function askChatbot(
 
 export async function getFaqList(params?: { category?: string | null }): Promise<FaqRow[]> {
     return await fetchFaqs({ category: params?.category ?? undefined });
-}
-
-// FAQ 클릭 시 hit 증가
-export async function increaseFaqHit(
-    faqId: string,
-): Promise<{ ok: true } | { ok: false; message: string }> {
-    try {
-        await incrementFaqHit(faqId);
-        return { ok: true };
-    } catch (e: unknown) {
-        const msg = e instanceof Error ? e.message : "Unknown error";
-        return { ok: false, message: msg };
-    }
 }
 
 export async function getFaqCategories(): Promise<string[]> {

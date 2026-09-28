@@ -3,6 +3,7 @@ import {
     fetchPostBySlug,
     fetchPostsMissingDetail,
     fetchPostsForDetailRefresh,
+    fetchPostByDetailLinkOrSlug,
     getExistingKeys,
     insertRows,
     fetchRecentPosts,
@@ -59,6 +60,16 @@ function parseCreatedAt(label: string): Date {
         return now;
     }
     return parsed;
+}
+
+function parsePublishedAt(label: string): Date {
+    if (!label) return new Date();
+
+    const match = label.match(/(\d{4})년\s*(\d{1,2})월\s*(\d{1,2})일/);
+    if (!match) return new Date();
+
+    const [, year, month, day] = match;
+    return new Date(Number(year), Number(month) - 1, Number(day), 18, 0, 0, 0);
 }
 
 function normalizeVelogUrl(url: string) {
@@ -164,6 +175,44 @@ export async function crawlAndPersist(url: string, expectedCount?: number, detai
     console.log(`[service] detailUpdated=${detailUpdated} detailFailed=${detailFailed}`);
 
     return { inserted, scanned: articles.length, detailUpdated, detailFailed };
+}
+
+export async function crawlAndPersistDetail(detailUrl: string) {
+    const sourceUrl = normalizeVelogUrl(detailUrl);
+    if (!sourceUrl) {
+        throw new Error("detailUrl이 비어 있습니다.");
+    }
+
+    const detail = await crawlVelogDetail(sourceUrl);
+    const savedSourceUrl = detail.sourceUrl || sourceUrl;
+    const slug = createSlugFromVelogUrl(savedSourceUrl);
+    const detailLink = savedSourceUrl;
+    const detailUpdate = toDetailUpdate(detailLink, detail);
+    const existing = await fetchPostByDetailLinkOrSlug(detailLink, slug);
+
+    if (existing) {
+        await updatePostDetailByDetailLink(existing.detail_link, detailUpdate);
+        return { inserted: 0, updated: 1, slug, title: detail.title, sourceUrl: savedSourceUrl };
+    }
+
+    await insertRows([
+        {
+            title: detail.title,
+            img_src: detail.image,
+            created_at: parsePublishedAt(detail.publishedAt),
+            tags: detail.tags,
+            detail_link: detailLink,
+            intro: detail.description,
+            slug,
+            content_html: detail.contentHtml,
+            content_text: detail.contentText,
+            source_url: savedSourceUrl,
+            detail_crawled_at: new Date().toISOString(),
+            detail_crawl_error: null,
+        },
+    ]);
+
+    return { inserted: 1, updated: 0, slug, title: detail.title, sourceUrl: savedSourceUrl };
 }
 
 export async function crawl(url: string): Promise<BlogCrawl[]> {
