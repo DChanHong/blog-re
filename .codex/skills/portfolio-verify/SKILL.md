@@ -23,6 +23,7 @@ Read the full plan, its implementation log, applicable repository instructions, 
 - Do not edit implementation code during verification.
 - Do not expand the plan or silently waive failures.
 - Ignore unrelated pre-existing worktree changes, but call out overlap that makes the verdict unreliable.
+- For an audit or baseline-only plan that explicitly requires existing validation failures to be recorded rather than fixed, execute every required command and verify that its result is reported accurately. A pre-existing nonzero result does not by itself fail that audit plan.
 
 ## Required Checks
 
@@ -43,7 +44,7 @@ Also perform conditional checks:
 
 ## Verdict
 
-Pass only when all acceptance criteria and required commands succeed.
+Pass only when all acceptance criteria and required commands succeed, except for a baseline-only plan covered by the explicit recorded-failure rule above.
 
 ### Pass
 

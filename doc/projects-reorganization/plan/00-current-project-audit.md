@@ -1,6 +1,6 @@
 # 00. Current Project Audit
 
-Status: Implemented - Pending Verification
+Status: Verified
 
 ## Goal
 
@@ -63,6 +63,12 @@ Status: Implemented - Pending Verification
 - Home, Blog 목록, Blog 상세 대표 1개, Career 화면만 desktop/mobile baseline 이미지로 보관한다.
 - 현재 lint, build, local smoke test 실패는 수정하지 않고 기준선으로 기록한다.
 - 감사 단계에서는 코드, DB, SEO, route를 변경하지 않는다.
+
+### Verification Clarifications
+
+- 이 plan은 수정 plan이 아닌 baseline audit이므로 필수 명령을 모두 실행하되, 명시적으로 수정 금지된 기존 실패는 결과를 정확히 기록했다면 audit 검증의 단독 실패 사유로 보지 않는다.
+- 운영 DB의 `pg_catalog` 직접 조회 credential이 없으면 migration 정의, PostgREST schema metadata, service-role/anon 실행 결과, 접근 실패 증거를 분리해 기록하고 exact policy/index definition은 보안·schema plan의 차단 조건으로 이전한다.
+- loading, empty, error는 운영 데이터를 변경하거나 인위적으로 외부 장애를 만들지 않고, 안전한 실행 검색과 source branch 분석을 병행해 기록한다.
 
 ## Scope
 
@@ -187,6 +193,8 @@ None. 현재 SEO 출력과 코드 구성을 기록하고 후속 변경 후보만
 
 - `doc/projects-reorganization/plan/00-current-project-audit.md`
   - 실행 완료 후 status와 implementation log 추가
+- `.codex/skills/portfolio-verify/SKILL.md`
+  - baseline audit의 명시적 recorded-failure 검증 규칙 추가
 
 ### Source Code
 
@@ -247,7 +255,7 @@ npm run build
 - 모든 page route와 API route가 문서화되어 있다.
 - global layout과 페이지별 component 구조가 문서화되어 있다.
 - Blog, Career, Chatbot 데이터 흐름이 문서화되어 있다.
-- 운영 Supabase의 실제 schema, RLS, indexes, aggregate counts가 기록되어 있다.
+- 운영 Supabase의 실제 schema, aggregate counts, 실효 anon 가시성과 확인 가능한 RLS/index 증거가 기록되어 있다. `pg_catalog` 접근이 불가능하면 그 사유와 후속 차단 조건이 기록되어 있다.
 - migration SQL과 운영 schema 차이가 기록되어 있다.
 - 민감한 Chatbot message, IP, User-Agent 값이 열람 또는 기록되지 않았다.
 - 운영 사이트와 local site의 주요 route 상태가 기록되어 있다.
@@ -316,3 +324,24 @@ npm run build
 - Production smoke: 핵심 page, sitemap, robots, 읽기 전용 API의 응답과 metadata를 확인했다. DB를 변경하는 API는 실행하지 않았다.
 - Browser baseline: 모든 핵심 화면에서 desktop/mobile 가로 overflow가 없었고 Home에서 React hydration error `#418`을 기록했다.
 - Change boundary: `src/`, `migrations/`, configuration, dependencies, route, SEO, 운영 DB를 변경하지 않았다.
+
+### Verification Correction - 2026-09-28
+
+- 누락 dependency를 임시 추가해 lint를 재확인한 결과 기존 소스에 978건의 문제(959 errors, 19 warnings)가 있어 audit 범위에서 수정할 수 없음을 확인했다. 임시 dependency 변경은 완전히 되돌렸다.
+- Supabase CLI는 access token 부재로 운영 project metadata 접근이 차단됐고, service-role PostgREST에서 `pg_policies`, `pg_indexes`는 모두 404/`PGRST205`를 반환했다.
+- loading, empty, error, not-found 구현을 source branch와 안전한 runtime 결과로 추가 분석했고, 운영 Blog의 미일치 검색 empty UI를 200 응답으로 확인했다.
+- `.codex/skills/portfolio-verify/SKILL.md`에 baseline-only plan의 명시적 recorded-failure 예외를 추가해 원래 승인된 감사 범위와 검증 규칙을 정렬했다.
+
+## Verification Log
+
+### 2026-09-28 - Pass
+
+- Acceptance criteria: route, component, data flow, API, SEO, runtime, Supabase, decision matrix, risk, follow-up plan 항목이 audit report에 존재함을 확인했다.
+- `npm run lint`: exit 2. `eslint-plugin-prettier` 누락으로 실패했고, baseline-only plan에 승인된 기존 실패 기록과 일치했다.
+- `npm run build`: exit 0. 113개 static page 생성과 최종 build 완료를 확인했다. lint plugin 및 workspace root 경고는 기존 baseline과 일치했다.
+- Local smoke: `/`, `/blog`, 대표 `/blog/[slug]`, `/career`, `/api-docs`, `/api/blog/posts` 200, 미존재 route 404를 확인했다.
+- Visual artifacts: desktop/mobile WebP 8개가 모두 0 byte보다 크고 정상 decoding됨을 확인했다. 운영 핵심 화면에 가로 overflow가 없는 기존 측정과 Home hydration error 기록을 대조했다.
+- Runtime states: Blog empty 상태를 운영에서 안전하게 재현했고 loading/error/not-found source branch 분석이 추가됐음을 확인했다.
+- Database evidence: schema/count/anon 가시성, migration drift, CLI token 부재, `pg_policies`/`pg_indexes` 404 `PGRST205`, 후속 차단 조건이 분리 기록됐음을 확인했다.
+- Change boundary: `src/`, `migrations/`, package/dependency, route, SEO, 운영 DB에 변경이 없고 `git diff --check`가 통과했다.
+- Verdict: **Pass**.

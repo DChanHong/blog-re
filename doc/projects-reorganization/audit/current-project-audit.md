@@ -28,6 +28,7 @@
 - 운영 Supabase는 schema metadata, table count, anon 가시성만 읽기 전용으로 확인했다.
 - `chatbot_conversations`의 message, IP, User-Agent 값은 열람하지 않았다.
 - DB 직접 연결 URL/관리 API credential이 없어 운영의 정확한 policy·index 이름은 `pg_catalog`에서 조회하지 못했다. 이 항목은 migration 정의와 anon 실행 결과를 분리해 기록했다.
+- 보완 실행에서 Supabase CLI는 `LegacyPlatformAuthRequiredError`(접근 토큰 부재)로 중단됐다. service-role key로 PostgREST `pg_policies`, `pg_indexes`를 조회했으나 둘 다 404/`PGRST205`로 API schema에 노출되지 않음을 확인했다.
 
 ## 3. Repository and Route Inventory
 
@@ -168,6 +169,22 @@
 
 Home의 `#418`은 server/client text mismatch 계열 hydration 문제로 보이며 후속 layout plan에서 development 모드 stack으로 원인을 확정한다.
 
+### Loading, Empty, Error, and Not-found States
+
+| State | Observed implementation | Result / decision |
+|---|---|---|
+| Home loading | recent Blog을 `Suspense` + `BlogSkeleton`로 감씬 | **유지/교체**: 동일 패턴을 새 Home skeleton으로 교체 |
+| Blog loading | route `Suspense` 사이드바/card skeleton, client refetch 시 9개 `PostCardSkeleton` | **유지/개선**: 이중 loading 책임을 단순화 |
+| Chatbot loading | message 전송 중 `ChatLoading`, input/button disabled | **보류**: Chatbot 존치 결정 후 재평가 |
+| Blog empty | posts가 0건이면 “포스트가 없습니다”와 검색 조건별 안내 출력 | **유지/개선** |
+| Route error | `src/app/error.tsx` 및 route별 `error.tsx`가 없음 | **교체**: 새 global/route error boundary 필요 |
+| Blog query error | `postsQuery.isError` 분기가 없어 stale/empty UI와 구분되지 않음 | **교체**: retry/error message 추가 |
+| Home server error | `BlogContainer` fetch 예외를 자체 처리하지 않아 route 오류로 전파 | **개선** |
+| API error | 각 route가 JSON 400/429/500을 반환하지만 error code 규칙이 일부 불일치 | **통합** |
+| Blog detail missing | `notFound()` → custom `src/app/not-found.tsx`, runtime 404 | **유지/교체** |
+
+운영 DB 변경이나 인위적 외부 장애 유발은 하지 않았다. 고유한 미일치 검색어로 운영 `/blog` empty 상태가 200과 “포스트가 없습니다”를 출력함을 확인했다. Error 항목은 안전한 source 분기를 근거로 삼았다.
+
 ### Baseline Images
 
 | Page | Desktop | Mobile |
@@ -203,6 +220,7 @@ Blog detail mobile은 문서 높이 16,811px로 Chrome 전체 페이지 WebP 생
 - 결과: **실패**
 - 원인: ESLint 설정이 `eslint-plugin-prettier`를 참조하지만 dependency에 설치되지 않음.
 - 영향: 실제 lint rule/type 문제를 아직 판단할 수 없음.
+- 보완 진단: 누락 plugin을 임시 설치해 실행하면 978건(959 errors, 19 warnings)이 발견된다. 918건은 Prettier 자동 수정 후보고, 나머지는 `no-explicit-any`, 미사용 변수, unescaped entity, `<img>` 등이다. 감사 범위를 넘어서 실제 수정은 하지 않았고 임시 dependency도 되돌렸다.
 
 ### Production Build
 
