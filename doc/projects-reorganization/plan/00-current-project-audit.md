@@ -1,6 +1,6 @@
 # 00. Current Project Audit
 
-Status: Approved
+Status: Implemented - Pending Verification
 
 ## Goal
 
@@ -297,3 +297,22 @@ npm run build
 11. SEO migration, redirects, accessibility, and final cleanup
 
 이 목록은 감사 결과에 따라 병합, 분리 또는 순서 변경할 수 있다.
+
+## Implementation Log
+
+### 2026-09-28
+
+- `doc/projects-reorganization/audit/current-project-audit.md`에 repository, route, component, data flow, API, SEO, runtime, Supabase, 품질 기준선을 통합 기록했다.
+- `doc/projects-reorganization/baseline/`에 Home, Blog 목록, Blog 상세, Career의 desktop/mobile WebP 8개를 생성했다.
+- 운영 Supabase는 schema metadata, aggregate count, anon 가시성만 읽기 전용으로 확인했고 message, IP, User-Agent 실제 값은 열람하지 않았다.
+- 운영 `chatbot_conversations`/`chatbot_settings`의 anon 노출과 무인증 crawler/mutation API를 최우선 위험으로 판정했다.
+- 위험도와 의존성을 반영해 보안/schema 정렬을 첫 번째로 하는 8단계 후속 plan 순서를 제안했다.
+
+### Validation Results
+
+- `npm run lint`: 실패. `eslint-plugin-prettier`가 설치되지 않아 lint 시작 전에 중단됐다.
+- `npm run build`: network 허용 후 성공. 113개 static page를 생성했고 lint plugin 및 workspace root 경고를 기록했다.
+- Local smoke: `/`, `/blog`, 대표 `/blog/[slug]`, `/career`, `/api-docs`, Blog API는 200, 미존재 route는 404를 확인했다.
+- Production smoke: 핵심 page, sitemap, robots, 읽기 전용 API의 응답과 metadata를 확인했다. DB를 변경하는 API는 실행하지 않았다.
+- Browser baseline: 모든 핵심 화면에서 desktop/mobile 가로 overflow가 없었고 Home에서 React hydration error `#418`을 기록했다.
+- Change boundary: `src/`, `migrations/`, configuration, dependencies, route, SEO, 운영 DB를 변경하지 않았다.
