@@ -2,11 +2,11 @@ import type { CareerMetric, GrowthStep, Capability } from "@/types/portfolio";
 
 export const personalInfoData = {
     name: "성찬홍",
-    position: "Frontend Engineer / Web Developer",
+    position: "Web Developer",
     company: "스카이즈코리아 개발팀",
     period: "2023.09 ~ 현재",
     introduction:
-        "운영 요구사항을 화면에 구현하는 데서 멈추지 않고, API·데이터·실시간 이벤트 흐름까지 연결해 실제로 사용되는 서비스를 만듭니다.",
+        "비즈니스가 돌아가는 방식을 이해하고, 앞으로 나아가는 데 필요한 도구를 만듭니다.",
     university: "동아대학교",
     degree: "전자공학과 학사",
     gpa: "GPA 3.9",
