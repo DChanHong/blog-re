@@ -2,27 +2,35 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import TextLink from "@/components/ui/TextLink";
 import type { VelogPostDto } from "@/types/blog";
+import SectionEntrance from "../SectionEntrance";
 import styles from "../home-reference.module.css";
 
-export function WritingPreviewFrame({ children }: { children: ReactNode }) {
+export function WritingPreviewFrame({
+    children,
+    animated = true,
+}: {
+    children: ReactNode;
+    animated?: boolean;
+}) {
+    const Container = animated ? SectionEntrance : "div";
     return (
         <section className={`${styles.section} ${styles.writing}`} aria-labelledby="home-writing">
-            <div className={styles.container}>
-                <div className={styles.writingHeading}>
+            <Container className={styles.container}>
+                <div className={styles.writingHeading} data-entrance="heading">
                     <p className={styles.eyebrow}>최근 글</p>
                     <h2 id="home-writing" className={styles.heading}>
-                        기술적인 고민.
+                        새롭게 배우고.
                         <br />
-                        <span>그리고 해결의 기록.</span>
+                        <span>배움의 과정을 기록합니다.</span>
                     </h2>
                 </div>
                 {children}
-                <div className={styles.more}>
+                <div className={styles.more} data-entrance="heading">
                     <TextLink href="/writing" className={styles.link}>
                         전체 글 보기 <span aria-hidden="true">›</span>
                     </TextLink>
                 </div>
-            </div>
+            </Container>
         </section>
     );
 }
@@ -43,7 +51,7 @@ export default function Section3({
             ) : blogList.length === 0 ? (
                 <p className={styles.writingState}>아직 공개된 글이 없습니다.</p>
             ) : (
-                <ul className={styles.articleList}>
+                <ul className={styles.articleList} data-entrance="rows">
                     {blogList.slice(0, 2).map((post) => {
                         const sourceHref =
                             post.source_url ||

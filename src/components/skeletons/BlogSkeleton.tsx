@@ -3,7 +3,7 @@ import styles from "@/components/domain/home/home-reference.module.css";
 
 export default function BlogSkeleton() {
     return (
-        <WritingPreviewFrame>
+        <WritingPreviewFrame animated={false}>
             <div
                 role="status"
                 aria-label="최근 글을 불러오는 중"
