@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
-import { capabilitiesData, careerMetrics, growthSteps, personalInfoData } from "@/data/careerData";
+import { capabilitiesData, careerMetrics, personalInfoData } from "@/data/careerData";
 import { projectsData } from "@/data/projects";
 import PrimaryButton from "@/components/ui/PrimaryButton";
 import TextLink from "@/components/ui/TextLink";
@@ -29,6 +29,39 @@ const capabilityCards = [
         title: "운영하며 안정성을 높입니다",
         description:
             "실제 사용 중 발생한 문제를 재현하고 원인을 찾아 개선합니다. 연결 복구와 데이터 재조회, 대량 처리와 외부 연동의 실패 대응을 다룹니다.",
+    },
+];
+
+const homeJourney = [
+    {
+        year: "2023",
+        title: "화면에서 서비스로",
+        description:
+            "React·Next.js로 웹 개발을 시작했습니다. 채용사이트와 법률 서비스에서 사용자·관리자 화면뿐 아니라 API와 데이터 처리까지 맡으며, 하나의 기능이 완성되는 과정을 경험했습니다.",
+    },
+    {
+        year: "2024–2025",
+        title: "데이터부터 직접 설계하다",
+        description:
+            "뉴스 CMS의 PostgreSQL 구조를 설계하고 관리자 화면과 API를 함께 개발했습니다. 화면에 필요한 정보를 넘어, 콘텐츠의 관계와 검색·운영 방식까지 설계 범위를 넓혔습니다.",
+    },
+    {
+        year: "2025–현재",
+        title: "실시간 서비스의 운영을 맡다",
+        description:
+            "약 80개 홈페이지의 상담 위젯과 관리자 콘솔을 개발했습니다. 연결 복구와 상태 동기화를 개선하고, 기존 Go 백엔드의 API와 파일 처리 기능까지 개발 범위를 확장했습니다.",
+    },
+    {
+        year: "2026",
+        title: "기능 전체를 완성하다",
+        description:
+            "인사평가 업무를 화면·API·DB로 구현하고 대량 처리 문제를 개선했습니다. 외주 관리자 기능과 운영 규칙을 직접 구체화하고, 반복되는 개발 구조를 공통 보일러플레이트로 정리했습니다.",
+    },
+    {
+        year: "현재",
+        title: "백엔드와 AI로 더 넓게",
+        description:
+            "Spring Boot 알림 서비스와 Kafka 연동을 구현하고 개발 서버에서 배포·검증했습니다. 개인 프로젝트에서는 FastAPI와 LangGraph로 AI 서비스를 개발하며 웹과 AI를 연결하고 있습니다.",
     },
 ];
 
@@ -112,18 +145,21 @@ export default function ReferenceHome({ writingSlot }: { writingSlot: ReactNode 
                 </SectionEntrance>
             </section>
             <section className={`${styles.section} ${styles.sunken}`} aria-labelledby="home-path">
-                <div className={styles.container}>
+                <SectionEntrance className={styles.container}>
                     <SectionHeading
                         id="home-path"
-                        label="성장 과정"
-                        title="서비스 개발의 시작."
-                        secondary="그리고 역할의 확장."
+                        animated
+                        label="걸어온 길"
+                        title="프론트엔드에서 시작해."
+                        secondary="서비스 전체를 만드는 개발자로."
                     >
-                        프론트엔드를 출발점으로 API 설계와 실시간 플랫폼, 백엔드 개발까지 담당
-                        범위를 넓혀왔습니다. 운영되는 서비스와 함께 역할을 확장하며 성장해왔습니다.
+                        사용자 화면을 만드는 일에서 출발해, API와 데이터 설계, 백엔드 개발과 운영까지
+                        역할을 넓혀왔습니다. 필요한 기능을 직접 완성하고 운영의 문제를 해결하며,
+                        서비스 전반을 연결하는 풀스택 개발 역량을 쌓아왔습니다. 이제는 그 경험에
+                        AI를 더해 만들 수 있는 서비스의 범위를 확장하고 있습니다.
                     </SectionHeading>
-                    <ol className={styles.pathGrid}>
-                        {growthSteps.map((item) => (
+                    <ol className={styles.pathGrid} data-entrance="cards">
+                        {homeJourney.map((item) => (
                             <li key={item.year} className={styles.pathItem}>
                                 <p className={styles.year}>{item.year}</p>
                                 <h3>{item.title}</h3>
@@ -131,7 +167,7 @@ export default function ReferenceHome({ writingSlot }: { writingSlot: ReactNode 
                             </li>
                         ))}
                     </ol>
-                </div>
+                </SectionEntrance>
             </section>
             <section className={styles.section} aria-labelledby="home-work">
                 <div className={styles.container}>

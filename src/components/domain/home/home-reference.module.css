@@ -170,6 +170,7 @@
     margin-top: 8px;
     font-size: 23px;
     line-height: 1.3;
+    min-height: 2.6em;
     font-weight: 600;
     letter-spacing: -0.02em;
 }
@@ -469,8 +470,12 @@
         line-height: 1.06;
     }
     .capabilityGrid,
-    .pathGrid,
     .outcomes {
         grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
+@media (min-width: 1280px) {
+    .pathGrid {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
     }
 }
