@@ -5,12 +5,12 @@ Updated: 2026-09-29 (Asia/Seoul)
 ## Current State
 
 - Branch: `develop`
-- Latest implementation commit: `fa21c48 fix: secure production data boundaries`
+- Latest implementation commit: `60330c9 feat: implement portfolio information architecture`
 - Plan 00: `Verified`
 - Plan 01: `Verified` (operational application verification excluded by user decision)
-- Plan 02: `Approved` — `plan/02-information-architecture-and-content-model.md`
+- Plan 02: `Verified` — `plan/02-information-architecture-and-content-model.md`
 - Plans after 02 have not been written yet.
-- The working tree was clean immediately after commit `fa21c48`.
+- The working tree was clean immediately after commit `60330c9`; Plan 02 completion documentation and refreshed local evidence were subsequently added for handoff.
 
 ## What Is Already Complete
 
@@ -30,17 +30,23 @@ Updated: 2026-09-29 (Asia/Seoul)
 
 Do not reapply or roll back the production migration merely because work continues on another computer. Plan 01 uses a security-preserving roll-forward policy.
 
-## Required Next Action: Implement Plan 02
+## Next Action: Interview and Approve Plan 03
 
 - On 2026-09-29 the user explicitly removed production application verification as a completion requirement and requested proceeding to Plan 02.
 - Plan 01 is verified using the completed local checks and existing DB security evidence under its revised acceptance criteria.
 - Vercel deployment, production route/security smoke, and deployment waiting are not prerequisites for continuing the reorganization. Do not add these gates to subsequent plans unless the user requests them.
 - Retain the historical production observations in the audit artifact; completion does not assert that the production application has been updated.
-- The user approved Plan 02 on 2026-09-29. Run `$portfolio-execute` with `doc/projects-reorganization/plan/02-information-architecture-and-content-model.md`, then hand off to `$portfolio-verify` for local verification.
+- Plan 02 was approved, implemented and verified on 2026-09-29. The final `$portfolio-verify` verdict is PASS; see the audit below.
+- New Work/Project/Resume/Writing routes, redirects, Korean navigation, split typed content and removal of active AI UI are implemented. Existing career/project facts and blog data contracts are preserved.
+- Local build, TypeScript and diff checks passed. The browser/HTTP/content/SEO script passed 54 checks and supplementary checks passed 4. Global lint remains blocked by the existing missing plugin; scoped Next rules covered all 32 changed/moved TS/TSX files with no errors and one pre-existing image warning.
+- Full visual redesign and career-content revision have not been started. Next is `$portfolio-plan-interview` for Plan 03 (design system and global shell); no later plan is approved for implementation yet.
 
 Relevant files:
 
 - `doc/projects-reorganization/plan/02-information-architecture-and-content-model.md`
+- `doc/projects-reorganization/audit/02-information-architecture-verification.md`
+- `doc/projects-reorganization/audit/02-information-architecture-check.cjs`
+- `doc/projects-reorganization/baseline/plan02/checks.json`
 - `doc/projects-reorganization/plan/01-production-security-and-schema-alignment.md`
 - `doc/projects-reorganization/audit/production-security-verification.md`
 - `migrations/20260928_production_security_schema_alignment.sql`
@@ -59,7 +65,7 @@ The user approved the following handling:
 
 ## Plan 02 Decisions
 
-The approved Plan 02 is the implementation contract for routes, content ownership, navigation, Korean-only UI, and complete AI UI removal. Implement it with `$portfolio-execute`; use the full plan rather than this handoff alone.
+Plan 02 is verified for routes, content ownership, navigation, Korean-only UI, and complete active AI UI removal. Use the full plan and final audit evidence rather than this handoff alone.
 
 ## Plan 02 Interview Decisions — 2026-09-29
 

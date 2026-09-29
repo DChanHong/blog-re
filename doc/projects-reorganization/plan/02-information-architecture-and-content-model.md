@@ -1,6 +1,6 @@
 # 02. Information Architecture and Content Model
 
-Status: Approved
+Status: Verified
 
 Approved: 2026-09-29 (Asia/Seoul)
 
@@ -268,3 +268,25 @@ npm run start -- -p 3101
 5. `07-seo-performance-and-quality-gates.md`: 전체 lint/format 및 성능 등 기존 후속 품질 과제. 운영 검증은 사용자 요청 없이는 필수 게이트로 복구하지 않음.
 
 다음 계획들은 아직 승인 문서가 아니다. 본 plan 승인으로 다른 계획의 구현까지 승인된 것으로 해석하지 않는다.
+
+## Implementation Log — 2026-09-29
+
+- 구현 커밋: `60330c9 feat: implement portfolio information architecture` (실행 전 기준 `8c03538`).
+- 공통 타입/프로젝트 데이터 분리, Work/Project 신규 페이지, Resume/Writing 이동, exact 308, 메뉴/내부 링크/fragment 및 한국어 UI 반영을 완료했다. 기존 프로젝트 모달은 상세 페이지로 대체했다.
+- AI mount를 제거하고 기존 비활성 UI·서버·DB를 보존했다. metadata, JSON-LD, sitemap, robots를 새 URL과 정렬했다.
+- 계획의 Create/Update/Move/Retain 파일과 구현 단계 1–11을 대조했다. 추가로 `src/lib/seo/jsonLd.ts`의 SearchAction URL, `src/components/home/BlogContainer.tsx`의 기존 slug/source_url 전달, `src/components/domain/blog/PostCard.tsx`의 fallback 한국어 문구, `src/components/domain/home/Section4/index.tsx`의 이동된 데이터 import/상세 링크를 갱신했다. 승인된 링크·한국어·데이터 책임 분리 범위 안의 소비자 수정이며 제품 범위 변경은 없다.
+- 원본 데이터 deepEqual, 프로젝트 4개 전체 필드 표시, 로컬 경로/SEO/390px·1440px/키보드/필터/AI 요청 점검을 수행했다. build와 TypeScript는 통과했고 전체 lint는 기존 plugin 누락으로 종료했다. 변경 파일 Next 규칙 점검은 오류 0, 기존 이미지 경고 1이었다.
+- [감사 기록](../audit/02-information-architecture-verification.md), [재실행 스크립트](../audit/02-information-architecture-check.cjs), `baseline/plan02/` 결과·시각 자료를 남겼다. 상세 결과와 기존 shell 관찰 사항은 감사 기록을 참조한다.
+- DB/API 계약·Plan 01 경계는 유지했으며 운영 배포/DB 재검증/데이터 쓰기는 하지 않았다. 계획 이탈이나 추가 제품 결정은 없다.
+- 별도 `$portfolio-verify`에서 본 계획의 최종 판정을 수행해야 한다. 실행 단계에서는 Verified를 선언하지 않으며 Plan 03은 시작하지 않았다.
+
+## Verification Log — 2026-09-29
+
+- Verdict: **PASS**. `$portfolio-verify`로 승인된 수용 기준, 계획 파일 목록/단계 및 `8c03538` 대비 실제 변경을 대조했다. 구현 코드는 수정하지 않았다.
+- `npm run build` 종료 0 (118개 정적 페이지), build 이후 `npx tsc --noEmit` 종료 0, `git diff --check` 통과. 로컬 서버 `npm run start -- -p 3101`에서 재검증했다.
+- `npm run lint` 종료 2는 승인된 기존 `eslint-plugin-prettier` 누락과 동일하다. 이동 파일을 누락하지 않도록 `git diff --no-renames 8c03538 --name-only --diff-filter=AM`으로 수집한 TS/TSX 32개에 Next core-web-vitals/typescript 규칙을 적용했다. 오류 0, 기존 PostCard 이미지 경고 1. 구현 로그의 30개 점검에 더해 이동된 ResumePage/WritingListPage까지 포함한 최종 점검이다. 새로운 변경 범위 오류가 없으므로 승인 기준선 예외를 적용했다.
+- 기본 점검 54개 재실행 통과: 원본 데이터 전체 동등성, 각 프로젝트 전체 필드, 경로/308/query/fragment/404, 보안 route, SEO, 글 기능·상태, desktop/mobile 및 자동 AI 요청 0건.
+- 추가 점검 4개 통과: 한국어 404/홈 복귀, reduced-motion 설정에서 모바일 메뉴 Enter/Tab/Escape 및 프로젝트 링크 focus/Enter, Writing 오류 재시도 복구, 반복 query와 한글/특수문자 보존. 실제 2px 파란 focus ring을 계산 스타일과 캡처로 확인했다.
+- 390×844 및 1440×900 시각 자료 확인. 기존 고정 footer 겹침·article 대비·기존 애니메이션은 변경 전 코드가 보존된 후속 디자인 사항이며, 이번 범위의 탐색을 막는 회귀는 발견하지 않았다. unknown slug 서버의 NoFallbackError 로그와 정상 404/한국어 복귀 화면을 함께 기록했다.
+- 상세 근거: [최종 검증 기록](../audit/02-information-architecture-verification.md#final-verification--2026-09-29), [추가 검사 결과](../baseline/plan02/verification-extra.json).
+- 운영 배포, 운영 DB 재검증/쓰기, migration은 수행하지 않았다. 다음으로 승인된 구현 계획은 없다. Plan 03은 별도 인터뷰·작성·승인 후 진행해야 한다.
