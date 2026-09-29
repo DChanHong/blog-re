@@ -1,5 +1,5 @@
 import { CheckCircle2 } from "lucide-react";
-import type { Capability } from "@/data/careerData";
+import type { Capability } from "@/types/portfolio";
 
 interface TechStackProps {
     capabilities: Capability[];
@@ -10,7 +10,7 @@ export default function TechStack({ capabilities }: TechStackProps) {
         <section id="capabilities" className="scroll-mt-32 pb-20 md:pb-28">
             <div className="mb-10 max-w-3xl">
                 <p className="text-sm font-semibold tracking-[0.2em] text-blue-600 uppercase">
-                    Capabilities
+                    역량
                 </p>
                 <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
                     기술 이름보다 적용 근거

@@ -1,26 +1,27 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
-import type { VelogPostDto } from "@/types/blog";
+import { useRouter } from "next/navigation";
 import { useBlogPostsQuery, useBlogCategoriesQuery, useBlogTagsQuery } from "@/actions/blog";
 import Pagination from "@/components/ui/Pagination";
 import PostCard from "@/components/domain/blog/PostCard";
 import PostCardSkeleton from "@/components/domain/blog/PostCardSkeleton";
 
-interface BlogListPageProps {
+interface WritingListPageProps {
     currentPage: number;
     category: string;
     tag: string;
     search: string;
 }
 
-export default function BlogListPage({ currentPage, category, tag, search }: BlogListPageProps) {
-    const [posts, setPosts] = useState<VelogPostDto[]>([]);
-    const [totalPages, setTotalPages] = useState(0);
-    const [totalPosts, setTotalPosts] = useState(0);
-    const [categories, setCategories] = useState<string[]>([]);
-    const [tags, setTags] = useState<string[]>([]);
+export default function WritingListPage({
+    currentPage,
+    category,
+    tag,
+    search,
+}: WritingListPageProps) {
+    const router = useRouter();
     // md 이하에서 카테고리 접기/펼치기 상태
     const [isCategoryOpen, setIsCategoryOpen] = useState(false);
 
@@ -33,77 +34,80 @@ export default function BlogListPage({ currentPage, category, tag, search }: Blo
         ...(search ? { search } : {}),
     });
 
-    useEffect(() => {
-        const res = postsQuery.data;
-        if (!res) return;
-        if (res.result.success && res.data && res.data.pagination) {
-            setPosts(res.data.posts);
-            console.log(res.data.posts);
-            setTotalPages(res.data.pagination.totalPages);
-            setTotalPosts(res.data.pagination.totalPosts);
-        } else {
-            setPosts([]);
-            setTotalPages(0);
-            setTotalPosts(0);
-        }
-    }, [postsQuery.data]);
+    const result = postsQuery.data;
+    const data = result?.result.success ? result.data : null;
+    const posts = data?.posts ?? [];
+    const totalPages = data?.pagination.totalPages ?? 0;
+    const totalPosts = data?.pagination.totalPosts ?? 0;
+    const hasError = postsQuery.isError || result?.result.success === false;
 
     // React Query: 카테고리/태그 메타데이터
     const categoriesQuery = useBlogCategoriesQuery();
     const tagsQuery = useBlogTagsQuery();
 
-    useEffect(() => {
-        if (categoriesQuery.data?.result.success) {
-            setCategories(categoriesQuery.data.data || []);
-        }
-    }, [categoriesQuery.data]);
+    const categories = categoriesQuery.data?.result.success
+        ? (categoriesQuery.data.data ?? [])
+        : [];
+    const tags = tagsQuery.data?.result.success ? (tagsQuery.data.data ?? []) : [];
 
-    useEffect(() => {
-        if (tagsQuery.data?.result.success) {
-            setTags(tagsQuery.data.data || []);
+    function filterUrl(changes: Partial<Record<"category" | "tag" | "search", string>>) {
+        const values = { category, tag, search, ...changes };
+        const query = new URLSearchParams();
+        for (const [key, value] of Object.entries(values)) {
+            if (value) query.set(key, value);
         }
-    }, [tagsQuery.data]);
+        const suffix = query.toString();
+        return suffix ? `/writing?${suffix}` : "/writing";
+    }
 
     return (
         <div className="grid md:grid-cols-4 gap-8">
             {/* 사이드바 - 필터 */}
-            <aside className="md:col-span-1">
+            <aside className="min-w-0 md:col-span-1">
                 <div className="bg-white rounded-2xl border border-slate-200 p-6 sticky top-[120px] shadow-sm">
                     {/* 검색 */}
                     <div className="mb-6">
                         <h3 className="font-semibold text-slate-900 mb-3">검색</h3>
-                        <div className="relative">
+                        <form
+                            className="relative"
+                            onSubmit={(event) => {
+                                event.preventDefault();
+                                const value = String(
+                                    new FormData(event.currentTarget).get("search") ?? "",
+                                ).trim();
+                                router.push(filterUrl({ search: value }));
+                            }}
+                        >
                             <input
+                                key={search}
+                                name="search"
+                                aria-label="글 검색"
                                 type="text"
                                 placeholder="포스트 검색..."
                                 defaultValue={search}
                                 className="w-full px-4 py-2 bg-white border border-slate-200 text-slate-900 placeholder-slate-400 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                                onKeyUp={(e) => {
-                                    if (e.key === "Enter") {
-                                        const searchValue = (e.target as HTMLInputElement).value;
-                                        const params = new URLSearchParams();
-                                        if (searchValue) params.set("search", searchValue);
-                                        if (category) params.set("category", category);
-                                        if (tag) params.set("tag", tag);
-                                        params.set("page", "1");
-                                        window.location.href = `/blog?${params.toString()}`;
-                                    }
-                                }}
                             />
-                            <svg
-                                className="absolute right-3 top-2.5 h-5 w-5 text-gray-400"
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
+                            <button
+                                type="submit"
+                                aria-label="검색 실행"
+                                className="absolute right-2 top-2 h-6 w-6 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
                             >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth={2}
-                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                                />
-                            </svg>
-                        </div>
+                                <svg
+                                    aria-hidden="true"
+                                    className="h-5 w-5 text-gray-400"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth={2}
+                                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                                    />
+                                </svg>
+                            </button>
+                        </form>
                     </div>
 
                     {/* 카테고리 */}
@@ -122,10 +126,10 @@ export default function BlogListPage({ currentPage, category, tag, search }: Blo
                         </div>
                         <div
                             id="category-panel"
-                            className={`${isCategoryOpen ? "min-h-[200px]" : "max-h-56"} md:block space-y-2  overflow-y-auto pr-1  md:min-h-0 md:max-h-none md:overflow-visible`}
+                            className={`${isCategoryOpen ? "block max-h-56" : "hidden"} md:block space-y-2 overflow-y-auto pr-1 md:max-h-none md:overflow-visible`}
                         >
                             <Link
-                                href="/blog"
+                                href={filterUrl({ category: "" })}
                                 className={`block px-3 py-2 rounded-lg text-sm transition-colors ${
                                     !category
                                         ? "bg-blue-50 text-blue-600"
@@ -137,7 +141,7 @@ export default function BlogListPage({ currentPage, category, tag, search }: Blo
                             {categories.map((cat) => (
                                 <Link
                                     key={cat}
-                                    href={`/blog?category=${encodeURIComponent(cat)}`}
+                                    href={filterUrl({ category: cat })}
                                     className={`block px-3 py-2 rounded-lg text-sm transition-colors ${
                                         category === cat
                                             ? "bg-blue-50 text-blue-600"
@@ -157,7 +161,7 @@ export default function BlogListPage({ currentPage, category, tag, search }: Blo
                             {tags.slice(0, 20).map((tagItem) => (
                                 <Link
                                     key={tagItem}
-                                    href={`/blog?tag=${encodeURIComponent(tagItem)}`}
+                                    href={filterUrl({ tag: tag === tagItem ? "" : tagItem })}
                                     className={`px-3 py-1 text-xs rounded-full transition-colors ${
                                         tag === tagItem
                                             ? "bg-blue-50 text-blue-600"
@@ -173,7 +177,7 @@ export default function BlogListPage({ currentPage, category, tag, search }: Blo
             </aside>
 
             {/* 메인 콘텐츠 */}
-            <main className="md:col-span-3">
+            <main className="min-w-0 break-words md:col-span-3">
                 {/* 결과 정보 */}
                 <div className="flex justify-between items-center mb-8">
                     <div>
@@ -183,19 +187,28 @@ export default function BlogListPage({ currentPage, category, tag, search }: Blo
                             {search && (
                                 <span>
                                     {" "}
-                                    - "<span className="font-semibold text-slate-900">{search}</span>" 검색 결과
+                                    - &quot;
+                                    <span className="font-semibold text-slate-900">{search}</span>&quot;
+                                    검색 결과
                                 </span>
                             )}
                             {category && (
                                 <span>
                                     {" "}
-                                    - <span className="font-semibold text-slate-900">{category}</span> 카테고리
+                                    -{" "}
+                                    <span className="font-semibold text-slate-900">
+                                        {category}
+                                    </span>{" "}
+                                    카테고리
                                 </span>
                             )}
                             {tag && (
                                 <span>
                                     {" "}
-                                    - <span className="font-semibold text-slate-900">#{tag}</span> 태그
+                                    - <span className="font-semibold text-slate-900">
+                                        #{tag}
+                                    </span>{" "}
+                                    태그
                                 </span>
                             )}
                         </p>
@@ -203,8 +216,26 @@ export default function BlogListPage({ currentPage, category, tag, search }: Blo
                 </div>
 
                 {/* 포스트 그리드 */}
-                {postsQuery.isFetching && posts.length === 0 ? (
-                    <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6 mb-12">
+                {hasError ? (
+                    <div
+                        role="alert"
+                        className="rounded-xl border border-amber-200 bg-amber-50 p-6 text-amber-800"
+                    >
+                        <p>글을 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.</p>
+                        <button
+                            type="button"
+                            onClick={() => void postsQuery.refetch()}
+                            className="mt-4 rounded px-3 py-2 font-semibold underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
+                        >
+                            다시 시도
+                        </button>
+                    </div>
+                ) : postsQuery.isFetching && posts.length === 0 ? (
+                    <div
+                        role="status"
+                        aria-label="글을 불러오는 중"
+                        className="grid md:grid-cols-2 xl:grid-cols-3 gap-6 mb-12"
+                    >
                         {Array.from({ length: 9 }).map((_, i) => (
                             <PostCardSkeleton key={i} />
                         ))}
@@ -216,9 +247,7 @@ export default function BlogListPage({ currentPage, category, tag, search }: Blo
                                 ? Array.from({ length: 9 }).map((_, i) => (
                                       <PostCardSkeleton key={i} />
                                   ))
-                                : posts.map((post) => (
-                                      <PostCard key={post.id} post={post} />
-                                  ))}
+                                : posts.map((post) => <PostCard key={post.id} post={post} />)}
                         </div>
 
                         {/* 페이지네이션 */}
@@ -226,7 +255,7 @@ export default function BlogListPage({ currentPage, category, tag, search }: Blo
                             <Pagination
                                 currentPage={currentPage}
                                 totalPages={totalPages}
-                                baseUrl="/blog"
+                                baseUrl="/writing"
                                 searchParams={{ category, tag, search }}
                             />
                         )}

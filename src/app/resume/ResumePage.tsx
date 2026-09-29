@@ -4,15 +4,10 @@ import CareerSummary from "@/components/domain/career/CareerSummary";
 import CareerSectionNav from "@/components/domain/career/CareerSectionNav";
 import ProjectTimeline from "@/components/domain/career/ProjectTimeline";
 import TechStack from "@/components/domain/career/TechStack";
-import {
-    capabilitiesData,
-    careerMetrics,
-    growthSteps,
-    personalInfoData,
-    projectsData,
-} from "@/data/careerData";
+import { capabilitiesData, careerMetrics, growthSteps, personalInfoData } from "@/data/careerData";
+import { projectsData } from "@/data/projects";
 
-export default function CareerPage() {
+export default function ResumePage() {
     return (
         <div className="mx-auto max-w-[1440px]">
             <PersonalInfoHeader personalInfo={personalInfoData} metrics={careerMetrics} />
@@ -31,7 +26,7 @@ export default function CareerPage() {
                             <GraduationCap className="h-5 w-5 text-blue-600" aria-hidden="true" />
                         </div>
                         <p className="mt-6 text-xs font-semibold tracking-[0.18em] text-blue-600 uppercase">
-                            Education
+                            학력
                         </p>
                         <h2 className="mt-3 text-2xl font-bold text-slate-900">
                             {personalInfoData.university}
@@ -43,7 +38,7 @@ export default function CareerPage() {
                     </div>
 
                     <div className="lg:text-right">
-                        <p className="text-sm font-medium text-blue-600">Engineering direction</p>
+                        <p className="text-sm font-medium text-blue-600">개발 방향</p>
                         <h2 className="mt-3 max-w-2xl text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:ml-auto">
                             사용자 경험과 운영 효율을 함께 개선하는 서비스를 만듭니다.
                         </h2>

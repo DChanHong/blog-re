@@ -48,7 +48,7 @@ export default function MobileNav({ isOpen, onClose }: MobileNavProps) {
                             type="button"
                             onClick={onClose}
                             className="ml-auto grid place-items-center w-9 h-9 rounded-lg hover:bg-gray-100 active:scale-[0.98]"
-                            aria-label="Close navigation"
+                            aria-label="메뉴 닫기"
                         >
                             <IoClose className="w-6 h-6" />
                         </button>
@@ -58,6 +58,15 @@ export default function MobileNav({ isOpen, onClose }: MobileNavProps) {
                     <ul className="mt-3 px-2 space-y-2 overflow-y-auto max-h-[calc(100%-120px)] pb-6">
                         <li>
                             <Link
+                                href="/work"
+                                onClick={onClose}
+                                className="flex items-center px-4 py-3 mx-1 rounded-xl bg-gray-50 hover:bg-gray-100"
+                            >
+                                프로젝트
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
                                 className="flex items-center px-4 py-3 mx-1 rounded-xl bg-gray-50 hover:bg-gray-100 active:scale-[0.99] transition"
                                 href={"/"}
                                 onClick={onClose}
@@ -65,31 +74,31 @@ export default function MobileNav({ isOpen, onClose }: MobileNavProps) {
                                 <span className="w-[2rem] mr-3 text-gray-700">
                                     <AiFillHome className="w-full h-full" />
                                 </span>
-                                <span className="text-[1.05rem] font-medium">Home</span>
+                                <span className="text-[1.05rem] font-medium">홈</span>
                             </Link>
                         </li>
                         <li>
                             <Link
                                 className="flex items-center px-4 py-3 mx-1 rounded-xl bg-gray-50 hover:bg-gray-100 active:scale-[0.99] transition"
-                                href={"/blog"}
+                                href={"/writing"}
                                 onClick={onClose}
                             >
                                 <span className="w-[2rem] mr-3 text-gray-700">
                                     <BsBook className="w-full h-full" />
                                 </span>
-                                <span className="text-[1.05rem] font-medium">Blog</span>
+                                <span className="text-[1.05rem] font-medium">글</span>
                             </Link>
                         </li>
                         <li>
                             <Link
                                 className="flex items-center px-4 py-3 mx-1 rounded-xl bg-gray-50 hover:bg-gray-100 active:scale-[0.99] transition"
-                                href={"/career"}
+                                href={"/resume"}
                                 onClick={onClose}
                             >
                                 <span className="w-[2rem] mr-3 text-gray-700">
                                     <FaUser className="w-full h-full" />
                                 </span>
-                                <span className="text-[1.05rem] font-medium">Career</span>
+                                <span className="text-[1.05rem] font-medium">이력서</span>
                             </Link>
                         </li>
                     </ul>

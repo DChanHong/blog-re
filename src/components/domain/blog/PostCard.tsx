@@ -66,7 +66,7 @@ export default function PostCard({ post }: PostCardProps) {
                 {/* 카테고리(첫 태그) & 날짜 */}
                 <div className="flex items-center justify-between mb-4">
                     <span className="px-3 py-1 text-xs font-medium bg-blue-50 text-blue-600 border border-blue-200 rounded-full">
-                        {(post.tags && post.tags[0]) || "Blog"}
+                        {(post.tags && post.tags[0]) || "글"}
                     </span>
                     <time className="text-xs text-slate-400">
                         {new Date(post.created_at).toLocaleDateString("ko-KR")}
@@ -80,7 +80,9 @@ export default function PostCard({ post }: PostCardProps) {
 
                 {/* 요약 */}
                 {post.intro && (
-                    <p className="text-slate-500 text-sm line-clamp-3 mb-5 leading-relaxed">{post.intro}</p>
+                    <p className="text-slate-500 text-sm line-clamp-3 mb-5 leading-relaxed">
+                        {post.intro}
+                    </p>
                 )}
 
                 {/* 태그 */}

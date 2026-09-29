@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { absoluteUrl } from "@/lib/seo";
 import { getPostsForSitemap } from "@/lib/services/velogService";
+import { projectsData } from "@/data/projects";
 
 export const revalidate = 86400;
 
@@ -20,13 +21,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
             priority: 1,
         },
         {
-            url: absoluteUrl("/blog"),
+            url: absoluteUrl("/writing"),
             lastModified: new Date(),
             changeFrequency: "weekly",
             priority: 0.8,
         },
         {
-            url: absoluteUrl("/career"),
+            url: absoluteUrl("/resume"),
             lastModified: new Date(),
             changeFrequency: "monthly",
             priority: 0.8,
@@ -52,5 +53,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
             priority: 0.6,
         }));
 
-    return [...staticRoutes, ...blogRoutes];
+    const projectRoutes: MetadataRoute.Sitemap = projectsData.map((project) => ({
+        url: absoluteUrl(`/project/${project.id}`),
+        changeFrequency: "monthly",
+        priority: 0.7,
+    }));
+
+    return [
+        ...staticRoutes,
+        { url: absoluteUrl("/work"), changeFrequency: "monthly", priority: 0.8 },
+        ...projectRoutes,
+        ...blogRoutes,
+    ];
 }

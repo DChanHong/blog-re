@@ -1,5 +1,5 @@
 import { ArrowUpRight, BookOpenText, Github } from "lucide-react";
-import type { CareerMetric } from "@/data/careerData";
+import type { CareerMetric } from "@/types/portfolio";
 
 interface PersonalInfo {
     name: string;
@@ -46,7 +46,7 @@ export default function PersonalInfoHeader({ personalInfo, metrics }: PersonalIn
                         </div>
 
                         <p className="mb-3 text-sm font-semibold tracking-[0.24em] text-blue-600 uppercase">
-                            Career portfolio
+                            이력서
                         </p>
                         <h1 className="text-4xl font-bold tracking-[-0.04em] text-slate-900 sm:text-6xl lg:text-7xl">
                             {personalInfo.name}
@@ -76,7 +76,7 @@ export default function PersonalInfoHeader({ personalInfo, metrics }: PersonalIn
                                 rel="noopener noreferrer"
                             >
                                 <BookOpenText className="h-4 w-4" aria-hidden="true" />
-                                Tech Blog
+                                기술 블로그
                                 <ArrowUpRight
                                     className="h-3.5 w-3.5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
                                     aria-hidden="true"
@@ -87,7 +87,7 @@ export default function PersonalInfoHeader({ personalInfo, metrics }: PersonalIn
 
                     <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6">
                         <p className="text-xs font-semibold tracking-[0.18em] text-slate-400 uppercase">
-                            Current
+                            현재 소속
                         </p>
                         <p className="mt-3 text-xl font-semibold text-slate-900">
                             {personalInfo.company}

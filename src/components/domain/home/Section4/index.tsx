@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState, type KeyboardEvent } from "react";
 import { ArrowUpRight, Building2, Check, Newspaper, RadioTower, Scale } from "lucide-react";
-import { projectsData } from "@/data/careerData";
+import { projectsData } from "@/data/projects";
 
 const projectPresentation = {
     "realtime-support": { label: "실시간 상담", icon: RadioTower },
@@ -182,7 +182,7 @@ export default function Section4() {
                             ))}
                         </ul>
                         <Link
-                            href={`/career#${activeProject.id}`}
+                            href={`/project/${activeProject.id}`}
                             className="group inline-flex items-center gap-1.5 text-xs font-semibold text-blue-600 transition hover:text-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
                         >
                             프로젝트 상세 보기

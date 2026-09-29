@@ -6,7 +6,7 @@ export default async function BlogContainer() {
     const recentRows = await getRecentPosts(12);
 
     // DTO 매핑: 최근 블로그 포스트
-    const recentPosts: VelogPostDto[] = (recentRows || []).map((row: any) => ({
+    const recentPosts: VelogPostDto[] = (recentRows || []).map((row) => ({
         id: row.id,
         title: row.title,
         img_src: row.img_src,
@@ -18,6 +18,8 @@ export default async function BlogContainer() {
                   : "",
         tags: Array.isArray(row.tags) ? row.tags : [],
         detail_link: row.detail_link,
+        slug: row.slug,
+        source_url: row.source_url,
         intro: row.intro,
         inserted_at:
             typeof row.inserted_at === "string"

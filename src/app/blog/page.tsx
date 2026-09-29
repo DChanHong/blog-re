@@ -1,137 +1,15 @@
-import { Metadata } from "next";
-import { Suspense } from "react";
-import BlogListPage from "./BlogListPage";
-import PostCardSkeleton from "@/components/domain/blog/PostCardSkeleton";
-import PageContainer from "@/components/layout/PageContainer";
-import { JsonLdScript } from "@/components/seo/JsonLdScript";
-import {
-    absoluteUrl,
-    createBreadcrumbJsonLd,
-    createCollectionPageJsonLd,
-    createImageObjectJsonLd,
-    createOrganizationJsonLd,
-    getCanonicalUrl,
-    SEO_CONFIG,
-} from "@/lib/seo";
+import { permanentRedirect } from "next/navigation";
 
-const title = "블로그 | 찬홍의 개발 이야기";
-const description =
-    "개발 경험과 인사이트를 공유하는 블로그입니다. 최신 기술 트렌드와 실무 경험을 다룹니다.";
-const canonicalUrl = getCanonicalUrl("/blog");
-const ogImageUrl = absoluteUrl(SEO_CONFIG.defaultOgImage.path);
-
-export const metadata: Metadata = {
-    title,
-    description,
-    keywords: ["블로그", "개발", "프로그래밍", "기술", "웹개발", "프론트엔드", "백엔드"],
-    alternates: {
-        canonical: canonicalUrl,
-    },
-    robots: SEO_CONFIG.robots.index,
-    openGraph: {
-        title,
-        description,
-        type: "website",
-        url: canonicalUrl,
-        siteName: SEO_CONFIG.siteName,
-        images: [
-            {
-                url: ogImageUrl,
-                width: SEO_CONFIG.defaultOgImage.width,
-                height: SEO_CONFIG.defaultOgImage.height,
-                alt: SEO_CONFIG.defaultOgImage.alt,
-            },
-        ],
-        locale: SEO_CONFIG.locale,
-    },
-    twitter: {
-        card: "summary_large_image",
-        title,
-        description,
-        images: [ogImageUrl],
-    },
-};
-
-interface BlogPageProps {
-    searchParams: Promise<{
-        page?: string;
-        category?: string;
-        tag?: string;
-        search?: string;
-    }>;
+interface BlogRedirectProps {
+    searchParams: Promise<Record<string, string | string[] | undefined>>;
 }
 
-export default async function BlogPage({ searchParams }: BlogPageProps) {
-    const resolvedSearchParams = await searchParams;
-    const currentPage = Number(resolvedSearchParams.page) || 1;
-    const category = resolvedSearchParams.category || "";
-    const tag = resolvedSearchParams.tag || "";
-    const search = resolvedSearchParams.search || "";
-
-    return (
-        <>
-            <JsonLdScript
-                schemas={[
-                    createCollectionPageJsonLd({
-                        url: "/blog",
-                        name: title,
-                        description,
-                        imageUrl: SEO_CONFIG.defaultOgImage.path,
-                    }),
-                    createImageObjectJsonLd({
-                        url: "/blog",
-                        name: title,
-                        description,
-                        imageUrl: SEO_CONFIG.defaultOgImage.path,
-                    }),
-                    createOrganizationJsonLd(),
-                    createBreadcrumbJsonLd([
-                        { name: "홈", path: "/" },
-                        { name: "블로그", path: "/blog" },
-                    ]),
-                ]}
-            />
-            <PageContainer outerClassName="min-h-[calc(100vh)]">
-                <Suspense
-                    fallback={
-                        <div className="grid md:grid-cols-4 gap-8">
-                            {/* 사이드바 스켈레톤 */}
-                            <aside className="md:col-span-1">
-                                <div className="bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 p-6 animate-pulse space-y-4">
-                                    <div className="h-4 w-16 bg-gray-700/60 rounded" />
-                                    <div className="h-10 bg-gray-700/40 rounded-lg" />
-                                    <div className="h-4 w-20 bg-gray-700/60 rounded mt-6" />
-                                    {Array.from({ length: 5 }).map((_, i) => (
-                                        <div key={i} className="h-8 bg-gray-700/30 rounded-lg" />
-                                    ))}
-                                    <div className="h-4 w-10 bg-gray-700/60 rounded mt-6" />
-                                    <div className="flex flex-wrap gap-2">
-                                        {Array.from({ length: 6 }).map((_, i) => (
-                                            <div key={i} className="h-6 w-14 bg-gray-700/30 rounded-full" />
-                                        ))}
-                                    </div>
-                                </div>
-                            </aside>
-                            {/* 카드 스켈레톤 */}
-                            <main className="md:col-span-3">
-                                <div className="h-5 w-32 bg-gray-700/40 rounded mb-8 animate-pulse" />
-                                <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
-                                    {Array.from({ length: 9 }).map((_, i) => (
-                                        <PostCardSkeleton key={i} />
-                                    ))}
-                                </div>
-                            </main>
-                        </div>
-                    }
-                >
-                    <BlogListPage
-                        currentPage={currentPage}
-                        category={category}
-                        tag={tag}
-                        search={search}
-                    />
-                </Suspense>
-            </PageContainer>
-        </>
-    );
+export default async function BlogRedirect({ searchParams }: BlogRedirectProps) {
+    const query = new URLSearchParams();
+    for (const [key, value] of Object.entries(await searchParams)) {
+        if (Array.isArray(value)) value.forEach((item) => query.append(key, item));
+        else if (value !== undefined) query.append(key, value);
+    }
+    const suffix = query.toString();
+    permanentRedirect(suffix ? `/writing?${suffix}` : "/writing");
 }

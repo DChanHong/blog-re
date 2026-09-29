@@ -44,9 +44,7 @@ export async function generateMetadata({ params }: BlogDetailPageProps): Promise
     }
 
     const canonicalUrl = getCanonicalUrl(`/blog/${post.slug || decodedSlug}`);
-    const description = cleanDescription(
-        post.intro || post.content_text || SEO_CONFIG.description,
-    );
+    const description = cleanDescription(post.intro || post.content_text || SEO_CONFIG.description);
     const imageUrl = absoluteUrl(post.img_src || SEO_CONFIG.defaultOgImage.path);
     const modifiedTime = post.detail_crawled_at || post.inserted_at || post.created_at;
 
@@ -97,9 +95,7 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
     }
 
     const postPath = `/blog/${post.slug || decodedSlug}`;
-    const description = cleanDescription(
-        post.intro || post.content_text || SEO_CONFIG.description,
-    );
+    const description = cleanDescription(post.intro || post.content_text || SEO_CONFIG.description);
     const imageUrl = post.img_src || SEO_CONFIG.defaultOgImage.path;
     const modifiedTime = post.detail_crawled_at || post.inserted_at || post.created_at;
     const wordCount = post.content_text?.trim().split(/\s+/).filter(Boolean).length;
@@ -127,7 +123,7 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
                     createOrganizationJsonLd(),
                     createBreadcrumbJsonLd([
                         { name: "홈", path: "/" },
-                        { name: "블로그", path: "/blog" },
+                        { name: "글", path: "/writing" },
                         { name: post.title, path: postPath },
                     ]),
                 ]}
@@ -135,10 +131,10 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
             <article className="mx-auto max-w-3xl py-12">
                 <div className="mb-8 border-b border-slate-200 pb-8">
                     <Link
-                        href="/blog"
+                        href="/writing"
                         className="mb-6 inline-flex text-sm text-blue-600 underline-offset-4 hover:underline"
                     >
-                        블로그 목록으로
+                        글 목록으로
                     </Link>
 
                     <h1 className="mb-5 text-3xl font-bold leading-tight text-slate-900 md:text-5xl">

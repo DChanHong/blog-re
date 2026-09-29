@@ -25,13 +25,13 @@ export default function ClientPage({ section3Slot }: ClientPageProps) {
                     <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 mb-8">
                         <div>
                             <h2 className="mb-2 text-3xl font-bold text-slate-900 md:text-5xl">
-                                Career <span className="text-blue-600">Projects</span>
+                                경력 <span className="text-blue-600">프로젝트</span>
                             </h2>
                             <p className="max-w-xl text-sm leading-6 text-slate-500 md:text-lg md:leading-8">
                                 경력 카드를 클릭하면 담당 역할과 주요 성과를 확인할 수 있습니다.
                             </p>
                         </div>
-                        <Section4CtaButton href="/career" text="커리어 타임라인 보기" />
+                        <Section4CtaButton href="/work" text="전체 프로젝트 보기" />
                     </div>
                     <ProjectShowcase />
                 </div>

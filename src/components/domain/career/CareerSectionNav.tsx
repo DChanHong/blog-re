@@ -3,11 +3,11 @@
 import { useEffect, useState } from "react";
 
 const sections = [
-    { href: "#overview", label: "Overview" },
-    { href: "#experience", label: "Experience" },
-    { href: "#projects", label: "Projects" },
-    { href: "#capabilities", label: "Capabilities" },
-    { href: "#education", label: "Education" },
+    { href: "#overview", label: "소개" },
+    { href: "#experience", label: "경력" },
+    { href: "#projects", label: "프로젝트" },
+    { href: "#capabilities", label: "역량" },
+    { href: "#education", label: "학력" },
 ];
 
 export default function CareerSectionNav() {
