@@ -1,6 +1,6 @@
 # 01. Production Security and Schema Alignment
 
-Status: Implemented - Pending Verification
+Status: Verified
 
 ## Goal
 
@@ -59,7 +59,7 @@ Status: Implemented - Pending Verification
 - `POST /api/chatbot/faqs`와 FAQ hit 증가 기능을 제거한다.
 - `/api-docs`, `/api-docs/v1`을 공개 route에서 제거하고 OpenAPI spec 소스는 내부 참고용으로 보존한다.
 - 운영 DB 적용을 위해 실행 전 `DATABASE_URL`을 로컬 환경에만 제공하고 커밋하지 않는다.
-- 코드 변경은 agent가 Vercel CLI로 직접 배포하지 않는다. 사용자가 GitHub에 push해 Vercel 배포를 완료한 후 운영 route를 검증한다.
+- 코드 변경은 agent가 Vercel CLI로 직접 배포하지 않는다. 2026-09-29 사용자 결정에 따라 운영 애플리케이션 배포·route 검증은 완료 조건에서 제외한다.
 - 보안 롤백은 민감 테이블을 다시 공개하지 않는 roll-forward 원칙을 사용한다.
 - 운영 적용 전후의 policy, grant, index, row count, route 결과를 별도 보안 검증 문서에 남긴다.
 - 보안 회귀 스크립트를 `npm run verify:security`로 실행할 수 있게 한다.
@@ -105,7 +105,7 @@ Status: Implemented - Pending Verification
 
 ### Security Regression
 
-- local/production base URL에서 제거 route status를 검증한다.
+- local base URL에서 제거 route status를 검증한다. 운영 애플리케이션 검증은 요구하지 않는다.
 - Supabase anon/service-role 경계와 적용 전 row count 보존을 검증한다.
 - 검증 스크립트는 읽기 전용이며 민감한 row body를 요청하거나 출력하지 않는다.
 
@@ -265,9 +265,9 @@ Status: Implemented - Pending Verification
 20. 검증된 기존 lint baseline을 사용할 수 있도록 verifier 규칙을 비악화·집중 검증 조건으로 보완한다.
 21. `npm run lint`, `npm run build`, local route smoke, local security script를 실행한다.
 22. 적용 전후 결과를 `doc/projects-reorganization/audit/production-security-verification.md`에 민감 값 없이 기록한다.
-23. 실행 변경을 커밋하고 사용자에게 GitHub push/Vercel 배포 게이트를 안내한다.
-24. 배포 완료 후 production base URL로 제거 route, 존치 route, Blog/Chatbot smoke, security script를 재실행한다.
-25. plan status를 `Implemented - Pending Verification`으로 변경하고 적용·배포·검증 로그를 추가한다.
+23. 실행 변경을 커밋하고 로컬 검증 결과를 안내한다.
+24. 운영 애플리케이션 배포·검증은 사용자 결정에 따라 제외한다.
+25. 구현 후 검증을 거쳐 수정된 수용 조건을 충족하면 `Verified`로 변경하고 검증 로그를 추가한다.
 
 ## Validation
 
@@ -328,11 +328,11 @@ npm run verify:security
 - `GET /api-docs/v1` → 404
 - `GET /api/chatbot/faqs` → 200
 
-#### Production After User Push
+#### Production Application — Excluded
 
-- local과 동일한 status 검증
-- `robots.txt`에서 `/api/` disallow 유지와 불필요 `/api-docs` rule 제거 확인
-- 제거 route가 redirect로 다른 민감 endpoint를 노출하지 않는지 확인
+- 2026-09-29 사용자 요청으로 운영 배포 후 route/security/robots smoke를 완료 조건에서 제외한다.
+- 위 route status와 redirect 부재, `/api/` disallow 유지 및 `/api-docs` rule 제거는 로컬에서 검증한다.
+- 이미 수행한 운영 DB migration 및 보안 경계 검증 결과는 유효한 증거로 유지한다.
 
 ### Security Verification Artifact
 
@@ -353,15 +353,15 @@ npm run verify:security
 - rate-limit, settings, conversation repository가 service-role client를 사용하고 운영 RLS 이후 service-role aggregate 접근이 유지된다.
 - `/api/chatbot/ask`의 OpenAI 응답 기능은 Assistants API 종료에 따른 Plan 06 이전 대상으로 기록되며, 이 plan의 완료 조건에서는 제외된다.
 - `POST /api/chatbot/faqs`가 제거되고 FAQ GET은 유지된다.
-- crawler/test-detail API route가 local과 production에서 404를 반환한다.
-- API Docs UI/JSON route가 local과 production에서 404를 반환한다.
+- crawler/test-detail API route가 local에서 404를 반환한다.
+- API Docs UI/JSON route가 local에서 404를 반환한다.
 - internal OpenAPI spec이 존치 endpoint만 기록한다.
 - Swagger UI dependency/type declaration이 제거된다.
 - `npm run verify:security`가 secret·row body를 출력하지 않고 성공한다.
 - `npm run build`가 성공한다.
 - `npm run lint`가 실행되고 Plan 00의 기존 baseline보다 악화되지 않음이 기록된다.
 - local 핵심 page/API smoke가 성공한다.
-- 사용자 push/Vercel 배포 후 production route/security 회귀가 성공한다.
+- 운영 애플리케이션 배포·검증은 완료 조건에 포함하지 않는다(2026-09-29 사용자 결정).
 - production verification artifact에 민감한 값이 포함되지 않는다.
 - table/row 삭제, truncate, sensitive public policy 복구가 없다.
 - Vercel CLI 직접 배포가 없다.
@@ -384,7 +384,7 @@ npm run verify:security
 - migration 전 repository의 sensitive anon client 지점을 모두 목록화하고 service-role 전환 code를 먼저 준비한다.
 - production hotfix를 적용한 뒤 즉시 anon/service-role 회귀를 실행한다.
 - active settings/data precondition이 다르면 자동 수정 대신 migration을 중단한다.
-- 사용자 push 후 production commit/deployment 식별자를 기록하고 route 검증을 실행한다.
+- 운영 배포 확인은 본 plan의 필수 절차에서 제외한다. 로컬 검증이 운영 반영을 입증하는 것은 아니다.
 - 검증 script에서 expected count는 적용 전 snapshot과만 비교하고 row body를 읽지 않는다.
 
 ### Rollback
@@ -434,3 +434,15 @@ npm run verify:security
 - local route removal: crawler/test/API Docs 404, FAQ POST 405, FAQ GET 200
 - Chatbot answer smoke: Assistants API 종료로 500; 승인된 결정에 따라 Plan 06으로 이관
 - production application route smoke: 사용자 GitHub push 및 Vercel 배포 후 검증 필요
+
+## Verification Log — 2026-09-29
+
+- 위 구현 로그와 최초 운영 검증 결과는 당시 기록으로 보존한다. 이후 사용자가 운영 애플리케이션 검증을 제거하고 Plan 02로 진행하도록 명시적으로 요청했다.
+- 수용 조건에서 Vercel 배포 대기 및 운영 route/security/robots 검증을 제외했다. 기존 운영 DB 적용·보안 검증 증거는 유지한다.
+- 검증 대상: 구현 `fa21c48`, 인계 문서를 포함한 HEAD `1d979d8`.
+- `git diff --check`, `npx tsc --noEmit`, `npm run build` 성공(111개 static pages).
+- `npm run lint`: 기존 `eslint-plugin-prettier` 누락 exit 2와 동일. 변경 범위는 build·TypeScript·로컬 회귀로 집중 검증했다.
+- 로컬 `npm run verify:security`, 제거 route 404/405, FAQ GET 200, Home/Blog/Career 및 공개 API smoke, robots 규칙 검증 성공.
+- DB 재검증: 기존 행 수 보존, 5개 table RLS, public SELECT-only 권한, sensitive 접근 차단, service-role count, 필수 7개 index 및 FAQ log 부재 확인.
+- UI 시각 재검증: 레이아웃 변경이 없는 보안 작업으로 해당 없음. Chatbot 응답 복구는 기존 승인대로 Plan 06에 남긴다.
+- 판정: 수정된 수용 조건 기준 `Verified`. 운영 배포가 검증됐다는 의미는 아니며, 다음 작업은 Plan 02 설계 인터뷰다.

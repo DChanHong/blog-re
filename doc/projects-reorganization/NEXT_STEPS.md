@@ -7,8 +7,9 @@ Updated: 2026-09-29 (Asia/Seoul)
 - Branch: `develop`
 - Latest implementation commit: `fa21c48 fix: secure production data boundaries`
 - Plan 00: `Verified`
-- Plan 01: `Implemented - Pending Verification`
-- Plans after 01 have not been written yet.
+- Plan 01: `Verified` (operational application verification excluded by user decision)
+- Plan 02: `Approved` — `plan/02-information-architecture-and-content-model.md`
+- Plans after 02 have not been written yet.
 - The working tree was clean immediately after commit `fa21c48`.
 
 ## What Is Already Complete
@@ -29,32 +30,17 @@ Updated: 2026-09-29 (Asia/Seoul)
 
 Do not reapply or roll back the production migration merely because work continues on another computer. Plan 01 uses a security-preserving roll-forward policy.
 
-## Required Next Action: Finish Plan 01
+## Required Next Action: Implement Plan 02
 
-1. On the other computer, fetch/checkout the repository and confirm commit `fa21c48` is present.
-2. If the commit has not been pushed yet, push the `develop` branch to GitHub.
-3. Wait for the matching Vercel deployment to finish. Do not deploy with the Vercel CLI; use the repository's normal GitHub/Vercel flow.
-4. Configure the required environment variables locally without committing them:
-   - `NEXT_PUBLIC_SUPABASE_URL`
-   - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
-   - `SUPABASE_SERVICE_ROLE_KEY`
-   - `DATABASE_URL` only when direct database metadata verification is required
-5. Run `$portfolio-verify` with:
-   - `doc/projects-reorganization/plan/01-production-security-and-schema-alignment.md`
-6. Verification must include production route checks after the deployment:
-   - `GET /api/velog/crawl` → 404
-   - `POST /api/velog/crawl` → 404
-   - `GET /api/velog/test-detail` → 404
-   - `POST /api/chatbot/faqs` → 405
-   - `GET /api-docs` → 404
-   - `GET /api-docs/v1` → 404
-   - `GET /api/chatbot/faqs` → 200
-   - `robots.txt` retains `/api/` disallow and has no redundant `/api-docs` rule
-7. Run `npm run verify:security`, `npm run build`, and the Plan 01 verification checks.
-8. Only `$portfolio-verify` should change Plan 01 from `Implemented - Pending Verification` to `Verified` after all acceptance criteria pass.
+- On 2026-09-29 the user explicitly removed production application verification as a completion requirement and requested proceeding to Plan 02.
+- Plan 01 is verified using the completed local checks and existing DB security evidence under its revised acceptance criteria.
+- Vercel deployment, production route/security smoke, and deployment waiting are not prerequisites for continuing the reorganization. Do not add these gates to subsequent plans unless the user requests them.
+- Retain the historical production observations in the audit artifact; completion does not assert that the production application has been updated.
+- The user approved Plan 02 on 2026-09-29. Run `$portfolio-execute` with `doc/projects-reorganization/plan/02-information-architecture-and-content-model.md`, then hand off to `$portfolio-verify` for local verification.
 
 Relevant files:
 
+- `doc/projects-reorganization/plan/02-information-architecture-and-content-model.md`
 - `doc/projects-reorganization/plan/01-production-security-and-schema-alignment.md`
 - `doc/projects-reorganization/audit/production-security-verification.md`
 - `migrations/20260928_production_security_schema_alignment.sql`
@@ -71,19 +57,21 @@ The user approved the following handling:
 - Defer Chatbot response restoration and migration to the Responses API to `06-ask-chatbot-decision-and-implementation.md`.
 - Do not restore public access to sensitive Supabase tables as a workaround.
 
-## After Plan 01 Is Verified
+## Plan 02 Decisions
 
-Use `$portfolio-plan-interview` to create and approve the next plan before changing application structure.
+The approved Plan 02 is the implementation contract for routes, content ownership, navigation, Korean-only UI, and complete AI UI removal. Implement it with `$portfolio-execute`; use the full plan rather than this handoff alone.
 
-The intended next work unit is Plan 02, information architecture and content model. It should decide:
+## Plan 02 Interview Decisions — 2026-09-29
 
-- Home, Work, Project, Resume, Writing, and Ask route ownership
-- Existing `/career`, `/blog`, and `/blog/[slug]` preservation or redirect strategy
-- Career/project/blog content ownership and mapping
-- Navigation and page responsibilities
-- Whether the Chatbot/Ask migration remains at Plan 06 or should be reprioritized
+These confirmed decisions are now incorporated in the approved Plan 02.
 
-After Plan 02 is approved, implement it with `$portfolio-execute`. Do not begin Plan 02 implementation from this handoff document alone.
+- Match the reference route structure: `/`, `/work`, `/project/[slug]`, `/resume`, `/writing`, and existing `/blog/[slug]` article URLs. AI is explicitly excluded from the current release.
+- Use permanent redirects from `/career` to `/resume` and from the exact `/blog` list route to `/writing`, preserving list query parameters. Article URLs remain unchanged.
+- Keep career and project content in typed source files, split their ownership, and reuse the same project records across Home, Work and project detail pages. Keep writing content in the existing Supabase `velog` table; no content DB migration is requested.
+- Support Korean only. Use Korean navigation and interface labels; do not add a locale switch or translated article copies. Existing technology names and career facts remain intact.
+- Defer AI to Plan 06 and remove all AI UI entry points, including the global floating chatbot, question controls and related navigation/CTA text. Do not create `/ask` in this phase. Preserve existing backend code and stored data for later review.
+- Keep existing career and project content unchanged, including the four projects, their metrics, status and featured selection. Complete the UI improvements first; revisit career content in a separate later work unit.
+- Plan 02's scope and final approval are complete. Full visual redesign follows the information architecture/data foundation work; career content revision follows the UI improvements.
 
 ## Security Notes
 
