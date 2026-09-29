@@ -53,7 +53,7 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
 }
 
 const linkStyle =
-    "rounded text-sm font-semibold text-blue-600 underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400";
+    "rounded text-sm font-semibold text-accent underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus";
 
 export default async function ProjectPage({ params }: ProjectPageProps) {
     const project = getProjectBySlug((await params).slug);
@@ -84,36 +84,36 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                     ]),
                 ]}
             />
-            <main className="min-w-0 break-words">
+            <div className="min-w-0 break-words">
                 <Link href="/work" className={linkStyle}>
                     ← 전체 프로젝트
                 </Link>
-                <article className="mt-6 overflow-hidden rounded-3xl border border-slate-200 bg-white">
+                <article className="mt-6 overflow-hidden rounded-3xl border border-border bg-raised">
                     <header className="p-5 sm:p-8">
-                        <p className="text-sm text-slate-600">
+                        <p className="text-sm text-secondary">
                             {project.status} · {project.period}
                         </p>
                         {project.featured && (
-                            <p className="mt-2 text-sm text-blue-600">대표 프로젝트</p>
+                            <p className="mt-2 text-sm text-accent">대표 프로젝트</p>
                         )}
-                        <h1 className="mt-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-5xl">
+                        <h1 className="mt-4 text-3xl font-bold tracking-tight text-ink sm:text-5xl">
                             {project.title}
                         </h1>
-                        <p className="mt-4 text-lg text-blue-600">{project.subtitle}</p>
-                        <p className="mt-5 leading-7 text-slate-600">{project.summary}</p>
+                        <p className="mt-4 text-lg text-accent">{project.subtitle}</p>
+                        <p className="mt-5 leading-7 text-secondary">{project.summary}</p>
                         <dl className="mt-6">
-                            <dt className="text-sm font-semibold text-slate-500">역할</dt>
-                            <dd className="mt-1 text-slate-700">{project.role}</dd>
+                            <dt className="text-sm font-semibold text-secondary">역할</dt>
+                            <dd className="mt-1 text-secondary">{project.role}</dd>
                         </dl>
                         {project.metrics.length > 0 && (
                             <dl className="mt-7 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
                                 {project.metrics.map((metric) => (
                                     <div
                                         key={metric.label}
-                                        className="min-w-0 rounded-xl border border-slate-200 p-4"
+                                        className="min-w-0 rounded-xl border border-border p-4"
                                     >
-                                        <dt className="text-sm text-slate-500">{metric.label}</dt>
-                                        <dd className="mt-2 text-xl font-bold text-slate-900">
+                                        <dt className="text-sm text-secondary">{metric.label}</dt>
+                                        <dd className="mt-2 text-xl font-bold text-ink">
                                             {metric.value}
                                         </dd>
                                     </div>
@@ -124,7 +124,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                             {project.techStack.map((tech) => (
                                 <li
                                     key={tech}
-                                    className="rounded-lg bg-slate-100 px-3 py-2 text-sm text-slate-600"
+                                    className="rounded-lg bg-muted px-3 py-2 text-sm text-secondary"
                                 >
                                     {tech}
                                 </li>
@@ -152,7 +152,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                         )}
                     </div>
                 </nav>
-            </main>
+            </div>
         </PageContainer>
     );
 }

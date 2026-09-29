@@ -1,0 +1,493 @@
+{
+  "date": "2026-09-29T05:25:17.055Z",
+  "base": "http://127.0.0.1:3101",
+  "passed": 56,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "Home HTTP 200",
+      "ok": true
+    },
+    {
+      "name": "Home semantic structure",
+      "ok": true
+    },
+    {
+      "name": "Home section order",
+      "ok": true
+    },
+    {
+      "name": "Four capabilities",
+      "ok": true
+    },
+    {
+      "name": "Four growth steps",
+      "ok": true
+    },
+    {
+      "name": "Four outcome metrics",
+      "ok": true
+    },
+    {
+      "name": "Project order",
+      "ok": true
+    },
+    {
+      "name": "On-hold status remains",
+      "ok": true
+    },
+    {
+      "name": "Two text-only recent articles",
+      "ok": true
+    },
+    {
+      "name": "No AI/locale controls",
+      "ok": true
+    },
+    {
+      "name": "No reference identity",
+      "ok": true
+    },
+    {
+      "name": "Footer public links only",
+      "ok": true
+    },
+    {
+      "name": "No newly exposed mail link",
+      "ok": true
+    },
+    {
+      "name": "Route /work",
+      "ok": true
+    },
+    {
+      "name": "SEO /work",
+      "ok": true
+    },
+    {
+      "name": "Shell /work",
+      "ok": true
+    },
+    {
+      "name": "Route /project/realtime-support",
+      "ok": true
+    },
+    {
+      "name": "SEO /project/realtime-support",
+      "ok": true
+    },
+    {
+      "name": "Shell /project/realtime-support",
+      "ok": true
+    },
+    {
+      "name": "Route /project/snn-cms",
+      "ok": true
+    },
+    {
+      "name": "SEO /project/snn-cms",
+      "ok": true
+    },
+    {
+      "name": "Shell /project/snn-cms",
+      "ok": true
+    },
+    {
+      "name": "Route /project/erp-groupware",
+      "ok": true
+    },
+    {
+      "name": "SEO /project/erp-groupware",
+      "ok": true
+    },
+    {
+      "name": "Shell /project/erp-groupware",
+      "ok": true
+    },
+    {
+      "name": "Route /project/legal-platform",
+      "ok": true
+    },
+    {
+      "name": "SEO /project/legal-platform",
+      "ok": true
+    },
+    {
+      "name": "Shell /project/legal-platform",
+      "ok": true
+    },
+    {
+      "name": "Route /resume",
+      "ok": true
+    },
+    {
+      "name": "SEO /resume",
+      "ok": true
+    },
+    {
+      "name": "Shell /resume",
+      "ok": true
+    },
+    {
+      "name": "Route /writing",
+      "ok": true
+    },
+    {
+      "name": "SEO /writing",
+      "ok": true
+    },
+    {
+      "name": "Shell /writing",
+      "ok": true
+    },
+    {
+      "name": "Route /blog/AI-%EC%97%90%EC%9D%B4%EC%A0%84%ED%8A%B8-12%EC%A3%BC%EC%B0%A8-%EB%A7%88%EB%AC%B4%EB%A6%AC-%EB%A6%AC%EB%B7%B0",
+      "ok": true
+    },
+    {
+      "name": "SEO /blog/AI-%EC%97%90%EC%9D%B4%EC%A0%84%ED%8A%B8-12%EC%A3%BC%EC%B0%A8-%EB%A7%88%EB%AC%B4%EB%A6%AC-%EB%A6%AC%EB%B7%B0",
+      "ok": true
+    },
+    {
+      "name": "Shell /blog/AI-%EC%97%90%EC%9D%B4%EC%A0%84%ED%8A%B8-12%EC%A3%BC%EC%B0%A8-%EB%A7%88%EB%AC%B4%EB%A6%AC-%EB%A6%AC%EB%B7%B0",
+      "ok": true
+    },
+    {
+      "name": "Redirect /career",
+      "ok": true,
+      "detail": "/resume"
+    },
+    {
+      "name": "Redirect /blog?page=2&tag=Next.js&search=Next",
+      "ok": true,
+      "detail": "/writing?page=2&tag=Next.js&search=Next"
+    },
+    {
+      "name": "Protected/missing /ask",
+      "ok": true,
+      "detail": 404
+    },
+    {
+      "name": "Protected/missing /project/not-a-project",
+      "ok": true,
+      "detail": 404
+    },
+    {
+      "name": "Protected/missing /api/velog/crawl",
+      "ok": true,
+      "detail": 404
+    },
+    {
+      "name": "Protected/missing /api/velog/test-detail",
+      "ok": true,
+      "detail": 404
+    },
+    {
+      "name": "Protected/missing /api-docs",
+      "ok": true,
+      "detail": 404
+    },
+    {
+      "name": "Protected/missing /api-docs/v1",
+      "ok": true,
+      "detail": 404
+    },
+    {
+      "name": "POST /api/velog/crawl",
+      "ok": true,
+      "detail": 404
+    },
+    {
+      "name": "POST /api/chatbot/faqs",
+      "ok": true,
+      "detail": 405
+    },
+    {
+      "name": "Sitemap",
+      "ok": true
+    },
+    {
+      "name": "Robots API protection",
+      "ok": true
+    },
+    {
+      "name": "Home JSON-LD",
+      "ok": true
+    },
+    {
+      "name": "Rendered fixture empty",
+      "ok": true
+    },
+    {
+      "name": "Rendered fixture one",
+      "ok": true
+    },
+    {
+      "name": "Rendered fixture two",
+      "ok": true
+    },
+    {
+      "name": "Rendered fixture error",
+      "ok": true
+    },
+    {
+      "name": "Rendered fixture loading",
+      "ok": true
+    },
+    {
+      "name": "Real component fixture assertions",
+      "ok": true,
+      "detail": [
+        {
+          "state": "empty",
+          "limit": 2,
+          "rows": 0,
+          "noImages": true,
+          "empty": true,
+          "error": false,
+          "loading": false,
+          "allLink": true,
+          "pass": true
+        },
+        {
+          "state": "one",
+          "limit": 2,
+          "rows": 1,
+          "noImages": true,
+          "empty": false,
+          "error": false,
+          "loading": false,
+          "allLink": true,
+          "pass": true
+        },
+        {
+          "state": "two",
+          "limit": 2,
+          "rows": 2,
+          "noImages": true,
+          "empty": false,
+          "error": false,
+          "loading": false,
+          "allLink": true,
+          "pass": true
+        },
+        {
+          "state": "error",
+          "limit": 2,
+          "rows": 0,
+          "noImages": true,
+          "empty": false,
+          "error": true,
+          "loading": false,
+          "allLink": true,
+          "pass": true
+        },
+        {
+          "state": "loading",
+          "rows": 0,
+          "noImages": true,
+          "empty": false,
+          "error": false,
+          "loading": true,
+          "allLink": true,
+          "pass": true
+        },
+        {
+          "state": "error",
+          "limit": 2,
+          "rows": 0,
+          "noImages": true,
+          "empty": false,
+          "error": true,
+          "loading": false,
+          "allLink": true,
+          "pass": true
+        },
+        {
+          "state": "empty",
+          "limit": 2,
+          "rows": 0,
+          "noImages": true,
+          "empty": true,
+          "error": false,
+          "loading": false,
+          "allLink": true,
+          "pass": true
+        },
+        {
+          "state": "one",
+          "limit": 2,
+          "rows": 1,
+          "noImages": true,
+          "empty": false,
+          "error": false,
+          "loading": false,
+          "allLink": true,
+          "pass": true
+        },
+        {
+          "state": "two",
+          "limit": 2,
+          "rows": 2,
+          "noImages": true,
+          "empty": false,
+          "error": false,
+          "loading": false,
+          "allLink": true,
+          "pass": true
+        },
+        {
+          "state": "error",
+          "limit": 2,
+          "rows": 0,
+          "noImages": true,
+          "empty": false,
+          "error": true,
+          "loading": false,
+          "allLink": true,
+          "pass": true
+        },
+        {
+          "state": "loading",
+          "rows": 0,
+          "noImages": true,
+          "empty": false,
+          "error": false,
+          "loading": true,
+          "allLink": true,
+          "pass": true
+        },
+        {
+          "state": "empty",
+          "limit": 2,
+          "rows": 0,
+          "noImages": true,
+          "empty": true,
+          "error": false,
+          "loading": false,
+          "allLink": true,
+          "pass": true
+        },
+        {
+          "state": "one",
+          "limit": 2,
+          "rows": 1,
+          "noImages": true,
+          "empty": false,
+          "error": false,
+          "loading": false,
+          "allLink": true,
+          "pass": true
+        },
+        {
+          "state": "two",
+          "limit": 2,
+          "rows": 2,
+          "noImages": true,
+          "empty": false,
+          "error": false,
+          "loading": false,
+          "allLink": true,
+          "pass": true
+        },
+        {
+          "state": "error",
+          "limit": 2,
+          "rows": 0,
+          "noImages": true,
+          "empty": false,
+          "error": true,
+          "loading": false,
+          "allLink": true,
+          "pass": true
+        },
+        {
+          "state": "loading",
+          "rows": 0,
+          "noImages": true,
+          "empty": false,
+          "error": false,
+          "loading": true,
+          "allLink": true,
+          "pass": true
+        },
+        {
+          "state": "error",
+          "limit": 2,
+          "rows": 0,
+          "noImages": true,
+          "empty": false,
+          "error": true,
+          "loading": false,
+          "allLink": true,
+          "pass": true
+        },
+        {
+          "state": "two",
+          "limit": 2,
+          "rows": 2,
+          "noImages": true,
+          "empty": false,
+          "error": false,
+          "loading": false,
+          "allLink": true,
+          "pass": true
+        },
+        {
+          "state": "empty",
+          "limit": 2,
+          "rows": 0,
+          "noImages": true,
+          "empty": true,
+          "error": false,
+          "loading": false,
+          "allLink": true,
+          "pass": true
+        },
+        {
+          "state": "one",
+          "limit": 2,
+          "rows": 1,
+          "noImages": true,
+          "empty": false,
+          "error": false,
+          "loading": false,
+          "allLink": true,
+          "pass": true
+        },
+        {
+          "state": "two",
+          "limit": 2,
+          "rows": 2,
+          "noImages": true,
+          "empty": false,
+          "error": false,
+          "loading": false,
+          "allLink": true,
+          "pass": true
+        },
+        {
+          "state": "error",
+          "limit": 2,
+          "rows": 0,
+          "noImages": true,
+          "empty": false,
+          "error": true,
+          "loading": false,
+          "allLink": true,
+          "pass": true
+        },
+        {
+          "state": "loading",
+          "rows": 0,
+          "noImages": true,
+          "empty": false,
+          "error": false,
+          "loading": true,
+          "allLink": true,
+          "pass": true
+        }
+      ]
+    }
+  ]
+}

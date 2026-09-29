@@ -1,24 +1,22 @@
+import { WritingPreviewFrame } from "@/components/domain/home/Section3";
+import styles from "@/components/domain/home/home-reference.module.css";
+
 export default function BlogSkeleton() {
     return (
-        <div className="w-full m-auto max-w-[1800px] flex justify-center mt-[20px] mb-20">
-            <div className="w-[95%]">
-                {/* Title Skeleton */}
-                <div className="mb-8">
-                    <div className="h-8 md:h-12 w-48 bg-gray-200 rounded animate-pulse" />
-                </div>
-
-                {/* Grid Skeleton */}
-                <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-                    {[1, 2, 3, 4, 5, 6].map((i) => (
-                        <div key={i} className="aspect-[4/3] rounded-xl bg-gray-200 animate-pulse" />
-                    ))}
-                </div>
-
-                {/* More Button Skeleton */}
-                <div className="flex justify-center mt-8">
-                    <div className="h-14 w-40 bg-gray-200 rounded-xl animate-pulse" />
-                </div>
+        <WritingPreviewFrame>
+            <div
+                role="status"
+                aria-label="최근 글을 불러오는 중"
+                aria-busy="true"
+                className={styles.articleList}
+            >
+                {[0, 1].map((index) => (
+                    <div key={index} className={styles.skeletonRow} aria-hidden="true">
+                        <span />
+                        <span />
+                    </div>
+                ))}
             </div>
-        </div>
+        </WritingPreviewFrame>
     );
 }

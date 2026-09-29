@@ -36,7 +36,7 @@ export default function CareerSectionNav() {
     return (
         <nav
             aria-label="경력 페이지 섹션"
-            className="sticky top-20 z-30 mt-6 overflow-x-auto rounded-2xl border border-slate-200 bg-white/90 px-2 py-2 shadow-sm shadow-slate-200 backdrop-blur-sm"
+            className="resume-section-nav sticky z-30 mt-6 overflow-x-auto rounded-2xl border border-border bg-raised px-2 py-2 shadow-sm backdrop-blur-sm"
         >
             <ul className="flex min-w-max items-center gap-1">
                 {sections.map((section) => (
@@ -47,10 +47,10 @@ export default function CareerSectionNav() {
                                 activeSection === section.href.slice(1) ? "location" : undefined
                             }
                             onClick={() => setActiveSection(section.href.slice(1))}
-                            className={`block rounded-xl px-4 py-2.5 text-sm font-medium transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 ${
+                            className={`block rounded-xl px-4 py-2.5 text-sm font-medium transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus ${
                                 activeSection === section.href.slice(1)
-                                    ? "bg-blue-50 text-blue-600"
-                                    : "text-slate-500 hover:bg-slate-50 hover:text-slate-900"
+                                    ? "bg-sunken text-accent"
+                                    : "text-secondary hover:bg-muted hover:text-ink"
                             }`}
                         >
                             {section.label}

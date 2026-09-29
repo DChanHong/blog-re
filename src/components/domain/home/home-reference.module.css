@@ -1,0 +1,472 @@
+.home {
+    color: var(--ink);
+}
+.container {
+    max-width: 72rem;
+    margin-inline: auto;
+}
+.section {
+    padding: 112px 24px;
+    scroll-margin-top: 80px;
+}
+.hero {
+    padding: 96px 24px 112px;
+    text-align: center;
+}
+.heroInner {
+    max-width: 56rem;
+    margin-inline: auto;
+}
+.name {
+    font-size: 17px;
+    line-height: 1.6;
+    font-weight: 500;
+    color: var(--ink-tertiary);
+}
+.heroTitle {
+    margin-top: 16px;
+    font-size: 44px;
+    line-height: 1.02;
+    letter-spacing: -0.04em;
+    font-weight: 600;
+    text-wrap: balance;
+}
+.introduction {
+    max-width: 48rem;
+    margin: 28px auto 0;
+    font-size: 21px;
+    line-height: 1.4;
+    color: var(--ink-tertiary);
+    text-wrap: balance;
+    word-break: keep-all;
+}
+.actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px 32px;
+    margin-top: 44px;
+}
+.primary {
+    background: var(--ink);
+    color: var(--surface);
+    border-radius: 9999px;
+    padding: 12px 24px;
+    min-height: 48px;
+    font-size: 15px;
+    line-height: 24px;
+    font-weight: 500;
+    transition: opacity 0.2s;
+}
+.primary:hover {
+    background: var(--ink);
+    opacity: 0.85;
+}
+.link {
+    font-size: 15px;
+    line-height: 24px;
+    font-weight: 500;
+}
+.link span,
+.cardLink span,
+.articleMeta span {
+    display: inline-block;
+    transition: transform 0.3s;
+}
+.link:hover span,
+.projectCard:hover .cardLink span,
+.articleRow:hover .articleMeta span {
+    transform: translateX(2px);
+}
+.affiliation {
+    margin-top: 64px;
+    font-size: 13px;
+    line-height: 1.45;
+    color: var(--ink-tertiary);
+}
+.capabilities {
+    padding-top: 0;
+}
+.headingBlock {
+    margin-bottom: 56px;
+}
+.eyebrow {
+    font-size: 13px;
+    line-height: 1.45;
+    font-weight: 500;
+    color: var(--ink-tertiary);
+}
+.heading {
+    margin-top: 12px;
+    font-size: 36px;
+    line-height: 1.14;
+    font-weight: 600;
+    letter-spacing: -0.03em;
+}
+.heading span {
+    color: var(--home-heading-secondary);
+}
+.lead {
+    max-width: 42rem;
+    margin-top: 24px;
+    font-size: 17px;
+    line-height: 1.625;
+    color: var(--ink-tertiary);
+    word-break: keep-all;
+}
+.capabilityGrid,
+.pathGrid,
+.outcomes,
+.projectGrid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+}
+.capabilityGrid {
+    gap: 16px;
+}
+.capabilityCard {
+    background: var(--surface-muted);
+    border-radius: 28px;
+    padding: 32px;
+}
+.number {
+    font-size: 13px;
+    line-height: 1.45;
+    font-weight: 500;
+    color: var(--ink-muted);
+    font-variant-numeric: tabular-nums;
+}
+.capabilityCard h3 {
+    margin-top: 56px;
+    font-size: 21px;
+    line-height: 1.3;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}
+.capabilityCard p {
+    margin-top: 12px;
+    font-size: 15px;
+    line-height: 1.625;
+    color: var(--ink-muted);
+}
+.sunken {
+    background: var(--surface-sunken);
+}
+.pathGrid {
+    gap: 48px 24px;
+}
+.pathItem {
+    border-top: 2px solid var(--home-line);
+}
+.year {
+    margin-top: 24px;
+    font-size: 13px;
+    line-height: 1.45;
+    color: var(--ink-muted);
+    font-variant-numeric: tabular-nums;
+}
+.pathItem h3 {
+    margin-top: 8px;
+    font-size: 21px;
+    line-height: 1.3;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}
+.pathDescription {
+    margin-top: 16px;
+    font-size: 13px;
+    line-height: 1.625;
+    color: var(--ink-muted);
+}
+.outcomes {
+    gap: 48px 32px;
+}
+.outcomeLink {
+    display: flex;
+    flex-direction: column;
+    padding-top: 24px;
+    border-top: 1px solid var(--home-line);
+}
+.outcomeLink dt {
+    order: 2;
+    margin-top: 12px;
+    font-size: 15px;
+    line-height: 1.625;
+    color: var(--ink-tertiary);
+}
+.outcomeLink dd:not(.metricCaption) {
+    order: 1;
+    font-size: 36px;
+    line-height: 1.14;
+    font-weight: 600;
+    letter-spacing: -0.03em;
+}
+.outcomeLink .metricCaption {
+    order: 3;
+    margin-top: 6px;
+    font-size: 13px;
+    line-height: 1.45;
+    color: var(--ink-tertiary);
+}
+.outcomeLink:hover dd:not(.metricCaption) {
+    color: var(--accent);
+}
+.projectGrid {
+    margin-top: 96px;
+    gap: 16px;
+}
+.projectCard {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    background: var(--surface-muted);
+    border-radius: 28px;
+    padding: 32px;
+    transition: background-color 0.3s;
+}
+.projectCard:hover {
+    background: var(--surface-sunken);
+}
+.projectCard .eyebrow {
+    color: var(--ink-muted);
+}
+.projectCard h3 {
+    margin-top: 8px;
+    font-size: 28px;
+    line-height: 1.22;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+}
+.projectSummary {
+    margin-top: 12px;
+    font-size: 15px;
+    line-height: 1.625;
+    color: var(--ink-muted);
+}
+.projectMetricSpace {
+    margin-top: 40px;
+    flex: 1;
+}
+.projectMetrics {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+}
+.projectMetrics > div {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--home-line);
+    padding-top: 16px;
+}
+.projectMetrics dd {
+    order: 1;
+    font-size: 28px;
+    line-height: 1.14;
+    letter-spacing: -0.025em;
+    font-weight: 600;
+    overflow-wrap: anywhere;
+}
+.projectMetrics dt {
+    order: 2;
+    margin-top: 6px;
+    font-size: 13px;
+    line-height: 1.375;
+    color: var(--ink-muted);
+}
+.cardLink {
+    margin-top: 32px;
+    font-size: 15px;
+    line-height: 24px;
+    font-weight: 500;
+    color: var(--accent);
+}
+.more {
+    margin-top: 40px;
+}
+.projectGrid + .more {
+    text-align: center;
+}
+.toolkitGrid {
+    display: grid;
+    gap: 48px;
+}
+.toolkitList,
+.education {
+    margin-top: 20px;
+    font-size: 13px;
+    line-height: 1.45;
+}
+.toolkitList > div + div {
+    margin-top: 20px;
+}
+.toolkitList dt,
+.education p:first-child {
+    font-weight: 500;
+}
+.toolkitList dd,
+.education p + p {
+    margin-top: 2px;
+    color: var(--ink-muted);
+}
+.writing {
+    padding-bottom: 0;
+}
+.writingHeading {
+    margin-bottom: 32px;
+}
+.articleList {
+    border-block: 1px solid var(--home-line-soft);
+}
+.articleList > * + * {
+    border-top: 1px solid var(--home-line-soft);
+}
+.articleRow {
+    display: grid;
+    gap: 8px;
+    padding-block: 28px;
+}
+.articleRow h3 {
+    font-size: 21px;
+    line-height: 1.3;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}
+.articleRow:hover h3 {
+    color: var(--ink-secondary);
+}
+.articleRow p {
+    margin-top: 8px;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--ink-tertiary);
+}
+.articleMeta {
+    font-size: 13px;
+    line-height: 1.45;
+    color: var(--ink-tertiary);
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+.articleMeta span {
+    color: var(--accent);
+}
+.writingState {
+    padding-block: 28px;
+    border-block: 1px solid var(--home-line-soft);
+    color: var(--ink-tertiary);
+}
+.skeletonRow {
+    padding-block: 28px;
+    min-height: 112px;
+}
+.skeletonRow span {
+    display: block;
+    width: 72%;
+    height: 27px;
+    border-radius: 4px;
+    background: var(--surface-muted);
+}
+.skeletonRow span + span {
+    margin-top: 8px;
+    width: 90%;
+    height: 24px;
+}
+.contact {
+    text-align: center;
+}
+.contact .heading span {
+    color: var(--ink);
+}
+.contact .lead {
+    max-width: 36rem;
+    margin-inline: auto;
+}
+@media (min-width: 640px) {
+    .section {
+        padding: 160px 40px;
+    }
+    .hero {
+        padding: 144px 40px 160px;
+    }
+    .heroTitle {
+        font-size: 64px;
+        line-height: 1.02;
+    }
+    .introduction {
+        font-size: 28px;
+        line-height: 1.3;
+    }
+    .heading {
+        font-size: 48px;
+        line-height: 1.06;
+    }
+    .lead {
+        font-size: 21px;
+        line-height: 1.45;
+    }
+    .headingBlock {
+        margin-bottom: 80px;
+    }
+    .outcomeLink dd:not(.metricCaption) {
+        font-size: 48px;
+        line-height: 1.06;
+    }
+    .capabilities {
+        padding-top: 0;
+    }
+    .capabilityGrid,
+    .pathGrid,
+    .outcomes {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .projectGrid {
+        margin-top: 128px;
+    }
+    .projectCard {
+        padding: 40px;
+    }
+    .projectMetrics dd {
+        font-size: 36px;
+    }
+    .toolkitGrid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 64px;
+    }
+    .articleRow {
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: baseline;
+        gap: 40px;
+    }
+    .writing {
+        padding-bottom: 0;
+    }
+}
+@media (min-width: 768px) {
+    .projectGrid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+@media (min-width: 1024px) {
+    .hero {
+        padding-top: 176px;
+    }
+    .heroTitle {
+        font-size: 84px;
+        line-height: 0.98;
+    }
+    .heading {
+        font-size: 64px;
+        line-height: 1.02;
+    }
+    .writing .heading {
+        font-size: 48px;
+        line-height: 1.06;
+    }
+    .capabilityGrid,
+    .pathGrid,
+    .outcomes {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}

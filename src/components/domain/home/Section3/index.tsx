@@ -1,53 +1,80 @@
-"use client";
-import React, { useRef } from "react";
-import useElementObserve from "@/hooks/useElementObserve";
-import Section4CtaButton from "@/components/ui/Buttons/section-4-cta-button";
-import PostCard from "@/components/domain/blog/PostCard";
+import Link from "next/link";
+import type { ReactNode } from "react";
+import TextLink from "@/components/ui/TextLink";
 import type { VelogPostDto } from "@/types/blog";
+import styles from "../home-reference.module.css";
 
-interface Props {
-    blogList: VelogPostDto[];
-}
-
-const Section3 = ({ blogList }: Props) => {
-    const targetRef = useRef<HTMLDivElement>(null);
-    const { isVisible } = useElementObserve(targetRef);
-
-    // 카드 클릭은 PostCard 내부에서 처리
-
+export function WritingPreviewFrame({ children }: { children: ReactNode }) {
     return (
-        <div
-            className={`w-full m-auto max-w-[1800px] flex justify-center mt-[20px] mb-20 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
-            ref={targetRef}
-        >
-            <div className={`w-[95%]`}>
-                {/* 헤더 영역 - Section4 스타일 적용 */}
-                <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 gap-4">
-                    <div>
-                        <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-2">
-                            최근 <span className="text-blue-600">글</span>
-                        </h2>
-                        <p className="text-slate-500 text-sm md:text-lg max-w-lg">
-                            기술적인 고민과 해결 과정을 기록합니다.
-                        </p>
-                    </div>
-                    <Section4CtaButton href="/writing" text="전체 글 보기" />
+        <section className={`${styles.section} ${styles.writing}`} aria-labelledby="home-writing">
+            <div className={styles.container}>
+                <div className={styles.writingHeading}>
+                    <p className={styles.eyebrow}>최근 글</p>
+                    <h2 id="home-writing" className={styles.heading}>
+                        기술적인 고민.
+                        <br />
+                        <span>그리고 해결의 기록.</span>
+                    </h2>
                 </div>
-
-                <div
-                    className={`grid gap-6 
-                        grid-cols-1
-                        sm:grid-cols-2
-                        lg:grid-cols-3
-                    `}
-                >
-                    {blogList.map((item, index) => (
-                        <PostCard key={`${item.detail_link}-${index}`} post={item} />
-                    ))}
+                {children}
+                <div className={styles.more}>
+                    <TextLink href="/writing" className={styles.link}>
+                        전체 글 보기 <span aria-hidden="true">›</span>
+                    </TextLink>
                 </div>
             </div>
-        </div>
+        </section>
     );
-};
+}
 
-export default Section3;
+export default function Section3({
+    blogList,
+    failed = false,
+}: {
+    blogList: VelogPostDto[];
+    failed?: boolean;
+}) {
+    return (
+        <WritingPreviewFrame>
+            {failed ? (
+                <p role="status" className={styles.writingState}>
+                    최근 글을 불러오지 못했습니다. 전체 글 목록에서 다시 확인해 주세요.
+                </p>
+            ) : blogList.length === 0 ? (
+                <p className={styles.writingState}>아직 공개된 글이 없습니다.</p>
+            ) : (
+                <ul className={styles.articleList}>
+                    {blogList.slice(0, 2).map((post) => {
+                        const sourceHref =
+                            post.source_url ||
+                            (post.detail_link?.startsWith("http")
+                                ? post.detail_link
+                                : `https://velog.io${post.detail_link?.startsWith("/") ? "" : "/"}${post.detail_link}`);
+                        const href = post.slug
+                            ? `/blog/${encodeURIComponent(post.slug)}`
+                            : sourceHref;
+                        const internal = href.startsWith("/blog/");
+                        return (
+                            <li key={post.id ?? post.detail_link}>
+                                <Link
+                                    href={href}
+                                    className={styles.articleRow}
+                                    target={internal ? undefined : "_blank"}
+                                    rel={internal ? undefined : "noopener noreferrer"}
+                                >
+                                    <div>
+                                        <h3>{post.title}</h3>
+                                        {post.intro && <p>{post.intro}</p>}
+                                    </div>
+                                    <span className={styles.articleMeta}>
+                                        {post.tags?.[0]} <span aria-hidden="true">↗</span>
+                                    </span>
+                                </Link>
+                            </li>
+                        );
+                    })}
+                </ul>
+            )}
+        </WritingPreviewFrame>
+    );
+}

@@ -64,10 +64,10 @@ export default function WritingListPage({
         <div className="grid md:grid-cols-4 gap-8">
             {/* 사이드바 - 필터 */}
             <aside className="min-w-0 md:col-span-1">
-                <div className="bg-white rounded-2xl border border-slate-200 p-6 sticky top-[120px] shadow-sm">
+                <div className="bg-raised rounded-2xl border border-border p-6 sticky top-[calc(var(--header-height)+24px)] shadow-sm">
                     {/* 검색 */}
                     <div className="mb-6">
-                        <h3 className="font-semibold text-slate-900 mb-3">검색</h3>
+                        <h3 className="font-semibold text-ink mb-3">검색</h3>
                         <form
                             className="relative"
                             onSubmit={(event) => {
@@ -85,16 +85,16 @@ export default function WritingListPage({
                                 type="text"
                                 placeholder="포스트 검색..."
                                 defaultValue={search}
-                                className="w-full px-4 py-2 bg-white border border-slate-200 text-slate-900 placeholder-slate-400 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                className="w-full pl-3 pr-9 py-2 bg-raised border border-control-border text-ink placeholder-muted-ink rounded-lg focus:ring-2 focus:ring-focus focus:border-transparent"
                             />
                             <button
                                 type="submit"
                                 aria-label="검색 실행"
-                                className="absolute right-2 top-2 h-6 w-6 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
+                                className="absolute right-2 top-2 h-6 w-6 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus"
                             >
                                 <svg
                                     aria-hidden="true"
-                                    className="h-5 w-5 text-gray-400"
+                                    className="h-5 w-5 text-muted-ink"
                                     fill="none"
                                     stroke="currentColor"
                                     viewBox="0 0 24 24"
@@ -113,10 +113,10 @@ export default function WritingListPage({
                     {/* 카테고리 */}
                     <div className="mb-6">
                         <div className="flex items-center justify-between mb-3">
-                            <h3 className="font-semibold text-slate-900">카테고리</h3>
+                            <h3 className="font-semibold text-ink">카테고리</h3>
                             <button
                                 type="button"
-                                className="md:hidden text-sm text-slate-400 px-2 py-1 rounded hover:bg-slate-100 cursor-pointer"
+                                className="md:hidden text-sm text-muted-ink px-2 py-1 rounded hover:bg-muted cursor-pointer"
                                 onClick={() => setIsCategoryOpen((prev) => !prev)}
                                 aria-controls="category-panel"
                                 aria-expanded={isCategoryOpen}
@@ -132,8 +132,8 @@ export default function WritingListPage({
                                 href={filterUrl({ category: "" })}
                                 className={`block px-3 py-2 rounded-lg text-sm transition-colors ${
                                     !category
-                                        ? "bg-blue-50 text-blue-600"
-                                        : "text-slate-500 hover:bg-slate-50"
+                                        ? "bg-sunken text-accent"
+                                        : "text-secondary hover:bg-muted"
                                 }`}
                             >
                                 전체
@@ -144,8 +144,8 @@ export default function WritingListPage({
                                     href={filterUrl({ category: cat })}
                                     className={`block px-3 py-2 rounded-lg text-sm transition-colors ${
                                         category === cat
-                                            ? "bg-blue-50 text-blue-600"
-                                            : "text-slate-500 hover:bg-slate-50"
+                                            ? "bg-sunken text-accent"
+                                            : "text-secondary hover:bg-muted"
                                     }`}
                                 >
                                     {cat}
@@ -156,16 +156,16 @@ export default function WritingListPage({
 
                     {/* 태그 */}
                     <div className={``}>
-                        <h3 className="font-semibold text-slate-900 mb-3">태그</h3>
+                        <h3 className="font-semibold text-ink mb-3">태그</h3>
                         <div className="flex flex-wrap gap-2">
                             {tags.slice(0, 20).map((tagItem) => (
                                 <Link
                                     key={tagItem}
                                     href={filterUrl({ tag: tag === tagItem ? "" : tagItem })}
-                                    className={`px-3 py-1 text-xs rounded-full transition-colors ${
+                                    className={`px-3 py-1 text-[0.8125rem] rounded-full transition-colors ${
                                         tag === tagItem
-                                            ? "bg-blue-50 text-blue-600"
-                                            : "bg-slate-100 text-slate-500 hover:bg-slate-200"
+                                            ? "bg-sunken text-accent"
+                                            : "bg-muted text-secondary hover:bg-muted"
                                     }`}
                                 >
                                     #{tagItem}
@@ -177,26 +177,25 @@ export default function WritingListPage({
             </aside>
 
             {/* 메인 콘텐츠 */}
-            <main className="min-w-0 break-words md:col-span-3">
+            <div className="min-w-0 break-words md:col-span-3">
                 {/* 결과 정보 */}
                 <div className="flex justify-between items-center mb-8">
                     <div>
-                        <p className="text-slate-500">
-                            총 <span className="font-semibold text-blue-600">{totalPosts}</span>개의
+                        <p className="text-secondary">
+                            총 <span className="font-semibold text-accent">{totalPosts}</span>개의
                             포스트
                             {search && (
                                 <span>
                                     {" "}
                                     - &quot;
-                                    <span className="font-semibold text-slate-900">{search}</span>&quot;
+                                    <span className="font-semibold text-ink">{search}</span>&quot;
                                     검색 결과
                                 </span>
                             )}
                             {category && (
                                 <span>
                                     {" "}
-                                    -{" "}
-                                    <span className="font-semibold text-slate-900">
+                                    - <span className="font-semibold text-ink">
                                         {category}
                                     </span>{" "}
                                     카테고리
@@ -205,10 +204,7 @@ export default function WritingListPage({
                             {tag && (
                                 <span>
                                     {" "}
-                                    - <span className="font-semibold text-slate-900">
-                                        #{tag}
-                                    </span>{" "}
-                                    태그
+                                    - <span className="font-semibold text-ink">#{tag}</span> 태그
                                 </span>
                             )}
                         </p>
@@ -219,13 +215,13 @@ export default function WritingListPage({
                 {hasError ? (
                     <div
                         role="alert"
-                        className="rounded-xl border border-amber-200 bg-amber-50 p-6 text-amber-800"
+                        className="rounded-xl border border-border bg-warning-surface p-6 text-warning"
                     >
                         <p>글을 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.</p>
                         <button
                             type="button"
                             onClick={() => void postsQuery.refetch()}
-                            className="mt-4 rounded px-3 py-2 font-semibold underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
+                            className="mt-4 rounded px-3 py-2 font-semibold underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus"
                         >
                             다시 시도
                         </button>
@@ -263,7 +259,7 @@ export default function WritingListPage({
                 ) : (
                     <div className="text-center py-20">
                         <svg
-                            className="mx-auto h-12 w-12 text-slate-300 mb-4"
+                            className="mx-auto h-12 w-12 text-muted-ink mb-4"
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
@@ -275,17 +271,15 @@ export default function WritingListPage({
                                 d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
                             />
                         </svg>
-                        <h3 className="text-lg font-medium text-slate-900 mb-2">
-                            포스트가 없습니다
-                        </h3>
-                        <p className="text-slate-500">
+                        <h3 className="text-lg font-medium text-ink mb-2">포스트가 없습니다</h3>
+                        <p className="text-secondary">
                             {search || category || tag
                                 ? "검색 조건에 맞는 포스트가 없습니다."
                                 : "아직 작성된 포스트가 없습니다."}
                         </p>
                     </div>
                 )}
-            </main>
+            </div>
         </div>
     );
 }

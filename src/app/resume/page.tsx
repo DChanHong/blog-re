@@ -83,10 +83,7 @@ export default function Career() {
                     ]),
                 ]}
             />
-            <PageContainer
-                outerClassName="relative z-10 min-h-screen"
-                innerClassName="mx-auto max-w-[1540px] px-4 pb-20 pt-[108px] sm:px-6 lg:px-8 lg:pb-28 lg:pt-[132px]"
-            >
+            <PageContainer>
                 <ResumePage />
             </PageContainer>
         </>

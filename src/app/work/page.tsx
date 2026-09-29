@@ -46,11 +46,11 @@ export default function WorkPage() {
                     ]),
                 ]}
             />
-            <main>
-                <h1 className="text-3xl font-bold text-slate-900 sm:text-5xl">프로젝트</h1>
-                <p className="mb-10 mt-4 max-w-2xl leading-7 text-slate-600">{description}</p>
+            <div>
+                <h1 className="text-3xl font-bold text-ink sm:text-5xl">프로젝트</h1>
+                <p className="mb-10 mt-4 max-w-2xl leading-7 text-secondary">{description}</p>
                 <ProjectShowcase />
-            </main>
+            </div>
         </PageContainer>
     );
 }

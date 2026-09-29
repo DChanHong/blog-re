@@ -3,7 +3,12 @@ import type { VelogPostDto } from "@/types/blog";
 import Section3 from "@/components/domain/home/Section3";
 
 export default async function BlogContainer() {
-    const recentRows = await getRecentPosts(12);
+    let recentRows;
+    try {
+        recentRows = await getRecentPosts(2);
+    } catch {
+        return <Section3 blogList={[]} failed />;
+    }
 
     // DTO 매핑: 최근 블로그 포스트
     const recentPosts: VelogPostDto[] = (recentRows || []).map((row) => ({

@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
 
 interface PaginationProps {
     currentPage: number;
@@ -17,8 +16,6 @@ export default function Pagination({
     baseUrl,
     searchParams = {},
 }: PaginationProps) {
-    const router = useRouter();
-
     // URL 파라미터 생성
     const createUrl = (page: number) => {
         const params = new URLSearchParams();
@@ -128,11 +125,16 @@ export default function Pagination({
             {/* 이전 페이지 버튼 */}
             <Link
                 href={createUrl(Math.max(1, currentPage - 1))}
-                className={`flex items-center justify-center w-10 h-10 rounded-lg border transition-colors ${currentPage === 1
-                        ? "border-slate-100 text-slate-300 cursor-not-allowed"
-                        : "border-slate-200 text-slate-500 hover:bg-slate-50 hover:border-slate-300"
-                    }`}
+                className={`flex items-center justify-center w-10 h-10 rounded-lg border transition-colors ${
+                    currentPage === 1
+                        ? "border-border text-muted-ink cursor-not-allowed"
+                        : "border-border text-secondary hover:bg-muted hover:border-border"
+                }`}
                 aria-disabled={currentPage === 1}
+                tabIndex={currentPage === 1 ? -1 : undefined}
+                onClick={(event) => {
+                    if (currentPage === 1) event.preventDefault();
+                }}
             >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path
@@ -151,7 +153,7 @@ export default function Pagination({
                     return (
                         <span
                             key={`ellipsis-${index}`}
-                            className="flex items-center justify-center w-10 h-10 text-slate-400"
+                            className="flex items-center justify-center w-10 h-10 text-muted-ink"
                         >
                             ...
                         </span>
@@ -165,10 +167,11 @@ export default function Pagination({
                     <Link
                         key={pageNum}
                         href={createUrl(pageNum)}
-                        className={`flex items-center justify-center w-10 h-10 rounded-lg border font-medium transition-colors ${isActive
-                                ? "border-blue-500 bg-blue-500 text-white"
-                                : "border-slate-200 text-slate-500 hover:bg-slate-50 hover:border-slate-300"
-                            }`}
+                        className={`flex items-center justify-center w-10 h-10 rounded-lg border font-medium transition-colors ${
+                            isActive
+                                ? "border-border bg-accent text-on-accent"
+                                : "border-border text-secondary hover:bg-muted hover:border-border"
+                        }`}
                         aria-current={isActive ? "page" : undefined}
                     >
                         {pageNum}
@@ -179,11 +182,16 @@ export default function Pagination({
             {/* 다음 페이지 버튼 */}
             <Link
                 href={createUrl(Math.min(totalPages, currentPage + 1))}
-                className={`flex items-center justify-center w-10 h-10 rounded-lg border transition-colors ${currentPage === totalPages
-                        ? "border-slate-100 text-slate-300 cursor-not-allowed"
-                        : "border-slate-200 text-slate-500 hover:bg-slate-50 hover:border-slate-300"
-                    }`}
+                className={`flex items-center justify-center w-10 h-10 rounded-lg border transition-colors ${
+                    currentPage === totalPages
+                        ? "border-border text-muted-ink cursor-not-allowed"
+                        : "border-border text-secondary hover:bg-muted hover:border-border"
+                }`}
                 aria-disabled={currentPage === totalPages}
+                tabIndex={currentPage === totalPages ? -1 : undefined}
+                onClick={(event) => {
+                    if (currentPage === totalPages) event.preventDefault();
+                }}
             >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path
@@ -197,7 +205,7 @@ export default function Pagination({
             </Link>
 
             {/* 페이지 정보 */}
-            <div className="hidden sm:flex items-center ml-4 text-sm text-slate-400">
+            <div className="hidden sm:flex items-center ml-4 text-sm text-muted-ink">
                 <span>
                     {currentPage} / {totalPages}
                 </span>

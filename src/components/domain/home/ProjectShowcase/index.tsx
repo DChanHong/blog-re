@@ -7,30 +7,30 @@ import type { CareerProject } from "@/types/portfolio";
 const projectMeta: Record<string, { icon: ElementType; iconColor: string; accentBar: string }> = {
     "realtime-support": {
         icon: RadioTower,
-        iconColor: "text-blue-600 bg-blue-50 border-blue-100",
-        accentBar: "bg-blue-500",
+        iconColor: "text-accent bg-sunken border-border",
+        accentBar: "bg-accent",
     },
     "snn-cms": {
         icon: Newspaper,
-        iconColor: "text-violet-600 bg-violet-50 border-violet-100",
-        accentBar: "bg-violet-500",
+        iconColor: "text-accent bg-sunken border-border",
+        accentBar: "bg-accent",
     },
     "erp-groupware": {
         icon: Building2,
-        iconColor: "text-slate-600 bg-slate-100 border-slate-200",
-        accentBar: "bg-slate-400",
+        iconColor: "text-secondary bg-muted border-border",
+        accentBar: "bg-muted",
     },
     "legal-platform": {
         icon: Scale,
-        iconColor: "text-amber-600 bg-amber-50 border-amber-100",
-        accentBar: "bg-amber-400",
+        iconColor: "text-warning bg-warning-surface border-border",
+        accentBar: "bg-warning",
     },
 };
 
 const statusBadge: Record<string, string> = {
-    "운영 중": "bg-emerald-50 text-emerald-600 border-emerald-200",
-    완료: "bg-slate-100 text-slate-500 border-slate-200",
-    "출시 보류": "bg-amber-50 text-amber-600 border-amber-200",
+    "운영 중": "bg-success-surface text-success border-border",
+    완료: "bg-muted text-secondary border-border",
+    "출시 보류": "bg-warning-surface text-warning border-border",
 };
 
 export default function ProjectShowcase() {
@@ -52,7 +52,7 @@ function ProjectCard({ project }: { project: CareerProject }) {
     return (
         <Link
             href={`/project/${project.id}`}
-            className="group text-left w-full overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm hover:shadow-lg hover:border-slate-300 hover:-translate-y-0.5 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
+            className="group text-left w-full overflow-hidden rounded-2xl border border-border bg-raised shadow-sm hover:shadow-sm hover:border-border hover:-translate-y-0.5 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus"
         >
             {/* 컬러 탑 바 */}
             <div className={`h-1 w-full ${meta?.accentBar}`} />
@@ -68,44 +68,46 @@ function ProjectCard({ project }: { project: CareerProject }) {
                         </span>
                         <div>
                             <span
-                                className={`inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-semibold ${statusBadge[project.status]}`}
+                                className={`inline-flex items-center rounded-full border px-2 py-0.5 text-[0.8125rem] font-semibold ${statusBadge[project.status]}`}
                             >
                                 {project.status}
                             </span>
-                            <p className="mt-1 font-mono text-[10px] text-slate-400">
-                                {project.period}
-                            </p>
+                            <p className="mt-1 text-[0.8125rem] text-muted-ink">{project.period}</p>
                         </div>
                     </div>
                     <ArrowUpRight
-                        className="h-4 w-4 shrink-0 text-slate-300 group-hover:text-blue-500 transition-colors mt-1"
+                        className="h-4 w-4 shrink-0 text-muted-ink group-hover:text-accent transition-colors mt-1"
                         aria-hidden="true"
                     />
                 </div>
 
                 {/* 제목 */}
-                <h3 className="text-base font-bold leading-snug text-slate-900 group-hover:text-blue-700 transition-colors sm:text-lg">
+                <h3 className="text-base font-bold leading-snug text-ink group-hover:text-accent transition-colors sm:text-lg">
                     {project.title}
                 </h3>
-                <p className="mt-1 text-xs text-slate-400 line-clamp-1">{project.subtitle}</p>
+                <p className="mt-1 text-[0.8125rem] text-muted-ink line-clamp-1">
+                    {project.subtitle}
+                </p>
 
                 {/* 요약 */}
-                <p className="mt-3 text-sm leading-6 text-slate-500 line-clamp-2">
+                <p className="mt-3 text-sm leading-6 text-secondary line-clamp-2">
                     {project.summary}
                 </p>
 
                 {/* 구분선 */}
-                <div className="my-4 h-px bg-slate-100" />
+                <div className="my-4 h-px bg-muted" />
 
                 {/* 수치 */}
                 {project.metrics.length > 0 && (
                     <dl className="grid grid-cols-2 gap-3 mb-4">
                         {project.metrics.slice(0, 2).map((m) => (
                             <div key={m.label}>
-                                <dd className="text-lg font-bold tracking-tight text-slate-900">
+                                <dd className="text-lg font-bold tracking-tight text-ink">
                                     {m.value}
                                 </dd>
-                                <dt className="mt-0.5 text-[10px] text-slate-400">{m.label}</dt>
+                                <dt className="mt-0.5 text-[0.8125rem] text-muted-ink">
+                                    {m.label}
+                                </dt>
                             </div>
                         ))}
                     </dl>
@@ -116,7 +118,7 @@ function ProjectCard({ project }: { project: CareerProject }) {
                     {project.techStack.slice(0, 4).map((t) => (
                         <li
                             key={t}
-                            className="rounded-md border border-slate-200 bg-slate-50 px-2 py-0.5 text-[10px] font-medium text-slate-500"
+                            className="rounded-md border border-border bg-muted px-2 py-0.5 text-[0.8125rem] font-medium text-secondary"
                         >
                             {t}
                         </li>

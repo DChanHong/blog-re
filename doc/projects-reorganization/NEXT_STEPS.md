@@ -5,12 +5,14 @@ Updated: 2026-09-29 (Asia/Seoul)
 ## Current State
 
 - Branch: `develop`
-- Latest implementation commit: `60330c9 feat: implement portfolio information architecture`
+- Current implementation checkpoint: Plan 03 design system and Plan 04 reference Home; resolve its commit hash with `git log -1` after this checkpoint is committed.
 - Plan 00: `Verified`
 - Plan 01: `Verified` (operational application verification excluded by user decision)
 - Plan 02: `Verified` — `plan/02-information-architecture-and-content-model.md`
-- Plans after 02 have not been written yet.
-- The working tree was clean immediately after commit `60330c9`; Plan 02 completion documentation and refreshed local evidence were subsequently added for handoff.
+- Plan 03: `Verified` — `plan/03-design-system-and-global-shell.md`
+- Plan 04: `Verified` — `plan/04-home-reference-reconstruction.md`; Home reference reconstruction and shared Header/Footer corrections complete.
+- Plans after 04 have not been written yet.
+- Plan 02 verification and handoff artifacts were committed as `b213173`; the working tree was clean before writing Plan 03.
 
 ## What Is Already Complete
 
@@ -30,7 +32,17 @@ Updated: 2026-09-29 (Asia/Seoul)
 
 Do not reapply or roll back the production migration merely because work continues on another computer. Plan 01 uses a security-preserving roll-forward policy.
 
-## Next Action: Interview and Approve Plan 03
+## Next Action: Incremental UI Refinements
+
+- Plan 04 was implemented with `$portfolio-execute` and separately verified with `$portfolio-verify` on 2026-09-29. Final verdict PASS; see `audit/04-home-reference-verification.md`.
+- The user approved Plan 04 on 2026-09-29 with “확정”. The goal is matching the reference Home's design and composition, replacing only personal content, not merely borrowing its visual style.
+- Reconstruct Home and correct Header/Footer fidelity. Preserve Korean/Pretendard, existing branding, no AI/language UI, existing career/project facts and public links. Keep four actual growth steps and omit unavailable certifications; use four projects and two recent text-only article previews.
+- Actual reference/result desktop/mobile light/dark captures, measured dimensions and behavioral evidence are in `baseline/plan04/`. Build/tsc/diff and all 8 changed TSX focused lint checks passed; local HTTP/state checks passed 56/56. Global lint still has the unchanged missing-plugin baseline. Controlled zoom/reduced-motion methods and accessibility differences are explicitly recorded in the audit.
+- The user inspected Home and confirmed that this is the desired form on 2026-09-29, then requested committing the completed work before making incremental refinements.
+- This checkpoint includes Plan 03 and Plan 04 implementation, plans and verification evidence. Home remains available at `http://localhost:3000/`; no push, deployment or DB write is included. User development server remains running.
+- Commit-time staged whitespace check passes excluding the preserved raw build log and upstream Pretendard LICENSE/README/CSS, which contain trailing whitespace or extra EOF blank lines. These artifacts were retained without content changes; no application logic changed during the commit step.
+- No next plan is approved. Use `$portfolio-plan-interview` for Work/Project reference reconstruction as a new work unit, then Resume and Writing/Blog. Do not automatically start those implementations.
+- Other page bodies remain separate follow-up plans; shell changes require regression checks on them.
 
 - On 2026-09-29 the user explicitly removed production application verification as a completion requirement and requested proceeding to Plan 02.
 - Plan 01 is verified using the completed local checks and existing DB security evidence under its revised acceptance criteria.
@@ -39,10 +51,20 @@ Do not reapply or roll back the production migration merely because work continu
 - Plan 02 was approved, implemented and verified on 2026-09-29. The final `$portfolio-verify` verdict is PASS; see the audit below.
 - New Work/Project/Resume/Writing routes, redirects, Korean navigation, split typed content and removal of active AI UI are implemented. Existing career/project facts and blog data contracts are preserved.
 - Local build, TypeScript and diff checks passed. The browser/HTTP/content/SEO script passed 54 checks and supplementary checks passed 4. Global lint remains blocked by the existing missing plugin; scoped Next rules covered all 32 changed/moved TS/TSX files with no errors and one pre-existing image warning.
-- Full visual redesign and career-content revision have not been started. Next is `$portfolio-plan-interview` for Plan 03 (design system and global shell); no later plan is approved for implementation yet.
+- Plan 03 was approved, implemented and verified on 2026-09-29. Common tokens, Pretendard, light/dark themes and global shell are complete. Regression 54/54 and design/behavior 49/49 passed; build/TypeScript/diff passed. Global lint retains the same plugin baseline; all 34 changed/new TS/TSX passed focused rules with one existing image warning.
+- Plan 03 implementation, planning and evidence are included in the same checkpoint as Plan 04. No push or deployment was performed.
+- The user approved restarting the existing port-3000 development server. It was gracefully restarted on 2026-09-29 and recovered: Home, Work, Writing, Resume and representative Project all return 200; writing hydration/data loading and theme toggle/reload persistence pass with no browser page errors. See baseline/plan03/dev-server-recovery.json. Port 3000 remains available; the temporary production verification server is no longer needed.
+- Plan 03 covers light/dark themes with system fallback and saved preference, Pretendard, shared tokens/container/controls, inline mobile navigation, a normal-flow footer, accessibility and theme adaptation of all active pages/states. Existing content, routes, SEO and DB contracts remain unchanged.
+- Home page-specific visual reconstruction is complete under Plan 04. Other page-body redesign and career-content revision remain future work. The prior Plan 03 verdict did not assert reference Home equivalence; Plan 04 provides that separate approved-scope comparison. No plan after 04 is approved for implementation.
 
 Relevant files:
 
+- `doc/projects-reorganization/plan/04-home-reference-reconstruction.md`
+- `doc/projects-reorganization/audit/04-home-reference-verification.md`
+- `doc/projects-reorganization/baseline/plan04/browser-checks.json`
+- `doc/projects-reorganization/plan/03-design-system-and-global-shell.md`
+- `doc/projects-reorganization/audit/03-design-system-verification.md`
+- `doc/projects-reorganization/baseline/plan03/design-checks.json`
 - `doc/projects-reorganization/plan/02-information-architecture-and-content-model.md`
 - `doc/projects-reorganization/audit/02-information-architecture-verification.md`
 - `doc/projects-reorganization/audit/02-information-architecture-check.cjs`

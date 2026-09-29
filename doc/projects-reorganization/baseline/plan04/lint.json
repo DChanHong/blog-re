@@ -1,0 +1,15 @@
+{
+  "files": [
+    "src/app/ClientPage.tsx",
+    "src/components/domain/home/HomeProjectCard.tsx",
+    "src/components/domain/home/ReferenceHome.tsx",
+    "src/components/domain/home/Section3/index.tsx",
+    "src/components/home/BlogContainer.tsx",
+    "src/components/layout/SiteLayout/parts/Footer.tsx",
+    "src/components/layout/SiteLayout/parts/Header.tsx",
+    "src/components/skeletons/BlogSkeleton.tsx"
+  ],
+  "errors": 0,
+  "warnings": 0,
+  "messages": []
+}

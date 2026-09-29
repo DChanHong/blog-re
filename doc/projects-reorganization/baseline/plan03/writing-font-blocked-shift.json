@@ -1,0 +1,18 @@
+{
+  "fontsBlocked": true,
+  "cls": 0.12016531902403876,
+  "shifts": [
+    {
+      "value": 0.12010149056711351,
+      "sources": [
+        "min-w-0 break-words md:col-span-3"
+      ]
+    },
+    {
+      "value": 0.00006382845692525394,
+      "sources": [
+        null
+      ]
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "files": [
+    "src/app/ClientPage.tsx",
+    "src/app/blog/[slug]/page.tsx",
+    "src/app/layout.tsx",
+    "src/app/not-found.tsx",
+    "src/app/project/[slug]/page.tsx",
+    "src/app/resume/ResumePage.tsx",
+    "src/app/resume/page.tsx",
+    "src/app/work/page.tsx",
+    "src/app/writing/WritingListPage.tsx",
+    "src/app/writing/page.tsx",
+    "src/components/domain/blog/PostCard.tsx",
+    "src/components/domain/blog/PostCardSkeleton.tsx",
+    "src/components/domain/career/CareerSectionNav.tsx",
+    "src/components/domain/career/CareerSummary.tsx",
+    "src/components/domain/career/PersonalInfoHeader.tsx",
+    "src/components/domain/career/ProjectTimeline.tsx",
+    "src/components/domain/career/TechStack.tsx",
+    "src/components/domain/home/CareerHighlight/index.tsx",
+    "src/components/domain/home/ProjectShowcase/index.tsx",
+    "src/components/domain/home/Section3/index.tsx",
+    "src/components/domain/project/ProjectDetails.tsx",
+    "src/components/layout/PageContainer.tsx",
+    "src/components/layout/SiteLayout/index.tsx",
+    "src/components/layout/SiteLayout/parts/Footer.tsx",
+    "src/components/layout/SiteLayout/parts/Header.tsx",
+    "src/components/layout/SiteLayout/parts/index.ts",
+    "src/components/skeletons/BlogSkeleton.tsx",
+    "src/components/ui/Buttons/section-4-cta-button.tsx",
+    "src/components/ui/Pagination.tsx",
+    "src/hooks/useElementObserve.ts",
+    "src/components/providers/ThemeProvider.tsx",
+    "src/components/ui/PrimaryButton.tsx",
+    "src/components/ui/TextLink.tsx",
+    "src/components/ui/ThemeToggle.tsx"
+  ],
+  "errors": 0,
+  "warnings": 1,
+  "messages": [
+    {
+      "file": "/Users/hong/Desktop/내꺼연습/blog-re/src/components/domain/blog/PostCard.tsx",
+      "messages": [
+        {
+          "ruleId": "@next/next/no-img-element",
+          "severity": 1,
+          "message": "Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element",
+          "line": 36,
+          "column": 25,
+          "nodeType": "JSXOpeningElement",
+          "endLine": 42,
+          "endColumn": 27
+        }
+      ]
+    }
+  ]
+}
