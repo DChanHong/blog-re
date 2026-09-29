@@ -4,6 +4,8 @@ Date: 2026-09-29 (Asia/Seoul)
 
 Verdict: **PASS — approved Home and shared shell scope**
 
+Retention note (2026-09-29): 사용자가 화면 형태를 확인한 뒤 중복 산출물 정리를 승인했다. 아래는 검증 당시의 기록이며, 제거한 중간 캡처·상태 캡처·빌드 로그/경로는 커밋 `5b71b15`에서 복구할 수 있다. 현재 보관 범위는 [보관 안내](../baseline/README.md)를 따른다.
+
 ## Scope and method
 
 `portfolio-execute` completed the approved implementation before `portfolio-verify` began. Verification reviewed the complete Plan 04, its implementation log, all 11 source-file deltas against the execution-start snapshot, and the acceptance criteria below. No application code was edited during verification. Earlier uncommitted Plan 03 work was not attributed to Plan 04 or reverted.
@@ -66,7 +68,7 @@ Primary evidence:
 - Sampled text contrast checks passed: minimum large secondary heading 3.04:1; ordinary small text minimum 4.73:1. Main focus/accent uses the unchanged accessible theme token. Text-only status labels convey state without color dependence.
 - Enlargement used a **controlled local fixture with CSS `zoom:2` at 1440×900**, not OS/native browser zoom. Home and Footer remained readable with scrollWidth equal to clientWidth. Actual shared Header was separately tested down to 320px; theme control and navigation were exercised on the real app.
 - Reduced-motion inspection combined the unchanged global `prefers-reduced-motion` rules with a controlled fixture disabling animations/transitions. New Home has no delayed reveal or animated skeleton, all seven sections remain opacity 1, and fixture reports zero animations. This is not a claim that the user's OS preference was changed or all browser engines were tested.
-- [Loading](../baseline/plan04/final-fixture-dark-loading.jpg), [error](../baseline/plan04/final-fixture-light-error.jpg), [empty](../baseline/plan04/final-fixture-empty.jpg), [200%](../baseline/plan04/final-fixture-zoom-200.jpg). Skeleton has the same frame and two row placeholders as the loaded list; variable article lengths can still change height. No claim of measured zero CLS is made.
+- Archived Loading (`../baseline/plan04/final-fixture-dark-loading.jpg`; checkpoint `5b71b15`), Archived error (`../baseline/plan04/final-fixture-light-error.jpg`; checkpoint `5b71b15`), Archived empty (`../baseline/plan04/final-fixture-empty.jpg`; checkpoint `5b71b15`), Archived 200% (`../baseline/plan04/final-fixture-zoom-200.jpg`; checkpoint `5b71b15`). Skeleton has the same frame and two row placeholders as the loaded list; variable article lengths can still change height. No claim of measured zero CLS is made.
 - No AI component is mounted or newly imported in the active shell/Home, and the previously verified active client graph is unchanged except display-only Home replacement. Static/DOM inspection establishes no automatic AI caller in this scope; this audit did **not** collect a new browser network trace or invoke AI endpoints.
 - This is local verification only. No Vercel or production-service verification, migration, crawler, `verify:security`, commit or push was run.
 
@@ -82,7 +84,7 @@ node doc/projects-reorganization/audit/04-workspace.cjs preserve exit 0
 node doc/projects-reorganization/audit/04-http-check.cjs        exit 0 (56 passed, 0 failed)
 ```
 
-- Final build snapshot: `portfolio-plan04-build-ThEvtB`. [Build log](../baseline/plan04/build.log), [workspace](../baseline/plan04/build-workspace.json), [lint](../baseline/plan04/lint.json), [HTTP](../baseline/plan04/http.json), [states](../baseline/plan04/states.json), [preservation](../baseline/plan04/preservation.json).
+- Final build snapshot: `portfolio-plan04-build-ThEvtB`. Archived Build log (`../baseline/plan04/build.log`; checkpoint `5b71b15`), Archived workspace (`../baseline/plan04/build-workspace.json`; checkpoint `5b71b15`), [lint](../baseline/plan04/lint.json), [HTTP](../baseline/plan04/http.json), [states](../baseline/plan04/states.json), [preservation](../baseline/plan04/preservation.json).
 - Production browser/HTTP used the immediately preceding final-source snapshot `portfolio-plan04-build-IhUx7h`; source hashes of both final-source snapshots and working tree agree. Repeated final verification build and post-build tsc passed.
 - Entire repository lint stops before analysis because `eslint-plugin-prettier` is missing, exactly as Plan 03. Build reports the same lint warning but exits 0. No dependency/config changes; all eight changed/new TSX files pass focused Next core-web-vitals/TypeScript rules without warnings. This is **not** a repository-wide lint pass.
 - Original source snapshot is identified in [before.json](../baseline/plan04/before.json). Plan 04 changes only 11 application files; protected-path violations and build mismatches are both empty. Additional byte comparison of 108 public/style/config/dependency files against the execution-start snapshot found zero mismatches. Existing package scripts have no targeted Home test suite; the local component/HTTP/browser checks supply targeted coverage.

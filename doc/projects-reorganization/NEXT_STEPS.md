@@ -5,7 +5,7 @@ Updated: 2026-09-29 (Asia/Seoul)
 ## Current State
 
 - Branch: `develop`
-- Current implementation checkpoint: Plan 03 design system and Plan 04 reference Home; resolve its commit hash with `git log -1` after this checkpoint is committed.
+- Current implementation checkpoint: `5b71b15 feat: implement portfolio design system and reference home` — Plan 03 and Plan 04.
 - Plan 00: `Verified`
 - Plan 01: `Verified` (operational application verification excluded by user decision)
 - Plan 02: `Verified` — `plan/02-information-architecture-and-content-model.md`
@@ -34,12 +34,15 @@ Do not reapply or roll back the production migration merely because work continu
 
 ## Next Action: Incremental UI Refinements
 
+- 사용자 승인 정리(2026-09-29): 중복 검증 이미지 149개, 미사용 구형 홈 이미지 3개, 비활성 Home/장식 컴포넌트 13개, 구형 Plan 03 검사 스크립트 6개, 중간 보고서·임시 빌드 기록 4개를 삭제했다(총 175개, 약 28.4 MiB). 현재 UI·경력/글 데이터·폰트·AI 백엔드·의존성·개발 서버 캐시는 그대로다. 대표 캡처 14개 및 최종 보고서와 Plan 04 재검사 도구 3개는 유지한다. 삭제 파일은 `5b71b15`에서 복구 가능하다. [보관 안내](baseline/README.md).
+- 정리 검증: 남은 TypeScript 소스의 삭제 대상 import 0개, `npx tsc --noEmit --incremental false` 통과, 분리 `npm run build`(118 정적 페이지) 및 post-build tsc 통과, `git diff --check` 통과. 빌드의 기존 eslint-plugin-prettier 누락 경고는 동일하다. 임시 3103 서버에서 Home/Work/Resume/Writing 200, 단일 main, Home 7영역/프로젝트 4개/글 2개를 확인했다. 현재 3000 포트는 다른 프로젝트가 사용 중이므로 종료·재시작하지 않았다. 이 정리 변경은 아직 커밋하지 않았다.
+
 - Plan 04 was implemented with `$portfolio-execute` and separately verified with `$portfolio-verify` on 2026-09-29. Final verdict PASS; see `audit/04-home-reference-verification.md`.
 - The user approved Plan 04 on 2026-09-29 with “확정”. The goal is matching the reference Home's design and composition, replacing only personal content, not merely borrowing its visual style.
 - Reconstruct Home and correct Header/Footer fidelity. Preserve Korean/Pretendard, existing branding, no AI/language UI, existing career/project facts and public links. Keep four actual growth steps and omit unavailable certifications; use four projects and two recent text-only article previews.
 - Actual reference/result desktop/mobile light/dark captures, measured dimensions and behavioral evidence are in `baseline/plan04/`. Build/tsc/diff and all 8 changed TSX focused lint checks passed; local HTTP/state checks passed 56/56. Global lint still has the unchanged missing-plugin baseline. Controlled zoom/reduced-motion methods and accessibility differences are explicitly recorded in the audit.
 - The user inspected Home and confirmed that this is the desired form on 2026-09-29, then requested committing the completed work before making incremental refinements.
-- This checkpoint includes Plan 03 and Plan 04 implementation, plans and verification evidence. Home remains available at `http://localhost:3000/`; no push, deployment or DB write is included. User development server remains running.
+- Checkpoint `5b71b15` includes Plan 03 and Plan 04 implementation, plans and verification evidence. Home was checked on port 3000 at that time; the current port ownership is recorded in the cleanup note above. No push, deployment or DB write is included.
 - Commit-time staged whitespace check passes excluding the preserved raw build log and upstream Pretendard LICENSE/README/CSS, which contain trailing whitespace or extra EOF blank lines. These artifacts were retained without content changes; no application logic changed during the commit step.
 - No next plan is approved. Use `$portfolio-plan-interview` for Work/Project reference reconstruction as a new work unit, then Resume and Writing/Blog. Do not automatically start those implementations.
 - Other page bodies remain separate follow-up plans; shell changes require regression checks on them.

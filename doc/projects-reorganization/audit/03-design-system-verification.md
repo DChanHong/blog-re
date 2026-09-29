@@ -4,6 +4,8 @@ Date: 2026-09-29 (Asia/Seoul)
 
 Status: Verified — PASS (isolated local production)
 
+Retention note (2026-09-29): 사용자가 중복 산출물 정리를 승인했다. 아래는 검증 당시의 기록이며, 구형 검사 스크립트와 상세 캡처는 커밋 `5b71b15`에서 복구할 수 있다. 현재 보관 범위와 실행 방법은 [보관 안내](../baseline/README.md)를 따른다.
+
 ## Scope and implementation
 
 - Approved plan: [03-design-system-and-global-shell.md](../plan/03-design-system-and-global-shell.md). Baseline commit: b213173. Plan 00–02 were Verified.
@@ -89,4 +91,4 @@ The original port-3000 process initially remained running pending approval. A re
 
 On 2026-09-29 the user explicitly approved restarting it (“재시작해줘”). The exact project directory and next-dev parent process were checked before graceful SIGTERM. After port 3000 was released, npm run dev -- -p 3000 started successfully. No source, configuration, dependency or environment-variable value was changed, and no cache directory was deleted.
 
-Recovery verification passed: Home, Work, Writing, Resume and representative Project return HTTP 200 and hydrate the theme control; Writing loads actual article cards; theme toggle persists after reload; browser page errors are empty. [Recovery report](../baseline/plan03/dev-server-recovery.json), [recovered screen](../baseline/plan03/dev-server-recovered.png). Source/styles/public still match the fully verified production snapshot, and git diff --check passes. The 3000 development server is left running; the task-owned 3101 verification server is stopped after QA. No recovery blocker remains.
+Recovery verification passed: Home, Work, Writing, Resume and representative Project return HTTP 200 and hydrate the theme control; Writing loads actual article cards; theme toggle persists after reload; browser page errors are empty. [Recovery report](../baseline/plan03/dev-server-recovery.json), Archived recovered screen (`../baseline/plan03/dev-server-recovered.png`; checkpoint `5b71b15`). Source/styles/public still match the fully verified production snapshot, and git diff --check passes. The 3000 development server is left running; the task-owned 3101 verification server is stopped after QA. No recovery blocker remains.
