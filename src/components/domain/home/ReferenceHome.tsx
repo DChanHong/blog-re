@@ -6,7 +6,31 @@ import PrimaryButton from "@/components/ui/PrimaryButton";
 import TextLink from "@/components/ui/TextLink";
 import HomeProjectCard from "./HomeProjectCard";
 import HeroEntrance from "./HeroEntrance";
+import SectionEntrance from "./SectionEntrance";
 import styles from "./home-reference.module.css";
+
+const capabilityCards = [
+    {
+        title: "사용자 흐름을 구현합니다",
+        description:
+            "사용자가 기능을 끝까지 이용할 수 있도록 화면을 만듭니다. 입력 보존과 검증, 실시간 상태 반영, 실패 시 안내까지 사용 과정의 세부 동작을 챙깁니다.",
+    },
+    {
+        title: "화면과 데이터를 연결합니다",
+        description:
+            "화면에 필요한 API와 데이터 구조를 함께 설계하고 구현합니다. 사용자 기능부터 관리자 도구까지, 조회와 저장이 이어지는 서비스 흐름을 만듭니다.",
+    },
+    {
+        title: "변경하기 쉬운 구조를 만듭니다",
+        description:
+            "여러 서비스에서 사용하는 기능을 공통화하고, 자주 바뀌는 운영 설정을 코드와 분리합니다. 기능을 추가하고 수정할 때 반복되는 작업을 줄입니다.",
+    },
+    {
+        title: "운영하며 안정성을 높입니다",
+        description:
+            "실제 사용 중 발생한 문제를 재현하고 원인을 찾아 개선합니다. 연결 복구와 데이터 재조회, 대량 처리와 외부 연동의 실패 대응을 다룹니다.",
+    },
+];
 
 function SectionHeading({
     id,
@@ -14,15 +38,17 @@ function SectionHeading({
     title,
     secondary,
     children,
+    animated = false,
 }: {
     id: string;
     label: string;
     title: string;
     secondary: string;
     children?: ReactNode;
+    animated?: boolean;
 }) {
     return (
-        <div className={styles.headingBlock}>
+        <div className={styles.headingBlock} data-entrance={animated ? "heading" : undefined}>
             <p className={styles.eyebrow}>{label}</p>
             <h2 id={id} className={styles.heading}>
                 {title}
@@ -61,17 +87,19 @@ export default function ReferenceHome({ writingSlot }: { writingSlot: ReactNode 
                 className={`${styles.section} ${styles.capabilities}`}
                 aria-labelledby="home-capabilities"
             >
-                <div className={styles.container}>
+                <SectionEntrance className={styles.container}>
                     <SectionHeading
                         id="home-capabilities"
-                        label="역량"
-                        title="프론트엔드에서 시작해."
-                        secondary="서비스의 흐름까지."
+                        animated
+                        label="Web Developer"
+                        title="업무를 이해하고."
+                        secondary="작동하는 서비스로 만듭니다."
                     >
-                        {personalInfoData.introduction}
+                        실제로 사용하는 사람의 이야기를 듣고, 필요한 기능을 구체화합니다. 화면과
+                        API, 데이터를 함께 설계하고 구현하며, 배포 이후의 불편과 오류까지 개선합니다.
                     </SectionHeading>
-                    <ol className={styles.capabilityGrid}>
-                        {capabilitiesData.map((item, index) => (
+                    <ol className={styles.capabilityGrid} data-entrance="cards">
+                        {capabilityCards.map((item, index) => (
                             <li key={item.title} className={styles.capabilityCard}>
                                 <span className={styles.number}>
                                     {String(index + 1).padStart(2, "0")}
@@ -81,7 +109,7 @@ export default function ReferenceHome({ writingSlot }: { writingSlot: ReactNode 
                             </li>
                         ))}
                     </ol>
-                </div>
+                </SectionEntrance>
             </section>
             <section className={`${styles.section} ${styles.sunken}`} aria-labelledby="home-path">
                 <div className={styles.container}>
