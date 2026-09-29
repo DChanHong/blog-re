@@ -170,20 +170,23 @@ export default function ReferenceHome({ writingSlot }: { writingSlot: ReactNode 
                 </SectionEntrance>
             </section>
             <section className={styles.section} aria-labelledby="home-work">
-                <div className={styles.container}>
+                <SectionEntrance className={styles.container}>
                     <SectionHeading
                         id="home-work"
-                        label="프로젝트"
-                        title="경험을 담은 프로젝트."
-                        secondary="그 안의 역할과 성과."
+                        animated
+                        label="Work"
+                        title="실제로 쓰이는 서비스."
+                        secondary="직접 해결한 문제들."
                     >
-                        각 지표와 프로젝트를 선택하면 담당 역할과 주요 성과를 확인할 수 있습니다.
+                        고객이 사용하는 서비스부터 내부 업무 도구까지, 화면과 API, 데이터를 연결해
+                        개발했습니다. 각 프로젝트에 직접 맡은 역할과 설계 판단, 운영 과정에서 해결한
+                        문제를 담았습니다.
                     </SectionHeading>
-                    <dl className={styles.outcomes}>
-                        {careerMetrics.map((metric, index) => (
+                    <dl className={styles.outcomes} data-entrance="cards">
+                        {careerMetrics.map((metric) => (
                             <div key={metric.label}>
                                 <Link
-                                    href={index === 0 ? "/resume" : "/project/realtime-support"}
+                                    href={metric.href}
                                     className={styles.outcomeLink}
                                 >
                                     <dt>{metric.label}</dt>
@@ -193,8 +196,8 @@ export default function ReferenceHome({ writingSlot }: { writingSlot: ReactNode 
                             </div>
                         ))}
                     </dl>
-                    <ul className={styles.projectGrid}>
-                        {projectsData.map((project) => (
+                    <ul className={styles.projectGrid} data-entrance="cards">
+                        {projectsData.filter((project) => project.featured).map((project) => (
                             <li key={project.id}>
                                 <HomeProjectCard project={project} />
                             </li>
@@ -205,7 +208,7 @@ export default function ReferenceHome({ writingSlot }: { writingSlot: ReactNode 
                             전체 프로젝트 보기 <span aria-hidden="true">›</span>
                         </TextLink>
                     </div>
-                </div>
+                </SectionEntrance>
             </section>
             <section
                 className={`${styles.section} ${styles.sunken}`}

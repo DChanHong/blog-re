@@ -1,9 +1,10 @@
-export type ProjectStatus = "운영 중" | "완료" | "출시 보류";
+export type ProjectStatus = "운영 중" | "완료" | "출시 보류" | "개발·검수" | "이관 진행 중";
 
 export interface CareerMetric {
     value: string;
     label: string;
     caption: string;
+    href: string;
 }
 
 export interface GrowthStep {

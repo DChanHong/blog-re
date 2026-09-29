@@ -6,6 +6,8 @@ interface ProjectTimelineProps {
 }
 
 const statusStyles: Record<ProjectStatus, string> = {
+    "개발·검수": "border-border bg-muted text-secondary",
+    "이관 진행 중": "border-border bg-sunken text-accent",
     "운영 중": "border-border bg-success-surface text-success",
     완료: "border-border bg-sunken text-accent",
     "출시 보류": "border-border bg-warning-surface text-warning",

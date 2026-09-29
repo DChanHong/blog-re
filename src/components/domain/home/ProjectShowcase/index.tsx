@@ -28,6 +28,8 @@ const projectMeta: Record<string, { icon: ElementType; iconColor: string; accent
 };
 
 const statusBadge: Record<string, string> = {
+    "개발·검수": "bg-muted text-secondary border-border",
+    "이관 진행 중": "bg-sunken text-accent border-border",
     "운영 중": "bg-success-surface text-success border-border",
     완료: "bg-muted text-secondary border-border",
     "출시 보류": "bg-warning-surface text-warning border-border",
@@ -46,7 +48,11 @@ export default function ProjectShowcase() {
 }
 
 function ProjectCard({ project }: { project: CareerProject }) {
-    const meta = projectMeta[project.id];
+    const meta = projectMeta[project.id] ?? {
+        icon: Building2,
+        iconColor: "text-accent bg-sunken border-border",
+        accentBar: "bg-accent",
+    };
     const Icon = meta?.icon ?? RadioTower;
 
     return (

@@ -13,7 +13,9 @@ export default function HomeProjectCard({ project }: { project: CareerProject })
                     {project.metrics.slice(0, 2).map((metric) => (
                         <div key={metric.label}>
                             <dt>{metric.label}</dt>
-                            <dd>{metric.value}</dd>
+                            <dd className={metric.value.length > 12 ? styles.textMetric : undefined}>
+                                {metric.value}
+                            </dd>
                         </div>
                     ))}
                 </dl>

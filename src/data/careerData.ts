@@ -17,24 +17,28 @@ export const personalInfoData = {
 
 export const careerMetrics: CareerMetric[] = [
     {
-        value: "약 3년",
-        label: "웹 서비스 개발",
-        caption: "2023.09부터 운영형 서비스 개발",
+        value: "약 80개",
+        label: "공통 상담 위젯 적용 홈페이지",
+        caption: "사이트별 고객 상담을 하나의 플랫폼으로 연결",
+        href: "/project/realtime-support",
     },
     {
-        value: "80여 개",
-        label: "공통 위젯 적용 대상",
-        caption: "Next.js 홈페이지 공통 패키지",
+        value: "12만 건+",
+        label: "실제 상담 유입",
+        caption: "서비스 시작 후 1년간 · DB 집계 기준",
+        href: "/project/realtime-support",
     },
     {
-        value: "6,455건+",
-        label: "자체 상담 서비스 운영",
-        caption: "2025.12.23 집계 기준",
+        value: "1,000명",
+        label: "평가 데이터 저장 검증",
+        caption: "합성 데이터 테스트 · 전원 DB 저장 확인",
+        href: "/project/erp-groupware",
     },
     {
-        value: "19종",
-        label: "WebSocket 이벤트",
-        caption: "수신 15종 · 송신 4종",
+        value: "2개 프로젝트",
+        label: "외주 관리자 영역 개발",
+        caption: "기업·의료기관 홈페이지 관리자 담당",
+        href: "/project/admin-platform",
     },
 ];
 
