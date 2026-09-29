@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
-import { capabilitiesData, careerMetrics, personalInfoData } from "@/data/careerData";
+import { careerMetrics, personalInfoData } from "@/data/careerData";
 import { projectsData } from "@/data/projects";
 import PrimaryButton from "@/components/ui/PrimaryButton";
 import TextLink from "@/components/ui/TextLink";
@@ -62,6 +62,22 @@ const homeJourney = [
         title: "백엔드와 AI로 더 넓게",
         description:
             "Spring Boot 알림 서비스와 Kafka 연동을 구현하고 개발 서버에서 배포·검증했습니다. 개인 프로젝트에서는 FastAPI와 LangGraph로 AI 서비스를 개발하며 웹과 AI를 연결하고 있습니다.",
+    },
+];
+
+const toolkitGroups = [
+    { title: "Frontend", technologies: "React · Next.js · TypeScript" },
+    { title: "Backend & Data", technologies: "Node.js · Go · PostgreSQL · Prisma" },
+    { title: "Realtime", technologies: "WebSocket · TanStack Query · Zustand" },
+    {
+        title: "Service Deployment",
+        technologies: "Spring Boot · Kafka · Kubernetes · Helm · ArgoCD",
+        context: "서비스 이관·개발 서버 배포 경험",
+    },
+    {
+        title: "AI Development",
+        technologies: "Python · FastAPI · LangGraph · pgvector",
+        context: "개인 프로젝트·학습",
     },
 ];
 
@@ -217,30 +233,56 @@ export default function ReferenceHome({ writingSlot }: { writingSlot: ReactNode 
                 <div className={styles.container}>
                     <SectionHeading
                         id="home-toolkit"
-                        label="기술과 학력"
-                        title="사용해 온 기술."
-                        secondary="배움의 기반."
-                    />
+                        label="Toolkit & Learning"
+                        title="서비스를 만드는 기술."
+                        secondary="가능성을 넓히는 배움."
+                    >
+                        화면과 서버, 데이터를 연결하며 필요한 기술을 익혀왔습니다. 실무에서 쌓은 웹
+                        개발 경험을 바탕으로, 백엔드와 AI 서비스 개발까지 깊이를 더하고 있습니다.
+                    </SectionHeading>
                     <div className={styles.toolkitGrid}>
                         <div>
-                            <h3 className={styles.eyebrow}>기술</h3>
+                            <h3 className={styles.eyebrow}>Toolkit</h3>
                             <dl className={styles.toolkitList}>
-                                {capabilitiesData.map((item) => (
+                                {toolkitGroups.map((item) => (
                                     <div key={item.title}>
                                         <dt>{item.title}</dt>
-                                        <dd>{item.technologies.join(" · ")}</dd>
+                                        <dd>{item.technologies}</dd>
+                                        {item.context && (
+                                            <dd className={styles.toolkitContext}>{item.context}</dd>
+                                        )}
                                     </div>
                                 ))}
                             </dl>
                         </div>
                         <div>
-                            <h3 className={styles.eyebrow}>학력</h3>
+                            <h3 className={styles.eyebrow}>Education & Learning</h3>
                             <ul className={styles.education}>
                                 <li>
-                                    <p>{personalInfoData.degree}</p>
+                                    <h4>{personalInfoData.university} · {personalInfoData.degree}</h4>
+                                    <p>2016.02–2022.02 · {personalInfoData.gpa}/4.5</p>
+                                </li>
+                                <li>
+                                    <h4>AI Agent 교육과 실습</h4>
                                     <p>
-                                        {personalInfoData.university} · {personalInfoData.gpa}
+                                        IT 스칼라 교육 수강. RAG 검색과 답변 품질을 평가하고, 실패
+                                        원인을 분석하며 학습 내용을 기록했습니다.
                                     </p>
+                                </li>
+                                <li>
+                                    <h4>KBO Mate · 개인 프로젝트</h4>
+                                    <p>
+                                        FastAPI와 LangGraph 기반으로 야구 직관 정보를 안내하는 AI
+                                        서비스를 개발하고 있습니다.
+                                    </p>
+                                    <TextLink
+                                        href="https://velog.io/@hongchee/AI-Agent-LangGraph-도입-Tool보다-먼저-정리해야-했던-Context"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className={`${styles.link} ${styles.learningLink}`}
+                                    >
+                                        개발 기록 보기 <span aria-hidden="true">›</span>
+                                    </TextLink>
                                 </li>
                             </ul>
                         </div>
