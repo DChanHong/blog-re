@@ -5,6 +5,7 @@ import { projectsData } from "@/data/projects";
 import PrimaryButton from "@/components/ui/PrimaryButton";
 import TextLink from "@/components/ui/TextLink";
 import HomeProjectCard from "./HomeProjectCard";
+import HeroEntrance from "./HeroEntrance";
 import styles from "./home-reference.module.css";
 
 function SectionHeading({
@@ -37,7 +38,7 @@ export default function ReferenceHome({ writingSlot }: { writingSlot: ReactNode 
     return (
         <div className={styles.home}>
             <section className={styles.hero} aria-labelledby="home-title">
-                <div className={styles.heroInner}>
+                <HeroEntrance className={styles.heroInner}>
                     <p className={styles.name}>{personalInfoData.name}</p>
                     <h1 id="home-title" className={styles.heroTitle}>
                         {personalInfoData.position}
@@ -54,7 +55,7 @@ export default function ReferenceHome({ writingSlot }: { writingSlot: ReactNode 
                     <p className={styles.affiliation}>
                         {personalInfoData.company} · {personalInfoData.period}
                     </p>
-                </div>
+                </HeroEntrance>
             </section>
             <section
                 className={`${styles.section} ${styles.capabilities}`}
