@@ -36,7 +36,7 @@
     --display-lg: 4rem;
     --display-xl: 5.25rem;
     --section-space: 7rem;
-    --header-height: 57px;
+    --header-height: 72px;
     --gutter: 24px;
     --font-portfolio:
         "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
@@ -103,7 +103,7 @@
 }
 @media (min-width: 640px) {
     :root {
-        --header-height: 65px;
+        --header-height: 80px;
         --section-space: 10rem;
     }
 }

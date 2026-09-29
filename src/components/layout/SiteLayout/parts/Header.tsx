@@ -6,9 +6,9 @@ import ThemeToggle from "@/components/ui/ThemeToggle";
 import { personalInfoData } from "@/data/careerData";
 
 const links = [
-    { href: "/work", label: "프로젝트" },
-    { href: "/writing", label: "글" },
-    { href: "/resume", label: "이력서" },
+    { href: "/work", label: "Projects" },
+    { href: "/writing", label: "Writing" },
+    { href: "/resume", label: "Resume" },
 ];
 
 export default function Header() {
