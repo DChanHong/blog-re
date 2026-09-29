@@ -1,0 +1,155 @@
+[
+  {
+    "name": "loading state not zero",
+    "pass": true
+  },
+  {
+    "name": "metadata loading",
+    "pass": true
+  },
+  {
+    "name": "initial sequential entrance",
+    "pass": true,
+    "detail": [
+      {
+        "opacity": 0.850153,
+        "y": "matrix(1, 0, 0, 1, 0, 2.65807)"
+      },
+      {
+        "opacity": 0.587284,
+        "y": "matrix(1, 0, 0, 1, 0, 7.33714)"
+      },
+      {
+        "opacity": 0.0395159,
+        "y": "matrix(1, 0, 0, 1, 0, 17.1311)"
+      },
+      {
+        "opacity": 0,
+        "y": "matrix(1, 0, 0, 1, 0, 18)"
+      },
+      {
+        "opacity": 0,
+        "y": "matrix(1, 0, 0, 1, 0, 18)"
+      },
+      {
+        "opacity": 0,
+        "y": "matrix(1, 0, 0, 1, 0, 18)"
+      },
+      {
+        "opacity": 0,
+        "y": "matrix(1, 0, 0, 1, 0, 18)"
+      },
+      {
+        "opacity": 0,
+        "y": "matrix(1, 0, 0, 1, 0, 18)"
+      },
+      {
+        "opacity": 0,
+        "y": "matrix(1, 0, 0, 1, 0, 18)"
+      }
+    ]
+  },
+  {
+    "name": "focus reveals all rows",
+    "pass": true,
+    "detail": [
+      {
+        "opacity": "1",
+        "style": "transform: none; opacity: 1;"
+      },
+      {
+        "opacity": "1",
+        "style": "transform: none; opacity: 1;"
+      },
+      {
+        "opacity": "1",
+        "style": "transform: none; opacity: 1;"
+      },
+      {
+        "opacity": "1",
+        "style": "transform: none; opacity: 1;"
+      },
+      {
+        "opacity": "1",
+        "style": "transform: none; opacity: 1;"
+      },
+      {
+        "opacity": "1",
+        "style": "transform: none; opacity: 1;"
+      },
+      {
+        "opacity": "1",
+        "style": "transform: none; opacity: 1;"
+      },
+      {
+        "opacity": "1",
+        "style": "transform: none; opacity: 1;"
+      },
+      {
+        "opacity": "1",
+        "style": "transform: none; opacity: 1;"
+      }
+    ]
+  },
+  {
+    "name": "query update no entrance",
+    "pass": true
+  },
+  {
+    "name": "page update no entrance",
+    "pass": true
+  },
+  {
+    "name": "empty search state",
+    "pass": true
+  },
+  {
+    "name": "empty archive state",
+    "pass": true
+  },
+  {
+    "name": "error distinct from empty",
+    "pass": true
+  },
+  {
+    "name": "metadata errors",
+    "pass": true
+  },
+  {
+    "name": "retry restores rows and metadata",
+    "pass": true
+  },
+  {
+    "name": "source fallback",
+    "pass": true,
+    "detail": {
+      "href": "https://velog.io/@hongchee/example",
+      "target": "_blank",
+      "rel": "noopener noreferrer"
+    }
+  },
+  {
+    "name": "long title/tag reflow 320",
+    "pass": true
+  },
+  {
+    "name": "long title/tag reflow 390",
+    "pass": true
+  },
+  {
+    "name": "long title/tag reflow 720",
+    "pass": true
+  },
+  {
+    "name": "long title/tag reflow 1440",
+    "pass": true
+  },
+  {
+    "name": "reduced motion rows",
+    "pass": true
+  },
+  {
+    "name": "reduced motion hero",
+    "pass": true
+  }
+]

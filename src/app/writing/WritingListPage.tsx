@@ -5,8 +5,9 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useBlogPostsQuery, useBlogCategoriesQuery, useBlogTagsQuery } from "@/actions/blog";
 import Pagination from "@/components/ui/Pagination";
-import PostCard from "@/components/domain/blog/PostCard";
-import PostCardSkeleton from "@/components/domain/blog/PostCardSkeleton";
+import WritingEntrance from "./WritingEntrance";
+import WritingSkeleton from "./WritingSkeleton";
+import styles from "./writing.module.css";
 
 interface WritingListPageProps {
     currentPage: number;
@@ -22,10 +23,7 @@ export default function WritingListPage({
     search,
 }: WritingListPageProps) {
     const router = useRouter();
-    // md 이하에서 카테고리 접기/펼치기 상태
-    const [isCategoryOpen, setIsCategoryOpen] = useState(false);
-
-    // React Query: 블로그 포스트 데이터
+    const [filtersOpen, setFiltersOpen] = useState(false);
     const postsQuery = useBlogPostsQuery({
         page: currentPage,
         limit: 9,
@@ -33,253 +31,224 @@ export default function WritingListPage({
         ...(tag ? { tag } : {}),
         ...(search ? { search } : {}),
     });
-
+    const categoriesQuery = useBlogCategoriesQuery();
+    const tagsQuery = useBlogTagsQuery();
     const result = postsQuery.data;
     const data = result?.result.success ? result.data : null;
     const posts = data?.posts ?? [];
-    const totalPages = data?.pagination.totalPages ?? 0;
-    const totalPosts = data?.pagination.totalPosts ?? 0;
     const hasError = postsQuery.isError || result?.result.success === false;
-
-    // React Query: 카테고리/태그 메타데이터
-    const categoriesQuery = useBlogCategoriesQuery();
-    const tagsQuery = useBlogTagsQuery();
-
+    // Do not label cached rows as results for a newly selected query.
+    const loading = postsQuery.isPending || postsQuery.isPlaceholderData;
     const categories = categoriesQuery.data?.result.success
         ? (categoriesQuery.data.data ?? [])
         : [];
     const tags = tagsQuery.data?.result.success ? (tagsQuery.data.data ?? []) : [];
+    const activeFilters = Object.entries({ search, category, tag }).filter(([, value]) => value);
+    const queryKey = JSON.stringify([currentPage, category, tag, search]);
 
     function filterUrl(changes: Partial<Record<"category" | "tag" | "search", string>>) {
-        const values = { category, tag, search, ...changes };
         const query = new URLSearchParams();
-        for (const [key, value] of Object.entries(values)) {
+        for (const [key, value] of Object.entries({ category, tag, search, ...changes })) {
             if (value) query.set(key, value);
         }
-        const suffix = query.toString();
-        return suffix ? `/writing?${suffix}` : "/writing";
+        return query.size ? `/writing?${query}` : "/writing";
     }
 
     return (
-        <div className="grid md:grid-cols-4 gap-8">
-            {/* 사이드바 - 필터 */}
-            <aside className="min-w-0 md:col-span-1">
-                <div className="bg-raised rounded-2xl border border-border p-6 sticky top-[calc(var(--header-height)+24px)] shadow-sm">
-                    {/* 검색 */}
-                    <div className="mb-6">
-                        <h3 className="font-semibold text-ink mb-3">검색</h3>
-                        <form
-                            className="relative"
-                            onSubmit={(event) => {
-                                event.preventDefault();
-                                const value = String(
+        <section aria-label="글 목록과 검색">
+            <div className={styles.toolbar}>
+                <form
+                    className={styles.search}
+                    role="search"
+                    onSubmit={(event) => {
+                        event.preventDefault();
+                        router.push(
+                            filterUrl({
+                                search: String(
                                     new FormData(event.currentTarget).get("search") ?? "",
-                                ).trim();
-                                router.push(filterUrl({ search: value }));
-                            }}
-                        >
-                            <input
-                                key={search}
-                                name="search"
-                                aria-label="글 검색"
-                                type="text"
-                                placeholder="포스트 검색..."
-                                defaultValue={search}
-                                className="w-full pl-3 pr-9 py-2 bg-raised border border-control-border text-ink placeholder-muted-ink rounded-lg focus:ring-2 focus:ring-focus focus:border-transparent"
-                            />
-                            <button
-                                type="submit"
-                                aria-label="검색 실행"
-                                className="absolute right-2 top-2 h-6 w-6 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus"
-                            >
-                                <svg
-                                    aria-hidden="true"
-                                    className="h-5 w-5 text-muted-ink"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    viewBox="0 0 24 24"
-                                >
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth={2}
-                                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                                    />
-                                </svg>
-                            </button>
-                        </form>
-                    </div>
-
-                    {/* 카테고리 */}
-                    <div className="mb-6">
-                        <div className="flex items-center justify-between mb-3">
-                            <h3 className="font-semibold text-ink">카테고리</h3>
-                            <button
-                                type="button"
-                                className="md:hidden text-sm text-muted-ink px-2 py-1 rounded hover:bg-muted cursor-pointer"
-                                onClick={() => setIsCategoryOpen((prev) => !prev)}
-                                aria-controls="category-panel"
-                                aria-expanded={isCategoryOpen}
-                            >
-                                {isCategoryOpen ? "접기" : "펼치기"}
-                            </button>
-                        </div>
-                        <div
-                            id="category-panel"
-                            className={`${isCategoryOpen ? "block max-h-56" : "hidden"} md:block space-y-2 overflow-y-auto pr-1 md:max-h-none md:overflow-visible`}
-                        >
-                            <Link
-                                href={filterUrl({ category: "" })}
-                                className={`block px-3 py-2 rounded-lg text-sm transition-colors ${
-                                    !category
-                                        ? "bg-sunken text-accent"
-                                        : "text-secondary hover:bg-muted"
-                                }`}
-                            >
-                                전체
-                            </Link>
-                            {categories.map((cat) => (
+                                ).trim(),
+                            }),
+                            { scroll: false },
+                        );
+                    }}
+                >
+                    <input
+                        key={search}
+                        name="search"
+                        aria-label="글 검색"
+                        placeholder="궁금한 주제나 기술을 검색해 보세요"
+                        defaultValue={search}
+                        type="search"
+                    />
+                    <button type="submit">검색</button>
+                </form>
+                <button
+                    className={styles.filterToggle}
+                    type="button"
+                    aria-expanded={filtersOpen}
+                    aria-controls="writing-filters"
+                    onClick={() => setFiltersOpen((open) => !open)}
+                >
+                    필터
+                    {category || tag
+                        ? ` · ${Number(Boolean(category)) + Number(Boolean(tag))}`
+                        : ""}
+                    <span aria-hidden="true">{filtersOpen ? "−" : "+"}</span>
+                </button>
+            </div>
+            <div id="writing-filters" hidden={!filtersOpen} className={styles.filters}>
+                {(
+                    [
+                        {
+                            name: "카테고리",
+                            field: "category",
+                            values: categories,
+                            query: categoriesQuery,
+                            active: category,
+                        },
+                        { name: "태그", field: "tag", values: tags, query: tagsQuery, active: tag },
+                    ] as const
+                ).map((group) => (
+                    <div key={group.field} className={styles.filterGroup}>
+                        <h2>{group.name}</h2>
+                        {group.query.isPending ? (
+                            <p role="status">{group.name}를 불러오는 중입니다.</p>
+                        ) : group.query.isError || group.query.data?.result.success === false ? (
+                            <p role="alert">
+                                {group.name}를 불러오지 못했습니다.{" "}
+                                <button type="button" onClick={() => void group.query.refetch()}>
+                                    다시 시도
+                                </button>
+                            </p>
+                        ) : (
+                            <div className={styles.pills}>
                                 <Link
-                                    key={cat}
-                                    href={filterUrl({ category: cat })}
-                                    className={`block px-3 py-2 rounded-lg text-sm transition-colors ${
-                                        category === cat
-                                            ? "bg-sunken text-accent"
-                                            : "text-secondary hover:bg-muted"
-                                    }`}
+                                    scroll={false}
+                                    href={filterUrl({ [group.field]: "" })}
+                                    aria-current={!group.active ? "true" : undefined}
                                 >
-                                    {cat}
+                                    전체
                                 </Link>
-                            ))}
-                        </div>
-                    </div>
-
-                    {/* 태그 */}
-                    <div className={``}>
-                        <h3 className="font-semibold text-ink mb-3">태그</h3>
-                        <div className="flex flex-wrap gap-2">
-                            {tags.slice(0, 20).map((tagItem) => (
-                                <Link
-                                    key={tagItem}
-                                    href={filterUrl({ tag: tag === tagItem ? "" : tagItem })}
-                                    className={`px-3 py-1 text-[0.8125rem] rounded-full transition-colors ${
-                                        tag === tagItem
-                                            ? "bg-sunken text-accent"
-                                            : "bg-muted text-secondary hover:bg-muted"
-                                    }`}
-                                >
-                                    #{tagItem}
-                                </Link>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-            </aside>
-
-            {/* 메인 콘텐츠 */}
-            <div className="min-w-0 break-words md:col-span-3">
-                {/* 결과 정보 */}
-                <div className="flex justify-between items-center mb-8">
-                    <div>
-                        <p className="text-secondary">
-                            총 <span className="font-semibold text-accent">{totalPosts}</span>개의
-                            포스트
-                            {search && (
-                                <span>
-                                    {" "}
-                                    - &quot;
-                                    <span className="font-semibold text-ink">{search}</span>&quot;
-                                    검색 결과
-                                </span>
-                            )}
-                            {category && (
-                                <span>
-                                    {" "}
-                                    - <span className="font-semibold text-ink">
-                                        {category}
-                                    </span>{" "}
-                                    카테고리
-                                </span>
-                            )}
-                            {tag && (
-                                <span>
-                                    {" "}
-                                    - <span className="font-semibold text-ink">#{tag}</span> 태그
-                                </span>
-                            )}
-                        </p>
-                    </div>
-                </div>
-
-                {/* 포스트 그리드 */}
-                {hasError ? (
-                    <div
-                        role="alert"
-                        className="rounded-xl border border-border bg-warning-surface p-6 text-warning"
-                    >
-                        <p>글을 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.</p>
-                        <button
-                            type="button"
-                            onClick={() => void postsQuery.refetch()}
-                            className="mt-4 rounded px-3 py-2 font-semibold underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus"
-                        >
-                            다시 시도
-                        </button>
-                    </div>
-                ) : postsQuery.isFetching && posts.length === 0 ? (
-                    <div
-                        role="status"
-                        aria-label="글을 불러오는 중"
-                        className="grid md:grid-cols-2 xl:grid-cols-3 gap-6 mb-12"
-                    >
-                        {Array.from({ length: 9 }).map((_, i) => (
-                            <PostCardSkeleton key={i} />
-                        ))}
-                    </div>
-                ) : posts.length > 0 ? (
-                    <>
-                        <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6 mb-12">
-                            {postsQuery.isFetching
-                                ? Array.from({ length: 9 }).map((_, i) => (
-                                      <PostCardSkeleton key={i} />
-                                  ))
-                                : posts.map((post) => <PostCard key={post.id} post={post} />)}
-                        </div>
-
-                        {/* 페이지네이션 */}
-                        {totalPages > 1 && (
-                            <Pagination
-                                currentPage={currentPage}
-                                totalPages={totalPages}
-                                baseUrl="/writing"
-                                searchParams={{ category, tag, search }}
-                            />
+                                {group.values.map((value) => (
+                                    <Link
+                                        key={value}
+                                        scroll={false}
+                                        href={filterUrl({
+                                            [group.field]: group.active === value ? "" : value,
+                                        })}
+                                        aria-current={group.active === value ? "true" : undefined}
+                                    >
+                                        {group.field === "tag" ? "#" : ""}
+                                        {value}
+                                    </Link>
+                                ))}
+                            </div>
                         )}
-                    </>
-                ) : (
-                    <div className="text-center py-20">
-                        <svg
-                            className="mx-auto h-12 w-12 text-muted-ink mb-4"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                            />
-                        </svg>
-                        <h3 className="text-lg font-medium text-ink mb-2">포스트가 없습니다</h3>
-                        <p className="text-secondary">
-                            {search || category || tag
-                                ? "검색 조건에 맞는 포스트가 없습니다."
-                                : "아직 작성된 포스트가 없습니다."}
-                        </p>
+                    </div>
+                ))}
+            </div>
+            <div className={styles.resultBar}>
+                <p role="status" aria-live="polite">
+                    {hasError
+                        ? "글 조회 실패"
+                        : loading
+                          ? "글을 불러오는 중…"
+                          : `총 ${data?.pagination.totalPosts ?? 0}개의 글`}
+                </p>
+                {activeFilters.length > 0 && (
+                    <div className={styles.activeFilters}>
+                        {activeFilters.map(([key, value]) => (
+                            <span key={key}>
+                                {key === "search"
+                                    ? "검색"
+                                    : key === "category"
+                                      ? "카테고리"
+                                      : "태그"}
+                                : {value}
+                            </span>
+                        ))}
+                        <Link href="/writing" scroll={false}>
+                            전체 초기화
+                        </Link>
                     </div>
                 )}
             </div>
-        </div>
+            <WritingEntrance ready={!loading && !hasError && posts.length > 0} queryKey={queryKey}>
+                {hasError ? (
+                    <div className={styles.state} role="alert">
+                        <h2>글을 불러오지 못했습니다.</h2>
+                        <p>잠시 후 다시 시도해 주세요.</p>
+                        <button type="button" onClick={() => void postsQuery.refetch()}>
+                            다시 시도
+                        </button>
+                    </div>
+                ) : loading ? (
+                    <WritingSkeleton />
+                ) : posts.length ? (
+                    <ul className={styles.list}>
+                        {posts.map((post) => {
+                            const sourceHref =
+                                post.source_url ||
+                                (post.detail_link?.startsWith("http")
+                                    ? post.detail_link
+                                    : `https://velog.io${post.detail_link?.startsWith("/") ? "" : "/"}${post.detail_link}`);
+                            const href = post.slug
+                                ? `/blog/${encodeURIComponent(post.slug)}`
+                                : sourceHref;
+                            const internal = href.startsWith("/blog/");
+                            return (
+                                <li key={post.id ?? post.slug ?? post.detail_link} data-writing-row>
+                                    <Link
+                                        className={styles.row}
+                                        href={href}
+                                        target={internal ? undefined : "_blank"}
+                                        rel={internal ? undefined : "noopener noreferrer"}
+                                    >
+                                        <div className={styles.rowContent}>
+                                            <h2>{post.title}</h2>
+                                            {post.intro && <p>{post.intro}</p>}
+                                        </div>
+                                        <div className={styles.rowMeta}>
+                                            <span>{post.tags?.[0] || "글"}</span>
+                                            <span className={styles.arrow} aria-hidden="true">
+                                                →
+                                            </span>
+                                        </div>
+                                    </Link>
+                                </li>
+                            );
+                        })}
+                    </ul>
+                ) : (
+                    <div className={styles.state}>
+                        <h2>
+                            {activeFilters.length
+                                ? "검색 조건에 맞는 글이 없습니다."
+                                : "아직 작성된 글이 없습니다."}
+                        </h2>
+                        <p>
+                            {activeFilters.length
+                                ? "다른 검색어나 필터로 찾아보세요."
+                                : "새로운 배움의 기록을 준비하고 있습니다."}
+                        </p>
+                        {activeFilters.length > 0 && (
+                            <Link href="/writing" scroll={false}>
+                                전체 글 보기
+                            </Link>
+                        )}
+                    </div>
+                )}
+            </WritingEntrance>
+            {!loading && !hasError && (data?.pagination.totalPages ?? 0) > 1 && (
+                <div className={styles.pagination}>
+                    <Pagination
+                        currentPage={currentPage}
+                        totalPages={data!.pagination.totalPages}
+                        baseUrl="/writing"
+                        searchParams={{ category, tag, search }}
+                    />
+                </div>
+            )}
+        </section>
     );
 }

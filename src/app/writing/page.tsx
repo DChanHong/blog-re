@@ -1,8 +1,9 @@
 import { Metadata } from "next";
 import { Suspense } from "react";
 import WritingListPage from "./WritingListPage";
-import PostCardSkeleton from "@/components/domain/blog/PostCardSkeleton";
-import PageContainer from "@/components/layout/PageContainer";
+import WritingSkeleton from "./WritingSkeleton";
+import HeroEntrance from "@/components/domain/home/HeroEntrance";
+import styles from "./writing.module.css";
 import { JsonLdScript } from "@/components/seo/JsonLdScript";
 import {
     absoluteUrl,
@@ -91,43 +92,19 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
                     ]),
                 ]}
             />
-            <PageContainer>
-                <h1 className="mb-8 text-3xl font-bold text-ink">글</h1>
-                <Suspense
-                    fallback={
-                        <div className="grid md:grid-cols-4 gap-8">
-                            {/* 사이드바 스켈레톤 */}
-                            <aside className="md:col-span-1">
-                                <div className="bg-raised backdrop-blur-md rounded-2xl border border-border p-6 animate-pulse space-y-4">
-                                    <div className="h-4 w-16 bg-muted rounded" />
-                                    <div className="h-10 bg-muted rounded-lg" />
-                                    <div className="h-4 w-20 bg-muted rounded mt-6" />
-                                    {Array.from({ length: 5 }).map((_, i) => (
-                                        <div key={i} className="h-8 bg-muted rounded-lg" />
-                                    ))}
-                                    <div className="h-4 w-10 bg-muted rounded mt-6" />
-                                    <div className="flex flex-wrap gap-2">
-                                        {Array.from({ length: 6 }).map((_, i) => (
-                                            <div
-                                                key={i}
-                                                className="h-6 w-14 bg-muted rounded-full"
-                                            />
-                                        ))}
-                                    </div>
-                                </div>
-                            </aside>
-                            {/* 카드 스켈레톤 */}
-                            <div className="md:col-span-3">
-                                <div className="h-5 w-32 bg-muted rounded mb-8 animate-pulse" />
-                                <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
-                                    {Array.from({ length: 9 }).map((_, i) => (
-                                        <PostCardSkeleton key={i} />
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
-                    }
-                >
+            <div className={styles.page}>
+                <HeroEntrance className={styles.hero}>
+                    <p className={styles.eyebrow}>Writing</p>
+                    <h1>
+                        새롭게 배우고.
+                        <br />
+                        <span>배움의 과정을 기록합니다.</span>
+                    </h1>
+                    <p className={styles.lead}>
+                        웹 개발부터 AI까지, 새롭게 익힌 개념과 직접 적용해 본 경험을 정리합니다.
+                    </p>
+                </HeroEntrance>
+                <Suspense fallback={<WritingSkeleton />}>
                     <WritingListPage
                         currentPage={currentPage}
                         category={category}
@@ -135,7 +112,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
                         search={search}
                     />
                 </Suspense>
-            </PageContainer>
+            </div>
         </>
     );
 }

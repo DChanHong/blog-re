@@ -1,6 +1,15 @@
 # Portfolio Reorganization — Next Steps
 
-Updated: 2026-09-29 (Asia/Seoul)
+Updated: 2026-09-30 (Asia/Seoul)
+
+## Latest Checkpoint — Writing
+
+- Plan 05 `Verified`: [계획](plan/05-writing-reference-reconstruction.md), [검증](audit/05-writing-reference-verification.md).
+- 사용자가 권장안 전체와 계획→구현→검증 연속 진행을 승인했다. Writing 텍스트 행 목록, 큰 한글 hero, 검색+접이식 필터, 순차 모션 완료.
+- browser 62/62, 분리 build 120페이지, type/scoped lint 통과. 전역 lint의 기존 prettier plugin 누락은 그대로다.
+- 글 데이터/상세/API/SEO 및 공통 shell 보존. 미커밋 변경으로 제공하며 push/운영 배포/DB 쓰기 없음.
+- 다음 승인된 계획 없음. 이후 다른 페이지 변경은 별도 인터뷰로 정한다.
+- 아래 Plan 00–04 기록은 당시의 이력이며, 현재 상태는 이 checkpoint와 Plan 05 문서를 우선한다.
 
 ## Current State
 
@@ -11,7 +20,7 @@ Updated: 2026-09-29 (Asia/Seoul)
 - Plan 02: `Verified` — `plan/02-information-architecture-and-content-model.md`
 - Plan 03: `Verified` — `plan/03-design-system-and-global-shell.md`
 - Plan 04: `Verified` — `plan/04-home-reference-reconstruction.md`; Home reference reconstruction and shared Header/Footer corrections complete.
-- Plans after 04 have not been written yet.
+- Plan 05: `Verified` — Writing 목록 개편 완료.
 - Plan 02 verification and handoff artifacts were committed as `b213173`; the working tree was clean before writing Plan 03.
 
 ## What Is Already Complete
