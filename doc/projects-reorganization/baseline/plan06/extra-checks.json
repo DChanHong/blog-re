@@ -1,0 +1,64 @@
+[
+  {
+    "name": "date alignment 1440",
+    "pass": true,
+    "detail": {
+      "dateBelow": false,
+      "dateRight": true,
+      "documentRadius": "20px",
+      "bodySize": "15px",
+      "visible": true
+    }
+  },
+  {
+    "name": "no document animation 1440",
+    "pass": true
+  },
+  {
+    "name": "date alignment 390",
+    "pass": true,
+    "detail": {
+      "dateBelow": true,
+      "dateRight": false,
+      "documentRadius": "20px",
+      "bodySize": "15px",
+      "visible": true
+    }
+  },
+  {
+    "name": "no document animation 390",
+    "pass": true
+  },
+  {
+    "name": "unique IDs",
+    "pass": true
+  },
+  {
+    "name": "SEO robots and image",
+    "pass": true
+  },
+  {
+    "name": "JSON-LD description",
+    "pass": true
+  },
+  {
+    "name": "sitemap resume",
+    "pass": true
+  },
+  {
+    "name": "robots sitemap",
+    "pass": true
+  },
+  {
+    "name": "old fragment scroll position",
+    "pass": true
+  },
+  {
+    "name": "theme button works",
+    "pass": true
+  },
+  {
+    "name": "theme persists",
+    "pass": true
+  }
+]

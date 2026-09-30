@@ -17,14 +17,14 @@ export const dynamic = "force-static";
 
 const title = "이력서";
 const description =
-    "Next.js, WebSocket, React Query, Zustand를 기반으로 실시간 상담 플랫폼, 뉴스 CMS, ERP를 개발한 성찬홍의 경력 포트폴리오입니다.";
+    "프론트엔드에서 API·데이터 설계와 운영 개선까지, 실시간 상담 플랫폼과 인사평가·채용·CMS를 개발한 웹 개발자 성찬홍의 이력서입니다.";
 const canonicalUrl = getCanonicalUrl("/resume");
 const ogImageUrl = absoluteUrl(SEO_CONFIG.defaultOgImage.path);
 
 export const metadata: Metadata = {
     title,
     description,
-    keywords: ["성찬홍", "프론트엔드 개발자", "Next.js", "WebSocket", "React Query", "포트폴리오"],
+    keywords: ["성찬홍", "웹 개발자", "Next.js", "WebSocket", "PostgreSQL", "이력서"],
     alternates: {
         canonical: canonicalUrl,
     },

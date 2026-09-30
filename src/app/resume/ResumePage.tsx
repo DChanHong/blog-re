@@ -1,54 +1,147 @@
-import { GraduationCap } from "lucide-react";
-import PersonalInfoHeader from "@/components/domain/career/PersonalInfoHeader";
-import CareerSummary from "@/components/domain/career/CareerSummary";
-import CareerSectionNav from "@/components/domain/career/CareerSectionNav";
-import ProjectTimeline from "@/components/domain/career/ProjectTimeline";
-import TechStack from "@/components/domain/career/TechStack";
-import { capabilitiesData, careerMetrics, growthSteps, personalInfoData } from "@/data/careerData";
+import Link from "next/link";
+import { personalInfoData } from "@/data/careerData";
 import { projectsData } from "@/data/projects";
+import { resumeExperiences, resumeSummary, resumeTools } from "@/data/resume";
+import styles from "./resume.module.css";
 
 export default function ResumePage() {
     return (
-        <div className="min-w-0">
-            <PersonalInfoHeader personalInfo={personalInfoData} metrics={careerMetrics} />
-            <CareerSectionNav />
-            <CareerSummary steps={growthSteps} />
-            <ProjectTimeline projects={projectsData} />
-            <TechStack capabilities={capabilitiesData} />
-
-            <section
-                id="education"
-                className="scroll-mt-32 overflow-hidden rounded-3xl border border-border bg-sunken p-6 sm:p-10 lg:p-12"
-            >
-                <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
-                    <div>
-                        <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-border bg-sunken">
-                            <GraduationCap className="h-5 w-5 text-accent" aria-hidden="true" />
-                        </div>
-                        <p className="mt-6 text-[0.8125rem] font-semibold tracking-[0.18em] text-accent uppercase">
-                            학력
-                        </p>
-                        <h2 className="mt-3 text-2xl font-bold text-ink">
-                            {personalInfoData.university}
-                        </h2>
-                        <p className="mt-2 text-sm text-secondary">
-                            {personalInfoData.degree} · {personalInfoData.gpa}
-                        </p>
-                        <p className="mt-1 text-sm text-muted-ink">2016.02 ~ 2022.02 · 부산</p>
-                    </div>
-
-                    <div className="lg:text-right">
-                        <p className="text-sm font-medium text-accent">개발 방향</p>
-                        <h2 className="mt-3 max-w-2xl text-3xl font-bold tracking-tight text-ink sm:text-4xl lg:ml-auto">
-                            사용자 경험과 운영 효율을 함께 개선하는 서비스를 만듭니다.
-                        </h2>
-                        <p className="mt-4 max-w-xl text-sm leading-7 text-secondary lg:ml-auto">
-                            프론트엔드를 중심으로 필요한 경우 API와 데이터 흐름까지 추적하며, 실제
-                            운영 환경에서 발생하는 문제를 해결합니다.
-                        </p>
-                    </div>
+        <div className={styles.resume}>
+            <header className={styles.hero}>
+                <div>
+                    <p className={styles.eyebrow}>이력서</p>
+                    <h1>경력 및 역량</h1>
                 </div>
-            </section>
+                <a className={styles.contact} href={`mailto:${personalInfoData.email}`}>
+                    연락하기
+                </a>
+            </header>
+            <article className={styles.document} aria-label="성찬홍 이력서">
+                <header className={styles.identity}>
+                    <h2>
+                        {personalInfoData.name} <span>· 웹 개발자</span>
+                    </h2>
+                    <a href={`mailto:${personalInfoData.email}`}>{personalInfoData.email}</a>
+                    <div className={styles.links}>
+                        <a href={personalInfoData.github} target="_blank" rel="noopener noreferrer">
+                            GitHub<span className="sr-only"> (새 탭)</span>
+                        </a>
+                        <a href={personalInfoData.blog} target="_blank" rel="noopener noreferrer">
+                            기술 블로그<span className="sr-only"> (새 탭)</span>
+                        </a>
+                    </div>
+                </header>
+                <section id="overview" className={styles.section} aria-labelledby="resume-summary">
+                    <h2 id="resume-summary">소개</h2>
+                    <p>{resumeSummary}</p>
+                </section>
+                <section
+                    id="experience"
+                    className={styles.section}
+                    aria-labelledby="resume-experience"
+                >
+                    <h2 id="resume-experience">경력</h2>
+                    <div className={styles.company}>
+                        <div className={styles.entryHeading}>
+                            <h3>스카이즈코리아 · 개발팀</h3>
+                            <p className={styles.period}>{personalInfoData.period}</p>
+                        </div>
+                        <p>웹 개발 · 정규직</p>
+                        <p className={styles.note}>
+                            법무법인 대륜 IT 조직에서 분리된 법인 · 고객 서비스 및 내부 업무 시스템
+                            개발·운영
+                        </p>
+                    </div>
+                    <div id="projects">
+                        {resumeExperiences.map((entry) => (
+                            <section
+                                id={entry.id}
+                                key={entry.id}
+                                className={styles.entry}
+                                aria-labelledby={`title-${entry.id}`}
+                            >
+                                <div className={styles.entryHeading}>
+                                    <h3 id={`title-${entry.id}`}>{entry.title}</h3>
+                                    <p className={styles.period}>{entry.period}</p>
+                                </div>
+                                <ul>
+                                    {entry.bullets.map((bullet) => (
+                                        <li key={bullet}>{bullet}</li>
+                                    ))}
+                                </ul>
+                            </section>
+                        ))}
+                    </div>
+                    <div className={styles.projectLinks}>
+                        <p>프로젝트 상세 보기</p>
+                        <ul>
+                            {projectsData.map((project) => (
+                                <li
+                                    key={project.id}
+                                    id={
+                                        resumeExperiences.some((entry) => entry.id === project.id)
+                                            ? undefined
+                                            : project.id
+                                    }
+                                >
+                                    <Link href={`/project/${project.id}`}>{project.title}</Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                </section>
+                <section className={styles.section} aria-labelledby="resume-personal">
+                    <h2 id="resume-personal">개인 프로젝트</h2>
+                    <div className={styles.entryHeading}>
+                        <h3>KBO Mate — 야구 직관 안내 AI Agent</h3>
+                        <p className={styles.period}>개인 학습 프로젝트 · 개발 중</p>
+                    </div>
+                    <ul>
+                        <li>
+                            FastAPI·LangGraph·PostgreSQL/pgvector·Next.js로 경기 일정 등 정형 데이터
+                            조회와 구장·예매·규칙 문서 검색을 구분하는 챗봇을 개발하고 있습니다.
+                        </li>
+                        <li>
+                            후속 질문에 필요한 경기 정보를 대화 맥락으로 관리하고, 데이터
+                            누락·검색·답변 근거 부족 사례를 기록해 평가 질문과 검색 조건을 개선하고
+                            있습니다. 상용 운영 서비스가 아닌 개인 개발 경험입니다.
+                        </li>
+                    </ul>
+                </section>
+                <section
+                    id="capabilities"
+                    className={styles.section}
+                    aria-labelledby="resume-tools"
+                >
+                    <h2 id="resume-tools">기술 및 도구</h2>
+                    <dl className={styles.tools}>
+                        {resumeTools.map((group) => (
+                            <div key={group.label}>
+                                <dt>{group.label}</dt>
+                                <dd>{group.value}</dd>
+                            </div>
+                        ))}
+                    </dl>
+                </section>
+                <section
+                    id="education"
+                    className={styles.section}
+                    aria-labelledby="resume-education"
+                >
+                    <h2 id="resume-education">교육 및 학력</h2>
+                    <div className={styles.educationEntry}>
+                        <h3>IT 스칼라 · AI Agent 외부 교육 수강</h3>
+                        <p>AI 이론·실습과 개인 개발 과정을 기술 블로그에 기록하고 있습니다.</p>
+                    </div>
+                    <div className={styles.educationEntry}>
+                        <div className={styles.entryHeading}>
+                            <h3>{personalInfoData.university}</h3>
+                            <p className={styles.period}>2016.02 ~ 2022.02</p>
+                        </div>
+                        <p>{personalInfoData.degree} · 학점 3.9 / 4.5</p>
+                    </div>
+                </section>
+            </article>
         </div>
     );
 }

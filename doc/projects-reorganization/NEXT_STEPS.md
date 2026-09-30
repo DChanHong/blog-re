@@ -2,7 +2,17 @@
 
 Updated: 2026-09-30 (Asia/Seoul)
 
-## Latest Checkpoint — Writing
+## Latest Checkpoint — Resume
+
+- Plan 06 `Verified`: [계획](plan/06-resume-reference-reconstruction.md), [검증](audit/06-resume-reference-verification.md).
+- 사용자가 제출 자료 기반 추천 문구와 참고 이력서 UI 적용을 승인했다. 단일 문서 카드, 소개·6개 경력 항목·개인 프로젝트·기술·교육/학력 구현 완료.
+- browser 51/51 + supplemental 12/12, isolated build 120페이지, type/scoped lint/diff 통과. 전역 lint의 기존 prettier plugin 누락은 유지.
+- application source 변경은 Resume 3개 파일 및 전용 `src/data/resume.ts`뿐. 공통 UI·기존 career/projects 데이터·원본 제출 자료 보존.
+- 확인 주소 `http://127.0.0.1:3106/resume` (분리 production preview). 기존 3001 개발 서버와 다른 프로젝트의 3000 포트는 건드리지 않았다.
+- 사용자 화면 확인 후 커밋 승인(2026-09-30). 검증 이미지 4개·일회성 CJS 3개·빌드 로그/임시 경로/전체 baseline은 로컬에만 보관하고 Git에서 제외한다. 구현 코드·계획·검증 보고서·요약 검사 결과만 커밋 대상으로 유지한다. push/배포/DB 쓰기 없음. 다음 승인된 계획 없음.
+- 아래는 과거 checkpoint이며 현재 상태는 본 항목과 Plan 06을 우선한다. 과거 AI 계획 06 번호는 예약만 있었고 파일이 없어 Resume 계획에 사용했다.
+
+## Previous Checkpoint — Writing
 
 - Plan 05 `Verified`: [계획](plan/05-writing-reference-reconstruction.md), [검증](audit/05-writing-reference-verification.md).
 - 사용자가 권장안 전체와 계획→구현→검증 연속 진행을 승인했다. Writing 텍스트 행 목록, 큰 한글 hero, 검색+접이식 필터, 순차 모션 완료.
