@@ -1,0 +1,3654 @@
+[
+  {
+    "name": "reference-light-desktop",
+    "data": {
+      "heroFont": "84px",
+      "navPadding": "0px 32px",
+      "secondary": "rgb(142, 142, 147)",
+      "sectionPads": [
+        "176px 40px 160px",
+        "0px 40px 160px",
+        "160px 40px",
+        "160px 40px",
+        "160px 40px",
+        "160px 40px 0px",
+        "160px 40px"
+      ],
+      "width": 1440
+    }
+  },
+  {
+    "name": "result-dark-desktop",
+    "data": {
+      "cards": [
+        {
+          "padding": "40px",
+          "radius": "28px"
+        },
+        {
+          "padding": "40px",
+          "radius": "28px"
+        },
+        {
+          "padding": "40px",
+          "radius": "28px"
+        },
+        {
+          "padding": "40px",
+          "radius": "28px"
+        }
+      ],
+      "grids": [
+        {
+          "columns": "276px 276px 276px 276px",
+          "gap": "16px"
+        },
+        {
+          "columns": "270px 270px 270px 270px",
+          "gap": "48px 24px"
+        },
+        {
+          "columns": "264px 264px 264px 264px",
+          "gap": "48px 32px"
+        },
+        {
+          "columns": "568px 568px",
+          "gap": "16px"
+        }
+      ],
+      "h1": "84px",
+      "head": {
+        "bottom": 65,
+        "height": 65,
+        "left": 0,
+        "right": 1425,
+        "top": 0,
+        "width": 1425,
+        "x": 0,
+        "y": 0
+      },
+      "height": 900,
+      "links": [
+        "/work",
+        "/resume",
+        "/resume",
+        "/project/realtime-support",
+        "/project/realtime-support",
+        "/project/realtime-support",
+        "/project/realtime-support",
+        "/project/snn-cms",
+        "/project/erp-groupware",
+        "/project/legal-platform",
+        "/work",
+        "/blog/AI-%EC%97%90%EC%9D%B4%EC%A0%84%ED%8A%B8-12%EC%A3%BC%EC%B0%A8-%EB%A7%88%EB%AC%B4%EB%A6%AC-%EB%A6%AC%EB%B7%B0",
+        "/blog/AI-%EC%97%90%EC%9D%B4%EC%A0%84%ED%8A%B8-11%EC%A3%BC%EC%B0%A8-LLM-Training-Fine-tuning",
+        "/writing",
+        "https://github.com/DChanHong",
+        "https://velog.io/@hongchee/posts"
+      ],
+      "overflow": false,
+      "sections": [
+        {
+          "id": "home-title",
+          "padding": "176px 40px 160px",
+          "width": 896
+        },
+        {
+          "id": "home-capabilities",
+          "padding": "0px 40px 160px",
+          "width": 1152
+        },
+        {
+          "id": "home-path",
+          "padding": "160px 40px",
+          "width": 1152
+        },
+        {
+          "id": "home-work",
+          "padding": "160px 40px",
+          "width": 1152
+        },
+        {
+          "id": "home-toolkit",
+          "padding": "160px 40px",
+          "width": 1152
+        },
+        {
+          "id": "home-writing",
+          "padding": "160px 40px 0px",
+          "width": 1152
+        },
+        {
+          "id": "home-more",
+          "padding": "160px 40px",
+          "width": 896
+        }
+      ],
+      "theme": "dark",
+      "width": 1440
+    }
+  },
+  {
+    "name": "result-light-desktop",
+    "data": {
+      "cards": [
+        {
+          "padding": "40px",
+          "radius": "28px"
+        },
+        {
+          "padding": "40px",
+          "radius": "28px"
+        },
+        {
+          "padding": "40px",
+          "radius": "28px"
+        },
+        {
+          "padding": "40px",
+          "radius": "28px"
+        }
+      ],
+      "grids": [
+        {
+          "columns": "276px 276px 276px 276px",
+          "gap": "16px"
+        },
+        {
+          "columns": "270px 270px 270px 270px",
+          "gap": "48px 24px"
+        },
+        {
+          "columns": "264px 264px 264px 264px",
+          "gap": "48px 32px"
+        },
+        {
+          "columns": "568px 568px",
+          "gap": "16px"
+        }
+      ],
+      "h1": "84px",
+      "head": {
+        "bottom": 65,
+        "height": 65,
+        "left": 0,
+        "right": 1425,
+        "top": 0,
+        "width": 1425,
+        "x": 0,
+        "y": 0
+      },
+      "height": 900,
+      "links": [
+        "/work",
+        "/resume",
+        "/resume",
+        "/project/realtime-support",
+        "/project/realtime-support",
+        "/project/realtime-support",
+        "/project/realtime-support",
+        "/project/snn-cms",
+        "/project/erp-groupware",
+        "/project/legal-platform",
+        "/work",
+        "/blog/AI-%EC%97%90%EC%9D%B4%EC%A0%84%ED%8A%B8-12%EC%A3%BC%EC%B0%A8-%EB%A7%88%EB%AC%B4%EB%A6%AC-%EB%A6%AC%EB%B7%B0",
+        "/blog/AI-%EC%97%90%EC%9D%B4%EC%A0%84%ED%8A%B8-11%EC%A3%BC%EC%B0%A8-LLM-Training-Fine-tuning",
+        "/writing",
+        "https://github.com/DChanHong",
+        "https://velog.io/@hongchee/posts"
+      ],
+      "overflow": false,
+      "sections": [
+        {
+          "id": "home-title",
+          "padding": "176px 40px 160px",
+          "width": 896
+        },
+        {
+          "id": "home-capabilities",
+          "padding": "0px 40px 160px",
+          "width": 1152
+        },
+        {
+          "id": "home-path",
+          "padding": "160px 40px",
+          "width": 1152
+        },
+        {
+          "id": "home-work",
+          "padding": "160px 40px",
+          "width": 1152
+        },
+        {
+          "id": "home-toolkit",
+          "padding": "160px 40px",
+          "width": 1152
+        },
+        {
+          "id": "home-writing",
+          "padding": "160px 40px 0px",
+          "width": 1152
+        },
+        {
+          "id": "home-more",
+          "padding": "160px 40px",
+          "width": 896
+        }
+      ],
+      "theme": "light",
+      "width": 1440
+    }
+  },
+  {
+    "name": "result-light-mobile",
+    "data": {
+      "cards": [
+        {
+          "padding": "32px",
+          "radius": "28px"
+        },
+        {
+          "padding": "32px",
+          "radius": "28px"
+        },
+        {
+          "padding": "32px",
+          "radius": "28px"
+        },
+        {
+          "padding": "32px",
+          "radius": "28px"
+        }
+      ],
+      "grids": [
+        {
+          "columns": "327px",
+          "gap": "16px"
+        },
+        {
+          "columns": "327px",
+          "gap": "48px 24px"
+        },
+        {
+          "columns": "327px",
+          "gap": "48px 32px"
+        },
+        {
+          "columns": "327px",
+          "gap": "16px"
+        }
+      ],
+      "h1": "44px",
+      "head": {
+        "bottom": 57,
+        "height": 57,
+        "left": 0,
+        "right": 375,
+        "top": 0,
+        "width": 375,
+        "x": 0,
+        "y": 0
+      },
+      "height": 844,
+      "links": [
+        "/work",
+        "/resume",
+        "/resume",
+        "/project/realtime-support",
+        "/project/realtime-support",
+        "/project/realtime-support",
+        "/project/realtime-support",
+        "/project/snn-cms",
+        "/project/erp-groupware",
+        "/project/legal-platform",
+        "/work",
+        "/blog/AI-%EC%97%90%EC%9D%B4%EC%A0%84%ED%8A%B8-12%EC%A3%BC%EC%B0%A8-%EB%A7%88%EB%AC%B4%EB%A6%AC-%EB%A6%AC%EB%B7%B0",
+        "/blog/AI-%EC%97%90%EC%9D%B4%EC%A0%84%ED%8A%B8-11%EC%A3%BC%EC%B0%A8-LLM-Training-Fine-tuning",
+        "/writing",
+        "https://github.com/DChanHong",
+        "https://velog.io/@hongchee/posts"
+      ],
+      "overflow": false,
+      "sections": [
+        {
+          "id": "home-title",
+          "padding": "96px 24px 112px",
+          "width": 327
+        },
+        {
+          "id": "home-capabilities",
+          "padding": "0px 24px 112px",
+          "width": 327
+        },
+        {
+          "id": "home-path",
+          "padding": "112px 24px",
+          "width": 327
+        },
+        {
+          "id": "home-work",
+          "padding": "112px 24px",
+          "width": 327
+        },
+        {
+          "id": "home-toolkit",
+          "padding": "112px 24px",
+          "width": 327
+        },
+        {
+          "id": "home-writing",
+          "padding": "112px 24px 0px",
+          "width": 327
+        },
+        {
+          "id": "home-more",
+          "padding": "112px 24px",
+          "width": 327
+        }
+      ],
+      "theme": "light",
+      "width": 390
+    }
+  },
+  {
+    "name": "result-dark-mobile",
+    "data": {
+      "cards": [
+        {
+          "padding": "32px",
+          "radius": "28px"
+        },
+        {
+          "padding": "32px",
+          "radius": "28px"
+        },
+        {
+          "padding": "32px",
+          "radius": "28px"
+        },
+        {
+          "padding": "32px",
+          "radius": "28px"
+        }
+      ],
+      "grids": [
+        {
+          "columns": "327px",
+          "gap": "16px"
+        },
+        {
+          "columns": "327px",
+          "gap": "48px 24px"
+        },
+        {
+          "columns": "327px",
+          "gap": "48px 32px"
+        },
+        {
+          "columns": "327px",
+          "gap": "16px"
+        }
+      ],
+      "h1": "44px",
+      "head": {
+        "bottom": 57,
+        "height": 57,
+        "left": 0,
+        "right": 375,
+        "top": 0,
+        "width": 375,
+        "x": 0,
+        "y": 0
+      },
+      "height": 844,
+      "links": [
+        "/work",
+        "/resume",
+        "/resume",
+        "/project/realtime-support",
+        "/project/realtime-support",
+        "/project/realtime-support",
+        "/project/realtime-support",
+        "/project/snn-cms",
+        "/project/erp-groupware",
+        "/project/legal-platform",
+        "/work",
+        "/blog/AI-%EC%97%90%EC%9D%B4%EC%A0%84%ED%8A%B8-12%EC%A3%BC%EC%B0%A8-%EB%A7%88%EB%AC%B4%EB%A6%AC-%EB%A6%AC%EB%B7%B0",
+        "/blog/AI-%EC%97%90%EC%9D%B4%EC%A0%84%ED%8A%B8-11%EC%A3%BC%EC%B0%A8-LLM-Training-Fine-tuning",
+        "/writing",
+        "https://github.com/DChanHong",
+        "https://velog.io/@hongchee/posts"
+      ],
+      "overflow": false,
+      "sections": [
+        {
+          "id": "home-title",
+          "padding": "96px 24px 112px",
+          "width": 327
+        },
+        {
+          "id": "home-capabilities",
+          "padding": "0px 24px 112px",
+          "width": 327
+        },
+        {
+          "id": "home-path",
+          "padding": "112px 24px",
+          "width": 327
+        },
+        {
+          "id": "home-work",
+          "padding": "112px 24px",
+          "width": 327
+        },
+        {
+          "id": "home-toolkit",
+          "padding": "112px 24px",
+          "width": 327
+        },
+        {
+          "id": "home-writing",
+          "padding": "112px 24px 0px",
+          "width": 327
+        },
+        {
+          "id": "home-more",
+          "padding": "112px 24px",
+          "width": 327
+        }
+      ],
+      "theme": "dark",
+      "width": 390
+    }
+  },
+  {
+    "name": "theme-after-reload",
+    "data": {
+      "button": "라이트 모드로 전환",
+      "theme": "dark"
+    }
+  },
+  {
+    "name": "skip-link",
+    "data": {
+      "active": "main-content",
+      "hash": "#main-content"
+    }
+  },
+  {
+    "name": "boundary-320",
+    "data": {
+      "cards": [
+        {
+          "padding": "32px",
+          "radius": "28px"
+        },
+        {
+          "padding": "32px",
+          "radius": "28px"
+        },
+        {
+          "padding": "32px",
+          "radius": "28px"
+        },
+        {
+          "padding": "32px",
+          "radius": "28px"
+        }
+      ],
+      "grids": [
+        {
+          "columns": "257px",
+          "gap": "16px"
+        },
+        {
+          "columns": "257px",
+          "gap": "48px 24px"
+        },
+        {
+          "columns": "257px",
+          "gap": "48px 32px"
+        },
+        {
+          "columns": "257px",
+          "gap": "16px"
+        }
+      ],
+      "h1": "44px",
+      "head": {
+        "bottom": 57,
+        "height": 57,
+        "left": 0,
+        "right": 305,
+        "top": 0,
+        "width": 305,
+        "x": 0,
+        "y": 0
+      },
+      "height": 900,
+      "links": [
+        "/work",
+        "/resume",
+        "/resume",
+        "/project/realtime-support",
+        "/project/realtime-support",
+        "/project/realtime-support",
+        "/project/realtime-support",
+        "/project/snn-cms",
+        "/project/erp-groupware",
+        "/project/legal-platform",
+        "/work",
+        "/blog/AI-%EC%97%90%EC%9D%B4%EC%A0%84%ED%8A%B8-12%EC%A3%BC%EC%B0%A8-%EB%A7%88%EB%AC%B4%EB%A6%AC-%EB%A6%AC%EB%B7%B0",
+        "/blog/AI-%EC%97%90%EC%9D%B4%EC%A0%84%ED%8A%B8-11%EC%A3%BC%EC%B0%A8-LLM-Training-Fine-tuning",
+        "/writing",
+        "https://github.com/DChanHong",
+        "https://velog.io/@hongchee/posts"
+      ],
+      "overflow": false,
+      "sections": [
+        {
+          "id": "home-title",
+          "padding": "96px 24px 112px",
+          "width": 257
+        },
+        {
+          "id": "home-capabilities",
+          "padding": "0px 24px 112px",
+          "width": 257
+        },
+        {
+          "id": "home-path",
+          "padding": "112px 24px",
+          "width": 257
+        },
+        {
+          "id": "home-work",
+          "padding": "112px 24px",
+          "width": 257
+        },
+        {
+          "id": "home-toolkit",
+          "padding": "112px 24px",
+          "width": 257
+        },
+        {
+          "id": "home-writing",
+          "padding": "112px 24px 0px",
+          "width": 257
+        },
+        {
+          "id": "home-more",
+          "padding": "112px 24px",
+          "width": 257
+        }
+      ],
+      "theme": "dark",
+      "width": 320
+    }
+  },
+  {
+    "name": "boundary-768",
+    "data": {
+      "cards": [
+        {
+          "padding": "40px",
+          "radius": "28px"
+        },
+        {
+          "padding": "40px",
+          "radius": "28px"
+        },
+        {
+          "padding": "40px",
+          "radius": "28px"
+        },
+        {
+          "padding": "40px",
+          "radius": "28px"
+        }
+      ],
+      "grids": [
+        {
+          "columns": "328.5px 328.5px",
+          "gap": "16px"
+        },
+        {
+          "columns": "324.5px 324.5px",
+          "gap": "48px 24px"
+        },
+        {
+          "columns": "320.5px 320.5px",
+          "gap": "48px 32px"
+        },
+        {
+          "columns": "328.5px 328.5px",
+          "gap": "16px"
+        }
+      ],
+      "h1": "64px",
+      "head": {
+        "bottom": 65,
+        "height": 65,
+        "left": 0,
+        "right": 753,
+        "top": 0,
+        "width": 753,
+        "x": 0,
+        "y": 0
+      },
+      "height": 900,
+      "links": [
+        "/work",
+        "/resume",
+        "/resume",
+        "/project/realtime-support",
+        "/project/realtime-support",
+        "/project/realtime-support",
+        "/project/realtime-support",
+        "/project/snn-cms",
+        "/project/erp-groupware",
+        "/project/legal-platform",
+        "/work",
+        "/blog/AI-%EC%97%90%EC%9D%B4%EC%A0%84%ED%8A%B8-12%EC%A3%BC%EC%B0%A8-%EB%A7%88%EB%AC%B4%EB%A6%AC-%EB%A6%AC%EB%B7%B0",
+        "/blog/AI-%EC%97%90%EC%9D%B4%EC%A0%84%ED%8A%B8-11%EC%A3%BC%EC%B0%A8-LLM-Training-Fine-tuning",
+        "/writing",
+        "https://github.com/DChanHong",
+        "https://velog.io/@hongchee/posts"
+      ],
+      "overflow": false,
+      "sections": [
+        {
+          "id": "home-title",
+          "padding": "144px 40px 160px",
+          "width": 673
+        },
+        {
+          "id": "home-capabilities",
+          "padding": "0px 40px 160px",
+          "width": 673
+        },
+        {
+          "id": "home-path",
+          "padding": "160px 40px",
+          "width": 673
+        },
+        {
+          "id": "home-work",
+          "padding": "160px 40px",
+          "width": 673
+        },
+        {
+          "id": "home-toolkit",
+          "padding": "160px 40px",
+          "width": 673
+        },
+        {
+          "id": "home-writing",
+          "padding": "160px 40px 0px",
+          "width": 673
+        },
+        {
+          "id": "home-more",
+          "padding": "160px 40px",
+          "width": 673
+        }
+      ],
+      "theme": "dark",
+      "width": 768
+    }
+  },
+  {
+    "name": "boundary-1024",
+    "data": {
+      "cards": [
+        {
+          "padding": "40px",
+          "radius": "28px"
+        },
+        {
+          "padding": "40px",
+          "radius": "28px"
+        },
+        {
+          "padding": "40px",
+          "radius": "28px"
+        },
+        {
+          "padding": "40px",
+          "radius": "28px"
+        }
+      ],
+      "grids": [
+        {
+          "columns": "220.25px 220.25px 220.25px 220.25px",
+          "gap": "16px"
+        },
+        {
+          "columns": "214.25px 214.25px 214.25px 214.25px",
+          "gap": "48px 24px"
+        },
+        {
+          "columns": "208.25px 208.25px 208.25px 208.25px",
+          "gap": "48px 32px"
+        },
+        {
+          "columns": "456.5px 456.5px",
+          "gap": "16px"
+        }
+      ],
+      "h1": "84px",
+      "head": {
+        "bottom": 65,
+        "height": 65,
+        "left": 0,
+        "right": 1009,
+        "top": 0,
+        "width": 1009,
+        "x": 0,
+        "y": 0
+      },
+      "height": 900,
+      "links": [
+        "/work",
+        "/resume",
+        "/resume",
+        "/project/realtime-support",
+        "/project/realtime-support",
+        "/project/realtime-support",
+        "/project/realtime-support",
+        "/project/snn-cms",
+        "/project/erp-groupware",
+        "/project/legal-platform",
+        "/work",
+        "/blog/AI-%EC%97%90%EC%9D%B4%EC%A0%84%ED%8A%B8-12%EC%A3%BC%EC%B0%A8-%EB%A7%88%EB%AC%B4%EB%A6%AC-%EB%A6%AC%EB%B7%B0",
+        "/blog/AI-%EC%97%90%EC%9D%B4%EC%A0%84%ED%8A%B8-11%EC%A3%BC%EC%B0%A8-LLM-Training-Fine-tuning",
+        "/writing",
+        "https://github.com/DChanHong",
+        "https://velog.io/@hongchee/posts"
+      ],
+      "overflow": false,
+      "sections": [
+        {
+          "id": "home-title",
+          "padding": "176px 40px 160px",
+          "width": 896
+        },
+        {
+          "id": "home-capabilities",
+          "padding": "0px 40px 160px",
+          "width": 929
+        },
+        {
+          "id": "home-path",
+          "padding": "160px 40px",
+          "width": 929
+        },
+        {
+          "id": "home-work",
+          "padding": "160px 40px",
+          "width": 929
+        },
+        {
+          "id": "home-toolkit",
+          "padding": "160px 40px",
+          "width": 929
+        },
+        {
+          "id": "home-writing",
+          "padding": "160px 40px 0px",
+          "width": 929
+        },
+        {
+          "id": "home-more",
+          "padding": "160px 40px",
+          "width": 896
+        }
+      ],
+      "theme": "dark",
+      "width": 1024
+    }
+  },
+  {
+    "name": "contrast-dark",
+    "data": [
+      {
+        "pass": true,
+        "ratio": 7.6935008327071985,
+        "text": "성찬홍"
+      },
+      {
+        "pass": true,
+        "ratio": 18.17504617239485,
+        "text": "Frontend Engineer / Web Develo"
+      },
+      {
+        "pass": true,
+        "ratio": 7.6935008327071985,
+        "text": "운영 요구사항을 화면에 구현하는 데서 멈추지 않고, A"
+      },
+      {
+        "pass": true,
+        "ratio": 7.6935008327071985,
+        "text": "스카이즈코리아 개발팀 · 2023.09 ~ 현재"
+      },
+      {
+        "pass": true,
+        "ratio": 7.6935008327071985,
+        "text": "역량"
+      },
+      {
+        "pass": true,
+        "ratio": 18.17504617239485,
+        "text": "프론트엔드에서 시작해.서비스의 흐름까지."
+      },
+      {
+        "pass": true,
+        "ratio": 4.770669375535421,
+        "text": "서비스의 흐름까지."
+      },
+      {
+        "pass": true,
+        "ratio": 7.6935008327071985,
+        "text": "운영 요구사항을 화면에 구현하는 데서 멈추지 않고, A"
+      },
+      {
+        "pass": true,
+        "ratio": 15.613310240236284,
+        "text": "실시간 서비스와 상태 설계"
+      },
+      {
+        "pass": true,
+        "ratio": 6.609117478723071,
+        "text": "연결 여부만 확인하는 수준을 넘어 재연결, 상담방 참여"
+      },
+      {
+        "pass": true,
+        "ratio": 15.613310240236284,
+        "text": "재사용 가능한 프론트엔드 구조"
+      },
+      {
+        "pass": true,
+        "ratio": 6.609117478723071,
+        "text": "여러 저장소에 반복되는 UI를 배포 가능한 제품 단위로"
+      },
+      {
+        "pass": true,
+        "ratio": 15.613310240236284,
+        "text": "CMS와 운영 콘솔"
+      },
+      {
+        "pass": true,
+        "ratio": 6.609117478723071,
+        "text": "목록과 상세 화면뿐 아니라 검색, 필터, 권한, 파일,"
+      },
+      {
+        "pass": true,
+        "ratio": 15.613310240236284,
+        "text": "API와 데이터 흐름의 이해"
+      },
+      {
+        "pass": true,
+        "ratio": 6.609117478723071,
+        "text": "프론트엔드 요구사항을 API 응답과 데이터 관계까지 추"
+      },
+      {
+        "pass": true,
+        "ratio": 7.332378666248511,
+        "text": "성장 과정"
+      },
+      {
+        "pass": true,
+        "ratio": 17.321934930584227,
+        "text": "서비스 개발의 시작.그리고 역할의 확장."
+      },
+      {
+        "pass": true,
+        "ratio": 4.546740828855165,
+        "text": "그리고 역할의 확장."
+      },
+      {
+        "pass": true,
+        "ratio": 7.332378666248511,
+        "text": "프론트엔드를 출발점으로 API 설계와 실시간 플랫폼, "
+      },
+      {
+        "pass": true,
+        "ratio": 7.332378666248511,
+        "text": "2023"
+      },
+      {
+        "pass": true,
+        "ratio": 17.321934930584227,
+        "text": "서비스 개발의 시작"
+      },
+      {
+        "pass": true,
+        "ratio": 7.332378666248511,
+        "text": "법률 도메인 사용자·관리자 화면과 Next.js API"
+      },
+      {
+        "pass": true,
+        "ratio": 7.332378666248511,
+        "text": "2024"
+      },
+      {
+        "pass": true,
+        "ratio": 17.321934930584227,
+        "text": "CMS와 데이터 설계로 확장"
+      },
+      {
+        "pass": true,
+        "ratio": 7.332378666248511,
+        "text": "뉴스 플랫폼 CMS에서 관계형 데이터 구조, Prism"
+      },
+      {
+        "pass": true,
+        "ratio": 7.332378666248511,
+        "text": "2025"
+      },
+      {
+        "pass": true,
+        "ratio": 17.321934930584227,
+        "text": "실시간 플랫폼의 메인 프론트엔드"
+      },
+      {
+        "pass": true,
+        "ratio": 7.332378666248511,
+        "text": "사용자 위젯과 관리자 콘솔을 개발하고 WebSocket"
+      },
+      {
+        "pass": true,
+        "ratio": 7.332378666248511,
+        "text": "현재"
+      },
+      {
+        "pass": true,
+        "ratio": 17.321934930584227,
+        "text": "서비스 전체 흐름을 보는 개발자"
+      },
+      {
+        "pass": true,
+        "ratio": 7.332378666248511,
+        "text": "기존 Go 백엔드 구조를 분석해 운영 API, 파일 업"
+      },
+      {
+        "pass": true,
+        "ratio": 7.6935008327071985,
+        "text": "프로젝트"
+      },
+      {
+        "pass": true,
+        "ratio": 18.17504617239485,
+        "text": "경험을 담은 프로젝트.그 안의 역할과 성과."
+      },
+      {
+        "pass": true,
+        "ratio": 4.770669375535421,
+        "text": "그 안의 역할과 성과."
+      },
+      {
+        "pass": true,
+        "ratio": 7.6935008327071985,
+        "text": "각 지표와 프로젝트를 선택하면 담당 역할과 주요 성과를"
+      },
+      {
+        "pass": true,
+        "ratio": 7.6935008327071985,
+        "text": "웹 서비스 개발"
+      },
+      {
+        "pass": true,
+        "ratio": 18.17504617239485,
+        "text": "약 3년"
+      },
+      {
+        "pass": true,
+        "ratio": 7.6935008327071985,
+        "text": "2023.09부터 운영형 서비스 개발"
+      },
+      {
+        "pass": true,
+        "ratio": 7.6935008327071985,
+        "text": "공통 위젯 적용 대상"
+      },
+      {
+        "pass": true,
+        "ratio": 18.17504617239485,
+        "text": "80여 개"
+      },
+      {
+        "pass": true,
+        "ratio": 7.6935008327071985,
+        "text": "Next.js 홈페이지 공통 패키지"
+      },
+      {
+        "pass": true,
+        "ratio": 7.6935008327071985,
+        "text": "자체 상담 서비스 운영"
+      },
+      {
+        "pass": true,
+        "ratio": 18.17504617239485,
+        "text": "6,455건+"
+      },
+      {
+        "pass": true,
+        "ratio": 7.6935008327071985,
+        "text": "2025.12.23 집계 기준"
+      },
+      {
+        "pass": true,
+        "ratio": 7.6935008327071985,
+        "text": "WebSocket 이벤트"
+      },
+      {
+        "pass": true,
+        "ratio": 18.17504617239485,
+        "text": "19종"
+      },
+      {
+        "pass": true,
+        "ratio": 7.6935008327071985,
+        "text": "수신 15종 · 송신 4종"
+      },
+      {
+        "pass": true,
+        "ratio": 6.609117478723071,
+        "text": "운영 중"
+      },
+      {
+        "pass": true,
+        "ratio": 15.613310240236284,
+        "text": "실시간 상담 위젯 및 관리자 운영 콘솔"
+      },
+      {
+        "pass": true,
+        "ratio": 6.609117478723071,
+        "text": "외부 채팅 SaaS 의존도를 낮추고 내부 상담 프로세스"
+      },
+      {
+        "pass": true,
+        "ratio": 6.609117478723071,
+        "text": "적용 대상 홈페이지"
+      },
+      {
+        "pass": true,
+        "ratio": 15.613310240236284,
+        "text": "80여 개"
+      },
+      {
+        "pass": true,
+        "ratio": 6.609117478723071,
+        "text": "2025.12 기준 상담"
+      },
+      {
+        "pass": true,
+        "ratio": 15.613310240236284,
+        "text": "6,455건+"
+      },
+      {
+        "pass": true,
+        "ratio": 6.609117478723071,
+        "text": "완료"
+      },
+      {
+        "pass": true,
+        "ratio": 15.613310240236284,
+        "text": "SNN 뉴스 플랫폼 관리자 CMS"
+      },
+      {
+        "pass": true,
+        "ratio": 6.609117478723071,
+        "text": "기사, 기자, 카테고리, 배너, 검색 키워드와 관리자 "
+      },
+      {
+        "pass": true,
+        "ratio": 6.609117478723071,
+        "text": "DB · API · UI 연결"
+      },
+      {
+        "pass": true,
+        "ratio": 15.613310240236284,
+        "text": "End-to-End"
+      },
+      {
+        "pass": true,
+        "ratio": 6.609117478723071,
+        "text": "관계 데이터 정합성"
+      },
+      {
+        "pass": true,
+        "ratio": 15.613310240236284,
+        "text": "Transaction"
+      },
+      {
+        "pass": true,
+        "ratio": 6.609117478723071,
+        "text": "운영 중"
+      },
+      {
+        "pass": true,
+        "ratio": 15.613310240236284,
+        "text": "사내 ERP / 그룹웨어"
+      },
+      {
+        "pass": true,
+        "ratio": 6.609117478723071,
+        "text": "사내 임직원이 사용하는 업무 시스템에서 신규 페이지, "
+      },
+      {
+        "pass": true,
+        "ratio": 6.609117478723071,
+        "text": "이의제기 REST API"
+      },
+      {
+        "pass": true,
+        "ratio": 15.613310240236284,
+        "text": "13개"
+      },
+      {
+        "pass": true,
+        "ratio": 6.609117478723071,
+        "text": "업무 상태 전이"
+      },
+      {
+        "pass": true,
+        "ratio": 15.613310240236284,
+        "text": "3단계"
+      },
+      {
+        "pass": true,
+        "ratio": 6.609117478723071,
+        "text": "출시 보류"
+      },
+      {
+        "pass": true,
+        "ratio": 15.613310240236284,
+        "text": "법률 상담 유입 및 변호사 플랫폼"
+      },
+      {
+        "pass": true,
+        "ratio": 6.609117478723071,
+        "text": "사용자가 상황을 입력하고 질문지에 답한 뒤 변호사를 선"
+      },
+      {
+        "pass": true,
+        "ratio": 6.609117478723071,
+        "text": "양쪽 서비스 개발"
+      },
+      {
+        "pass": true,
+        "ratio": 15.613310240236284,
+        "text": "User + Admin"
+      },
+      {
+        "pass": true,
+        "ratio": 6.609117478723071,
+        "text": "서버 로직 경험"
+      },
+      {
+        "pass": true,
+        "ratio": 15.613310240236284,
+        "text": "API Routes"
+      },
+      {
+        "pass": true,
+        "ratio": 7.332378666248511,
+        "text": "기술과 학력"
+      },
+      {
+        "pass": true,
+        "ratio": 17.321934930584227,
+        "text": "사용해 온 기술.배움의 기반."
+      },
+      {
+        "pass": true,
+        "ratio": 4.546740828855165,
+        "text": "배움의 기반."
+      },
+      {
+        "pass": true,
+        "ratio": 7.332378666248511,
+        "text": "기술"
+      },
+      {
+        "pass": true,
+        "ratio": 17.321934930584227,
+        "text": "실시간 서비스와 상태 설계"
+      },
+      {
+        "pass": true,
+        "ratio": 7.332378666248511,
+        "text": "WebSocket · React Query · Zust"
+      },
+      {
+        "pass": true,
+        "ratio": 17.321934930584227,
+        "text": "재사용 가능한 프론트엔드 구조"
+      },
+      {
+        "pass": true,
+        "ratio": 7.332378666248511,
+        "text": "Next.js · TypeScript · npm Pac"
+      },
+      {
+        "pass": true,
+        "ratio": 17.321934930584227,
+        "text": "CMS와 운영 콘솔"
+      },
+      {
+        "pass": true,
+        "ratio": 7.332378666248511,
+        "text": "CMS · Backoffice · TipTap · CK"
+      },
+      {
+        "pass": true,
+        "ratio": 17.321934930584227,
+        "text": "API와 데이터 흐름의 이해"
+      },
+      {
+        "pass": true,
+        "ratio": 7.332378666248511,
+        "text": "PostgreSQL · Prisma · Node.js "
+      },
+      {
+        "pass": true,
+        "ratio": 7.332378666248511,
+        "text": "학력"
+      },
+      {
+        "pass": true,
+        "ratio": 17.321934930584227,
+        "text": "전자공학과 학사"
+      },
+      {
+        "pass": true,
+        "ratio": 7.332378666248511,
+        "text": "동아대학교 · GPA 3.9"
+      },
+      {
+        "pass": true,
+        "ratio": 7.6935008327071985,
+        "text": "최근 글"
+      },
+      {
+        "pass": true,
+        "ratio": 18.17504617239485,
+        "text": "기술적인 고민.그리고 해결의 기록."
+      },
+      {
+        "pass": true,
+        "ratio": 4.770669375535421,
+        "text": "그리고 해결의 기록."
+      },
+      {
+        "pass": true,
+        "ratio": 18.17504617239485,
+        "text": "[AI 에이전트] 12주차 - 마무리 리뷰"
+      },
+      {
+        "pass": true,
+        "ratio": 7.6935008327071985,
+        "text": "이번 글에서는 , 1주차부터 11주차까지 진행한 AI "
+      },
+      {
+        "pass": true,
+        "ratio": 18.17504617239485,
+        "text": "[AI 에이전트] 11주차 - LLM Training "
+      },
+      {
+        "pass": true,
+        "ratio": 7.6935008327071985,
+        "text": "지금까지 다룬 RAG와 Agentic Prompting"
+      },
+      {
+        "pass": true,
+        "ratio": 7.6935008327071985,
+        "text": "더 알아보기"
+      },
+      {
+        "pass": true,
+        "ratio": 18.17504617239485,
+        "text": "코드와 기록을더 살펴보세요."
+      },
+      {
+        "pass": true,
+        "ratio": 4.770669375535421,
+        "text": "더 살펴보세요."
+      },
+      {
+        "pass": true,
+        "ratio": 7.6935008327071985,
+        "text": "GitHub와 기술 블로그에서 더 확인할 수 있습니다."
+      },
+      {
+        "pass": true,
+        "ratio": 18.17504617239485,
+        "text": "성찬홍"
+      },
+      {
+        "pass": true,
+        "ratio": 7.6935008327071985,
+        "text": "Frontend Engineer / Web Develo"
+      },
+      {
+        "pass": true,
+        "ratio": 7.6935008327071985,
+        "text": "사이트"
+      },
+      {
+        "pass": true,
+        "ratio": 13.00682489567349,
+        "text": "프로젝트"
+      },
+      {
+        "pass": true,
+        "ratio": 13.00682489567349,
+        "text": "글"
+      },
+      {
+        "pass": true,
+        "ratio": 13.00682489567349,
+        "text": "이력서"
+      },
+      {
+        "pass": true,
+        "ratio": 7.6935008327071985,
+        "text": "다른 곳에서"
+      },
+      {
+        "pass": true,
+        "ratio": 13.00682489567349,
+        "text": "GitHub"
+      },
+      {
+        "pass": true,
+        "ratio": 13.00682489567349,
+        "text": "Velog"
+      },
+      {
+        "pass": true,
+        "ratio": 7.6935008327071985,
+        "text": "© 2026 성찬홍"
+      },
+      {
+        "pass": true,
+        "ratio": 7.6935008327071985,
+        "text": "Next.js로 만들었습니다."
+      }
+    ]
+  },
+  {
+    "name": "contrast-light",
+    "data": [
+      {
+        "pass": true,
+        "ratio": 4.982524264677333,
+        "text": "성찬홍"
+      },
+      {
+        "pass": true,
+        "ratio": 16.53528451343635,
+        "text": "Frontend Engineer / Web Develo"
+      },
+      {
+        "pass": true,
+        "ratio": 4.982524264677333,
+        "text": "운영 요구사항을 화면에 구현하는 데서 멈추지 않고, A"
+      },
+      {
+        "pass": true,
+        "ratio": 4.982524264677333,
+        "text": "스카이즈코리아 개발팀 · 2023.09 ~ 현재"
+      },
+      {
+        "pass": true,
+        "ratio": 4.982524264677333,
+        "text": "역량"
+      },
+      {
+        "pass": true,
+        "ratio": 16.53528451343635,
+        "text": "프론트엔드에서 시작해.서비스의 흐름까지."
+      },
+      {
+        "pass": true,
+        "ratio": 3.2034375223938816,
+        "text": "서비스의 흐름까지."
+      },
+      {
+        "pass": true,
+        "ratio": 4.982524264677333,
+        "text": "운영 요구사항을 화면에 구현하는 데서 멈추지 않고, A"
+      },
+      {
+        "pass": true,
+        "ratio": 14.749224838228198,
+        "text": "실시간 서비스와 상태 설계"
+      },
+      {
+        "pass": true,
+        "ratio": 5.4734309307446845,
+        "text": "연결 여부만 확인하는 수준을 넘어 재연결, 상담방 참여"
+      },
+      {
+        "pass": true,
+        "ratio": 14.749224838228198,
+        "text": "재사용 가능한 프론트엔드 구조"
+      },
+      {
+        "pass": true,
+        "ratio": 5.4734309307446845,
+        "text": "여러 저장소에 반복되는 UI를 배포 가능한 제품 단위로"
+      },
+      {
+        "pass": true,
+        "ratio": 14.749224838228198,
+        "text": "CMS와 운영 콘솔"
+      },
+      {
+        "pass": true,
+        "ratio": 5.4734309307446845,
+        "text": "목록과 상세 화면뿐 아니라 검색, 필터, 권한, 파일,"
+      },
+      {
+        "pass": true,
+        "ratio": 14.749224838228198,
+        "text": "API와 데이터 흐름의 이해"
+      },
+      {
+        "pass": true,
+        "ratio": 5.4734309307446845,
+        "text": "프론트엔드 요구사항을 API 응답과 데이터 관계까지 추"
+      },
+      {
+        "pass": true,
+        "ratio": 4.727836536000468,
+        "text": "성장 과정"
+      },
+      {
+        "pass": true,
+        "ratio": 15.690063530648908,
+        "text": "서비스 개발의 시작.그리고 역할의 확장."
+      },
+      {
+        "pass": true,
+        "ratio": 3.0396899552579337,
+        "text": "그리고 역할의 확장."
+      },
+      {
+        "pass": true,
+        "ratio": 4.727836536000468,
+        "text": "프론트엔드를 출발점으로 API 설계와 실시간 플랫폼, "
+      },
+      {
+        "pass": true,
+        "ratio": 5.822575760823464,
+        "text": "2023"
+      },
+      {
+        "pass": true,
+        "ratio": 15.690063530648908,
+        "text": "서비스 개발의 시작"
+      },
+      {
+        "pass": true,
+        "ratio": 5.822575760823464,
+        "text": "법률 도메인 사용자·관리자 화면과 Next.js API"
+      },
+      {
+        "pass": true,
+        "ratio": 5.822575760823464,
+        "text": "2024"
+      },
+      {
+        "pass": true,
+        "ratio": 15.690063530648908,
+        "text": "CMS와 데이터 설계로 확장"
+      },
+      {
+        "pass": true,
+        "ratio": 5.822575760823464,
+        "text": "뉴스 플랫폼 CMS에서 관계형 데이터 구조, Prism"
+      },
+      {
+        "pass": true,
+        "ratio": 5.822575760823464,
+        "text": "2025"
+      },
+      {
+        "pass": true,
+        "ratio": 15.690063530648908,
+        "text": "실시간 플랫폼의 메인 프론트엔드"
+      },
+      {
+        "pass": true,
+        "ratio": 5.822575760823464,
+        "text": "사용자 위젯과 관리자 콘솔을 개발하고 WebSocket"
+      },
+      {
+        "pass": true,
+        "ratio": 5.822575760823464,
+        "text": "현재"
+      },
+      {
+        "pass": true,
+        "ratio": 15.690063530648908,
+        "text": "서비스 전체 흐름을 보는 개발자"
+      },
+      {
+        "pass": true,
+        "ratio": 5.822575760823464,
+        "text": "기존 Go 백엔드 구조를 분석해 운영 API, 파일 업"
+      },
+      {
+        "pass": true,
+        "ratio": 4.982524264677333,
+        "text": "프로젝트"
+      },
+      {
+        "pass": true,
+        "ratio": 16.53528451343635,
+        "text": "경험을 담은 프로젝트.그 안의 역할과 성과."
+      },
+      {
+        "pass": true,
+        "ratio": 3.2034375223938816,
+        "text": "그 안의 역할과 성과."
+      },
+      {
+        "pass": true,
+        "ratio": 4.982524264677333,
+        "text": "각 지표와 프로젝트를 선택하면 담당 역할과 주요 성과를"
+      },
+      {
+        "pass": true,
+        "ratio": 4.982524264677333,
+        "text": "웹 서비스 개발"
+      },
+      {
+        "pass": true,
+        "ratio": 16.53528451343635,
+        "text": "약 3년"
+      },
+      {
+        "pass": true,
+        "ratio": 4.982524264677333,
+        "text": "2023.09부터 운영형 서비스 개발"
+      },
+      {
+        "pass": true,
+        "ratio": 4.982524264677333,
+        "text": "공통 위젯 적용 대상"
+      },
+      {
+        "pass": true,
+        "ratio": 16.53528451343635,
+        "text": "80여 개"
+      },
+      {
+        "pass": true,
+        "ratio": 4.982524264677333,
+        "text": "Next.js 홈페이지 공통 패키지"
+      },
+      {
+        "pass": true,
+        "ratio": 4.982524264677333,
+        "text": "자체 상담 서비스 운영"
+      },
+      {
+        "pass": true,
+        "ratio": 16.53528451343635,
+        "text": "6,455건+"
+      },
+      {
+        "pass": true,
+        "ratio": 4.982524264677333,
+        "text": "2025.12.23 집계 기준"
+      },
+      {
+        "pass": true,
+        "ratio": 4.982524264677333,
+        "text": "WebSocket 이벤트"
+      },
+      {
+        "pass": true,
+        "ratio": 16.53528451343635,
+        "text": "19종"
+      },
+      {
+        "pass": true,
+        "ratio": 4.982524264677333,
+        "text": "수신 15종 · 송신 4종"
+      },
+      {
+        "pass": true,
+        "ratio": 5.4734309307446845,
+        "text": "운영 중"
+      },
+      {
+        "pass": true,
+        "ratio": 14.749224838228198,
+        "text": "실시간 상담 위젯 및 관리자 운영 콘솔"
+      },
+      {
+        "pass": true,
+        "ratio": 5.4734309307446845,
+        "text": "외부 채팅 SaaS 의존도를 낮추고 내부 상담 프로세스"
+      },
+      {
+        "pass": true,
+        "ratio": 5.4734309307446845,
+        "text": "적용 대상 홈페이지"
+      },
+      {
+        "pass": true,
+        "ratio": 14.749224838228198,
+        "text": "80여 개"
+      },
+      {
+        "pass": true,
+        "ratio": 5.4734309307446845,
+        "text": "2025.12 기준 상담"
+      },
+      {
+        "pass": true,
+        "ratio": 14.749224838228198,
+        "text": "6,455건+"
+      },
+      {
+        "pass": true,
+        "ratio": 5.4734309307446845,
+        "text": "완료"
+      },
+      {
+        "pass": true,
+        "ratio": 14.749224838228198,
+        "text": "SNN 뉴스 플랫폼 관리자 CMS"
+      },
+      {
+        "pass": true,
+        "ratio": 5.4734309307446845,
+        "text": "기사, 기자, 카테고리, 배너, 검색 키워드와 관리자 "
+      },
+      {
+        "pass": true,
+        "ratio": 5.4734309307446845,
+        "text": "DB · API · UI 연결"
+      },
+      {
+        "pass": true,
+        "ratio": 14.749224838228198,
+        "text": "End-to-End"
+      },
+      {
+        "pass": true,
+        "ratio": 5.4734309307446845,
+        "text": "관계 데이터 정합성"
+      },
+      {
+        "pass": true,
+        "ratio": 14.749224838228198,
+        "text": "Transaction"
+      },
+      {
+        "pass": true,
+        "ratio": 5.4734309307446845,
+        "text": "운영 중"
+      },
+      {
+        "pass": true,
+        "ratio": 14.749224838228198,
+        "text": "사내 ERP / 그룹웨어"
+      },
+      {
+        "pass": true,
+        "ratio": 5.4734309307446845,
+        "text": "사내 임직원이 사용하는 업무 시스템에서 신규 페이지, "
+      },
+      {
+        "pass": true,
+        "ratio": 5.4734309307446845,
+        "text": "이의제기 REST API"
+      },
+      {
+        "pass": true,
+        "ratio": 14.749224838228198,
+        "text": "13개"
+      },
+      {
+        "pass": true,
+        "ratio": 5.4734309307446845,
+        "text": "업무 상태 전이"
+      },
+      {
+        "pass": true,
+        "ratio": 14.749224838228198,
+        "text": "3단계"
+      },
+      {
+        "pass": true,
+        "ratio": 5.4734309307446845,
+        "text": "출시 보류"
+      },
+      {
+        "pass": true,
+        "ratio": 14.749224838228198,
+        "text": "법률 상담 유입 및 변호사 플랫폼"
+      },
+      {
+        "pass": true,
+        "ratio": 5.4734309307446845,
+        "text": "사용자가 상황을 입력하고 질문지에 답한 뒤 변호사를 선"
+      },
+      {
+        "pass": true,
+        "ratio": 5.4734309307446845,
+        "text": "양쪽 서비스 개발"
+      },
+      {
+        "pass": true,
+        "ratio": 14.749224838228198,
+        "text": "User + Admin"
+      },
+      {
+        "pass": true,
+        "ratio": 5.4734309307446845,
+        "text": "서버 로직 경험"
+      },
+      {
+        "pass": true,
+        "ratio": 14.749224838228198,
+        "text": "API Routes"
+      },
+      {
+        "pass": true,
+        "ratio": 4.727836536000468,
+        "text": "기술과 학력"
+      },
+      {
+        "pass": true,
+        "ratio": 15.690063530648908,
+        "text": "사용해 온 기술.배움의 기반."
+      },
+      {
+        "pass": true,
+        "ratio": 3.0396899552579337,
+        "text": "배움의 기반."
+      },
+      {
+        "pass": true,
+        "ratio": 4.727836536000468,
+        "text": "기술"
+      },
+      {
+        "pass": true,
+        "ratio": 15.690063530648908,
+        "text": "실시간 서비스와 상태 설계"
+      },
+      {
+        "pass": true,
+        "ratio": 5.822575760823464,
+        "text": "WebSocket · React Query · Zust"
+      },
+      {
+        "pass": true,
+        "ratio": 15.690063530648908,
+        "text": "재사용 가능한 프론트엔드 구조"
+      },
+      {
+        "pass": true,
+        "ratio": 5.822575760823464,
+        "text": "Next.js · TypeScript · npm Pac"
+      },
+      {
+        "pass": true,
+        "ratio": 15.690063530648908,
+        "text": "CMS와 운영 콘솔"
+      },
+      {
+        "pass": true,
+        "ratio": 5.822575760823464,
+        "text": "CMS · Backoffice · TipTap · CK"
+      },
+      {
+        "pass": true,
+        "ratio": 15.690063530648908,
+        "text": "API와 데이터 흐름의 이해"
+      },
+      {
+        "pass": true,
+        "ratio": 5.822575760823464,
+        "text": "PostgreSQL · Prisma · Node.js "
+      },
+      {
+        "pass": true,
+        "ratio": 4.727836536000468,
+        "text": "학력"
+      },
+      {
+        "pass": true,
+        "ratio": 15.690063530648908,
+        "text": "전자공학과 학사"
+      },
+      {
+        "pass": true,
+        "ratio": 5.822575760823464,
+        "text": "동아대학교 · GPA 3.9"
+      },
+      {
+        "pass": true,
+        "ratio": 4.982524264677333,
+        "text": "최근 글"
+      },
+      {
+        "pass": true,
+        "ratio": 16.53528451343635,
+        "text": "기술적인 고민.그리고 해결의 기록."
+      },
+      {
+        "pass": true,
+        "ratio": 3.2034375223938816,
+        "text": "그리고 해결의 기록."
+      },
+      {
+        "pass": true,
+        "ratio": 16.53528451343635,
+        "text": "[AI 에이전트] 12주차 - 마무리 리뷰"
+      },
+      {
+        "pass": true,
+        "ratio": 4.982524264677333,
+        "text": "이번 글에서는 , 1주차부터 11주차까지 진행한 AI "
+      },
+      {
+        "pass": true,
+        "ratio": 16.53528451343635,
+        "text": "[AI 에이전트] 11주차 - LLM Training "
+      },
+      {
+        "pass": true,
+        "ratio": 4.982524264677333,
+        "text": "지금까지 다룬 RAG와 Agentic Prompting"
+      },
+      {
+        "pass": true,
+        "ratio": 4.982524264677333,
+        "text": "더 알아보기"
+      },
+      {
+        "pass": true,
+        "ratio": 16.53528451343635,
+        "text": "코드와 기록을더 살펴보세요."
+      },
+      {
+        "pass": true,
+        "ratio": 3.2034375223938816,
+        "text": "더 살펴보세요."
+      },
+      {
+        "pass": true,
+        "ratio": 4.982524264677333,
+        "text": "GitHub와 기술 블로그에서 더 확인할 수 있습니다."
+      },
+      {
+        "pass": true,
+        "ratio": 16.53528451343635,
+        "text": "성찬홍"
+      },
+      {
+        "pass": true,
+        "ratio": 4.982524264677333,
+        "text": "Frontend Engineer / Web Develo"
+      },
+      {
+        "pass": true,
+        "ratio": 4.982524264677333,
+        "text": "사이트"
+      },
+      {
+        "pass": true,
+        "ratio": 9.364809796256996,
+        "text": "프로젝트"
+      },
+      {
+        "pass": true,
+        "ratio": 9.364809796256996,
+        "text": "글"
+      },
+      {
+        "pass": true,
+        "ratio": 9.364809796256996,
+        "text": "이력서"
+      },
+      {
+        "pass": true,
+        "ratio": 4.982524264677333,
+        "text": "다른 곳에서"
+      },
+      {
+        "pass": true,
+        "ratio": 9.364809796256996,
+        "text": "GitHub"
+      },
+      {
+        "pass": true,
+        "ratio": 9.364809796256996,
+        "text": "Velog"
+      },
+      {
+        "pass": true,
+        "ratio": 4.982524264677333,
+        "text": "© 2026 성찬홍"
+      },
+      {
+        "pass": true,
+        "ratio": 4.982524264677333,
+        "text": "Next.js로 만들었습니다."
+      }
+    ]
+  },
+  {
+    "name": "shell-light-desktop-/work",
+    "data": {
+      "active": "프로젝트",
+      "footer": {
+        "bottom": 1461.828125,
+        "height": 350.953125,
+        "left": 0,
+        "right": 1425,
+        "top": 1110.875,
+        "width": 1425,
+        "x": 0,
+        "y": 1110.875
+      },
+      "header": {
+        "bottom": 65,
+        "height": 65,
+        "left": 0,
+        "right": 1425,
+        "top": 0,
+        "width": 1425,
+        "x": 0,
+        "y": 0
+      },
+      "main": 1,
+      "overflow": false,
+      "theme": "light",
+      "title": "프로젝트",
+      "width": 1440
+    }
+  },
+  {
+    "name": "shell-light-desktop-/project/realtime-support",
+    "data": {
+      "active": "프로젝트",
+      "footer": {
+        "bottom": 2845.78125,
+        "height": 350.953125,
+        "left": 0,
+        "right": 1425,
+        "top": 2494.828125,
+        "width": 1425,
+        "x": 0,
+        "y": 2494.828125
+      },
+      "header": {
+        "bottom": 65,
+        "height": 65,
+        "left": 0,
+        "right": 1425,
+        "top": 0,
+        "width": 1425,
+        "x": 0,
+        "y": 0
+      },
+      "main": 1,
+      "overflow": false,
+      "theme": "light",
+      "title": "실시간 상담 위젯 및 관리자 운영 콘솔",
+      "width": 1440
+    }
+  },
+  {
+    "name": "shell-light-desktop-/project/snn-cms",
+    "data": {
+      "active": "프로젝트",
+      "footer": {
+        "bottom": 2439.390625,
+        "height": 350.953125,
+        "left": 0,
+        "right": 1425,
+        "top": 2088.4375,
+        "width": 1425,
+        "x": 0,
+        "y": 2088.4375
+      },
+      "header": {
+        "bottom": 65,
+        "height": 65,
+        "left": 0,
+        "right": 1425,
+        "top": 0,
+        "width": 1425,
+        "x": 0,
+        "y": 0
+      },
+      "main": 1,
+      "overflow": false,
+      "theme": "light",
+      "title": "SNN 뉴스 플랫폼 관리자 CMS",
+      "width": 1440
+    }
+  },
+  {
+    "name": "shell-light-desktop-/project/erp-groupware",
+    "data": {
+      "active": "프로젝트",
+      "footer": {
+        "bottom": 1765.5625,
+        "height": 350.953125,
+        "left": 0,
+        "right": 1425,
+        "top": 1414.609375,
+        "width": 1425,
+        "x": 0,
+        "y": 1414.609375
+      },
+      "header": {
+        "bottom": 65,
+        "height": 65,
+        "left": 0,
+        "right": 1425,
+        "top": 0,
+        "width": 1425,
+        "x": 0,
+        "y": 0
+      },
+      "main": 1,
+      "overflow": false,
+      "theme": "light",
+      "title": "사내 ERP / 그룹웨어",
+      "width": 1440
+    }
+  },
+  {
+    "name": "shell-light-desktop-/project/legal-platform",
+    "data": {
+      "active": "프로젝트",
+      "footer": {
+        "bottom": 1741.5625,
+        "height": 350.953125,
+        "left": 0,
+        "right": 1425,
+        "top": 1390.609375,
+        "width": 1425,
+        "x": 0,
+        "y": 1390.609375
+      },
+      "header": {
+        "bottom": 65,
+        "height": 65,
+        "left": 0,
+        "right": 1425,
+        "top": 0,
+        "width": 1425,
+        "x": 0,
+        "y": 0
+      },
+      "main": 1,
+      "overflow": false,
+      "theme": "light",
+      "title": "법률 상담 유입 및 변호사 플랫폼",
+      "width": 1440
+    }
+  },
+  {
+    "name": "shell-light-desktop-/resume",
+    "data": {
+      "active": "이력서",
+      "footer": {
+        "bottom": 5788.078125,
+        "height": 350.953125,
+        "left": 0,
+        "right": 1425,
+        "top": 5437.125,
+        "width": 1425,
+        "x": 0,
+        "y": 5437.125
+      },
+      "header": {
+        "bottom": 65,
+        "height": 65,
+        "left": 0,
+        "right": 1425,
+        "top": 0,
+        "width": 1425,
+        "x": 0,
+        "y": 0
+      },
+      "main": 1,
+      "overflow": false,
+      "theme": "light",
+      "title": "성찬홍",
+      "width": 1440
+    }
+  },
+  {
+    "name": "shell-light-desktop-/writing",
+    "data": {
+      "active": "글",
+      "footer": {
+        "bottom": 1981.671875,
+        "height": 350.953125,
+        "left": 0,
+        "right": 1425,
+        "top": 1630.71875,
+        "width": 1425,
+        "x": 0,
+        "y": 1630.71875
+      },
+      "header": {
+        "bottom": 65,
+        "height": 65,
+        "left": 0,
+        "right": 1425,
+        "top": 0,
+        "width": 1425,
+        "x": 0,
+        "y": 0
+      },
+      "main": 1,
+      "overflow": false,
+      "theme": "light",
+      "title": "글",
+      "width": 1440
+    }
+  },
+  {
+    "name": "shell-light-desktop-/blog/AI-%EC%97%90%EC%9D%B4%EC%A0%84%ED%8A%B8-12%EC%A3%BC%EC%B0%A8-%EB%A7%88%EB%AC%B4%EB%A6%AC-%EB%A6%AC%EB%B7%B0",
+    "data": {
+      "active": "글",
+      "footer": {
+        "bottom": 13753.734375,
+        "height": 350.953125,
+        "left": 0,
+        "right": 1425,
+        "top": 13402.78125,
+        "width": 1425,
+        "x": 0,
+        "y": 13402.78125
+      },
+      "header": {
+        "bottom": 65,
+        "height": 65,
+        "left": 0,
+        "right": 1425,
+        "top": 0,
+        "width": 1425,
+        "x": 0,
+        "y": 0
+      },
+      "main": 1,
+      "overflow": false,
+      "theme": "light",
+      "title": "[AI 에이전트] 12주차 - 마무리 리뷰",
+      "width": 1440
+    }
+  },
+  {
+    "name": "shell-light-desktop-/ask",
+    "data": {
+      "footer": {
+        "bottom": 1135.953125,
+        "height": 350.953125,
+        "left": 0,
+        "right": 1425,
+        "top": 785,
+        "width": 1425,
+        "x": 0,
+        "y": 785
+      },
+      "header": {
+        "bottom": 65,
+        "height": 65,
+        "left": 0,
+        "right": 1425,
+        "top": 0,
+        "width": 1425,
+        "x": 0,
+        "y": 0
+      },
+      "main": 1,
+      "overflow": false,
+      "theme": "light",
+      "title": "페이지를 찾을 수 없습니다",
+      "width": 1440
+    }
+  },
+  {
+    "name": "shell-dark-desktop-/work",
+    "data": {
+      "active": "프로젝트",
+      "footer": {
+        "bottom": 1461.828125,
+        "height": 350.953125,
+        "left": 0,
+        "right": 1425,
+        "top": 1110.875,
+        "width": 1425,
+        "x": 0,
+        "y": 1110.875
+      },
+      "header": {
+        "bottom": 65,
+        "height": 65,
+        "left": 0,
+        "right": 1425,
+        "top": 0,
+        "width": 1425,
+        "x": 0,
+        "y": 0
+      },
+      "main": 1,
+      "overflow": false,
+      "theme": "dark",
+      "title": "프로젝트",
+      "width": 1440
+    }
+  },
+  {
+    "name": "shell-dark-desktop-/project/realtime-support",
+    "data": {
+      "active": "프로젝트",
+      "footer": {
+        "bottom": 2845.78125,
+        "height": 350.953125,
+        "left": 0,
+        "right": 1425,
+        "top": 2494.828125,
+        "width": 1425,
+        "x": 0,
+        "y": 2494.828125
+      },
+      "header": {
+        "bottom": 65,
+        "height": 65,
+        "left": 0,
+        "right": 1425,
+        "top": 0,
+        "width": 1425,
+        "x": 0,
+        "y": 0
+      },
+      "main": 1,
+      "overflow": false,
+      "theme": "dark",
+      "title": "실시간 상담 위젯 및 관리자 운영 콘솔",
+      "width": 1440
+    }
+  },
+  {
+    "name": "shell-dark-desktop-/project/snn-cms",
+    "data": {
+      "active": "프로젝트",
+      "footer": {
+        "bottom": 2439.390625,
+        "height": 350.953125,
+        "left": 0,
+        "right": 1425,
+        "top": 2088.4375,
+        "width": 1425,
+        "x": 0,
+        "y": 2088.4375
+      },
+      "header": {
+        "bottom": 65,
+        "height": 65,
+        "left": 0,
+        "right": 1425,
+        "top": 0,
+        "width": 1425,
+        "x": 0,
+        "y": 0
+      },
+      "main": 1,
+      "overflow": false,
+      "theme": "dark",
+      "title": "SNN 뉴스 플랫폼 관리자 CMS",
+      "width": 1440
+    }
+  },
+  {
+    "name": "shell-dark-desktop-/project/erp-groupware",
+    "data": {
+      "active": "프로젝트",
+      "footer": {
+        "bottom": 1765.5625,
+        "height": 350.953125,
+        "left": 0,
+        "right": 1425,
+        "top": 1414.609375,
+        "width": 1425,
+        "x": 0,
+        "y": 1414.609375
+      },
+      "header": {
+        "bottom": 65,
+        "height": 65,
+        "left": 0,
+        "right": 1425,
+        "top": 0,
+        "width": 1425,
+        "x": 0,
+        "y": 0
+      },
+      "main": 1,
+      "overflow": false,
+      "theme": "dark",
+      "title": "사내 ERP / 그룹웨어",
+      "width": 1440
+    }
+  },
+  {
+    "name": "shell-dark-desktop-/project/legal-platform",
+    "data": {
+      "active": "프로젝트",
+      "footer": {
+        "bottom": 1741.5625,
+        "height": 350.953125,
+        "left": 0,
+        "right": 1425,
+        "top": 1390.609375,
+        "width": 1425,
+        "x": 0,
+        "y": 1390.609375
+      },
+      "header": {
+        "bottom": 65,
+        "height": 65,
+        "left": 0,
+        "right": 1425,
+        "top": 0,
+        "width": 1425,
+        "x": 0,
+        "y": 0
+      },
+      "main": 1,
+      "overflow": false,
+      "theme": "dark",
+      "title": "법률 상담 유입 및 변호사 플랫폼",
+      "width": 1440
+    }
+  },
+  {
+    "name": "shell-dark-desktop-/resume",
+    "data": {
+      "active": "이력서",
+      "footer": {
+        "bottom": 5788.078125,
+        "height": 350.953125,
+        "left": 0,
+        "right": 1425,
+        "top": 5437.125,
+        "width": 1425,
+        "x": 0,
+        "y": 5437.125
+      },
+      "header": {
+        "bottom": 65,
+        "height": 65,
+        "left": 0,
+        "right": 1425,
+        "top": 0,
+        "width": 1425,
+        "x": 0,
+        "y": 0
+      },
+      "main": 1,
+      "overflow": false,
+      "theme": "dark",
+      "title": "성찬홍",
+      "width": 1440
+    }
+  },
+  {
+    "name": "shell-dark-desktop-/writing",
+    "data": {
+      "active": "글",
+      "footer": {
+        "bottom": 1981.671875,
+        "height": 350.953125,
+        "left": 0,
+        "right": 1425,
+        "top": 1630.71875,
+        "width": 1425,
+        "x": 0,
+        "y": 1630.71875
+      },
+      "header": {
+        "bottom": 65,
+        "height": 65,
+        "left": 0,
+        "right": 1425,
+        "top": 0,
+        "width": 1425,
+        "x": 0,
+        "y": 0
+      },
+      "main": 1,
+      "overflow": false,
+      "theme": "dark",
+      "title": "글",
+      "width": 1440
+    }
+  },
+  {
+    "name": "shell-dark-desktop-/blog/AI-%EC%97%90%EC%9D%B4%EC%A0%84%ED%8A%B8-12%EC%A3%BC%EC%B0%A8-%EB%A7%88%EB%AC%B4%EB%A6%AC-%EB%A6%AC%EB%B7%B0",
+    "data": {
+      "active": "글",
+      "footer": {
+        "bottom": 13753.734375,
+        "height": 350.953125,
+        "left": 0,
+        "right": 1425,
+        "top": 13402.78125,
+        "width": 1425,
+        "x": 0,
+        "y": 13402.78125
+      },
+      "header": {
+        "bottom": 65,
+        "height": 65,
+        "left": 0,
+        "right": 1425,
+        "top": 0,
+        "width": 1425,
+        "x": 0,
+        "y": 0
+      },
+      "main": 1,
+      "overflow": false,
+      "theme": "dark",
+      "title": "[AI 에이전트] 12주차 - 마무리 리뷰",
+      "width": 1440
+    }
+  },
+  {
+    "name": "shell-dark-desktop-/ask",
+    "data": {
+      "footer": {
+        "bottom": 1135.953125,
+        "height": 350.953125,
+        "left": 0,
+        "right": 1425,
+        "top": 785,
+        "width": 1425,
+        "x": 0,
+        "y": 785
+      },
+      "header": {
+        "bottom": 65,
+        "height": 65,
+        "left": 0,
+        "right": 1425,
+        "top": 0,
+        "width": 1425,
+        "x": 0,
+        "y": 0
+      },
+      "main": 1,
+      "overflow": false,
+      "theme": "dark",
+      "title": "페이지를 찾을 수 없습니다",
+      "width": 1440
+    }
+  },
+  {
+    "name": "shell-dark-mobile-/work",
+    "data": {
+      "active": "프로젝트",
+      "footer": {
+        "bottom": 2535.609375,
+        "height": 621.546875,
+        "left": 0,
+        "right": 375,
+        "top": 1914.0625,
+        "width": 375,
+        "x": 0,
+        "y": 1914.0625
+      },
+      "header": {
+        "bottom": 57,
+        "height": 57,
+        "left": 0,
+        "right": 375,
+        "top": 0,
+        "width": 375,
+        "x": 0,
+        "y": 0
+      },
+      "main": 1,
+      "overflow": false,
+      "theme": "dark",
+      "title": "프로젝트",
+      "width": 390
+    }
+  },
+  {
+    "name": "shell-dark-mobile-/project/realtime-support",
+    "data": {
+      "active": "프로젝트",
+      "footer": {
+        "bottom": 5360.59375,
+        "height": 621.546875,
+        "left": 0,
+        "right": 375,
+        "top": 4739.046875,
+        "width": 375,
+        "x": 0,
+        "y": 4739.046875
+      },
+      "header": {
+        "bottom": 57,
+        "height": 57,
+        "left": 0,
+        "right": 375,
+        "top": 0,
+        "width": 375,
+        "x": 0,
+        "y": 0
+      },
+      "main": 1,
+      "overflow": false,
+      "theme": "dark",
+      "title": "실시간 상담 위젯 및 관리자 운영 콘솔",
+      "width": 390
+    }
+  },
+  {
+    "name": "shell-dark-mobile-/project/snn-cms",
+    "data": {
+      "active": "프로젝트",
+      "footer": {
+        "bottom": 4442.203125,
+        "height": 621.546875,
+        "left": 0,
+        "right": 375,
+        "top": 3820.65625,
+        "width": 375,
+        "x": 0,
+        "y": 3820.65625
+      },
+      "header": {
+        "bottom": 57,
+        "height": 57,
+        "left": 0,
+        "right": 375,
+        "top": 0,
+        "width": 375,
+        "x": 0,
+        "y": 0
+      },
+      "main": 1,
+      "overflow": false,
+      "theme": "dark",
+      "title": "SNN 뉴스 플랫폼 관리자 CMS",
+      "width": 390
+    }
+  },
+  {
+    "name": "shell-dark-mobile-/project/erp-groupware",
+    "data": {
+      "active": "프로젝트",
+      "footer": {
+        "bottom": 2739.984375,
+        "height": 621.546875,
+        "left": 0,
+        "right": 375,
+        "top": 2118.4375,
+        "width": 375,
+        "x": 0,
+        "y": 2118.4375
+      },
+      "header": {
+        "bottom": 57,
+        "height": 57,
+        "left": 0,
+        "right": 375,
+        "top": 0,
+        "width": 375,
+        "x": 0,
+        "y": 0
+      },
+      "main": 1,
+      "overflow": false,
+      "theme": "dark",
+      "title": "사내 ERP / 그룹웨어",
+      "width": 390
+    }
+  },
+  {
+    "name": "shell-dark-mobile-/project/legal-platform",
+    "data": {
+      "active": "프로젝트",
+      "footer": {
+        "bottom": 2773.59375,
+        "height": 621.546875,
+        "left": 0,
+        "right": 375,
+        "top": 2152.046875,
+        "width": 375,
+        "x": 0,
+        "y": 2152.046875
+      },
+      "header": {
+        "bottom": 57,
+        "height": 57,
+        "left": 0,
+        "right": 375,
+        "top": 0,
+        "width": 375,
+        "x": 0,
+        "y": 0
+      },
+      "main": 1,
+      "overflow": false,
+      "theme": "dark",
+      "title": "법률 상담 유입 및 변호사 플랫폼",
+      "width": 390
+    }
+  },
+  {
+    "name": "shell-dark-mobile-/resume",
+    "data": {
+      "active": "이력서",
+      "footer": {
+        "bottom": 10099.171875,
+        "height": 621.546875,
+        "left": 0,
+        "right": 375,
+        "top": 9477.625,
+        "width": 375,
+        "x": 0,
+        "y": 9477.625
+      },
+      "header": {
+        "bottom": 57,
+        "height": 57,
+        "left": 0,
+        "right": 375,
+        "top": 0,
+        "width": 375,
+        "x": 0,
+        "y": 0
+      },
+      "main": 1,
+      "overflow": false,
+      "theme": "dark",
+      "title": "성찬홍",
+      "width": 390
+    }
+  },
+  {
+    "name": "shell-dark-mobile-/writing",
+    "data": {
+      "active": "글",
+      "footer": {
+        "bottom": 5353.8125,
+        "height": 621.546875,
+        "left": 0,
+        "right": 375,
+        "top": 4732.265625,
+        "width": 375,
+        "x": 0,
+        "y": 4732.265625
+      },
+      "header": {
+        "bottom": 57,
+        "height": 57,
+        "left": 0,
+        "right": 375,
+        "top": 0,
+        "width": 375,
+        "x": 0,
+        "y": 0
+      },
+      "main": 1,
+      "overflow": false,
+      "theme": "dark",
+      "title": "글",
+      "width": 390
+    }
+  },
+  {
+    "name": "shell-dark-mobile-/blog/AI-%EC%97%90%EC%9D%B4%EC%A0%84%ED%8A%B8-12%EC%A3%BC%EC%B0%A8-%EB%A7%88%EB%AC%B4%EB%A6%AC-%EB%A6%AC%EB%B7%B0",
+    "data": {
+      "active": "글",
+      "footer": {
+        "bottom": 17817.375,
+        "height": 621.546875,
+        "left": 0,
+        "right": 375,
+        "top": 17195.828125,
+        "width": 375,
+        "x": 0,
+        "y": 17195.828125
+      },
+      "header": {
+        "bottom": 57,
+        "height": 57,
+        "left": 0,
+        "right": 375,
+        "top": 0,
+        "width": 375,
+        "x": 0,
+        "y": 0
+      },
+      "main": 1,
+      "overflow": false,
+      "theme": "dark",
+      "title": "[AI 에이전트] 12주차 - 마무리 리뷰",
+      "width": 390
+    }
+  },
+  {
+    "name": "shell-dark-mobile-/ask",
+    "data": {
+      "footer": {
+        "bottom": 1353.734375,
+        "height": 621.546875,
+        "left": 0,
+        "right": 375,
+        "top": 732.1875,
+        "width": 375,
+        "x": 0,
+        "y": 732.1875
+      },
+      "header": {
+        "bottom": 57,
+        "height": 57,
+        "left": 0,
+        "right": 375,
+        "top": 0,
+        "width": 375,
+        "x": 0,
+        "y": 0
+      },
+      "main": 1,
+      "overflow": false,
+      "theme": "dark",
+      "title": "페이지를 찾을 수 없습니다",
+      "width": 390
+    }
+  },
+  {
+    "name": "shell-light-mobile-/work",
+    "data": {
+      "active": "프로젝트",
+      "footer": {
+        "bottom": 2535.609375,
+        "height": 621.546875,
+        "left": 0,
+        "right": 375,
+        "top": 1914.0625,
+        "width": 375,
+        "x": 0,
+        "y": 1914.0625
+      },
+      "header": {
+        "bottom": 57,
+        "height": 57,
+        "left": 0,
+        "right": 375,
+        "top": 0,
+        "width": 375,
+        "x": 0,
+        "y": 0
+      },
+      "main": 1,
+      "overflow": false,
+      "theme": "light",
+      "title": "프로젝트",
+      "width": 390
+    }
+  },
+  {
+    "name": "shell-light-mobile-/project/realtime-support",
+    "data": {
+      "active": "프로젝트",
+      "footer": {
+        "bottom": 5360.59375,
+        "height": 621.546875,
+        "left": 0,
+        "right": 375,
+        "top": 4739.046875,
+        "width": 375,
+        "x": 0,
+        "y": 4739.046875
+      },
+      "header": {
+        "bottom": 57,
+        "height": 57,
+        "left": 0,
+        "right": 375,
+        "top": 0,
+        "width": 375,
+        "x": 0,
+        "y": 0
+      },
+      "main": 1,
+      "overflow": false,
+      "theme": "light",
+      "title": "실시간 상담 위젯 및 관리자 운영 콘솔",
+      "width": 390
+    }
+  },
+  {
+    "name": "shell-light-mobile-/project/snn-cms",
+    "data": {
+      "active": "프로젝트",
+      "footer": {
+        "bottom": 4442.203125,
+        "height": 621.546875,
+        "left": 0,
+        "right": 375,
+        "top": 3820.65625,
+        "width": 375,
+        "x": 0,
+        "y": 3820.65625
+      },
+      "header": {
+        "bottom": 57,
+        "height": 57,
+        "left": 0,
+        "right": 375,
+        "top": 0,
+        "width": 375,
+        "x": 0,
+        "y": 0
+      },
+      "main": 1,
+      "overflow": false,
+      "theme": "light",
+      "title": "SNN 뉴스 플랫폼 관리자 CMS",
+      "width": 390
+    }
+  },
+  {
+    "name": "shell-light-mobile-/project/erp-groupware",
+    "data": {
+      "active": "프로젝트",
+      "footer": {
+        "bottom": 2739.984375,
+        "height": 621.546875,
+        "left": 0,
+        "right": 375,
+        "top": 2118.4375,
+        "width": 375,
+        "x": 0,
+        "y": 2118.4375
+      },
+      "header": {
+        "bottom": 57,
+        "height": 57,
+        "left": 0,
+        "right": 375,
+        "top": 0,
+        "width": 375,
+        "x": 0,
+        "y": 0
+      },
+      "main": 1,
+      "overflow": false,
+      "theme": "light",
+      "title": "사내 ERP / 그룹웨어",
+      "width": 390
+    }
+  },
+  {
+    "name": "shell-light-mobile-/project/legal-platform",
+    "data": {
+      "active": "프로젝트",
+      "footer": {
+        "bottom": 2773.59375,
+        "height": 621.546875,
+        "left": 0,
+        "right": 375,
+        "top": 2152.046875,
+        "width": 375,
+        "x": 0,
+        "y": 2152.046875
+      },
+      "header": {
+        "bottom": 57,
+        "height": 57,
+        "left": 0,
+        "right": 375,
+        "top": 0,
+        "width": 375,
+        "x": 0,
+        "y": 0
+      },
+      "main": 1,
+      "overflow": false,
+      "theme": "light",
+      "title": "법률 상담 유입 및 변호사 플랫폼",
+      "width": 390
+    }
+  },
+  {
+    "name": "shell-light-mobile-/resume",
+    "data": {
+      "active": "이력서",
+      "footer": {
+        "bottom": 10099.171875,
+        "height": 621.546875,
+        "left": 0,
+        "right": 375,
+        "top": 9477.625,
+        "width": 375,
+        "x": 0,
+        "y": 9477.625
+      },
+      "header": {
+        "bottom": 57,
+        "height": 57,
+        "left": 0,
+        "right": 375,
+        "top": 0,
+        "width": 375,
+        "x": 0,
+        "y": 0
+      },
+      "main": 1,
+      "overflow": false,
+      "theme": "light",
+      "title": "성찬홍",
+      "width": 390
+    }
+  },
+  {
+    "name": "shell-light-mobile-/writing",
+    "data": {
+      "active": "글",
+      "footer": {
+        "bottom": 5353.8125,
+        "height": 621.546875,
+        "left": 0,
+        "right": 375,
+        "top": 4732.265625,
+        "width": 375,
+        "x": 0,
+        "y": 4732.265625
+      },
+      "header": {
+        "bottom": 57,
+        "height": 57,
+        "left": 0,
+        "right": 375,
+        "top": 0,
+        "width": 375,
+        "x": 0,
+        "y": 0
+      },
+      "main": 1,
+      "overflow": false,
+      "theme": "light",
+      "title": "글",
+      "width": 390
+    }
+  },
+  {
+    "name": "shell-light-mobile-/blog/AI-%EC%97%90%EC%9D%B4%EC%A0%84%ED%8A%B8-12%EC%A3%BC%EC%B0%A8-%EB%A7%88%EB%AC%B4%EB%A6%AC-%EB%A6%AC%EB%B7%B0",
+    "data": {
+      "active": "글",
+      "footer": {
+        "bottom": 17817.375,
+        "height": 621.546875,
+        "left": 0,
+        "right": 375,
+        "top": 17195.828125,
+        "width": 375,
+        "x": 0,
+        "y": 17195.828125
+      },
+      "header": {
+        "bottom": 57,
+        "height": 57,
+        "left": 0,
+        "right": 375,
+        "top": 0,
+        "width": 375,
+        "x": 0,
+        "y": 0
+      },
+      "main": 1,
+      "overflow": false,
+      "theme": "light",
+      "title": "[AI 에이전트] 12주차 - 마무리 리뷰",
+      "width": 390
+    }
+  },
+  {
+    "name": "shell-light-mobile-/ask",
+    "data": {
+      "footer": {
+        "bottom": 1353.734375,
+        "height": 621.546875,
+        "left": 0,
+        "right": 375,
+        "top": 732.1875,
+        "width": 375,
+        "x": 0,
+        "y": 732.1875
+      },
+      "header": {
+        "bottom": 57,
+        "height": 57,
+        "left": 0,
+        "right": 375,
+        "top": 0,
+        "width": 375,
+        "x": 0,
+        "y": 0
+      },
+      "main": 1,
+      "overflow": false,
+      "theme": "light",
+      "title": "페이지를 찾을 수 없습니다",
+      "width": 390
+    }
+  },
+  {
+    "name": "writing-pagination",
+    "url": "http://localhost:3101/writing?page=2"
+  },
+  {
+    "name": "writing-tag",
+    "url": "http://localhost:3101/writing?tag=AI+Agent"
+  },
+  {
+    "name": "writing-search",
+    "url": "http://localhost:3101/writing?tag=AI+Agent&search=%EB%A7%88%EB%AC%B4%EB%A6%AC"
+  },
+  {
+    "name": "legacy-fragment",
+    "url": "http://localhost:3101/resume#realtime-support",
+    "data": {
+      "target": true,
+      "top": 238.375
+    }
+  },
+  {
+    "name": "hero-project-cta",
+    "url": "http://localhost:3101/work"
+  },
+  {
+    "name": "fixture-light-empty",
+    "data": {
+      "opacity": "1",
+      "overflow": false,
+      "rows": 0,
+      "state": "최근 글기술적인 고민.그리고 해결의 기록.아직 공개된 글이 없습니다.전체 글 보기 ›",
+      "width": 390
+    }
+  },
+  {
+    "name": "fixture-light-one",
+    "data": {
+      "opacity": "1",
+      "overflow": false,
+      "rows": 1,
+      "state": "최근 글기술적인 고민.그리고 해결의 기록.로컬 상태 검증용 글실제 컴포넌트의 글 개수와 표시 상태를 검증하는 로컬 자료입니다.검증 ↗전체 글 보기 ›",
+      "width": 390
+    }
+  },
+  {
+    "name": "fixture-light-two",
+    "data": {
+      "opacity": "1",
+      "overflow": false,
+      "rows": 2,
+      "state": "최근 글기술적인 고민.그리고 해결의 기록.로컬 상태 검증용 글실제 컴포넌트의 글 개수와 표시 상태를 검증하는 로컬 자료입니다.검증 ↗외부 링크 대체 경로 검증실제 컴포넌트의 글 개수와 표시 상태를 검증하는 로컬 자료입니다.검증 ↗전체 글 보기 ›",
+      "width": 390
+    }
+  },
+  {
+    "name": "fixture-light-error",
+    "data": {
+      "opacity": "1",
+      "overflow": false,
+      "rows": 0,
+      "state": "최근 글기술적인 고민.그리고 해결의 기록.최근 글을 불러오지 못했습니다. 전체 글 목록에서 다시 확인해 주세요.전체 글 보기 ›",
+      "width": 390
+    }
+  },
+  {
+    "name": "fixture-light-loading",
+    "data": {
+      "opacity": "1",
+      "overflow": false,
+      "rows": 0,
+      "state": "최근 글기술적인 고민.그리고 해결의 기록.전체 글 보기 ›",
+      "width": 390
+    }
+  },
+  {
+    "name": "fixture-dark-empty",
+    "data": {
+      "opacity": "1",
+      "overflow": false,
+      "rows": 0,
+      "state": "최근 글기술적인 고민.그리고 해결의 기록.아직 공개된 글이 없습니다.전체 글 보기 ›",
+      "width": 390
+    }
+  },
+  {
+    "name": "fixture-dark-one",
+    "data": {
+      "opacity": "1",
+      "overflow": false,
+      "rows": 1,
+      "state": "최근 글기술적인 고민.그리고 해결의 기록.로컬 상태 검증용 글실제 컴포넌트의 글 개수와 표시 상태를 검증하는 로컬 자료입니다.검증 ↗전체 글 보기 ›",
+      "width": 390
+    }
+  },
+  {
+    "name": "fixture-dark-two",
+    "data": {
+      "opacity": "1",
+      "overflow": false,
+      "rows": 2,
+      "state": "최근 글기술적인 고민.그리고 해결의 기록.로컬 상태 검증용 글실제 컴포넌트의 글 개수와 표시 상태를 검증하는 로컬 자료입니다.검증 ↗외부 링크 대체 경로 검증실제 컴포넌트의 글 개수와 표시 상태를 검증하는 로컬 자료입니다.검증 ↗전체 글 보기 ›",
+      "width": 390
+    }
+  },
+  {
+    "name": "fixture-dark-error",
+    "data": {
+      "opacity": "1",
+      "overflow": false,
+      "rows": 0,
+      "state": "최근 글기술적인 고민.그리고 해결의 기록.최근 글을 불러오지 못했습니다. 전체 글 목록에서 다시 확인해 주세요.전체 글 보기 ›",
+      "width": 390
+    }
+  },
+  {
+    "name": "fixture-dark-loading",
+    "data": {
+      "opacity": "1",
+      "overflow": false,
+      "rows": 0,
+      "state": "최근 글기술적인 고민.그리고 해결의 기록.전체 글 보기 ›",
+      "width": 390
+    }
+  },
+  {
+    "name": "200-percent-controlled-fixture",
+    "result": {
+      "animations": 0,
+      "client": 1425,
+      "hidden": 0,
+      "scroll": 1425,
+      "width": 1440,
+      "zoom": "2"
+    }
+  },
+  {
+    "name": "final-light-desktop",
+    "result": {
+      "cards": [
+        {
+          "padding": "40px",
+          "radius": "28px"
+        },
+        {
+          "padding": "40px",
+          "radius": "28px"
+        },
+        {
+          "padding": "40px",
+          "radius": "28px"
+        },
+        {
+          "padding": "40px",
+          "radius": "28px"
+        }
+      ],
+      "grids": [
+        {
+          "columns": "276px 276px 276px 276px",
+          "gap": "16px"
+        },
+        {
+          "columns": "270px 270px 270px 270px",
+          "gap": "48px 24px"
+        },
+        {
+          "columns": "264px 264px 264px 264px",
+          "gap": "48px 32px"
+        },
+        {
+          "columns": "568px 568px",
+          "gap": "16px"
+        }
+      ],
+      "h1": "84px",
+      "head": {
+        "bottom": 65,
+        "height": 65,
+        "left": 0,
+        "right": 1425,
+        "top": 0,
+        "width": 1425,
+        "x": 0,
+        "y": 0
+      },
+      "height": 900,
+      "links": [
+        "/work",
+        "/resume",
+        "/resume",
+        "/project/realtime-support",
+        "/project/realtime-support",
+        "/project/realtime-support",
+        "/project/realtime-support",
+        "/project/snn-cms",
+        "/project/erp-groupware",
+        "/project/legal-platform",
+        "/work",
+        "/blog/AI-%EC%97%90%EC%9D%B4%EC%A0%84%ED%8A%B8-12%EC%A3%BC%EC%B0%A8-%EB%A7%88%EB%AC%B4%EB%A6%AC-%EB%A6%AC%EB%B7%B0",
+        "/blog/AI-%EC%97%90%EC%9D%B4%EC%A0%84%ED%8A%B8-11%EC%A3%BC%EC%B0%A8-LLM-Training-Fine-tuning",
+        "/writing",
+        "https://github.com/DChanHong",
+        "https://velog.io/@hongchee/posts"
+      ],
+      "overflow": false,
+      "sections": [
+        {
+          "id": "home-title",
+          "padding": "176px 40px 160px",
+          "width": 896
+        },
+        {
+          "id": "home-capabilities",
+          "padding": "0px 40px 160px",
+          "width": 1152
+        },
+        {
+          "id": "home-path",
+          "padding": "160px 40px",
+          "width": 1152
+        },
+        {
+          "id": "home-work",
+          "padding": "160px 40px",
+          "width": 1152
+        },
+        {
+          "id": "home-toolkit",
+          "padding": "160px 40px",
+          "width": 1152
+        },
+        {
+          "id": "home-writing",
+          "padding": "160px 40px 0px",
+          "width": 1152
+        },
+        {
+          "id": "home-more",
+          "padding": "160px 40px",
+          "width": 896
+        }
+      ],
+      "theme": "light",
+      "width": 1440
+    }
+  },
+  {
+    "name": "final-dark-desktop",
+    "result": {
+      "cards": [
+        {
+          "padding": "40px",
+          "radius": "28px"
+        },
+        {
+          "padding": "40px",
+          "radius": "28px"
+        },
+        {
+          "padding": "40px",
+          "radius": "28px"
+        },
+        {
+          "padding": "40px",
+          "radius": "28px"
+        }
+      ],
+      "grids": [
+        {
+          "columns": "276px 276px 276px 276px",
+          "gap": "16px"
+        },
+        {
+          "columns": "270px 270px 270px 270px",
+          "gap": "48px 24px"
+        },
+        {
+          "columns": "264px 264px 264px 264px",
+          "gap": "48px 32px"
+        },
+        {
+          "columns": "568px 568px",
+          "gap": "16px"
+        }
+      ],
+      "h1": "84px",
+      "head": {
+        "bottom": 65,
+        "height": 65,
+        "left": 0,
+        "right": 1425,
+        "top": 0,
+        "width": 1425,
+        "x": 0,
+        "y": 0
+      },
+      "height": 900,
+      "links": [
+        "/work",
+        "/resume",
+        "/resume",
+        "/project/realtime-support",
+        "/project/realtime-support",
+        "/project/realtime-support",
+        "/project/realtime-support",
+        "/project/snn-cms",
+        "/project/erp-groupware",
+        "/project/legal-platform",
+        "/work",
+        "/blog/AI-%EC%97%90%EC%9D%B4%EC%A0%84%ED%8A%B8-12%EC%A3%BC%EC%B0%A8-%EB%A7%88%EB%AC%B4%EB%A6%AC-%EB%A6%AC%EB%B7%B0",
+        "/blog/AI-%EC%97%90%EC%9D%B4%EC%A0%84%ED%8A%B8-11%EC%A3%BC%EC%B0%A8-LLM-Training-Fine-tuning",
+        "/writing",
+        "https://github.com/DChanHong",
+        "https://velog.io/@hongchee/posts"
+      ],
+      "overflow": false,
+      "sections": [
+        {
+          "id": "home-title",
+          "padding": "176px 40px 160px",
+          "width": 896
+        },
+        {
+          "id": "home-capabilities",
+          "padding": "0px 40px 160px",
+          "width": 1152
+        },
+        {
+          "id": "home-path",
+          "padding": "160px 40px",
+          "width": 1152
+        },
+        {
+          "id": "home-work",
+          "padding": "160px 40px",
+          "width": 1152
+        },
+        {
+          "id": "home-toolkit",
+          "padding": "160px 40px",
+          "width": 1152
+        },
+        {
+          "id": "home-writing",
+          "padding": "160px 40px 0px",
+          "width": 1152
+        },
+        {
+          "id": "home-more",
+          "padding": "160px 40px",
+          "width": 896
+        }
+      ],
+      "theme": "dark",
+      "width": 1440
+    }
+  },
+  {
+    "name": "final-dark-mobile",
+    "result": {
+      "cards": [
+        {
+          "padding": "32px",
+          "radius": "28px"
+        },
+        {
+          "padding": "32px",
+          "radius": "28px"
+        },
+        {
+          "padding": "32px",
+          "radius": "28px"
+        },
+        {
+          "padding": "32px",
+          "radius": "28px"
+        }
+      ],
+      "grids": [
+        {
+          "columns": "327px",
+          "gap": "16px"
+        },
+        {
+          "columns": "327px",
+          "gap": "48px 24px"
+        },
+        {
+          "columns": "327px",
+          "gap": "48px 32px"
+        },
+        {
+          "columns": "327px",
+          "gap": "16px"
+        }
+      ],
+      "h1": "44px",
+      "head": {
+        "bottom": 57,
+        "height": 57,
+        "left": 0,
+        "right": 375,
+        "top": 0,
+        "width": 375,
+        "x": 0,
+        "y": 0
+      },
+      "height": 844,
+      "links": [
+        "/work",
+        "/resume",
+        "/resume",
+        "/project/realtime-support",
+        "/project/realtime-support",
+        "/project/realtime-support",
+        "/project/realtime-support",
+        "/project/snn-cms",
+        "/project/erp-groupware",
+        "/project/legal-platform",
+        "/work",
+        "/blog/AI-%EC%97%90%EC%9D%B4%EC%A0%84%ED%8A%B8-12%EC%A3%BC%EC%B0%A8-%EB%A7%88%EB%AC%B4%EB%A6%AC-%EB%A6%AC%EB%B7%B0",
+        "/blog/AI-%EC%97%90%EC%9D%B4%EC%A0%84%ED%8A%B8-11%EC%A3%BC%EC%B0%A8-LLM-Training-Fine-tuning",
+        "/writing",
+        "https://github.com/DChanHong",
+        "https://velog.io/@hongchee/posts"
+      ],
+      "overflow": false,
+      "sections": [
+        {
+          "id": "home-title",
+          "padding": "96px 24px 112px",
+          "width": 327
+        },
+        {
+          "id": "home-capabilities",
+          "padding": "0px 24px 112px",
+          "width": 327
+        },
+        {
+          "id": "home-path",
+          "padding": "112px 24px",
+          "width": 327
+        },
+        {
+          "id": "home-work",
+          "padding": "112px 24px",
+          "width": 327
+        },
+        {
+          "id": "home-toolkit",
+          "padding": "112px 24px",
+          "width": 327
+        },
+        {
+          "id": "home-writing",
+          "padding": "112px 24px 0px",
+          "width": 327
+        },
+        {
+          "id": "home-more",
+          "padding": "112px 24px",
+          "width": 327
+        }
+      ],
+      "theme": "dark",
+      "width": 390
+    }
+  },
+  {
+    "name": "final-light-mobile",
+    "result": {
+      "cards": [
+        {
+          "padding": "32px",
+          "radius": "28px"
+        },
+        {
+          "padding": "32px",
+          "radius": "28px"
+        },
+        {
+          "padding": "32px",
+          "radius": "28px"
+        },
+        {
+          "padding": "32px",
+          "radius": "28px"
+        }
+      ],
+      "grids": [
+        {
+          "columns": "327px",
+          "gap": "16px"
+        },
+        {
+          "columns": "327px",
+          "gap": "48px 24px"
+        },
+        {
+          "columns": "327px",
+          "gap": "48px 32px"
+        },
+        {
+          "columns": "327px",
+          "gap": "16px"
+        }
+      ],
+      "h1": "44px",
+      "head": {
+        "bottom": 57,
+        "height": 57,
+        "left": 0,
+        "right": 375,
+        "top": 0,
+        "width": 375,
+        "x": 0,
+        "y": 0
+      },
+      "height": 844,
+      "links": [
+        "/work",
+        "/resume",
+        "/resume",
+        "/project/realtime-support",
+        "/project/realtime-support",
+        "/project/realtime-support",
+        "/project/realtime-support",
+        "/project/snn-cms",
+        "/project/erp-groupware",
+        "/project/legal-platform",
+        "/work",
+        "/blog/AI-%EC%97%90%EC%9D%B4%EC%A0%84%ED%8A%B8-12%EC%A3%BC%EC%B0%A8-%EB%A7%88%EB%AC%B4%EB%A6%AC-%EB%A6%AC%EB%B7%B0",
+        "/blog/AI-%EC%97%90%EC%9D%B4%EC%A0%84%ED%8A%B8-11%EC%A3%BC%EC%B0%A8-LLM-Training-Fine-tuning",
+        "/writing",
+        "https://github.com/DChanHong",
+        "https://velog.io/@hongchee/posts"
+      ],
+      "overflow": false,
+      "sections": [
+        {
+          "id": "home-title",
+          "padding": "96px 24px 112px",
+          "width": 327
+        },
+        {
+          "id": "home-capabilities",
+          "padding": "0px 24px 112px",
+          "width": 327
+        },
+        {
+          "id": "home-path",
+          "padding": "112px 24px",
+          "width": 327
+        },
+        {
+          "id": "home-work",
+          "padding": "112px 24px",
+          "width": 327
+        },
+        {
+          "id": "home-toolkit",
+          "padding": "112px 24px",
+          "width": 327
+        },
+        {
+          "id": "home-writing",
+          "padding": "112px 24px 0px",
+          "width": 327
+        },
+        {
+          "id": "home-more",
+          "padding": "112px 24px",
+          "width": 327
+        }
+      ],
+      "theme": "light",
+      "width": 390
+    }
+  },
+  {
+    "name": "final-keyboard-focus",
+    "result": {
+      "offset": "3px",
+      "outline": "rgb(0, 102, 204) solid 2px",
+      "text": "프로젝트 보기"
+    }
+  },
+  {
+    "name": "final-browser-errors",
+    "result": []
+  }
+]

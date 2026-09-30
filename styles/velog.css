@@ -1,13 +1,15 @@
 .velog-crawled-content {
-    color: rgb(30 41 59);
+    color: var(--ink-secondary);
     font-size: 1rem;
     line-height: 1.85;
+    min-width: 0;
+    overflow-wrap: anywhere;
 }
 
 .velog-crawled-content h2 {
     margin-top: 3rem;
     margin-bottom: 1rem;
-    color: rgb(15 23 42);
+    color: var(--ink);
     font-size: 1.75rem;
     font-weight: 800;
 }
@@ -15,7 +17,7 @@
 .velog-crawled-content h3 {
     margin-top: 1rem;
     margin-bottom: 0.75rem;
-    color: rgb(15 23 42);
+    color: var(--ink);
     font-size: 1.25rem;
     font-weight: 700;
 }
@@ -61,35 +63,37 @@
 
 .velog-crawled-content th,
 .velog-crawled-content td {
-    border: 1px solid rgb(226 232 240);
+    border: 1px solid var(--border);
     padding: 0.75rem;
     vertical-align: top;
 }
 
 .velog-crawled-content th {
-    background: rgb(248 250 252);
-    color: rgb(15 23 42);
+    background: var(--surface-muted);
+    color: var(--ink);
     font-weight: 700;
 }
 
 .velog-crawled-content blockquote {
-    border-left: 3px solid rgb(168 85 247);
+    border-left: 3px solid var(--accent);
     padding: 0.25rem 0 0.25rem 1rem;
-    color: rgb(71 85 105);
-    background: rgb(250 245 255);
+    color: var(--ink-secondary);
+    background: var(--surface-sunken);
 }
 
 .velog-crawled-content pre {
     overflow: auto;
     border-radius: 0.75rem;
-    background: rgb(17 24 39);
+    background: var(--pre-bg);
+    color: var(--pre-ink);
     padding: 1rem;
 }
 
 .velog-crawled-content code {
+    font-family: var(--font-geist-mono), ui-monospace, monospace;
     border-radius: 0.25rem;
-    background: rgb(241 245 249);
-    color: rgb(219 39 119);
+    background: var(--code-bg);
+    color: var(--code-ink);
     padding: 0.1rem 0.3rem;
 }
 
@@ -100,7 +104,18 @@
 }
 
 .velog-crawled-content a {
-    color: rgb(37 99 235);
+    color: var(--accent);
     text-decoration: underline;
     text-underline-offset: 4px;
+}
+
+/* Imported syntax spans must remain readable without changing saved HTML. */
+.velog-crawled-content pre code,
+.velog-crawled-content pre code * {
+    color: var(--pre-ink) !important;
+    background: transparent !important;
+}
+.velog-crawled-content pre {
+    max-width: 100%;
+    overflow-wrap: normal;
 }

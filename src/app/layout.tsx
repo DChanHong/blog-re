@@ -1,18 +1,11 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist_Mono } from "next/font/google";
 import "./globals.css";
 import SiteLayout from "@/components/layout/SiteLayout";
 import ReactQueryProvider from "@/components/providers/ReactQueryProvider";
-import dynamic from "next/dynamic";
 import { WebVitals } from "@/components/analytics/WebVitals";
+import ThemeProvider from "@/components/providers/ThemeProvider";
 import { absoluteUrl, SEO_CONFIG, SITE_URL } from "@/lib/seo";
-
-const ChatBot = dynamic(() => import("@/components/domain/chatbot"), { ssr: true });
-
-const geistSans = Geist({
-    variable: "--font-geist-sans",
-    subsets: ["latin"],
-});
 
 const geistMono = Geist_Mono({
     variable: "--font-geist-mono",
@@ -59,13 +52,14 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="ko">
-            <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-                <ReactQueryProvider>
-                    <SiteLayout>{children}</SiteLayout>
-                    <ChatBot />
-                    <WebVitals />
-                </ReactQueryProvider>
+        <html lang="ko" suppressHydrationWarning>
+            <body className={`${geistMono.variable} antialiased`}>
+                <ThemeProvider>
+                    <ReactQueryProvider>
+                        <SiteLayout>{children}</SiteLayout>
+                        <WebVitals />
+                    </ReactQueryProvider>
+                </ThemeProvider>
             </body>
         </html>
     );

@@ -1,0 +1,27 @@
+{
+  "metadataPaths": [
+    "src/app/layout.tsx",
+    "src/app/work/page.tsx",
+    "src/app/project/[slug]/page.tsx",
+    "src/app/resume/page.tsx",
+    "src/app/writing/page.tsx",
+    "src/app/blog/[slug]/page.tsx"
+  ],
+  "unchangedAreas": [
+    "src/data",
+    "src/lib",
+    "src/actions",
+    "src/types",
+    "src/app/api",
+    "migrations",
+    "package.json",
+    "package-lock.json",
+    "next.config.ts",
+    "tsconfig.json",
+    "src/app/sitemap.ts",
+    "src/app/robots.ts",
+    "src/app/career/page.tsx",
+    "src/app/blog/page.tsx"
+  ],
+  "buildSnapshotMatches": 209
+}

@@ -1,0 +1,17 @@
+{
+  "changed": [
+    "src/app/ClientPage.tsx",
+    "src/app/globals.css",
+    "src/components/domain/home/Section3/index.tsx",
+    "src/components/home/BlogContainer.tsx",
+    "src/components/layout/SiteLayout/parts/Footer.tsx",
+    "src/components/layout/SiteLayout/parts/Header.tsx",
+    "src/components/skeletons/BlogSkeleton.tsx",
+    "src/styles/portfolio-tokens.css",
+    "src/components/domain/home/HomeProjectCard.tsx",
+    "src/components/domain/home/ReferenceHome.tsx",
+    "src/components/domain/home/home-reference.module.css"
+  ],
+  "protectedViolations": [],
+  "buildMismatches": []
+}

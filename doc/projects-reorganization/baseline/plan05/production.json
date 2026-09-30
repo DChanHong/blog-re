@@ -1,0 +1,56 @@
+[
+  {
+    "status": 200,
+    "rows": 9,
+    "overflow": false,
+    "contrast": [
+      {
+        "selector": "h1",
+        "ratio": 16.53528451343635
+      },
+      {
+        "selector": "h1 span",
+        "ratio": 3.2034375223938816
+      },
+      {
+        "selector": "[data-writing-row] h2",
+        "ratio": 16.53528451343635
+      },
+      {
+        "selector": "[data-writing-row] p",
+        "ratio": 4.982524264677333
+      },
+      {
+        "selector": "[role=status]",
+        "ratio": 4.982524264677333
+      }
+    ]
+  },
+  {
+    "status": 200,
+    "rows": 9,
+    "overflow": false,
+    "contrast": [
+      {
+        "selector": "h1",
+        "ratio": 18.17504617239485
+      },
+      {
+        "selector": "h1 span",
+        "ratio": 4.770669375535421
+      },
+      {
+        "selector": "[data-writing-row] h2",
+        "ratio": 18.17504617239485
+      },
+      {
+        "selector": "[data-writing-row] p",
+        "ratio": 7.6935008327071985
+      },
+      {
+        "selector": "[role=status]",
+        "ratio": 7.6935008327071985
+      }
+    ]
+  }
+]

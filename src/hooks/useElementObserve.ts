@@ -42,6 +42,12 @@ export default function useElementObserve(
     const [isVisible, setIsVisible] = useState<boolean>(false);
 
     useEffect(() => {
+        const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
+        const showWithoutMotion = () => {
+            if (motion.matches) setIsVisible(true);
+        };
+        showWithoutMotion();
+        motion.addEventListener("change", showWithoutMotion);
         const observerOptions: IntersectionObserverInit = { threshold, root, rootMargin };
 
         const callback: IntersectionObserverCallback = (entries) => {
@@ -61,6 +67,7 @@ export default function useElementObserve(
         if (node) observer.observe(node);
 
         return () => {
+            motion.removeEventListener("change", showWithoutMotion);
             if (node) observer.unobserve(node);
             observer.disconnect();
         };

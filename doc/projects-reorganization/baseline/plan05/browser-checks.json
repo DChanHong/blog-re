@@ -1,0 +1,486 @@
+[
+  {
+    "name": "layout light 1440",
+    "pass": true,
+    "detail": {
+      "overflow": false,
+      "h1": 1,
+      "main": 1,
+      "images": 0,
+      "rows": 9,
+      "headline": "64px",
+      "secondary": "rgb(142, 142, 147)",
+      "primary": "rgb(29, 29, 31)",
+      "summary": "18px"
+    }
+  },
+  {
+    "name": "filters fit light 1440",
+    "pass": true
+  },
+  {
+    "name": "layout light 390",
+    "pass": true,
+    "detail": {
+      "overflow": false,
+      "h1": 1,
+      "main": 1,
+      "images": 0,
+      "rows": 9,
+      "headline": "36px",
+      "secondary": "rgb(142, 142, 147)",
+      "primary": "rgb(29, 29, 31)",
+      "summary": "16px"
+    }
+  },
+  {
+    "name": "filters fit light 390",
+    "pass": true
+  },
+  {
+    "name": "layout light 320",
+    "pass": true,
+    "detail": {
+      "overflow": false,
+      "h1": 1,
+      "main": 1,
+      "images": 0,
+      "rows": 9,
+      "headline": "36px",
+      "secondary": "rgb(142, 142, 147)",
+      "primary": "rgb(29, 29, 31)",
+      "summary": "16px"
+    }
+  },
+  {
+    "name": "filters fit light 320",
+    "pass": true
+  },
+  {
+    "name": "layout light 640",
+    "pass": true,
+    "detail": {
+      "overflow": false,
+      "h1": 1,
+      "main": 1,
+      "images": 0,
+      "rows": 9,
+      "headline": "52px",
+      "secondary": "rgb(142, 142, 147)",
+      "primary": "rgb(29, 29, 31)",
+      "summary": "18px"
+    }
+  },
+  {
+    "name": "filters fit light 640",
+    "pass": true
+  },
+  {
+    "name": "layout light 768",
+    "pass": true,
+    "detail": {
+      "overflow": false,
+      "h1": 1,
+      "main": 1,
+      "images": 0,
+      "rows": 9,
+      "headline": "52px",
+      "secondary": "rgb(142, 142, 147)",
+      "primary": "rgb(29, 29, 31)",
+      "summary": "18px"
+    }
+  },
+  {
+    "name": "filters fit light 768",
+    "pass": true
+  },
+  {
+    "name": "layout light 1024",
+    "pass": true,
+    "detail": {
+      "overflow": false,
+      "h1": 1,
+      "main": 1,
+      "images": 0,
+      "rows": 9,
+      "headline": "64px",
+      "secondary": "rgb(142, 142, 147)",
+      "primary": "rgb(29, 29, 31)",
+      "summary": "18px"
+    }
+  },
+  {
+    "name": "filters fit light 1024",
+    "pass": true
+  },
+  {
+    "name": "layout light 720",
+    "pass": true,
+    "detail": {
+      "overflow": false,
+      "h1": 1,
+      "main": 1,
+      "images": 0,
+      "rows": 9,
+      "headline": "52px",
+      "secondary": "rgb(142, 142, 147)",
+      "primary": "rgb(29, 29, 31)",
+      "summary": "18px"
+    }
+  },
+  {
+    "name": "filters fit light 720",
+    "pass": true
+  },
+  {
+    "name": "layout dark 1440",
+    "pass": true,
+    "detail": {
+      "overflow": false,
+      "h1": 1,
+      "main": 1,
+      "images": 0,
+      "rows": 9,
+      "headline": "64px",
+      "secondary": "rgb(124, 124, 130)",
+      "primary": "rgb(245, 245, 247)",
+      "summary": "18px"
+    }
+  },
+  {
+    "name": "filters fit dark 1440",
+    "pass": true
+  },
+  {
+    "name": "layout dark 390",
+    "pass": true,
+    "detail": {
+      "overflow": false,
+      "h1": 1,
+      "main": 1,
+      "images": 0,
+      "rows": 9,
+      "headline": "36px",
+      "secondary": "rgb(124, 124, 130)",
+      "primary": "rgb(245, 245, 247)",
+      "summary": "16px"
+    }
+  },
+  {
+    "name": "filters fit dark 390",
+    "pass": true
+  },
+  {
+    "name": "layout dark 320",
+    "pass": true,
+    "detail": {
+      "overflow": false,
+      "h1": 1,
+      "main": 1,
+      "images": 0,
+      "rows": 9,
+      "headline": "36px",
+      "secondary": "rgb(124, 124, 130)",
+      "primary": "rgb(245, 245, 247)",
+      "summary": "16px"
+    }
+  },
+  {
+    "name": "filters fit dark 320",
+    "pass": true
+  },
+  {
+    "name": "layout dark 640",
+    "pass": true,
+    "detail": {
+      "overflow": false,
+      "h1": 1,
+      "main": 1,
+      "images": 0,
+      "rows": 9,
+      "headline": "52px",
+      "secondary": "rgb(124, 124, 130)",
+      "primary": "rgb(245, 245, 247)",
+      "summary": "18px"
+    }
+  },
+  {
+    "name": "filters fit dark 640",
+    "pass": true
+  },
+  {
+    "name": "layout dark 768",
+    "pass": true,
+    "detail": {
+      "overflow": false,
+      "h1": 1,
+      "main": 1,
+      "images": 0,
+      "rows": 9,
+      "headline": "52px",
+      "secondary": "rgb(124, 124, 130)",
+      "primary": "rgb(245, 245, 247)",
+      "summary": "18px"
+    }
+  },
+  {
+    "name": "filters fit dark 768",
+    "pass": true
+  },
+  {
+    "name": "layout dark 1024",
+    "pass": true,
+    "detail": {
+      "overflow": false,
+      "h1": 1,
+      "main": 1,
+      "images": 0,
+      "rows": 9,
+      "headline": "64px",
+      "secondary": "rgb(124, 124, 130)",
+      "primary": "rgb(245, 245, 247)",
+      "summary": "18px"
+    }
+  },
+  {
+    "name": "filters fit dark 1024",
+    "pass": true
+  },
+  {
+    "name": "layout dark 720",
+    "pass": true,
+    "detail": {
+      "overflow": false,
+      "h1": 1,
+      "main": 1,
+      "images": 0,
+      "rows": 9,
+      "headline": "52px",
+      "secondary": "rgb(124, 124, 130)",
+      "primary": "rgb(245, 245, 247)",
+      "summary": "18px"
+    }
+  },
+  {
+    "name": "filters fit dark 720",
+    "pass": true
+  },
+  {
+    "name": "metadata and JSON-LD preserved",
+    "pass": true
+  },
+  {
+    "name": "/sitemap.xml preserved",
+    "pass": true
+  },
+  {
+    "name": "/robots.txt preserved",
+    "pass": true
+  },
+  {
+    "name": "smoke /",
+    "pass": true
+  },
+  {
+    "name": "smoke /work",
+    "pass": true
+  },
+  {
+    "name": "smoke /resume",
+    "pass": true
+  },
+  {
+    "name": "smoke /blog/AI-%EC%97%90%EC%9D%B4%EC%A0%84%ED%8A%B8-12%EC%A3%BC%EC%B0%A8-%EB%A7%88%EB%AC%B4%EB%A6%AC-%EB%A6%AC%EB%B7%B0",
+    "pass": true
+  },
+  {
+    "name": "legacy redirect query",
+    "pass": true
+  },
+  {
+    "name": "legacy status 308",
+    "pass": true
+  },
+  {
+    "name": "keyboard filter expands",
+    "pass": true
+  },
+  {
+    "name": "keyboard focus visible",
+    "pass": true
+  },
+  {
+    "name": "category results",
+    "pass": true
+  },
+  {
+    "name": "combined filters query",
+    "pass": true
+  },
+  {
+    "name": "search results",
+    "pass": true
+  },
+  {
+    "name": "pagination and back",
+    "pass": true
+  },
+  {
+    "name": "runtime errors",
+    "pass": true,
+    "detail": []
+  },
+  {
+    "name": "loading state not zero",
+    "pass": true
+  },
+  {
+    "name": "metadata loading",
+    "pass": true
+  },
+  {
+    "name": "initial sequential entrance",
+    "pass": true,
+    "detail": [
+      {
+        "opacity": 0.839804,
+        "y": "matrix(1, 0, 0, 1, 0, 2.86197)"
+      },
+      {
+        "opacity": 0.561908,
+        "y": "matrix(1, 0, 0, 1, 0, 7.84111)"
+      },
+      {
+        "opacity": 0,
+        "y": "matrix(1, 0, 0, 1, 0, 18)"
+      },
+      {
+        "opacity": 0,
+        "y": "matrix(1, 0, 0, 1, 0, 18)"
+      },
+      {
+        "opacity": 0,
+        "y": "matrix(1, 0, 0, 1, 0, 18)"
+      },
+      {
+        "opacity": 0,
+        "y": "matrix(1, 0, 0, 1, 0, 18)"
+      },
+      {
+        "opacity": 0,
+        "y": "matrix(1, 0, 0, 1, 0, 18)"
+      },
+      {
+        "opacity": 0,
+        "y": "matrix(1, 0, 0, 1, 0, 18)"
+      },
+      {
+        "opacity": 0,
+        "y": "matrix(1, 0, 0, 1, 0, 18)"
+      }
+    ]
+  },
+  {
+    "name": "focus reveals all rows",
+    "pass": true,
+    "detail": [
+      {
+        "opacity": "1",
+        "style": "transform: none; opacity: 1;"
+      },
+      {
+        "opacity": "1",
+        "style": "transform: none; opacity: 1;"
+      },
+      {
+        "opacity": "1",
+        "style": "transform: none; opacity: 1;"
+      },
+      {
+        "opacity": "1",
+        "style": "transform: none; opacity: 1;"
+      },
+      {
+        "opacity": "1",
+        "style": "transform: none; opacity: 1;"
+      },
+      {
+        "opacity": "1",
+        "style": "transform: none; opacity: 1;"
+      },
+      {
+        "opacity": "1",
+        "style": "transform: none; opacity: 1;"
+      },
+      {
+        "opacity": "1",
+        "style": "transform: none; opacity: 1;"
+      },
+      {
+        "opacity": "1",
+        "style": "transform: none; opacity: 1;"
+      }
+    ]
+  },
+  {
+    "name": "query update no entrance",
+    "pass": true
+  },
+  {
+    "name": "page update no entrance",
+    "pass": true
+  },
+  {
+    "name": "empty search state",
+    "pass": true
+  },
+  {
+    "name": "empty archive state",
+    "pass": true
+  },
+  {
+    "name": "error distinct from empty",
+    "pass": true
+  },
+  {
+    "name": "metadata errors",
+    "pass": true
+  },
+  {
+    "name": "retry restores rows and metadata",
+    "pass": true
+  },
+  {
+    "name": "source fallback",
+    "pass": true,
+    "detail": {
+      "href": "https://velog.io/@hongchee/example",
+      "target": "_blank",
+      "rel": "noopener noreferrer"
+    }
+  },
+  {
+    "name": "long title/tag reflow 320",
+    "pass": true
+  },
+  {
+    "name": "long title/tag reflow 390",
+    "pass": true
+  },
+  {
+    "name": "long title/tag reflow 720",
+    "pass": true
+  },
+  {
+    "name": "long title/tag reflow 1440",
+    "pass": true
+  },
+  {
+    "name": "reduced motion rows",
+    "pass": true
+  },
+  {
+    "name": "reduced motion hero",
+    "pass": true
+  }
+]

@@ -1,0 +1,452 @@
+[
+  {
+    "name": "layout light 1440",
+    "pass": true,
+    "detail": {
+      "overflow": false,
+      "h1": 1,
+      "main": 1,
+      "article": 1,
+      "oldCards": 0,
+      "theme": "light",
+      "visible": true,
+      "title": "경력 및 역량",
+      "entries": 6,
+      "background": "rgb(255, 255, 255)"
+    }
+  },
+  {
+    "name": "layout light 390",
+    "pass": true,
+    "detail": {
+      "overflow": false,
+      "h1": 1,
+      "main": 1,
+      "article": 1,
+      "oldCards": 0,
+      "theme": "light",
+      "visible": true,
+      "title": "경력 및 역량",
+      "entries": 6,
+      "background": "rgb(255, 255, 255)"
+    }
+  },
+  {
+    "name": "layout light 320",
+    "pass": true,
+    "detail": {
+      "overflow": false,
+      "h1": 1,
+      "main": 1,
+      "article": 1,
+      "oldCards": 0,
+      "theme": "light",
+      "visible": true,
+      "title": "경력 및 역량",
+      "entries": 6,
+      "background": "rgb(255, 255, 255)"
+    }
+  },
+  {
+    "name": "layout light 640",
+    "pass": true,
+    "detail": {
+      "overflow": false,
+      "h1": 1,
+      "main": 1,
+      "article": 1,
+      "oldCards": 0,
+      "theme": "light",
+      "visible": true,
+      "title": "경력 및 역량",
+      "entries": 6,
+      "background": "rgb(255, 255, 255)"
+    }
+  },
+  {
+    "name": "layout light 768",
+    "pass": true,
+    "detail": {
+      "overflow": false,
+      "h1": 1,
+      "main": 1,
+      "article": 1,
+      "oldCards": 0,
+      "theme": "light",
+      "visible": true,
+      "title": "경력 및 역량",
+      "entries": 6,
+      "background": "rgb(255, 255, 255)"
+    }
+  },
+  {
+    "name": "layout light 1024",
+    "pass": true,
+    "detail": {
+      "overflow": false,
+      "h1": 1,
+      "main": 1,
+      "article": 1,
+      "oldCards": 0,
+      "theme": "light",
+      "visible": true,
+      "title": "경력 및 역량",
+      "entries": 6,
+      "background": "rgb(255, 255, 255)"
+    }
+  },
+  {
+    "name": "layout light 720",
+    "pass": true,
+    "detail": {
+      "overflow": false,
+      "h1": 1,
+      "main": 1,
+      "article": 1,
+      "oldCards": 0,
+      "theme": "light",
+      "visible": true,
+      "title": "경력 및 역량",
+      "entries": 6,
+      "background": "rgb(255, 255, 255)"
+    }
+  },
+  {
+    "name": "layout dark 1440",
+    "pass": true,
+    "detail": {
+      "overflow": false,
+      "h1": 1,
+      "main": 1,
+      "article": 1,
+      "oldCards": 0,
+      "theme": "dark",
+      "visible": true,
+      "title": "경력 및 역량",
+      "entries": 6,
+      "background": "rgb(22, 22, 24)"
+    }
+  },
+  {
+    "name": "layout dark 390",
+    "pass": true,
+    "detail": {
+      "overflow": false,
+      "h1": 1,
+      "main": 1,
+      "article": 1,
+      "oldCards": 0,
+      "theme": "dark",
+      "visible": true,
+      "title": "경력 및 역량",
+      "entries": 6,
+      "background": "rgb(22, 22, 24)"
+    }
+  },
+  {
+    "name": "layout dark 320",
+    "pass": true,
+    "detail": {
+      "overflow": false,
+      "h1": 1,
+      "main": 1,
+      "article": 1,
+      "oldCards": 0,
+      "theme": "dark",
+      "visible": true,
+      "title": "경력 및 역량",
+      "entries": 6,
+      "background": "rgb(22, 22, 24)"
+    }
+  },
+  {
+    "name": "layout dark 640",
+    "pass": true,
+    "detail": {
+      "overflow": false,
+      "h1": 1,
+      "main": 1,
+      "article": 1,
+      "oldCards": 0,
+      "theme": "dark",
+      "visible": true,
+      "title": "경력 및 역량",
+      "entries": 6,
+      "background": "rgb(22, 22, 24)"
+    }
+  },
+  {
+    "name": "layout dark 768",
+    "pass": true,
+    "detail": {
+      "overflow": false,
+      "h1": 1,
+      "main": 1,
+      "article": 1,
+      "oldCards": 0,
+      "theme": "dark",
+      "visible": true,
+      "title": "경력 및 역량",
+      "entries": 6,
+      "background": "rgb(22, 22, 24)"
+    }
+  },
+  {
+    "name": "layout dark 1024",
+    "pass": true,
+    "detail": {
+      "overflow": false,
+      "h1": 1,
+      "main": 1,
+      "article": 1,
+      "oldCards": 0,
+      "theme": "dark",
+      "visible": true,
+      "title": "경력 및 역량",
+      "entries": 6,
+      "background": "rgb(22, 22, 24)"
+    }
+  },
+  {
+    "name": "layout dark 720",
+    "pass": true,
+    "detail": {
+      "overflow": false,
+      "h1": 1,
+      "main": 1,
+      "article": 1,
+      "oldCards": 0,
+      "theme": "dark",
+      "visible": true,
+      "title": "경력 및 역량",
+      "entries": 6,
+      "background": "rgb(22, 22, 24)"
+    }
+  },
+  {
+    "name": "copy 기존 공통 npm 패키지",
+    "pass": true
+  },
+  {
+    "name": "copy 1년간 DB 기준 12만 건",
+    "pass": true
+  },
+  {
+    "name": "copy 1,000명 합성 데이터",
+    "pass": true
+  },
+  {
+    "name": "copy 개발 서버 QA",
+    "pass": true
+  },
+  {
+    "name": "copy 월평균 약 6~7개 공고",
+    "pass": true
+  },
+  {
+    "name": "copy 수강",
+    "pass": true
+  },
+  {
+    "name": "copy 3.9 / 4.5",
+    "pass": true
+  },
+  {
+    "name": "copy 상용 운영 서비스가 아닌",
+    "pass": true
+  },
+  {
+    "name": "private data omitted",
+    "pass": true
+  },
+  {
+    "name": "fragment overview",
+    "pass": true
+  },
+  {
+    "name": "fragment experience",
+    "pass": true
+  },
+  {
+    "name": "fragment projects",
+    "pass": true
+  },
+  {
+    "name": "fragment capabilities",
+    "pass": true
+  },
+  {
+    "name": "fragment education",
+    "pass": true
+  },
+  {
+    "name": "fragment realtime-support",
+    "pass": true
+  },
+  {
+    "name": "fragment erp-groupware",
+    "pass": true
+  },
+  {
+    "name": "fragment snn-cms",
+    "pass": true
+  },
+  {
+    "name": "fragment spring-msa",
+    "pass": true
+  },
+  {
+    "name": "fragment legal-platform",
+    "pass": true
+  },
+  {
+    "name": "fragment admin-platform",
+    "pass": true
+  },
+  {
+    "name": "contact and profiles",
+    "pass": true
+  },
+  {
+    "name": "project /project/realtime-support",
+    "pass": true
+  },
+  {
+    "name": "project /project/snn-cms",
+    "pass": true
+  },
+  {
+    "name": "project /project/erp-groupware",
+    "pass": true
+  },
+  {
+    "name": "project /project/legal-platform",
+    "pass": true
+  },
+  {
+    "name": "project /project/admin-platform",
+    "pass": true
+  },
+  {
+    "name": "project /project/spring-msa",
+    "pass": true
+  },
+  {
+    "name": "keyboard contact focus",
+    "pass": true,
+    "detail": {
+      "text": "연락하기",
+      "outline": "solid"
+    }
+  },
+  {
+    "name": "SEO consistency",
+    "pass": true,
+    "detail": {
+      "title": "이력서 | 성찬홍",
+      "description": "프론트엔드에서 API·데이터 설계와 운영 개선까지, 실시간 상담 플랫폼과 인사평가·채용·CMS를 개발한 웹 개발자 성찬홍의 이력서입니다.",
+      "canonical": "https://blog.dev-hong.it.kr/resume",
+      "og": "프론트엔드에서 API·데이터 설계와 운영 개선까지, 실시간 상담 플랫폼과 인사평가·채용·CMS를 개발한 웹 개발자 성찬홍의 이력서입니다.",
+      "twitter": "프론트엔드에서 API·데이터 설계와 운영 개선까지, 실시간 상담 플랫폼과 인사평가·채용·CMS를 개발한 웹 개발자 성찬홍의 이력서입니다.",
+      "json": [
+        {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "WebPage",
+              "@id": "https://blog.dev-hong.it.kr/resume",
+              "url": "https://blog.dev-hong.it.kr/resume",
+              "name": "이력서",
+              "description": "프론트엔드에서 API·데이터 설계와 운영 개선까지, 실시간 상담 플랫폼과 인사평가·채용·CMS를 개발한 웹 개발자 성찬홍의 이력서입니다.",
+              "inLanguage": "ko-KR",
+              "isPartOf": {
+                "@id": "https://blog.dev-hong.it.kr/#website"
+              },
+              "primaryImageOfPage": {
+                "@id": "https://blog.dev-hong.it.kr/resume#primaryimage"
+              },
+              "image": {
+                "@id": "https://blog.dev-hong.it.kr/resume#primaryimage"
+              },
+              "thumbnailUrl": "https://blog.dev-hong.it.kr/og_front.png"
+            },
+            {
+              "@type": "ImageObject",
+              "@id": "https://blog.dev-hong.it.kr/resume#primaryimage",
+              "url": "https://blog.dev-hong.it.kr/og_front.png",
+              "contentUrl": "https://blog.dev-hong.it.kr/og_front.png",
+              "width": 1200,
+              "height": 630,
+              "caption": "이력서",
+              "inLanguage": "ko-KR"
+            },
+            {
+              "@type": "Organization",
+              "@id": "https://blog.dev-hong.it.kr/#organization",
+              "name": "성찬홍의 포트폴리오",
+              "url": "https://blog.dev-hong.it.kr/",
+              "image": "https://blog.dev-hong.it.kr/og_front.png",
+              "logo": "https://blog.dev-hong.it.kr/og_front.png",
+              "description": "성찬홍의 이력에 대한 정보",
+              "founder": {
+                "@type": "Person",
+                "name": "성찬홍"
+              }
+            },
+            {
+              "@type": "BreadcrumbList",
+              "@id": "https://blog.dev-hong.it.kr/resume#breadcrumb",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "홈",
+                  "item": "https://blog.dev-hong.it.kr/"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "이력서",
+                  "item": "https://blog.dev-hong.it.kr/resume"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "name": "career redirect",
+    "pass": true
+  },
+  {
+    "name": "smoke /",
+    "pass": true
+  },
+  {
+    "name": "smoke /work",
+    "pass": true
+  },
+  {
+    "name": "smoke /writing",
+    "pass": true
+  },
+  {
+    "name": "smoke /sitemap.xml",
+    "pass": true
+  },
+  {
+    "name": "smoke /robots.txt",
+    "pass": true
+  },
+  {
+    "name": "server-rendered without JS",
+    "pass": true
+  },
+  {
+    "name": "no page errors",
+    "pass": true,
+    "detail": []
+  }
+]

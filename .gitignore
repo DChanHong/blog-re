@@ -39,3 +39,12 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Plan 06 local verification artifacts (keep compact result reports in Git)
+/doc/projects-reorganization/audit/06-browser.cjs
+/doc/projects-reorganization/audit/06-extra.cjs
+/doc/projects-reorganization/audit/06-workspace.cjs
+/doc/projects-reorganization/baseline/plan06/*.png
+/doc/projects-reorganization/baseline/plan06/build.log
+/doc/projects-reorganization/baseline/plan06/build-workspace.json
+/doc/projects-reorganization/baseline/plan06/before.json

@@ -75,7 +75,7 @@ export function createWebSiteJsonLd(): JsonLdSchema {
             "@type": "SearchAction",
             target: {
                 "@type": "EntryPoint",
-                urlTemplate: `${absoluteUrl("/blog")}?search={search_term_string}`,
+                urlTemplate: `${absoluteUrl("/writing")}?search={search_term_string}`,
             },
             "query-input": {
                 "@type": "PropertyValueSpecification",

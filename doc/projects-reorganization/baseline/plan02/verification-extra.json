@@ -1,0 +1,26 @@
+{
+  "date": "2026-09-29T03:09:14.757Z",
+  "results": [
+    {
+      "name": "unknown project Korean 404 and recovery",
+      "pass": true
+    },
+    {
+      "name": "mobile reduced-motion keyboard menu and project links",
+      "pass": true,
+      "detail": {
+        "visible": true,
+        "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, oklch(0.707 0.165 254.624) 0px 0px 0px 2px, rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.1) 0px 1px 2px -1px",
+        "hit": true
+      }
+    },
+    {
+      "name": "writing error retry recovers without external mutation",
+      "pass": true
+    },
+    {
+      "name": "repeated and encoded legacy query values",
+      "pass": true
+    }
+  ]
+}

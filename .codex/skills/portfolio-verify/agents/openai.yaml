@@ -1,0 +1,4 @@
+interface:
+  display_name: "Portfolio Plan Verify"
+  short_description: "구현 결과를 plan과 대조하고 빌드·린트로 최종 검증"
+  default_prompt: "Use $portfolio-verify to verify one implemented portfolio reorganization plan."

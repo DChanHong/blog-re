@@ -66,6 +66,21 @@ export async function insertRows(rows: VelogInsertRow[]): Promise<number> {
     return inserted;
 }
 
+export async function fetchPostByDetailLinkOrSlug(
+    detailLink: string,
+    slug: string,
+): Promise<Pick<VelogPostDto, "detail_link"> | null> {
+    console.log(`[repo] fetchPostByDetailLinkOrSlug detailLink=${detailLink} slug=${slug}`);
+    const supabase = createSupabaseServiceRoleClient();
+    const { data, error } = await supabase
+        .from("velog")
+        .select("detail_link")
+        .or(`detail_link.eq.${detailLink},source_url.eq.${detailLink},slug.eq.${slug}`)
+        .maybeSingle();
+    if (error && error.code !== "PGRST116") throw error;
+    return data ? { detail_link: (data as any).detail_link } : null;
+}
+
 export async function fetchPostsMissingDetail(limit: number): Promise<VelogPostDto[]> {
     console.log(`[repo] fetchPostsMissingDetail limit=${limit}`);
     const supabase = createSupabaseServiceRoleClient();

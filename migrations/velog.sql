@@ -28,11 +28,15 @@ create index if not exists velog_tags_gin on public.velog using gin (tags);
 -- Enable RLS
 alter table public.velog enable row level security;
 
--- Read policy for anon
-create policy if not exists velog_read_anon
-on public.velog for select
-to anon
-using (true);
+drop policy if exists velog_read_anon on public.velog;
+drop policy if exists velog_read_public on public.velog;
 
--- Optional: restrict writes to service role only (no anon insert)
--- Do not create insert policy for anon; service role bypasses RLS.
+revoke all privileges on table public.velog from anon, authenticated;
+grant select on table public.velog to anon, authenticated;
+grant all privileges on table public.velog to service_role;
+
+-- Public content is readable, but never writable, by public roles.
+create policy velog_read_public
+on public.velog for select
+to anon, authenticated
+using (true);

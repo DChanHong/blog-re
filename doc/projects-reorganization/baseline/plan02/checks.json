@@ -1,0 +1,311 @@
+{
+  "base": "http://127.0.0.1:3101",
+  "date": "2026-09-29T03:06:39.992Z",
+  "results": [
+    {
+      "name": "exact content preservation",
+      "pass": true
+    },
+    {
+      "name": "200 /",
+      "pass": true
+    },
+    {
+      "name": "200 /work",
+      "pass": true
+    },
+    {
+      "name": "200 /resume",
+      "pass": true
+    },
+    {
+      "name": "200 /writing",
+      "pass": true
+    },
+    {
+      "name": "200 /project/realtime-support",
+      "pass": true
+    },
+    {
+      "name": "200 /project/snn-cms",
+      "pass": true
+    },
+    {
+      "name": "200 /project/erp-groupware",
+      "pass": true
+    },
+    {
+      "name": "200 /project/legal-platform",
+      "pass": true
+    },
+    {
+      "name": "200 /blog/%EA%B7%B8%EB%9E%98%ED%94%84-BFS-%EB%AC%B8%EC%A0%9C-2",
+      "pass": true
+    },
+    {
+      "name": "all project fields rendered realtime-support",
+      "pass": true
+    },
+    {
+      "name": "all project fields rendered snn-cms",
+      "pass": true
+    },
+    {
+      "name": "all project fields rendered erp-groupware",
+      "pass": true
+    },
+    {
+      "name": "all project fields rendered legal-platform",
+      "pass": true
+    },
+    {
+      "name": "home and work project order",
+      "pass": true
+    },
+    {
+      "name": "308 /career",
+      "pass": true
+    },
+    {
+      "name": "308 /blog",
+      "pass": true
+    },
+    {
+      "name": "308 /blog?page=2&tag=Next.js&search=Next&category=한글",
+      "pass": true
+    },
+    {
+      "name": "GET /project/not-a-real-project",
+      "pass": true
+    },
+    {
+      "name": "GET /ask",
+      "pass": true
+    },
+    {
+      "name": "GET /api/velog/crawl",
+      "pass": true
+    },
+    {
+      "name": "POST /api/velog/crawl",
+      "pass": true
+    },
+    {
+      "name": "GET /api/velog/test-detail",
+      "pass": true
+    },
+    {
+      "name": "GET /api-docs",
+      "pass": true
+    },
+    {
+      "name": "GET /api-docs/v1",
+      "pass": true
+    },
+    {
+      "name": "POST /api/chatbot/faqs",
+      "pass": true
+    },
+    {
+      "name": "SEO /",
+      "pass": true
+    },
+    {
+      "name": "SEO /work",
+      "pass": true
+    },
+    {
+      "name": "SEO /resume",
+      "pass": true
+    },
+    {
+      "name": "SEO /writing",
+      "pass": true
+    },
+    {
+      "name": "SEO /project/realtime-support",
+      "pass": true
+    },
+    {
+      "name": "SEO /project/snn-cms",
+      "pass": true
+    },
+    {
+      "name": "SEO /project/erp-groupware",
+      "pass": true
+    },
+    {
+      "name": "SEO /project/legal-platform",
+      "pass": true
+    },
+    {
+      "name": "SEO /blog/%EA%B7%B8%EB%9E%98%ED%94%84-BFS-%EB%AC%B8%EC%A0%9C-2",
+      "pass": true
+    },
+    {
+      "name": "sitemap and robots",
+      "pass": true,
+      "detail": {
+        "articles": 97
+      }
+    },
+    {
+      "name": "UI home mobile",
+      "pass": true,
+      "detail": {
+        "overflow": false,
+        "h1": "성찬홍",
+        "oldLinks": [],
+        "ai": false,
+        "locale": false
+      }
+    },
+    {
+      "name": "UI work mobile",
+      "pass": true,
+      "detail": {
+        "overflow": false,
+        "h1": "프로젝트",
+        "oldLinks": [],
+        "ai": false,
+        "locale": false
+      }
+    },
+    {
+      "name": "UI project mobile",
+      "pass": true,
+      "detail": {
+        "overflow": false,
+        "h1": "실시간 상담 위젯 및 관리자 운영 콘솔",
+        "oldLinks": [],
+        "ai": false,
+        "locale": false
+      }
+    },
+    {
+      "name": "UI resume mobile",
+      "pass": true,
+      "detail": {
+        "overflow": false,
+        "h1": "성찬홍",
+        "oldLinks": [],
+        "ai": false,
+        "locale": false
+      }
+    },
+    {
+      "name": "UI writing mobile",
+      "pass": true,
+      "detail": {
+        "overflow": false,
+        "h1": "글",
+        "oldLinks": [],
+        "ai": false,
+        "locale": false
+      }
+    },
+    {
+      "name": "UI blog mobile",
+      "pass": true,
+      "detail": {
+        "overflow": false,
+        "h1": "그래프 (BFS) 문제 #2",
+        "oldLinks": [],
+        "ai": false,
+        "locale": false
+      }
+    },
+    {
+      "name": "UI home desktop",
+      "pass": true,
+      "detail": {
+        "overflow": false,
+        "h1": "성찬홍",
+        "oldLinks": [],
+        "ai": false,
+        "locale": false
+      }
+    },
+    {
+      "name": "UI work desktop",
+      "pass": true,
+      "detail": {
+        "overflow": false,
+        "h1": "프로젝트",
+        "oldLinks": [],
+        "ai": false,
+        "locale": false
+      }
+    },
+    {
+      "name": "UI project desktop",
+      "pass": true,
+      "detail": {
+        "overflow": false,
+        "h1": "실시간 상담 위젯 및 관리자 운영 콘솔",
+        "oldLinks": [],
+        "ai": false,
+        "locale": false
+      }
+    },
+    {
+      "name": "UI resume desktop",
+      "pass": true,
+      "detail": {
+        "overflow": false,
+        "h1": "성찬홍",
+        "oldLinks": [],
+        "ai": false,
+        "locale": false
+      }
+    },
+    {
+      "name": "UI writing desktop",
+      "pass": true,
+      "detail": {
+        "overflow": false,
+        "h1": "글",
+        "oldLinks": [],
+        "ai": false,
+        "locale": false
+      }
+    },
+    {
+      "name": "UI blog desktop",
+      "pass": true,
+      "detail": {
+        "overflow": false,
+        "h1": "그래프 (BFS) 문제 #2",
+        "oldLinks": [],
+        "ai": false,
+        "locale": false
+      }
+    },
+    {
+      "name": "project link keyboard navigation and previous/next",
+      "pass": true
+    },
+    {
+      "name": "legacy career fragment",
+      "pass": true
+    },
+    {
+      "name": "writing pagination and combined filters",
+      "pass": true
+    },
+    {
+      "name": "writing category/tag clicks and article return",
+      "pass": true
+    },
+    {
+      "name": "writing loading and error states",
+      "pass": true
+    },
+    {
+      "name": "no automatic AI requests across all pages",
+      "pass": true
+    }
+  ],
+  "pageErrors": [],
+  "aiRequests": []
+}

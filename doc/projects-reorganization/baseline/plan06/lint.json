@@ -1,0 +1,10 @@
+{
+  "files": [
+    "src/data/resume.ts",
+    "src/app/resume/ResumePage.tsx",
+    "src/app/resume/page.tsx"
+  ],
+  "errors": 0,
+  "warnings": 0,
+  "messages": []
+}

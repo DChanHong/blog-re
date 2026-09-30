@@ -1,0 +1,4 @@
+interface:
+  display_name: "Portfolio Plan Interview"
+  short_description: "포트폴리오 개편 계획을 인터뷰하고 단일 plan 문서로 확정"
+  default_prompt: "Use $portfolio-plan-interview to interview me and create the next approved portfolio reorganization plan."

@@ -1,0 +1,10 @@
+{
+  "changed": [
+    "src/app/resume/ResumePage.tsx",
+    "src/app/resume/page.tsx",
+    "src/app/resume/resume.module.css",
+    "src/data/resume.ts"
+  ],
+  "violations": [],
+  "buildMismatches": []
+}

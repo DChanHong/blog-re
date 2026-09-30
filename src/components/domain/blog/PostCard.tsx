@@ -23,15 +23,15 @@ export default function PostCard({ post }: PostCardProps) {
             href={href}
             target={isInternal ? undefined : "_blank"}
             rel={isInternal ? undefined : "noopener noreferrer"}
-            className="block bg-white rounded-2xl border border-slate-200 hover:border-blue-200 hover:shadow-md transition-all duration-300 overflow-hidden group focus:outline-none focus:ring-2 focus:ring-blue-400 outline-none"
+            className="block bg-raised rounded-2xl border border-border hover:border-border hover:shadow-md transition-all duration-300 overflow-hidden group focus:outline-none focus:ring-2 focus:ring-focus outline-none"
             aria-label={post.title}
         >
             {/* 썸네일 */}
-            <div className="aspect-video bg-slate-100 relative overflow-hidden">
+            <div className="aspect-video bg-muted relative overflow-hidden">
                 {post.img_src ? (
                     <>
                         {!imageLoaded && (
-                            <div className="absolute inset-0 bg-gray-700/50 animate-pulse" />
+                            <div className="absolute inset-0 bg-muted animate-pulse" />
                         )}
                         <img
                             src={post.img_src}
@@ -40,12 +40,11 @@ export default function PostCard({ post }: PostCardProps) {
                             onLoad={() => setImageLoaded(true)}
                             onError={() => setImageLoaded(true)}
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/30 to-transparent opacity-60" />
                     </>
                 ) : (
-                    <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-slate-100 to-slate-200">
+                    <div className="w-full h-full flex items-center justify-center bg-sunken">
                         <svg
-                            className="w-12 h-12 text-slate-300 group-hover:text-blue-400 transition-colors duration-300"
+                            className="w-12 h-12 text-muted-ink group-hover:text-accent transition-colors duration-300"
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
@@ -64,23 +63,25 @@ export default function PostCard({ post }: PostCardProps) {
             {/* 콘텐츠 */}
             <div className="p-6">
                 {/* 카테고리(첫 태그) & 날짜 */}
-                <div className="flex items-center justify-between mb-4">
-                    <span className="px-3 py-1 text-xs font-medium bg-blue-50 text-blue-600 border border-blue-200 rounded-full">
-                        {(post.tags && post.tags[0]) || "Blog"}
+                <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
+                    <span className="px-3 py-1 text-[0.8125rem] font-medium bg-sunken text-accent border border-border rounded-full">
+                        {(post.tags && post.tags[0]) || "글"}
                     </span>
-                    <time className="text-xs text-slate-400">
+                    <time className="text-[0.8125rem] text-muted-ink">
                         {new Date(post.created_at).toLocaleDateString("ko-KR")}
                     </time>
                 </div>
 
                 {/* 제목 */}
-                <h2 className="text-lg font-bold text-slate-900 mb-3 line-clamp-2 group-hover:text-blue-600 transition-colors">
+                <h2 className="text-lg font-bold text-ink mb-3 line-clamp-2 group-hover:text-accent transition-colors">
                     {post.title}
                 </h2>
 
                 {/* 요약 */}
                 {post.intro && (
-                    <p className="text-slate-500 text-sm line-clamp-3 mb-5 leading-relaxed">{post.intro}</p>
+                    <p className="text-secondary text-sm line-clamp-3 mb-5 leading-relaxed">
+                        {post.intro}
+                    </p>
                 )}
 
                 {/* 태그 */}
@@ -88,13 +89,13 @@ export default function PostCard({ post }: PostCardProps) {
                     {post.tags?.slice(0, 3).map((tagItem) => (
                         <span
                             key={tagItem}
-                            className="px-2 py-1 text-xs bg-slate-50 text-slate-400 rounded hover:bg-slate-100 transition-colors border border-slate-100"
+                            className="px-2 py-1 text-[0.8125rem] bg-muted text-muted-ink rounded hover:bg-muted transition-colors border border-border"
                         >
                             #{tagItem}
                         </span>
                     ))}
                     {post.tags && post.tags.length > 3 && (
-                        <span className="px-2 py-1 text-xs text-slate-400">
+                        <span className="px-2 py-1 text-[0.8125rem] text-muted-ink">
                             +{post.tags.length - 3}
                         </span>
                     )}
