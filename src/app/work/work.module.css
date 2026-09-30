@@ -1,0 +1,112 @@
+.hero {
+    margin-bottom: 48px;
+}
+.eyebrow {
+    margin-bottom: 16px;
+    color: var(--ink-tertiary);
+    font-size: 14px;
+}
+.hero h1 {
+    font-size: clamp(36px, 4.5vw, 64px);
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.04em;
+    word-break: keep-all;
+}
+.hero h1 span {
+    display: block;
+    color: var(--ink-tertiary);
+}
+.intro {
+    max-width: 600px;
+    margin-top: 24px;
+    color: var(--ink-tertiary);
+    font-size: 15px;
+    line-height: 1.7;
+    word-break: keep-all;
+}
+.grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+    list-style: none;
+    padding: 0;
+}
+.grid li {
+    min-width: 0;
+    display: flex;
+}
+.card {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    min-width: 0;
+    padding: 32px;
+    border-radius: 28px;
+    background: var(--surface-muted);
+    color: var(--ink);
+    text-decoration: none;
+    overflow-wrap: anywhere;
+    word-break: keep-all;
+}
+.category,
+.description,
+.caption {
+    color: var(--ink-tertiary);
+    font-size: 14px;
+    line-height: 1.55;
+}
+.card h2 {
+    margin-top: 8px;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: -0.025em;
+}
+.description {
+    margin-top: 10px;
+    margin-bottom: 32px;
+}
+.outcome {
+    margin-top: auto;
+    padding-top: 20px;
+    border-top: 1px solid var(--home-line);
+}
+.metric {
+    font-size: clamp(28px, 2.5vw, 36px);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.035em;
+}
+.caption {
+    margin-top: 6px;
+}
+.card:hover h2 {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+.card:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 4px;
+}
+@media (min-width: 640px) {
+    .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+@media (min-width: 1024px) {
+    .grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+@media (max-width: 639px) {
+    .hero {
+        margin-bottom: 32px;
+    }
+    .card {
+        padding: 28px;
+    }
+    .metric {
+        font-size: 32px;
+    }
+}

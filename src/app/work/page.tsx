@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import PageContainer from "@/components/layout/PageContainer";
-import ProjectShowcase from "@/components/domain/home/ProjectShowcase";
+import Link from "next/link";
+import { workCards } from "@/data/work";
+import styles from "./work.module.css";
 import { JsonLdScript } from "@/components/seo/JsonLdScript";
 import {
     absoluteUrl,
@@ -46,11 +48,29 @@ export default function WorkPage() {
                     ]),
                 ]}
             />
-            <div>
-                <h1 className="text-3xl font-bold text-ink sm:text-5xl">프로젝트</h1>
-                <p className="mb-10 mt-4 max-w-2xl leading-7 text-secondary">{description}</p>
-                <ProjectShowcase />
-            </div>
+            <header className={styles.hero}>
+                <p className={styles.eyebrow}>프로젝트</p>
+                <h1>업무를 이해하고,<span>서비스로 연결합니다.</span></h1>
+                <p className={styles.intro}>
+                    화면부터 API, 데이터와 운영까지 직접 연결한 작업입니다.
+                    각 카드에는 적용 규모나 구현 결과, 검증 범위를 대표하는 지표를 담았습니다.
+                </p>
+            </header>
+            <ul className={styles.grid} aria-label="프로젝트 목록">
+                {workCards.map((project) => (
+                    <li key={project.slug}>
+                        <Link href={`/project/${project.slug}`} className={styles.card}>
+                            <p className={styles.category}>{project.category}</p>
+                            <h2>{project.title}</h2>
+                            <p className={styles.description}>{project.description}</p>
+                            <div className={styles.outcome}>
+                                <p className={styles.metric}>{project.metric}</p>
+                                <p className={styles.caption}>{project.caption}</p>
+                            </div>
+                        </Link>
+                    </li>
+                ))}
+            </ul>
         </PageContainer>
     );
 }
