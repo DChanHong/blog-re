@@ -1,166 +1,164 @@
-import { ArrowDown, Check, CircleAlert, Layers3 } from "lucide-react";
-import type { CareerProject } from "@/types/portfolio";
+import Link from "next/link";
+import type { ReactNode } from "react";
+import type { ProjectCaseStudy } from "@/data/projectCaseStudies";
+import styles from "./project-detail.module.css";
 
-function ProjectArchitecture({ items }: { items: string[] }) {
+function Section({ title, children }: { title: string; children: ReactNode }) {
     return (
-        <div className="rounded-2xl border border-border bg-muted p-5 sm:p-6">
-            <div className="mb-5 flex items-center gap-2">
-                <Layers3 className="h-4 w-4 text-accent" aria-hidden="true" />
-                <h2 className="text-sm font-semibold text-ink">서비스 흐름</h2>
-            </div>
-            <ol className="grid gap-2 lg:grid-flow-col lg:auto-cols-fr">
-                {items.map((item, index) => (
-                    <li
-                        key={item}
-                        className="relative flex min-w-0 flex-col items-center gap-2 lg:block"
-                    >
-                        <div className="min-w-0 flex-1 rounded-xl border border-border bg-raised px-3 py-3 text-center text-[0.8125rem] leading-5 text-secondary lg:min-h-20 lg:px-2 lg:flex lg:items-center lg:justify-center">
-                            {item}
-                        </div>
-                        {index < items.length - 1 && (
-                            <ArrowDown
-                                className="h-4 w-4 shrink-0 text-muted-ink lg:absolute lg:-right-3 lg:top-1/2 lg:z-10 lg:-translate-y-1/2 lg:-rotate-90"
-                                aria-hidden="true"
-                            />
-                        )}
-                    </li>
-                ))}
-            </ol>
-        </div>
+        <section className={styles.section}>
+            <h2>{title}</h2>
+            <div>{children}</div>
+        </section>
     );
 }
 
-export default function ProjectDetails({ project }: { project: CareerProject }) {
+export default function ProjectDetails({
+    study,
+    previous,
+    next,
+}: {
+    study: ProjectCaseStudy;
+    previous: { slug: string; title: string };
+    next: { slug: string; title: string };
+}) {
+    const { project } = study;
     return (
-        <div className="border-t border-border px-5 py-7 sm:px-8 sm:py-9">
-            <div className="grid gap-8 xl:grid-cols-[minmax(0,0.75fr)_minmax(0,1.25fr)]">
-                <div>
-                    <p className="text-[0.8125rem] font-semibold tracking-[0.16em] text-accent uppercase">
-                        배경
+        <div className={styles.page}>
+            <Link href="/work" className={styles.back}>
+                ← 전체 프로젝트
+            </Link>
+            <article>
+                <header className={styles.hero}>
+                    <p>
+                        {study.category} · {project.status}
                     </p>
-                    <h2 className="mt-2 text-lg font-semibold text-ink">프로젝트 배경</h2>
-                    <p className="mt-3 text-sm leading-7 text-secondary">{project.background}</p>
+                    <h1>{project.title}</h1>
+                    <p className={styles.subtitle}>{project.subtitle}</p>
+                </header>
+                <dl className={styles.metrics} aria-label="핵심 성과와 구현 범위">
+                    {project.metrics.map((metric) => (
+                        <div key={metric.label}>
+                            <dt>{metric.label}</dt>
+                            <dd>{metric.value}</dd>
+                        </div>
+                    ))}
+                </dl>
+                <div className={styles.comparison}>
+                    <section>
+                        <h2>{study.comparison[0]}</h2>
+                        <ul>
+                            {study.before.map((item) => (
+                                <li key={item}>{item}</li>
+                            ))}
+                        </ul>
+                    </section>
+                    <section className={styles.after}>
+                        <h2>{study.comparison[1]}</h2>
+                        <ul>
+                            {study.after.map((item) => (
+                                <li key={item}>{item}</li>
+                            ))}
+                        </ul>
+                    </section>
                 </div>
-                <div>
-                    <p className="text-[0.8125rem] font-semibold tracking-[0.16em] text-accent uppercase">
-                        기여
-                    </p>
-                    <h2 className="mt-2 text-lg font-semibold text-ink">담당 범위</h2>
-                    <ul className="mt-4 grid gap-3 sm:grid-cols-2">
-                        {project.responsibilities.map((responsibility) => (
-                            <li
-                                key={responsibility}
-                                className="flex gap-3 text-sm leading-6 text-secondary"
-                            >
-                                <Check
-                                    className="mt-1 h-4 w-4 shrink-0 text-accent"
-                                    aria-hidden="true"
-                                />
-                                <span>{responsibility}</span>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-            </div>
-
-            {!!project.architecture?.length && (
-                <div className="mt-9">
-                    <ProjectArchitecture items={project.architecture} />
-                </div>
-            )}
-
-            {project.challenges.length > 0 && (
-                <div className="mt-10">
-                    <div className="mb-5">
-                        <p className="text-[0.8125rem] font-semibold tracking-[0.16em] text-accent uppercase">
-                            문제 해결
-                        </p>
-                        <h2 className="mt-2 text-xl font-semibold text-ink">문제와 해결</h2>
-                    </div>
-                    <div className="grid gap-4 lg:grid-cols-2">
-                        {project.challenges.map((challenge, index) => (
-                            <article
-                                key={challenge.title}
-                                className={`rounded-2xl border border-border bg-muted p-5 sm:p-6 ${
-                                    project.challenges.length % 2 === 1 &&
-                                    index === project.challenges.length - 1
-                                        ? "lg:col-span-2"
-                                        : ""
-                                }`}
-                            >
-                                <div className="flex items-start justify-between gap-4">
-                                    <h3 className="font-semibold text-ink">{challenge.title}</h3>
-                                    <span className="text-[0.8125rem] text-muted-ink">
+                <div className={styles.body}>
+                    <Section title="프로젝트 배경">
+                        <p className={styles.lead}>{project.background}</p>
+                    </Section>
+                    <Section title="내 역할과 범위">
+                        <p className={styles.role}>{project.role}</p>
+                        <p className={styles.period}>{project.period}</p>
+                        <p>{study.scope}</p>
+                    </Section>
+                    <Section title="해결할 문제">
+                        <ol className={styles.numbered}>
+                            {project.challenges.map((item, index) => (
+                                <li key={item.title}>
+                                    <span aria-hidden="true">
                                         {String(index + 1).padStart(2, "0")}
                                     </span>
-                                </div>
-                                <dl className="mt-5 space-y-4 text-sm leading-6">
                                     <div>
-                                        <dt className="mb-1 text-[0.8125rem] font-semibold text-muted-ink">
-                                            문제
-                                        </dt>
-                                        <dd className="text-secondary">{challenge.problem}</dd>
+                                        <h3>{item.title}</h3>
+                                        <p>{item.problem}</p>
                                     </div>
-                                    <div>
-                                        <dt className="mb-1 text-[0.8125rem] font-semibold text-accent">
-                                            접근
-                                        </dt>
-                                        <dd className="text-secondary">{challenge.action}</dd>
-                                    </div>
-                                    <div>
-                                        <dt className="mb-1 text-[0.8125rem] font-semibold text-success">
-                                            결과
-                                        </dt>
-                                        <dd className="text-secondary">{challenge.result}</dd>
-                                    </div>
-                                </dl>
-                            </article>
-                        ))}
-                    </div>
-                </div>
-            )}
-
-            <div className="mt-10 grid gap-5 lg:grid-cols-2">
-                <div className="rounded-2xl border border-border bg-success-surface p-5 sm:p-6">
-                    <h2 className="text-sm font-semibold text-success">성과와 영향</h2>
-                    <ul className="mt-4 space-y-3">
-                        {project.achievements.map((achievement) => (
-                            <li
-                                key={achievement}
-                                className="flex gap-3 text-sm leading-6 text-secondary"
-                            >
-                                <Check
-                                    className="mt-1 h-4 w-4 shrink-0 text-success"
-                                    aria-hidden="true"
-                                />
-                                <span>{achievement}</span>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-
-                {project.retrospective && (
-                    <div className="rounded-2xl border border-border bg-sunken p-5 sm:p-6">
-                        <h2 className="text-sm font-semibold text-accent">회고</h2>
-                        <p className="mt-4 text-sm leading-7 text-secondary">
-                            {project.retrospective}
+                                </li>
+                            ))}
+                        </ol>
+                    </Section>
+                    <Section title="구현한 내용">
+                        <p className={styles.lead}>{project.summary}</p>
+                        <ul className={styles.bullets}>
+                            {project.responsibilities.map((item) => (
+                                <li key={item}>{item}</li>
+                            ))}
+                        </ul>
+                    </Section>
+                    <Section title="접근 방식">
+                        <ol className={styles.approach}>
+                            {project.challenges.map((item) => (
+                                <li key={item.title}>
+                                    <h3>{item.title}</h3>
+                                    <p>{item.action}</p>
+                                    <p className={styles.result}>{item.result}</p>
+                                </li>
+                            ))}
+                        </ol>
+                    </Section>
+                    <Section title="시스템 구조">
+                        <ol className={styles.flow} aria-label="주요 구현 흐름">
+                            {study.flow.map((item) => (
+                                <li key={item.label}>
+                                    <span>{item.label}</span>
+                                    <strong>{item.value}</strong>
+                                </li>
+                            ))}
+                        </ol>
+                        <p className={styles.flowNote}>
+                            담당 기능을 중심으로 정리한 개념 흐름입니다.
                         </p>
-                    </div>
-                )}
-            </div>
-
-            {project.scopeNote && (
-                <div className="mt-5 flex gap-3 rounded-xl border border-border bg-warning-surface px-4 py-3.5">
-                    <CircleAlert
-                        className="mt-0.5 h-4 w-4 shrink-0 text-warning"
-                        aria-hidden="true"
-                    />
-                    <p className="text-[0.8125rem] leading-5 text-secondary">
-                        <strong className="mr-1 font-semibold text-warning">담당 범위.</strong>
-                        {project.scopeNote}
-                    </p>
+                        <dl className={styles.architecture}>
+                            {study.architecture.map((item) => (
+                                <div key={item.label}>
+                                    <dt>{item.label}</dt>
+                                    <dd>{item.value}</dd>
+                                </div>
+                            ))}
+                        </dl>
+                    </Section>
+                    <Section title="품질 관리와 검증">
+                        <ul className={styles.checks}>
+                            {study.quality.map((item) => (
+                                <li key={item}>
+                                    <span aria-hidden="true">✓</span>
+                                    {item}
+                                </li>
+                            ))}
+                        </ul>
+                    </Section>
+                    {project.retrospective && (
+                        <Section title="회고">
+                            <p>{project.retrospective}</p>
+                        </Section>
+                    )}
+                    <Section title="사용 기술">
+                        <ul className={styles.stack}>
+                            {project.techStack.map((tech) => (
+                                <li key={tech}>{tech}</li>
+                            ))}
+                        </ul>
+                    </Section>
+                    <nav className={styles.navigation} aria-label="프로젝트 이전 다음 탐색">
+                        <Link href={`/project/${previous.slug}`}>
+                            <span>← 이전 프로젝트</span>
+                            {previous.title}
+                        </Link>
+                        <Link href={`/project/${next.slug}`}>
+                            <span>다음 프로젝트 →</span>
+                            {next.title}
+                        </Link>
+                    </nav>
                 </div>
-            )}
+            </article>
         </div>
     );
 }
