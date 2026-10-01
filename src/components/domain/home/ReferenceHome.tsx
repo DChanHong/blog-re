@@ -118,7 +118,13 @@ export default function ReferenceHome({ writingSlot }: { writingSlot: ReactNode 
                     <h1 id="home-title" className={styles.heroTitle}>
                         {personalInfoData.position}
                     </h1>
-                    <p className={styles.introduction}>{personalInfoData.introduction}</p>
+                    <p className={styles.introduction}>
+                        {personalInfoData.introduction.split(/(설계·개발하며)/).map((part) =>
+                            part === "설계·개발하며" ? (
+                                <span key={part} className={styles.introductionPhrase}>{part}</span>
+                            ) : part,
+                        )}
+                    </p>
                     <div className={styles.actions}>
                         <PrimaryButton href="/work" className={styles.primary}>
                             프로젝트 보기

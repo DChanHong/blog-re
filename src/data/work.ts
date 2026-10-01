@@ -42,6 +42,14 @@ export const workCards: WorkCard[] = [
         caption: "고객사가 실제 사용 중인 관리자 시스템",
     },
     {
+        slug: "recruitment",
+        category: "사내 서비스 · 운영 중",
+        title: "채용사이트·관리자 시스템 개편",
+        description: "5단계 지원서의 입력 보존과 검증부터 제출 API, 첨부파일과 지원자 검토 기능까지 개발했습니다.",
+        metric: "5단계 지원서",
+        caption: "공개 화면·제출 API·관리자 검토 흐름 연결",
+    },
+    {
         slug: "legal-platform",
         category: "사내 프로젝트 · 출시 보류",
         title: "법률 상담 및 변호사 플랫폼",

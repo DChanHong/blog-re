@@ -125,6 +125,24 @@ export default function ProjectDetails({
                             ))}
                         </dl>
                     </Section>
+                    {study.walkthrough && (
+                        <Section title="구체적인 동작 흐름">
+                            <h3>{study.walkthrough.title}</h3>
+                            <p>{study.walkthrough.description}</p>
+                            <ol className={styles.walkthrough}>
+                                {study.walkthrough.steps.map((step, index) => (
+                                    <li key={step.title}>
+                                        <span aria-hidden="true">{index + 1}</span>
+                                        <div>
+                                            <h3>{step.title}</h3>
+                                            <p>{step.description}</p>
+                                        </div>
+                                    </li>
+                                ))}
+                            </ol>
+                            <p className={styles.result}>{study.walkthrough.limitation}</p>
+                        </Section>
+                    )}
                     <Section title="품질 관리와 검증">
                         <ul className={styles.checks}>
                             {study.quality.map((item) => (

@@ -16,8 +16,7 @@ export const projectsData: CareerProject[] = [
         metrics: [
             { value: "약 80개", label: "상담 위젯 적용 홈페이지" },
             { value: "12만 건+", label: "서비스 시작 후 1년간 실제 상담 · DB 집계" },
-            { value: "58개+", label: "외부 API 연동 함수" },
-            { value: "43개", label: "관리자 UI 컴포넌트" },
+            { value: "서버 설정", label: "문구·프로필·답변 설정의 사이트별 재배포 분리" },
         ],
         responsibilities: [
             "고객 채팅 위젯과 ERP 상담 관리자 주요 화면 설계·개발",
@@ -26,6 +25,7 @@ export const projectsData: CareerProject[] = [
             "Presigned URL 기반 파일 업로드와 썸네일 처리 상태 UX 구현",
             "모바일 WebView 생명주기에 대응하는 앱 Bridge 기반 재연결 흐름 구성",
             "기존 Go 서버의 운영 API와 이벤트 응답, AI API 중간 연동 확장",
+            "외부 API 연동 함수 58개+와 관리자 UI 컴포넌트 43개 구현",
         ],
         architecture: [
             "80여 개 고객 홈페이지 · 공통 npm 채팅 위젯",
@@ -203,6 +203,47 @@ export const projectsData: CareerProject[] = [
         techStack: ["Next.js", "React", "TypeScript", "Node.js", "PostgreSQL", "Prisma", "Nginx", "Zod", "AWS S3"],
         scopeNote:
             "기존 ERP 안에서 인사평가 기능을 설계·구현한 경험이며 ERP 전체를 초기 구축한 것은 아닙니다. 1,000명은 합성 데이터의 DB 저장 테스트 규모입니다. 그 외 사이드바 개인화·AICC 화면 등 기존 ERP 유지보수도 담당했습니다.",
+    },
+    {
+        id: "recruitment",
+        title: "채용사이트·관리자 시스템 개편",
+        subtitle: "지원서 작성부터 제출과 운영자 검토까지 연결한 채용 흐름",
+        period: "2023.11 · 약 3주 개발 후 유지보수",
+        role: "디자이너 협업 · 공개 화면·지원서·제출 API·관리자 기능 개발",
+        status: "운영 중",
+        featured: false,
+        summary: "디자이너와 협업해 공개 화면부터 5단계 지원서, 제출 API와 관리자 기능을 개발했습니다. 지원서 입력 보존과 단계별 검증을 적용하고, 운영자가 지원자를 검색하고 검토 상태를 관리하는 흐름을 연결했습니다.",
+        background: "지원자가 여러 단계의 지원서를 작성해 제출하고, 운영자는 접수된 지원서를 검색·검토할 수 있어야 했습니다. 공개 채용 화면과 지원서 처리, 관리자 기능을 함께 개발했습니다.",
+        metrics: [
+            { value: "5단계", label: "입력 보존·단계별 검증을 적용한 지원서" },
+            { value: "약 6~7개", label: "월평균 관리 공고 · 운영 규모" },
+            { value: "약 100건", label: "월평균 접수 지원서 · 운영 규모" },
+        ],
+        responsibilities: [
+            "디자이너와 협업해 공개 채용 화면과 지원서 작성 UI 개발",
+            "5단계 지원서의 sessionStorage 입력 보존과 단계별 검증 구현",
+            "지원서 제출 API와 기존 암·복호화 방식 적용",
+            "S3 기반 첨부파일 처리 흐름 연결",
+            "지원자 검색·날짜 필터·중복 지원 확인 기능 구현",
+            "읽음·합격 상태를 관리하는 관리자 기능 개발",
+        ],
+        challenges: [
+            {
+                title: "여러 단계의 입력을 제출까지 연결",
+                problem: "지원서가 5단계로 나뉘어 있어 작성 중 입력을 보존하고 단계별로 유효한 값을 확인하는 처리가 필요했습니다.",
+                action: "sessionStorage로 입력을 보존하고 단계별 검증을 적용했습니다. 제출 API에 기존 암·복호화 방식과 S3 첨부파일 흐름을 연결했습니다.",
+                result: "지원서 작성 화면부터 제출 API와 첨부파일 처리까지 하나의 흐름으로 구현했습니다.",
+            },
+            {
+                title: "접수 이후의 지원자 검토 흐름",
+                problem: "운영자가 지원서를 찾고 중복 지원 여부와 검토 진행 상태를 관리할 수 있어야 했습니다.",
+                action: "지원자 검색·날짜 필터·중복 지원 확인과 읽음·합격 상태 관리를 구현했습니다.",
+                result: "월평균 약 6~7개 공고와 약 100건의 지원서를 한 시스템에서 검토하고 관리하도록 구성했습니다. 수치는 운영 규모이며 개선율이 아닙니다.",
+            },
+        ],
+        achievements: ["공개 화면·지원서·제출 API·관리자 기능 통합 개발", "약 3주 개발 후 유지보수"],
+        techStack: ["Next.js", "React", "sessionStorage", "AWS S3"],
+        scopeNote: "검토된 이력서의 개발 범위와 운영 규모를 기준으로 작성했습니다. 기존 암·복호화 방식과 파일 저장 흐름을 적용했으며 보안 체계를 새로 설계한 경험으로 표현하지 않습니다.",
     },
     {
         id: "legal-platform",
