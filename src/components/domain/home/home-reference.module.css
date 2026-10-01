@@ -40,6 +40,9 @@
     text-wrap: balance;
     word-break: keep-all;
 }
+.introductionPhrase {
+    white-space: nowrap;
+}
 .actions {
     display: flex;
     align-items: center;
