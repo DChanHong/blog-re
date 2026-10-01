@@ -43,7 +43,10 @@ export const metadata: Metadata = {
         description: SEO_CONFIG.description,
         images: [SEO_CONFIG.defaultOgImage.path],
     },
-    icons: { icon: "/favicon.ico" },
+    icons: {
+        icon: { url: "/favicon.svg", type: "image/svg+xml" },
+        shortcut: "/favicon.ico?v=s1",
+    },
 };
 
 export default function RootLayout({
