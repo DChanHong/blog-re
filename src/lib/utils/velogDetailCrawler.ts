@@ -87,9 +87,10 @@ function sanitizeContentHtml(rawHtml: string) {
     return $("main").html() ?? "";
 }
 
-export async function crawlVelogDetail(url: string): Promise<CrawledVelogDetail> {
+async function fetchVelogDetail(url: string): Promise<CrawledVelogDetail> {
     const response = await fetch(url, {
         cache: "no-store",
+        signal: AbortSignal.timeout(30000),
         headers: {
             "user-agent":
                 "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 Chrome/120 Safari/537.36",
@@ -106,6 +107,13 @@ export async function crawlVelogDetail(url: string): Promise<CrawledVelogDetail>
     const headWrapperText = $("h1").first().parent().text();
     const publishedAt = headWrapperText.match(/\d{4}년\s*\d{1,2}월\s*\d{1,2}일/)?.[0] ?? "";
     const rawContentHtml = content.html() ?? "";
+    const contentHtml = sanitizeContentHtml(rawContentHtml);
+    if (
+        !contentHtml.trim() ||
+        (!content.text().trim() && !cheerio.load(contentHtml)("img[src]").length)
+    ) {
+        throw new Error("Velog 상세 본문이 비어 있습니다.");
+    }
 
     return {
         title: $("h1").first().text().trim() || getMeta($, 'meta[property="og:title"]'),
@@ -119,7 +127,18 @@ export async function crawlVelogDetail(url: string): Promise<CrawledVelogDetail>
             .get()
             .filter(Boolean),
         sourceUrl: getMeta($, 'meta[property="og:url"]') || url,
-        contentHtml: sanitizeContentHtml(rawContentHtml),
+        contentHtml,
         contentText: content.text().trim(),
     };
+}
+
+export async function crawlVelogDetail(url: string): Promise<CrawledVelogDetail> {
+    for (let attempt = 0; ; attempt++) {
+        try {
+            return await fetchVelogDetail(url);
+        } catch (error) {
+            if (attempt >= 2) throw error;
+            await new Promise((resolve) => setTimeout(resolve, 1000 * (attempt + 1)));
+        }
+    }
 }
