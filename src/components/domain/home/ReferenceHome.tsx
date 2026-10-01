@@ -144,8 +144,8 @@ export default function ReferenceHome({ writingSlot }: { writingSlot: ReactNode 
                         title="업무를 이해하고."
                         secondary="작동하는 서비스로 만듭니다."
                     >
-                        실제로 사용하는 사람의 이야기를 듣고, 필요한 기능을 구체화합니다. 화면과
-                        API, 데이터를 함께 설계하고 구현하며, 배포 이후의 불편과 오류까지 개선합니다.
+                        실시간 상담 플랫폼과 인사평가·채용·CMS를 개발하며, 사용자 화면부터
+                        API·데이터 설계와 운영 문제 해결까지 담당해왔습니다.
                     </SectionHeading>
                     <ol className={styles.capabilityGrid} data-entrance="cards">
                         {capabilityCards.map((item, index) => (

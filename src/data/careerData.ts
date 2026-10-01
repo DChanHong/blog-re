@@ -6,7 +6,7 @@ export const personalInfoData = {
     company: "스카이즈코리아 개발팀",
     period: "2023.09 ~ 현재",
     introduction:
-        "비즈니스가 돌아가는 방식을 이해하고, 앞으로 나아가는 데 필요한 도구를 만듭니다.",
+        "업무를 이해하고, 필요한 서비스를 설계·개발하며 운영까지 개선합니다.",
     university: "동아대학교",
     degree: "전자공학과 학사",
     gpa: "GPA 3.9",

@@ -97,8 +97,8 @@ export default function PersonalInfoHeader({ personalInfo, metrics }: PersonalIn
                         </p>
                         <div className="my-5 h-px bg-muted" />
                         <p className="text-sm leading-6 text-secondary">
-                            프론트엔드를 중심으로 사용자 서비스, 관리자 CMS, ERP와 실시간 상담
-                            플랫폼을 개발하고 있습니다.
+                            실시간 상담 플랫폼과 인사평가·채용·CMS를 개발하며, 사용자 화면부터
+                            API·데이터 설계와 운영 문제 해결까지 담당해왔습니다.
                         </p>
                     </div>
                 </div>
