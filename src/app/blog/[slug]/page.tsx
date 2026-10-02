@@ -11,7 +11,8 @@ export async function generateStaticParams() {
     return posts
         .filter((p) => p.slug)
         .filter((p) => encodeURIComponent(p.slug!).length <= 220)
-        .map((p) => ({ slug: encodeURIComponent(p.slug!) }));
+        // Next.js가 URL을 인코딩하므로 원본 slug를 전달해야 한다.
+        .map((p) => ({ slug: p.slug! }));
 }
 import { JsonLdScript } from "@/components/seo/JsonLdScript";
 import {
