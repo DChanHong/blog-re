@@ -35,3 +35,9 @@
 - native CUA 도구는 sandbox 초기화 오류로 사용 불가하여 임시 headless Chrome으로 검사했다. 스크립트·캡처·로그는 /tmp에 보관하고 저장소에 추가하지 않았다.
 
 커밋·push·배포·원격 DB 변경 없음.
+
+## 추가 수정 검증 — 개발 분야 출발점 강조 완화
+- 홈 경력 제목과 설명, 2023년 설명, Resume 소개·상담 역할·metadata, 상담 상세 역할 및 법률 상세 배경을 현재 업무 중심으로 수정했다.
+- 소스 4개 임시 Next/TypeScript ESLint·build·post-build TypeScript·diff 통과. 기존 전역 prettier plugin 누락 기준선 유지.
+- 생성된 홈·Resume·상세 7개 HTML에서 프론트엔드 출발점 및 입사 초기 강조 문구 제거와 새 소개 반영 확인. 기술 분류의 Frontend와 프론트엔드 재배포 설명은 기술적 의미에 맞게 유지했다.
+- 레이아웃 변경 없음. 이전 30개 viewport 검사는 최초 수정의 결과이며 이번 추가 수정은 정적 HTML 검증만 수행했다.

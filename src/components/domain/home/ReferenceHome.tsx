@@ -37,7 +37,7 @@ const homeJourney = [
         year: "2023",
         title: "화면과 API를 함께 개발하다",
         description:
-            "React와 Next.js로 웹 개발을 시작했습니다. 채용사이트와 법률 서비스의 사용자·관리자 화면을 만들고 API와 데이터 처리도 함께 맡았습니다.",
+            "채용사이트와 법률 서비스의 사용자·관리자 화면과 API를 개발했습니다. Next.js를 사용해 지원서 제출과 상담 신청에 필요한 데이터 처리도 맡았습니다.",
     },
     {
         year: "2024–2025",
@@ -172,12 +172,13 @@ export default function ReferenceHome({ writingSlot }: { writingSlot: ReactNode 
                         id="home-path"
                         animated
                         label="걸어온 길"
-                        title="프론트엔드에서 시작해"
-                        secondary="API와 운영까지 맡아왔습니다."
+                        title="고객 서비스와 업무 시스템을"
+                        secondary="개발하고 운영해왔습니다."
                     >
-                        화면을 개발하다 보니 필요한 API와 데이터 처리도 함께 맡게 됐습니다.
-                        이후 상담 서비스 운영과 인사평가 기능 개발을 경험했습니다. 지금은
-                        Spring Boot 서비스 이관에 참여하고 개인 프로젝트로 AI 개발을 배우고 있습니다.
+                        채용과 콘텐츠 관리, 실시간 상담과 인사평가 등 업무에 필요한 서비스를
+                        개발했습니다. 화면과 API, 데이터 구조를 설계하고 운영 중 발생한 문제를
+                        개선했습니다. 현재는 Spring Boot 서비스 이관에 참여하고 개인 프로젝트로
+                        AI 챗봇을 개발하고 있습니다.
                     </SectionHeading>
                     <ol className={styles.pathGrid} data-entrance="cards">
                         {homeJourney.map((item) => (

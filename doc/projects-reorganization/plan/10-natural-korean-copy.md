@@ -78,3 +78,12 @@ Resume·Work·홈 설명 문구를 갱신. 상세는 기존 summary 기반 metad
 - 최종 build·post-build TypeScript·변경 파일 ESLint·diff 통과. 전역 lint의 기존 누락 plugin 예외 유지.
 - 1440/390/320px × 10페이지 = 30개 실제 production 렌더링 검사 통과. H1·가로 넘침·metadata·핵심 범위 문구 확인, 페이지 JS 오류 없음.
 - desktop/mobile 및 ERP dark 캡처 검토. 자세한 결과는 `audit/10-natural-korean-copy-verification.md`에 기록했다. 임시 검증 서버는 종료한다.
+
+## Follow-Up — 개발 분야 출발점 강조 완화, 2026-10-06
+사용자가 프론트엔드 출발점의 반복 강조를 줄이도록 추가 수정 승인. 홈·Resume 소개와 검색 설명은 현재 업무와 구현 경험 중심으로 변경했다. 상담 역할은 위젯·ERP 콘솔 화면 개발로 명시하고 법률 프로젝트의 입사 초기 표현을 삭제했다. 기술 분류와 배포 설명의 용어는 유지한다.
+
+- 소스 4개: `src/data/resume.ts`, `src/data/projects.ts`, `src/app/resume/page.tsx`, `src/components/domain/home/ReferenceHome.tsx`.
+- 프로젝트 ID·기간·상태·기술·상담/검증 규모 유지. 상담 초기 프론트엔드 1명 문구는 강조 완화 요청에 따라 생략하고 실제 담당 작업을 명시.
+- 변경 파일 임시 Next/TypeScript ESLint, 최종 build 및 post-build TypeScript, diff 통과. 기존 prettier plugin 경고 유지.
+- 생성된 홈·Resume·상세 7개 HTML에서 출발점 강조 문구 제거 및 새 소개 반영 확인. 이번 소규모 텍스트 수정에서는 별도 viewport 검사를 반복하지 않았다.
+- 커밋·배포 없음.
