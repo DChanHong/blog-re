@@ -6,7 +6,7 @@ export const projectsData: CareerProject[] = [
         title: "대륜톡 — 실시간 상담 플랫폼",
         subtitle: "약 80개 홈페이지의 고객 상담을 ERP에서 관리하는 플랫폼",
         period: "2025.04 ~ 현재",
-        role: "프론트엔드 개발 담당 · 기존 Go 서버 운영 및 기능 개선",
+        role: "상담 위젯·ERP 콘솔 화면 개발 · 기존 Go 서버 운영 및 기능 개선",
         status: "운영 중",
         featured: true,
         summary:
@@ -256,7 +256,7 @@ export const projectsData: CareerProject[] = [
         summary:
             "상황 입력과 질문지 응답, 변호사 선택, 상담 신청 화면을 개발했습니다. 운영자가 질문 구성을 관리하는 관리자 기능도 맡았습니다.",
         background:
-            "입사 초기 참여한 프로젝트로 사용자와 변호사를 연결하는 상담 서비스입니다. 하나의 Next.js 프로젝트에서 화면과 API Routes, 데이터 처리와 외부 알림 연동을 함께 다뤘습니다.",
+            "사용자와 변호사를 연결하는 상담 서비스입니다. 하나의 Next.js 프로젝트에서 화면과 API Routes, 데이터 처리와 외부 알림 연동을 함께 다뤘습니다.",
         metrics: [
             { value: "사용자·관리자", label: "사용자 화면 및 관리자 기능 개발" },
             { value: "API Routes", label: "API·데이터 구조 개선 참여" },
