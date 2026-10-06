@@ -6,7 +6,7 @@ export const personalInfoData = {
     company: "스카이즈코리아 개발팀",
     period: "2023.09 ~ 현재",
     introduction:
-        "업무를 이해하고, 필요한 서비스를 설계·개발하며 운영까지 개선합니다.",
+        "업무에 필요한 서비스를 설계·개발하며 운영 중 생기는 문제를 개선합니다.",
     university: "동아대학교",
     degree: "전자공학과 학사",
     gpa: "GPA 3.9",
@@ -19,7 +19,7 @@ export const careerMetrics: CareerMetric[] = [
     {
         value: "약 80개",
         label: "공통 상담 위젯 적용 홈페이지",
-        caption: "사이트별 고객 상담을 하나의 플랫폼으로 연결",
+        caption: "여러 홈페이지의 고객 상담을 한곳에서 관리",
         href: "/project/realtime-support",
     },
     {
@@ -31,7 +31,7 @@ export const careerMetrics: CareerMetric[] = [
     {
         value: "1,000명",
         label: "평가 데이터 저장 검증",
-        caption: "합성 데이터 테스트 · 전원 DB 저장 확인",
+        caption: "합성 데이터 테스트 · 모든 평가 데이터 저장 확인",
         href: "/project/erp-groupware",
     },
     {

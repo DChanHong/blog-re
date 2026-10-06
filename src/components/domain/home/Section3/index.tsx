@@ -19,9 +19,9 @@ export function WritingPreviewFrame({
                 <div className={styles.writingHeading} data-entrance="heading">
                     <p className={styles.eyebrow}>최근 글</p>
                     <h2 id="home-writing" className={styles.heading}>
-                        새롭게 배우고.
+                        새롭게 배운 내용을
                         <br />
-                        <span>배움의 과정을 기록합니다.</span>
+                        <span>개발 기록으로 남깁니다.</span>
                     </h2>
                 </div>
                 {children}

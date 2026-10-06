@@ -65,12 +65,12 @@ export default function ProjectDetails({
                     <Section title="프로젝트 배경">
                         <p className={styles.lead}>{project.background}</p>
                     </Section>
-                    <Section title="내 역할과 범위">
+                    <Section title="맡은 역할">
                         <p className={styles.role}>{project.role}</p>
                         <p className={styles.period}>{project.period}</p>
                         <p>{study.scope}</p>
                     </Section>
-                    <Section title="해결할 문제">
+                    <Section title="해결해야 했던 문제">
                         <ol className={styles.numbered}>
                             {project.challenges.map((item, index) => (
                                 <li key={item.title}>
@@ -93,7 +93,7 @@ export default function ProjectDetails({
                             ))}
                         </ul>
                     </Section>
-                    <Section title="접근 방식">
+                    <Section title="해결 방법과 결과">
                         <ol className={styles.approach}>
                             {project.challenges.map((item) => (
                                 <li key={item.title}>
@@ -114,7 +114,7 @@ export default function ProjectDetails({
                             ))}
                         </ol>
                         <p className={styles.flowNote}>
-                            담당 기능을 중심으로 정리한 개념 흐름입니다.
+                            담당한 기능의 처리 순서를 정리했습니다.
                         </p>
                         <dl className={styles.architecture}>
                             {study.architecture.map((item) => (
@@ -126,7 +126,7 @@ export default function ProjectDetails({
                         </dl>
                     </Section>
                     {study.walkthrough && (
-                        <Section title="구체적인 동작 흐름">
+                        <Section title="실제 동작 과정">
                             <h3>{study.walkthrough.title}</h3>
                             <p>{study.walkthrough.description}</p>
                             <ol className={styles.walkthrough}>

@@ -93,18 +93,19 @@ export default function ResumePage() {
                 <section className={styles.section} aria-labelledby="resume-personal">
                     <h2 id="resume-personal">개인 프로젝트</h2>
                     <div className={styles.entryHeading}>
-                        <h3>KBO Mate — 야구 직관 안내 AI Agent</h3>
+                        <h3>KBO Mate — 야구 직관 안내 AI 챗봇</h3>
                         <p className={styles.period}>개인 학습 프로젝트 · 개발 중</p>
                     </div>
                     <ul>
                         <li>
-                            FastAPI·LangGraph·PostgreSQL/pgvector·Next.js로 경기 일정 등 정형 데이터
-                            조회와 구장·예매·규칙 문서 검색을 구분하는 챗봇을 개발하고 있습니다.
+                            FastAPI, LangGraph, PostgreSQL/pgvector, Next.js를 사용해 야구 직관 안내
+                            챗봇을 개발하고 있습니다. 경기 일정 같은 정형 데이터는 조회하고
+                            구장·예매·규칙 안내는 문서에서 검색하도록 처리 방식을 나눴습니다.
                         </li>
                         <li>
-                            후속 질문에 필요한 경기 정보를 대화 맥락으로 관리하고, 데이터
-                            누락·검색·답변 근거 부족 사례를 기록해 평가 질문과 검색 조건을 개선하고
-                            있습니다. 상용 운영 서비스가 아닌 개인 개발 경험입니다.
+                            후속 질문에도 답할 수 있도록 앞선 대화의 경기 정보를 유지합니다. 데이터가
+                            없거나 검색 결과와 답변 근거가 부족한 사례를 기록해 평가 질문과 검색
+                            조건을 개선하고 있습니다.
                         </li>
                     </ul>
                 </section>
@@ -130,8 +131,8 @@ export default function ResumePage() {
                 >
                     <h2 id="resume-education">교육 및 학력</h2>
                     <div className={styles.educationEntry}>
-                        <h3>IT 스칼라 · AI Agent 외부 교육 수강</h3>
-                        <p>AI 이론·실습과 개인 개발 과정을 기술 블로그에 기록하고 있습니다.</p>
+                        <h3>IT 스칼라 · AI Agent 교육 수강</h3>
+                        <p>교육에서 배운 AI 이론과 실습 내용, 개인 프로젝트 개발 과정을 기술 블로그에 기록하고 있습니다.</p>
                     </div>
                     <div className={styles.educationEntry}>
                         <div className={styles.entryHeading}>

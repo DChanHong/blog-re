@@ -11,57 +11,57 @@ import styles from "./home-reference.module.css";
 
 const capabilityCards = [
     {
-        title: "사용자 흐름을 구현합니다",
+        title: "사용 과정을 챙깁니다",
         description:
-            "사용자가 기능을 끝까지 이용할 수 있도록 화면을 만듭니다. 입력 보존과 검증, 실시간 상태 반영, 실패 시 안내까지 사용 과정의 세부 동작을 챙깁니다.",
+            "입력한 내용이 유지되는지, 실시간 변경이 화면에 반영되는지 살핍니다. 오류가 나면 다음에 무엇을 해야 하는지 안내해 기능을 끝까지 이용할 수 있도록 합니다.",
     },
     {
         title: "화면과 데이터를 연결합니다",
         description:
-            "화면에 필요한 API와 데이터 구조를 함께 설계하고 구현합니다. 사용자 기능부터 관리자 도구까지, 조회와 저장이 이어지는 서비스 흐름을 만듭니다.",
+            "사용자 화면과 관리자 도구에 필요한 API와 데이터 구조를 함께 설계합니다. 화면에서 입력한 값이 저장되고 다시 조회되는 과정까지 개발합니다.",
     },
     {
         title: "변경하기 쉬운 구조를 만듭니다",
         description:
-            "여러 서비스에서 사용하는 기능을 공통화하고, 자주 바뀌는 운영 설정을 코드와 분리합니다. 기능을 추가하고 수정할 때 반복되는 작업을 줄입니다.",
+            "여러 서비스에서 쓰는 기능은 공통 모듈로 관리합니다. 자주 바뀌는 문구와 설정은 서버에서 변경할 수 있게 해 수정할 때 반복되는 배포 작업을 줄입니다.",
     },
     {
-        title: "운영하며 안정성을 높입니다",
+        title: "운영 문제를 해결합니다",
         description:
-            "실제 사용 중 발생한 문제를 재현하고 원인을 찾아 개선합니다. 연결 복구와 데이터 재조회, 대량 처리와 외부 연동의 실패 대응을 다룹니다.",
+            "실제 사용 중 발생한 오류를 재현하고 원인을 찾습니다. 상담 연결이 끊기거나 대량 저장과 외부 알림 처리에 실패하는 문제를 확인하고 복구 방법을 적용합니다.",
     },
 ];
 
 const homeJourney = [
     {
         year: "2023",
-        title: "화면에서 서비스로",
+        title: "화면과 API를 함께 개발하다",
         description:
-            "React·Next.js로 웹 개발을 시작했습니다. 채용사이트와 법률 서비스에서 사용자·관리자 화면뿐 아니라 API와 데이터 처리까지 맡으며, 하나의 기능이 완성되는 과정을 경험했습니다.",
+            "React와 Next.js로 웹 개발을 시작했습니다. 채용사이트와 법률 서비스의 사용자·관리자 화면을 만들고 API와 데이터 처리도 함께 맡았습니다.",
     },
     {
         year: "2024–2025",
-        title: "데이터부터 직접 설계하다",
+        title: "뉴스 CMS의 데이터를 설계하다",
         description:
-            "뉴스 CMS의 PostgreSQL 구조를 설계하고 관리자 화면과 API를 함께 개발했습니다. 화면에 필요한 정보를 넘어, 콘텐츠의 관계와 검색·운영 방식까지 설계 범위를 넓혔습니다.",
+            "뉴스 CMS의 PostgreSQL 구조와 관리자 화면, API를 개발했습니다. 기사와 기자, 태그의 관계를 정리하고 검색과 콘텐츠 관리에 맞게 데이터 구조를 조정했습니다.",
     },
     {
         year: "2025–현재",
         title: "실시간 서비스의 운영을 맡다",
         description:
-            "약 80개 홈페이지의 상담 위젯과 관리자 콘솔을 개발했습니다. 연결 복구와 상태 동기화를 개선하고, 기존 Go 백엔드의 API와 파일 처리 기능까지 개발 범위를 확장했습니다.",
+            "약 80개 홈페이지의 상담 위젯과 관리자 콘솔을 개발했습니다. 연결 복구와 상태 동기화를 개선했으며 기존 Go 서버의 API와 파일 처리 기능도 맡았습니다.",
     },
     {
         year: "2026",
-        title: "기능 전체를 완성하다",
+        title: "인사평가와 관리자 업무를 구현하다",
         description:
-            "인사평가 업무를 화면·API·DB로 구현하고 대량 처리 문제를 개선했습니다. 외주 관리자 기능과 운영 규칙을 직접 구체화하고, 반복되는 개발 구조를 공통 보일러플레이트로 정리했습니다.",
+            "인사평가 결과 전달과 이의제기 기능을 개발하고 대량 처리 오류를 개선했습니다. 외주 프로젝트에서는 관리자 기능과 운영 규칙을 정하고 반복되는 코드를 공통 보일러플레이트로 분리했습니다.",
     },
     {
         year: "현재",
-        title: "백엔드와 AI로 더 넓게",
+        title: "서비스 이관과 AI 개발을 배우다",
         description:
-            "Spring Boot 알림 서비스와 Kafka 연동을 구현하고 개발 서버에서 배포·검증했습니다. 개인 프로젝트에서는 FastAPI와 LangGraph로 AI 서비스를 개발하며 웹과 AI를 연결하고 있습니다.",
+            "Spring Boot 알림 서비스와 Kafka 연동을 구현해 개발 서버에서 동작과 배포를 확인했습니다. 개인 프로젝트로는 FastAPI와 LangGraph를 사용한 야구 직관 안내 챗봇을 개발하고 있습니다.",
     },
 ];
 
@@ -72,7 +72,7 @@ const toolkitGroups = [
     {
         title: "Service Deployment",
         technologies: "Spring Boot · Kafka · Kubernetes · Helm · ArgoCD",
-        context: "서비스 이관·개발 서버 배포 경험",
+        context: "서비스 이관 · 개발 서버 배포·검증",
     },
     {
         title: "AI Development",
@@ -147,11 +147,11 @@ export default function ReferenceHome({ writingSlot }: { writingSlot: ReactNode 
                         id="home-capabilities"
                         animated
                         label="Web Developer"
-                        title="업무를 이해하고."
+                        title="업무를 이해하고"
                         secondary="작동하는 서비스로 만듭니다."
                     >
-                        실시간 상담 플랫폼과 인사평가·채용·CMS를 개발하며, 사용자 화면부터
-                        API·데이터 설계와 운영 문제 해결까지 담당해왔습니다.
+                        실시간 상담 플랫폼과 인사평가·채용·콘텐츠 관리 시스템을 개발했습니다.
+                        사용자 화면과 API, 데이터 설계부터 운영 중 발생한 문제 해결까지 맡았습니다.
                     </SectionHeading>
                     <ol className={styles.capabilityGrid} data-entrance="cards">
                         {capabilityCards.map((item, index) => (
@@ -172,13 +172,12 @@ export default function ReferenceHome({ writingSlot }: { writingSlot: ReactNode 
                         id="home-path"
                         animated
                         label="걸어온 길"
-                        title="프론트엔드에서 시작해."
-                        secondary="서비스 전체를 만드는 개발자로."
+                        title="프론트엔드에서 시작해"
+                        secondary="API와 운영까지 맡아왔습니다."
                     >
-                        사용자 화면을 만드는 일에서 출발해, API와 데이터 설계, 백엔드 개발과 운영까지
-                        역할을 넓혀왔습니다. 필요한 기능을 직접 완성하고 운영의 문제를 해결하며,
-                        서비스 전반을 연결하는 풀스택 개발 역량을 쌓아왔습니다. 이제는 그 경험에
-                        AI를 더해 만들 수 있는 서비스의 범위를 확장하고 있습니다.
+                        화면을 개발하다 보니 필요한 API와 데이터 처리도 함께 맡게 됐습니다.
+                        이후 상담 서비스 운영과 인사평가 기능 개발을 경험했습니다. 지금은
+                        Spring Boot 서비스 이관에 참여하고 개인 프로젝트로 AI 개발을 배우고 있습니다.
                     </SectionHeading>
                     <ol className={styles.pathGrid} data-entrance="cards">
                         {homeJourney.map((item) => (
@@ -200,9 +199,8 @@ export default function ReferenceHome({ writingSlot }: { writingSlot: ReactNode 
                         title="실제로 쓰이는 서비스."
                         secondary="직접 해결한 문제들."
                     >
-                        고객이 사용하는 서비스부터 내부 업무 도구까지, 화면과 API, 데이터를 연결해
-                        개발했습니다. 각 프로젝트에 직접 맡은 역할과 설계 판단, 운영 과정에서 해결한
-                        문제를 담았습니다.
+                        고객 상담 서비스와 사내 업무 도구를 개발했습니다. 프로젝트별로 맡은 역할과
+                        구현 방법, 설계한 이유와 운영 중 해결한 문제를 정리했습니다.
                     </SectionHeading>
                     <dl className={styles.outcomes} data-entrance="cards">
                         {careerMetrics.map((metric) => (
@@ -240,11 +238,11 @@ export default function ReferenceHome({ writingSlot }: { writingSlot: ReactNode 
                     <SectionHeading
                         id="home-toolkit"
                         label="Toolkit & Learning"
-                        title="서비스를 만드는 기술."
-                        secondary="가능성을 넓히는 배움."
+                        title="개발에 사용한 기술과"
+                        secondary="새롭게 배우는 것들."
                     >
-                        화면과 서버, 데이터를 연결하며 필요한 기술을 익혀왔습니다. 실무에서 쌓은 웹
-                        개발 경험을 바탕으로, 백엔드와 AI 서비스 개발까지 깊이를 더하고 있습니다.
+                        실무에서 사용한 기술과 서비스 이관에 적용한 기술을 정리했습니다.
+                        AI 관련 기술은 교육과 개인 프로젝트를 통해 배우고 있습니다.
                     </SectionHeading>
                     <div className={styles.toolkitGrid}>
                         <div>
@@ -271,15 +269,15 @@ export default function ReferenceHome({ writingSlot }: { writingSlot: ReactNode 
                                 <li>
                                     <h4>AI Agent 교육과 실습</h4>
                                     <p>
-                                        IT 스칼라 교육 수강. RAG 검색과 답변 품질을 평가하고, 실패
-                                        원인을 분석하며 학습 내용을 기록했습니다.
+                                        IT 스칼라 교육을 수강하며 RAG 검색과 답변 품질을 평가했습니다.
+                                        실패 원인을 분석하고 배운 내용을 기술 블로그에 기록했습니다.
                                     </p>
                                 </li>
                                 <li>
                                     <h4>KBO Mate · 개인 프로젝트</h4>
                                     <p>
-                                        FastAPI와 LangGraph 기반으로 야구 직관 정보를 안내하는 AI
-                                        서비스를 개발하고 있습니다.
+                                        FastAPI와 LangGraph로 경기 일정과 구장·예매 정보를 안내하는
+                                        챗봇을 개발하고 있습니다.
                                     </p>
                                     <TextLink
                                         href="https://velog.io/@hongchee/AI-Agent-LangGraph-도입-Tool보다-먼저-정리해야-했던-Context"
@@ -304,7 +302,7 @@ export default function ReferenceHome({ writingSlot }: { writingSlot: ReactNode 
                         <br />
                         <span>더 살펴보세요.</span>
                     </h2>
-                    <p className={styles.lead}>GitHub와 기술 블로그에서 더 확인할 수 있습니다.</p>
+                    <p className={styles.lead}>프로젝트 코드와 개발 과정을 GitHub와 기술 블로그에 기록하고 있습니다.</p>
                     <div className={styles.actions}>
                         <PrimaryButton
                             href={personalInfoData.github}

@@ -6,7 +6,7 @@ export const SEO_CONFIG = {
         default: "성찬홍 | Web Developer",
         template: "%s | 성찬홍",
     },
-    description: "Web Developer 성찬홍의 포트폴리오. 프로젝트, 문제 해결 경험, 개발 기록을 소개합니다.",
+    description: "웹 개발자 성찬홍의 포트폴리오입니다. 고객 상담 서비스와 사내 업무 시스템을 개발하며 해결한 문제와 개발 기록을 소개합니다.",
     locale: "ko_KR",
     defaultOgImage: {
         path: "/og/portfolio-s.png",
