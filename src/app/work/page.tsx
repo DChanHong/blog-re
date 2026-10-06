@@ -15,7 +15,7 @@ import {
 
 const title = "프로젝트";
 const description =
-    "실시간 상담 플랫폼, 뉴스 CMS, ERP와 법률 플랫폼에서의 담당 역할과 문제 해결 경험을 소개합니다.";
+    "실시간 상담과 인사평가, 뉴스 CMS, 채용 등 7개 프로젝트에서 맡은 역할과 구현 방법, 해결한 문제를 소개합니다.";
 const canonical = getCanonicalUrl("/work");
 const image = absoluteUrl(SEO_CONFIG.defaultOgImage.path);
 
@@ -50,10 +50,10 @@ export default function WorkPage() {
             />
             <header className={styles.hero}>
                 <p className={styles.eyebrow}>프로젝트</p>
-                <h1>업무를 이해하고,<span>서비스로 연결합니다.</span></h1>
+                <h1>업무에 필요한 기능을<span>직접 개발했습니다.</span></h1>
                 <p className={styles.intro}>
-                    화면부터 API, 데이터와 운영까지 직접 연결한 작업입니다.
-                    각 카드에는 적용 규모나 구현 결과, 검증 범위를 대표하는 지표를 담았습니다.
+                    고객 상담 서비스와 사내 업무 도구, 외주 관리자 시스템을 개발했습니다.
+                    프로젝트별로 맡은 작업과 적용 규모, 구현 결과와 검증 범위를 정리했습니다.
                 </p>
             </header>
             <ul className={styles.grid} aria-label="프로젝트 목록">

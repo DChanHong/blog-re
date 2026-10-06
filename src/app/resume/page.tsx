@@ -17,7 +17,7 @@ export const dynamic = "force-static";
 
 const title = "이력서";
 const description =
-    "프론트엔드에서 API·데이터 설계와 운영 개선까지, 실시간 상담 플랫폼과 인사평가·채용·CMS를 개발한 웹 개발자 성찬홍의 이력서입니다.";
+    "실시간 상담 플랫폼과 사내 업무 시스템을 개발한 웹 개발자 성찬홍의 이력서입니다. 프론트엔드부터 API·데이터 설계와 운영 개선까지의 경험을 소개합니다.";
 const canonicalUrl = getCanonicalUrl("/resume");
 const ogImageUrl = absoluteUrl(SEO_CONFIG.defaultOgImage.path);
 
