@@ -268,13 +268,6 @@ export default function ReferenceHome({ writingSlot }: { writingSlot: ReactNode 
                                     <p>2016.02–2022.02 · {personalInfoData.gpa}/4.5</p>
                                 </li>
                                 <li>
-                                    <h4>AI Agent 교육과 실습</h4>
-                                    <p>
-                                        IT 스칼라 교육을 수강하며 RAG 검색과 답변 품질을 평가했습니다.
-                                        실패 원인을 분석하고 배운 내용을 기술 블로그에 기록했습니다.
-                                    </p>
-                                </li>
-                                <li>
                                     <h4>KBO Mate · 개인 프로젝트</h4>
                                     <p>
                                         FastAPI와 LangGraph로 경기 일정과 구장·예매 정보를 안내하는

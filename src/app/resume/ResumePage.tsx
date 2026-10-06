@@ -132,7 +132,6 @@ export default function ResumePage() {
                     <h2 id="resume-education">교육 및 학력</h2>
                     <div className={styles.educationEntry}>
                         <h3>IT 스칼라 · AI Agent 교육 수강</h3>
-                        <p>교육에서 배운 AI 이론과 실습 내용, 개인 프로젝트 개발 과정을 기술 블로그에 기록하고 있습니다.</p>
                     </div>
                     <div className={styles.educationEntry}>
                         <div className={styles.entryHeading}>
