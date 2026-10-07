@@ -114,7 +114,7 @@ export default function ProjectDetails({
                             ))}
                         </ol>
                         <p className={styles.flowNote}>
-                            담당한 기능의 처리 순서를 정리했습니다.
+                            담당한 기능을 중심으로 정리한 시스템 구조입니다.
                         </p>
                         <dl className={styles.architecture}>
                             {study.architecture.map((item) => (

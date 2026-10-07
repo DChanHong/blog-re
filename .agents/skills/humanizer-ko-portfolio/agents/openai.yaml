@@ -1,0 +1,4 @@
+interface:
+  display_name: "한국어 포트폴리오 Humanizer"
+  short_description: "한국어 이력서와 포트폴리오 문구를 사실에 맞게 자연스럽게 다듬기"
+  default_prompt: "$humanizer-ko-portfolio 스킬로 요청한 페이지의 한국어 문구를 검토하고 수치와 담당 범위를 유지하며 자연스럽게 다듬어줘."
