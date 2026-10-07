@@ -36,7 +36,7 @@ export const workCards: WorkCard[] = [
     {
         slug: "admin-platform",
         category: "외주 프로젝트 · 운영 중",
-        title: "관리자 시스템과 공통 개발 기반",
+        title: "기업·의료기관 관리자 시스템과 공통 모듈",
         description: "기업·의료기관의 관리자 화면과 API를 개발했습니다. 반복되는 인증·권한·업로드 기능은 공통 모듈로 분리했습니다.",
         metric: "2개 프로젝트",
         caption: "고객사가 실제 사용 중인 관리자 시스템",
@@ -47,15 +47,15 @@ export const workCards: WorkCard[] = [
         title: "채용사이트·관리자 시스템 개편",
         description: "5단계 지원서의 입력 보존과 검증을 적용했습니다. 제출 API와 첨부파일 처리, 지원자 검색과 검토 기능도 개발했습니다.",
         metric: "5단계 지원서",
-        caption: "공개 화면·제출 API·관리자 검토 흐름 연결",
+        caption: "지원서 작성·제출과 관리자 검토",
     },
     {
         slug: "legal-platform",
         category: "사내 프로젝트 · 출시 보류",
-        title: "법률 상담 및 변호사 플랫폼",
+        title: "법률 상담·변호사 연결 서비스",
         description: "상황 입력과 질문지 응답, 변호사 선택과 상담 신청 화면을 개발했습니다. 관리자 질문지 기능도 맡았습니다.",
         metric: "내부 테스트",
-        caption: "출시 전 검증 완료 · 외부 출시는 보류",
+        caption: "일부 서비스 내부 테스트 완료 · 외부 출시 보류",
     },
     {
         slug: "spring-msa",

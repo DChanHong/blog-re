@@ -11,12 +11,12 @@ import styles from "./home-reference.module.css";
 
 const capabilityCards = [
     {
-        title: "사용 과정을 챙깁니다",
+        title: "입력부터 오류 복구까지 살핍니다",
         description:
-            "입력한 내용이 유지되는지, 실시간 변경이 화면에 반영되는지 살핍니다. 오류가 나면 다음에 무엇을 해야 하는지 안내해 기능을 끝까지 이용할 수 있도록 합니다.",
+            "작성 중 입력이 유지되고 실시간 변경이 화면에 반영되도록 개발합니다. 오류가 발생하면 사용자가 다음 행동을 선택할 수 있도록 안내합니다.",
     },
     {
-        title: "화면과 데이터를 연결합니다",
+        title: "화면에 필요한 API와 데이터를 설계합니다",
         description:
             "사용자 화면과 관리자 도구에 필요한 API와 데이터 구조를 함께 설계합니다. 화면에서 입력한 값이 저장되고 다시 조회되는 과정까지 개발합니다.",
     },
@@ -53,13 +53,13 @@ const homeJourney = [
     },
     {
         year: "2026",
-        title: "인사평가와 관리자 업무를 구현하다",
+        title: "인사평가와 관리자 기능을 개발하다",
         description:
             "인사평가 결과 전달과 이의제기 기능을 개발하고 대량 처리 오류를 개선했습니다. 외주 프로젝트에서는 관리자 기능과 운영 규칙을 정하고 반복되는 코드를 공통 보일러플레이트로 분리했습니다.",
     },
     {
         year: "현재",
-        title: "서비스 이관과 AI 개발을 배우다",
+        title: "서비스 이관에 참여하고 AI 챗봇을 개발하다",
         description:
             "Spring Boot 알림 서비스와 Kafka 연동을 구현해 개발 서버에서 동작과 배포를 확인했습니다. 개인 프로젝트로는 FastAPI와 LangGraph를 사용한 야구 직관 안내 챗봇을 개발하고 있습니다.",
     },
@@ -175,10 +175,9 @@ export default function ReferenceHome({ writingSlot }: { writingSlot: ReactNode 
                         title="고객 서비스와 업무 시스템을"
                         secondary="개발하고 운영해왔습니다."
                     >
-                        채용과 콘텐츠 관리, 실시간 상담과 인사평가 등 업무에 필요한 서비스를
-                        개발했습니다. 화면과 API, 데이터 구조를 설계하고 운영 중 발생한 문제를
-                        개선했습니다. 현재는 Spring Boot 서비스 이관에 참여하고 개인 프로젝트로
-                        AI 챗봇을 개발하고 있습니다.
+                        채용사이트와 뉴스 CMS를 개발한 뒤 실시간 상담 서비스와 인사평가 시스템을
+                        맡았습니다. 현재는 Spring Boot 서비스 이관에 참여하고 개인 프로젝트로
+                        야구 직관 안내 챗봇을 개발하고 있습니다.
                     </SectionHeading>
                     <ol className={styles.pathGrid} data-entrance="cards">
                         {homeJourney.map((item) => (
@@ -197,8 +196,8 @@ export default function ReferenceHome({ writingSlot }: { writingSlot: ReactNode 
                         id="home-work"
                         animated
                         label="Work"
-                        title="실제로 쓰이는 서비스."
-                        secondary="직접 해결한 문제들."
+                        title="개발한 서비스와"
+                        secondary="해결한 문제들."
                     >
                         고객 상담 서비스와 사내 업무 도구를 개발했습니다. 프로젝트별로 맡은 역할과
                         구현 방법, 설계한 이유와 운영 중 해결한 문제를 정리했습니다.

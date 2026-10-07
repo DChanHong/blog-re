@@ -17,7 +17,7 @@ import {
 
 const title = "글";
 const description =
-    "개발 경험과 인사이트를 공유하는 블로그입니다. 최신 기술 트렌드와 실무 경험을 다룹니다.";
+    "웹 개발과 AI 챗봇을 만들며 배운 내용과 직접 해결한 문제를 기록합니다.";
 const canonicalUrl = getCanonicalUrl("/writing");
 const ogImageUrl = absoluteUrl(SEO_CONFIG.defaultOgImage.path);
 
@@ -96,12 +96,12 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
                 <HeroEntrance className={styles.hero}>
                     <p className={styles.eyebrow}>Writing</p>
                     <h1>
-                        새롭게 배우고.
+                        개발하며 배운 것들을
                         <br />
-                        <span>배움의 과정을 기록합니다.</span>
+                        <span>기록합니다.</span>
                     </h1>
                     <p className={styles.lead}>
-                        웹 개발부터 AI까지, 새롭게 익힌 개념과 직접 적용해 본 경험을 정리합니다.
+                        웹 개발과 AI 챗봇 개발에서 익힌 개념과 직접 적용한 과정을 담았습니다.
                     </p>
                 </HeroEntrance>
                 <Suspense fallback={<WritingSkeleton />}>

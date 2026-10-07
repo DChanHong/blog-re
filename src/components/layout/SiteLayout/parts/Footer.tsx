@@ -24,7 +24,7 @@ export default function Footer() {
                     </ul>
                 </nav>
                 <nav aria-label="외부 링크">
-                    <p className="footer-label">다른 곳에서</p>
+                    <p className="footer-label">코드와 글</p>
                     <ul className="footer-links">
                         <li>
                             <TextLink

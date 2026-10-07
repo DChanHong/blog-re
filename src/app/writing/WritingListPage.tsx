@@ -150,7 +150,7 @@ export default function WritingListPage({
             <div className={styles.resultBar}>
                 <p role="status" aria-live="polite">
                     {hasError
-                        ? "글 조회 실패"
+                        ? "글을 불러오지 못했습니다."
                         : loading
                           ? "글을 불러오는 중…"
                           : `총 ${data?.pagination.totalPosts ?? 0}개의 글`}
@@ -168,7 +168,7 @@ export default function WritingListPage({
                             </span>
                         ))}
                         <Link href="/writing" scroll={false}>
-                            전체 초기화
+                            검색 조건 지우기
                         </Link>
                     </div>
                 )}
@@ -224,12 +224,12 @@ export default function WritingListPage({
                         <h2>
                             {activeFilters.length
                                 ? "검색 조건에 맞는 글이 없습니다."
-                                : "아직 작성된 글이 없습니다."}
+                                : "아직 공개된 글이 없습니다."}
                         </h2>
                         <p>
                             {activeFilters.length
                                 ? "다른 검색어나 필터로 찾아보세요."
-                                : "새로운 배움의 기록을 준비하고 있습니다."}
+                                : "글이 등록되면 이곳에 표시됩니다."}
                         </p>
                         {activeFilters.length > 0 && (
                             <Link href="/writing" scroll={false}>

@@ -183,7 +183,7 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
                     />
                 ) : (
                     <div className="rounded-lg border border-border bg-warning-surface p-6 text-warning">
-                        아직 상세 본문이 크롤링되지 않았습니다.
+                        아직 이곳에서 본문을 볼 수 없습니다.
                     </div>
                 )}
             </article>

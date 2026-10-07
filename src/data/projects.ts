@@ -46,7 +46,7 @@ export const projectsData: CareerProject[] = [
                 problem:
                     "REST로 조회한 데이터와 WebSocket 이벤트를 한 저장소에서 관리해 조회 캐시와 실시간 변경 처리를 구분하기 어려웠습니다.",
                 action: "조회와 변경 요청은 React Query로 관리했습니다. 메시지와 상담방 목록, 미리보기처럼 이벤트를 즉시 반영해야 하는 상태는 Zustand로 분리했습니다.",
-                result: "조회 캐시와 실시간 상태를 나눠 관리하고 상담방 전환 시 데이터를 동기화하는 과정을 정리했습니다.",
+                result: "조회 결과는 캐시로 관리하고 메시지와 상담방 변경은 WebSocket 이벤트를 받아 화면에 반영하도록 했습니다. 상담방을 전환할 때는 데이터를 동기화했습니다.",
             },
             {
                 title: "다수 홈페이지의 배포 일관성",
@@ -93,7 +93,7 @@ export const projectsData: CareerProject[] = [
             "운영자가 기사와 메인 노출 영역을 직접 관리할 도구가 필요했습니다. 기획서를 바탕으로 필요한 데이터와 관계를 정리하고 DB 구조와 관리자 화면, API를 개발했습니다.",
         metrics: [
             { value: "DB · API · UI", label: "DB · API · UI 연결" },
-            { value: "Transaction", label: "기사와 관계 데이터 함께 저장" },
+            { value: "Transaction", label: "기사와 관련 데이터의 일괄 저장" },
             { value: "WebP", label: "이미지 최적화" },
         ],
         responsibilities: [
@@ -112,14 +112,14 @@ export const projectsData: CareerProject[] = [
         ],
         challenges: [
             {
-                title: "기사와 관계 데이터 함께 저장",
+                title: "기사와 관련 데이터의 일괄 저장",
                 problem:
                     "기사를 저장할 때 본문과 여러 기자, 관련 기사, 태그, 첨부파일 정보가 함께 바뀝니다. 일부만 저장되면 데이터가 서로 맞지 않을 수 있었습니다.",
                 action: "Prisma 트랜잭션으로 기사와 관계 데이터를 함께 저장하도록 했습니다. 기사 수정과 삭제 시 관련 데이터를 처리하는 방식도 정리했습니다.",
                 result: "기사와 관련 데이터가 일부만 저장되는 일을 방지하고 수정·삭제 API의 처리 기준을 정했습니다.",
             },
             {
-                title: "원본 품질과 렌더링 성능의 균형",
+                title: "이미지 용도에 따른 변환과 썸네일 처리",
                 problem:
                     "모든 기사 이미지에 같은 변환 규칙을 적용하면 필요한 품질이 떨어지거나 파일 용량이 불필요하게 커질 수 있었습니다.",
                 action: "sharp로 이미지를 WebP로 변환하고 썸네일은 별도로 등록할 수 있게 했습니다. 이미지의 용도와 중요도에 따라 처리 방식을 나눴습니다.",
@@ -167,7 +167,7 @@ export const projectsData: CareerProject[] = [
         responsibilities: [
             "인사팀·기획자와 자동화 범위 협의 및 Excel 결과 매칭·개인별 전달 구현",
             "발송 시점의 평가 결과를 보존하는 스냅샷 구조 설계",
-            "핵심 DB 저장과 WORKS 후속 알림 분리, 실패 재시도·중복 확인·오류 추적",
+            "평가 데이터 저장과 WORKS 알림 처리 분리, 실패 재시도·중복 확인·오류 추적",
             "WAITING → RESPONDING → COMPLETED 상태 기반 인사평가 이의제기 기능 개발",
             "관리자·구성원 화면, 메시지 타임라인, 파일 첨부와 13개 API 구현",
             "드래그 앤 드롭 사이드바 순서 개인화와 Transaction 기반 저장",
@@ -212,7 +212,7 @@ export const projectsData: CareerProject[] = [
         role: "디자이너 협업 · 공개 화면·지원서·제출 API·관리자 기능 개발",
         status: "운영 중",
         featured: false,
-        summary: "디자이너와 협업해 공개 채용 화면과 5단계 지원서, 제출 API, 관리자 기능을 개발했습니다. 작성 중 입력을 보존하고 단계별로 검증했습니다. 관리자는 지원자를 검색하고 검토 상태를 관리할 수 있도록 했습니다.",
+        summary: "디자이너와 협업해 공개 채용 화면과 5단계 지원서, 제출 API, 관리자 기능을 개발했습니다. 작성 중 입력을 보존하고 단계별로 검증했습니다. 관리자가 지원자를 검색하고 검토 상태를 관리할 수 있도록 했습니다.",
         background: "지원자는 여러 단계의 지원서를 작성해 제출하고 관리자는 접수된 지원서를 찾아 검토할 수 있어야 했습니다. 채용 공고 확인부터 지원서 제출과 검토까지 필요한 기능을 개발했습니다.",
         metrics: [
             { value: "5단계", label: "입력 보존·단계별 검증을 적용한 지원서" },
@@ -247,7 +247,7 @@ export const projectsData: CareerProject[] = [
     },
     {
         id: "legal-platform",
-        title: "법률 상담 유입 및 변호사 플랫폼",
+        title: "법률 상담·변호사 연결 서비스",
         subtitle: "상황 입력과 질문지 응답을 거쳐 상담을 신청하는 서비스",
         period: "2023 ~ 2024",
         role: "사용자·관리자 화면 개발 및 API·DB 개선 참여",
@@ -289,7 +289,7 @@ export const projectsData: CareerProject[] = [
     },
     {
         id: "admin-platform",
-        title: "외주 관리자 시스템과 공통 개발 기반",
+        title: "기업·의료기관 관리자 시스템과 공통 모듈",
         subtitle: "기업·의료기관의 관리자 기능 개발과 공통 모듈 분리",
         period: "2026.06 ~ 현재",
         role: "관리자 기능·운영 규칙 협의 · 화면·API 개발 · 공통 모듈 제작",
@@ -309,7 +309,7 @@ export const projectsData: CareerProject[] = [
             "의료기관 홈페이지 상담 처리·블랙리스트·이벤트·팝업·의료진 편집 기능 정의 및 개발",
             "관리자 화면·API·입력 검증·메뉴 권한·파일 업로드 구현",
             "외주사 검수용 Vercel 배포 및 피드백 반영",
-            "인증·권한·공통 UI·업로드·데이터 접근 계층과 사용 가이드 모듈화",
+            "인증·권한·공통 UI·업로드 모듈과 데이터 접근 계층 구현, 사용 가이드 작성",
         ],
         challenges: [
             {
@@ -356,7 +356,7 @@ export const projectsData: CareerProject[] = [
             "Kafka 사용자 변경 이벤트 수신과 서비스 내 사용자 정보 동기화 구현",
             "AI 도구를 활용한 서비스용 Helm 차트와 ArgoCD Application 추가",
             "Jenkins 빌드·ECR 이미지·ArgoCD 반영 및 재배포 확인",
-            "개발 서버 API·DB 저장·미인증 401·Kafka 수신 QA",
+            "개발 서버에서 API 응답·DB 저장·미인증 요청의 401 응답·Kafka 이벤트 수신 확인",
             "인사평가 API의 Spring Boot 이관 코드 작성 중",
         ],
         architecture: ["알림 API · Kafka 사용자 이벤트", "Spring Boot 서비스 · PostgreSQL", "Jenkins 빌드 · ECR 이미지", "Helm · ArgoCD", "Kubernetes 개발 서버 · QA"],
