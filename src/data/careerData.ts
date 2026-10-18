@@ -25,7 +25,7 @@ export const careerMetrics: CareerMetric[] = [
     {
         value: "12만 건+",
         label: "실제 상담 유입",
-        caption: "서비스 시작 후 1년간 · DB 집계 기준",
+        caption: "누적 상담 유입 · DB 집계 기준",
         href: "/project/realtime-support",
     },
     {

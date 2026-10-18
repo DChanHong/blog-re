@@ -32,6 +32,7 @@ const statusBadge: Record<string, string> = {
     "이관 진행 중": "bg-sunken text-accent border-border",
     "운영 중": "bg-success-surface text-success border-border",
     완료: "bg-muted text-secondary border-border",
+    "웹 배포 완료": "border-border bg-success-surface text-success",
     "출시 보류": "bg-warning-surface text-warning border-border",
 };
 

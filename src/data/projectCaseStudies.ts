@@ -35,7 +35,7 @@ const cases: Record<string, CaseCopy> = {
             "약 80개 홈페이지에 자체 상담 위젯 적용",
             "연결 관리와 상담방 참여를 분리해 복구 처리 개선",
             "기존 공통 npm 패키지에 위젯을 추가해 배포·관리",
-            "서비스 시작 후 1년간 실제 상담 12만 건 이상 집계",
+            "누적 상담 유입 12만 건 이상 · DB 집계",
         ],
         flow: [
             { label: "상담 접점", value: "홈페이지" },
@@ -66,7 +66,7 @@ const cases: Record<string, CaseCopy> = {
             ],
             limitation: "구현한 복구 과정을 정리했습니다. 복구 시간과 성공률은 별도로 측정하지 않았습니다.",
         },
-        scope: "고객 상담 위젯과 ERP 상담 화면을 개발했습니다. 기존 Go·WebSocket 서버를 수정하고 공통 npm 패키지에 위젯을 추가했습니다. 12만 건은 서비스 시작 후 1년간 DB에 집계된 실제 상담 건수입니다.",
+        scope: "고객 상담 위젯과 ERP 상담 화면을 개발했습니다. 기존 Go·WebSocket 서버를 수정하고 공통 npm 패키지에 위젯을 추가했습니다. 12만 건은 DB에 집계된 누적 상담 유입 건수입니다.",
         overrides: {
             responsibilities: [
                 "고객 상담 위젯과 ERP 관리자 주요 화면 설계·개발",
@@ -135,9 +135,9 @@ const cases: Record<string, CaseCopy> = {
         scope: "기존 ERP에 인사평가 기능을 추가하고 관련 화면과 API, 데이터 구조를 담당했습니다. 1,000명은 합성 평가 데이터의 DB 저장 테스트 규모입니다. 실제 1,000명의 알림 수신 여부는 검증하지 않았습니다.",
         overrides: {
             metrics: [
+                { value: "200~300명", label: "일반 평가 운영 대상" },
                 { value: "Excel + ERP", label: "양식 유지 · 전달과 이의제기 통합" },
                 { value: "1,000명", label: "합성 평가 데이터 DB 저장 검증" },
-                { value: "13개", label: "이의제기 REST API" },
             ],
             challenges: [
                 {
@@ -162,7 +162,7 @@ const cases: Record<string, CaseCopy> = {
             responsibilities: [
                 "인사팀·기획자와 자동화 범위 협의, Excel 결과 매칭과 개인별 전달 구현",
                 "발송 결과 보존을 위한 스냅샷 구조 및 관리자·구성원 화면 설계",
-                "이의제기 상태 관리·질문과 답변 목록·첨부파일·13개 API 개발",
+                "이의제기 상태 관리·질문과 답변 목록·첨부파일·관련 API 개발",
                 "DB 저장과 외부 알림 분리, 오류 추적과 재시도 개선",
             ],
         },
@@ -198,7 +198,7 @@ const cases: Record<string, CaseCopy> = {
             "기사 수정·soft delete와 관계 조회 기준 정리",
             "이미지 용도와 중요도에 따른 원본·썸네일 처리 구분",
         ],
-        scope: "뉴스 플랫폼에서 관리자 CMS의 DB 구조와 API, 화면 개발을 담당했습니다.",
+        scope: "뉴스 플랫폼에서 관리자 CMS의 초기 DB 구조와 API, 화면 개발을 담당했습니다. 공개 뉴스 화면·API는 다른 개발자가 담당했습니다.",
     },
     "admin-platform": {
         category: "외주 프로젝트 · 관리자 시스템",
@@ -274,7 +274,7 @@ const cases: Record<string, CaseCopy> = {
         after: [
             "상황 입력·질문지 응답·변호사 선택·상담 신청 구현",
             "사용자 화면과 관리자 질문지 기능 개발",
-            "내부 테스트까지 완료했으나 외부 출시는 보류",
+            "웹 배포 완료 · 검색 사이트 오픈 미진행",
         ],
         flow: [
             { label: "사용자 입력", value: "상황·질문" },
@@ -291,9 +291,9 @@ const cases: Record<string, CaseCopy> = {
         quality: [
             "상담 신청 흐름의 출시 전 내부 테스트 수행",
             "사용자 상담 신청과 관리자 질문지 기능 구현",
-            "회사 일정으로 외부 출시 보류",
+            "웹 배포 완료와 검색 사이트 오픈 미진행을 구분",
         ],
-        scope: "사용자·관리자 화면을 개발하고 API·DB 개선에 참여했습니다. 일부 서비스는 내부 테스트까지 완료했으며 회사 일정으로 외부 출시가 보류된 상태입니다.",
+        scope: "사용자 흐름과 초기 API·질문지 DB를 설계하고 중첩 JSON의 질문·선택지·분기를 PostgreSQL 관계형 구조로 재설계했습니다. 웹 배포 완료·검색 사이트 오픈 미진행 상태이며 Spring 전체 구현은 개인 완료 경력에 포함하지 않습니다.",
         overrides: {
             challenges: [
                 {
@@ -313,48 +313,14 @@ const cases: Record<string, CaseCopy> = {
         },
     },
     "spring-msa": {
-        category: "사내 프로젝트 · 서비스 이관",
-        comparison: ["이관 과제", "개발 환경 검증 결과"],
-        before: [
-            "기존 Next.js 백엔드의 알림 기능을 별도 서비스로 분리",
-            "분리된 서비스에서 사용자 변경 정보를 동기화할 필요",
-            "새 서비스를 기존 배포 환경에 추가",
-        ],
-        after: [
-            "Spring Boot 알림 API와 Kafka 사용자 동기화 구현",
-            "서비스용 Helm·ArgoCD 배포 구성 추가",
-            "개발 서버에서 API·DB·인증·이벤트 수신과 재배포 확인",
-            "운영 트래픽 전환 전 단계 · 인사평가 API 이관 코드 작성 중",
-        ],
-        flow: [
-            { label: "도메인 구현", value: "Spring" },
-            { label: "이미지 생성", value: "Jenkins" },
-            { label: "배포 반영", value: "ArgoCD" },
-            { label: "개발 환경", value: "Kubernetes" },
-        ],
-        architecture: [
-            {
-                label: "알림 서비스",
-                value: "Spring Boot · Controller/Service/Repository · PostgreSQL",
-            },
-            { label: "사용자 정보", value: "Kafka 변경 이벤트 수신·동기화" },
-            { label: "서비스 배포", value: "Helm 차트 · ArgoCD Application" },
-            { label: "기존 인프라", value: "Jenkins · Amazon ECR · Kubernetes · Kafka" },
-        ],
-        quality: [
-            "개발 서버에서 알림 API와 DB 저장 확인",
-            "미인증 요청의 401 응답 검증",
-            "Kafka 이벤트 수신과 사용자 데이터 반영 확인",
-            "이미지 빌드부터 재배포까지 실행 흐름 검증",
-        ],
-        scope: "이미 구축된 VPC·Kubernetes·Jenkins·Kafka 환경에서 알림 API와 사용자 정보 동기화, 해당 서비스의 배포 구성을 담당했습니다. 현재 개발 서버 QA 단계이며 운영 트래픽 전환 전입니다. 인사평가 API의 이관 코드는 작성 중입니다.",
-        overrides: {
-            metrics: [
-                { value: "Spring Boot", label: "알림 서비스 API 구현" },
-                { value: "Kafka", label: "사용자 변경 이벤트 동기화" },
-                { value: "개발 서버 QA", label: "기능·인증·재배포 검증 · 운영 전환 전" },
-            ],
-        },
+        category: "사내 프로젝트 · 이관 준비·연습",
+        comparison: ["이관 과제", "현재 담당 범위"],
+        before: ["Next.js 백엔드의 도메인별 Spring 이관", "기존 API와 신규 서비스 구조 이해"],
+        after: ["Gradle 기반 alarm 연습 모듈 구성", "보안 필터와 Flyway 초기 스키마 구성", "인사평가 API 이관 준비"],
+        flow: [{ label: "기존 구조", value: "Next.js API" }, { label: "구조 학습", value: "Spring Boot" }, { label: "연습", value: "alarm 모듈" }, { label: "담당 영역", value: "인사평가 이관 준비" }],
+        architecture: [{ label: "연습 모듈", value: "Gradle · Spring Boot" }, { label: "초기 구성", value: "보안 필터 · Flyway 초기 스키마" }],
+        quality: ["현재 범위는 이관 준비와 연습 모듈 구성"],
+        scope: "초기 VPC·Kubernetes·Jenkins·Kafka는 시니어 개발자가 구축했고 users 이관은 팀원이 담당합니다. 본인은 인사평가 API 이관을 준비하고 있습니다.",
     },
 };
 

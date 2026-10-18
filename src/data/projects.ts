@@ -15,7 +15,7 @@ export const projectsData: CareerProject[] = [
             "기존 채널톡은 비용과 기능 확장, ERP 연계에 제약이 있었습니다. 여러 홈페이지에서 같은 상담 위젯을 사용하고 상담원이 ERP에서 상담을 관리할 수 있는 자체 플랫폼이 필요했습니다.",
         metrics: [
             { value: "약 80개", label: "상담 위젯 적용 홈페이지" },
-            { value: "12만 건+", label: "서비스 시작 후 1년간 실제 상담 · DB 집계" },
+            { value: "12만 건+", label: "누적 상담 유입 · DB 집계" },
             { value: "서버 설정", label: "사이트별 재배포 없이 문구·프로필·답변 설정 변경" },
         ],
         responsibilities: [
@@ -149,7 +149,7 @@ export const projectsData: CareerProject[] = [
         id: "erp-groupware",
         title: "인사평가 배포·이의제기 시스템",
         subtitle: "평가 결과 전달과 이의제기를 연결한 ERP 업무 시스템",
-        period: "2026.02 ~ 2026.03 · 이후 유지보수",
+        period: "신규 개발 약 1개월 · 이후 운영·유지보수",
         role: "인사팀·기획자와 요구사항 협의 · 화면·API·DB 설계 및 개발",
         status: "운영 중",
         featured: true,
@@ -158,9 +158,9 @@ export const projectsData: CareerProject[] = [
         background:
             "인사팀은 개인별 Excel 파일을 만들어 전달하고 DM으로 이의제기를 받았습니다. 평가 기준 변경에는 기존 Excel 작업이 적합해 양식을 유지했습니다. 대신 업로드한 평가 결과를 구성원별로 연결하고 전달하는 작업과 이의제기 관리를 ERP에서 처리하도록 했습니다.",
         metrics: [
+            { value: "200~300명", label: "일반 평가 운영 대상" },
             { value: "Excel + ERP", label: "평가 양식 유지 · 결과 전달과 이의제기 관리" },
             { value: "1,000명", label: "합성 평가 데이터 전체 DB 저장 확인" },
-            { value: "13개", label: "이의제기 REST API" },
             { value: "3단계", label: "대기·응답 중·완료 상태 관리" },
             { value: "상시", label: "운영 요청 대응" },
         ],
@@ -169,7 +169,7 @@ export const projectsData: CareerProject[] = [
             "발송 시점의 평가 결과를 보존하는 스냅샷 구조 설계",
             "평가 데이터 저장과 WORKS 알림 처리 분리, 실패 재시도·중복 확인·오류 추적",
             "WAITING → RESPONDING → COMPLETED 상태 기반 인사평가 이의제기 기능 개발",
-            "관리자·구성원 화면, 메시지 타임라인, 파일 첨부와 13개 API 구현",
+            "관리자·구성원 화면, 메시지 타임라인, 파일 첨부와 관련 API 구현",
             "드래그 앤 드롭 사이드바 순서 개인화와 Transaction 기반 저장",
             "상담 목록, AI 요약, 메모, 통화 이력, 담당자 배정을 포함한 AICC 화면 개발",
             "Zod 입력 검증과 EC2 UTC 환경을 고려한 KST 날짜 처리",
@@ -249,9 +249,9 @@ export const projectsData: CareerProject[] = [
         id: "legal-platform",
         title: "법률 상담·변호사 연결 서비스",
         subtitle: "상황 입력과 질문지 응답을 거쳐 상담을 신청하는 서비스",
-        period: "2023 ~ 2024",
-        role: "사용자·관리자 화면 개발 및 API·DB 개선 참여",
-        status: "출시 보류",
+        period: "2025년 · 약 2~3개월 개발",
+        role: "사용자 흐름·초기 API·질문지 DB 설계 및 재설계",
+        status: "웹 배포 완료",
         featured: false,
         summary:
             "상황 입력과 질문지 응답, 변호사 선택, 상담 신청 화면을 개발했습니다. 운영자가 질문 구성을 관리하는 관리자 기능도 맡았습니다.",
@@ -260,11 +260,12 @@ export const projectsData: CareerProject[] = [
         metrics: [
             { value: "사용자·관리자", label: "사용자 화면 및 관리자 기능 개발" },
             { value: "API Routes", label: "API·데이터 구조 개선 참여" },
-            { value: "내부 테스트", label: "출시 전 검증 완료" },
+            { value: "웹 배포 완료", label: "검색 사이트 오픈 미진행" },
         ],
         responsibilities: [
             "상황 입력·질문지 응답·변호사 선택·상담 신청 화면 개발",
             "운영자가 질문 구성을 관리하는 관리자 질문지 기능 구현",
+            "중첩 JSON의 질문·선택지·분기를 PostgreSQL 관계형 구조로 재설계",
             "Next.js API Routes 기반 API와 PostgreSQL 데이터 구조 개선 참여",
             "로그인, 정적 페이지, 사용자·관리자 화면 개발",
             "푸시 알림·알림톡·NCP 등 외부 서비스 연동",
@@ -285,13 +286,13 @@ export const projectsData: CareerProject[] = [
             "Zustand",
         ],
         scopeNote:
-            "일부 서비스는 내부 테스트까지 완료했습니다. 회사 일정으로 외부 출시가 보류된 상태입니다.",
+            "웹 배포는 완료됐으며 검색 사이트 오픈은 미진행입니다. 실제 운영 성과와 Spring 백엔드 전체 담당 범위는 확인되지 않았습니다.",
     },
     {
         id: "admin-platform",
         title: "기업·의료기관 관리자 시스템과 공통 모듈",
         subtitle: "기업·의료기관의 관리자 기능 개발과 공통 모듈 분리",
-        period: "2026.06 ~ 현재",
+        period: "재직 중 · 2건 개발 · 후속 프로젝트 초기 세팅",
         role: "관리자 기능·운영 규칙 협의 · 화면·API 개발 · 공통 모듈 제작",
         status: "운영 중",
         featured: true,
@@ -336,48 +337,20 @@ export const projectsData: CareerProject[] = [
     },
     {
         id: "spring-msa",
-        title: "Spring Boot 서비스 이관과 Kubernetes 배포",
-        subtitle: "알림 기능 이관과 사용자 정보 동기화 · 개발 서버 검증",
-        period: "2026 · 진행 중",
-        role: "알림 서비스 이관 · Kafka 연동 · 서비스 배포 구성 및 개발 서버 QA",
+        title: "Spring Boot API 이관 준비",
+        subtitle: "인사평가 API 이관 준비와 alarm 연습 모듈 구성",
+        period: "현재 · 이관 준비",
+        role: "alarm 연습 모듈 구성 · 인사평가 API 이관 준비",
         status: "이관 진행 중",
         featured: true,
-        summary:
-            "기존 백엔드의 알림 기능을 Spring Boot 서비스로 이관하고 Kafka로 사용자 정보를 동기화했습니다. 서비스의 Helm·ArgoCD 배포 구성을 추가해 Kubernetes 개발 서버에서 기능과 재배포를 확인했습니다. 운영 트래픽 전환 전 단계입니다.",
-        background:
-            "기존 Next.js 백엔드를 Java·Spring Boot 서비스로 나누는 팀 프로젝트입니다. 이미 구축된 Kubernetes와 CI/CD 환경을 사용해 알림 서비스를 구현하고 개발 서버에서 동작과 배포 과정을 확인했습니다.",
-        metrics: [
-            { value: "Spring Boot + Kafka", label: "알림 API와 사용자 정보 동기화" },
-            { value: "Kubernetes + GitOps", label: "Helm·ArgoCD 배포 구성 · 개발 서버 검증" },
-        ],
-        responsibilities: [
-            "알림 목록·미확인 개수·생성·읽음·클릭 처리 API 구현",
-            "Spring Boot Controller·Service·Repository·Entity 및 인증 요청 처리 구성",
-            "Kafka 사용자 변경 이벤트 수신과 서비스 내 사용자 정보 동기화 구현",
-            "AI 도구를 활용한 서비스용 Helm 차트와 ArgoCD Application 추가",
-            "Jenkins 빌드·ECR 이미지·ArgoCD 반영 및 재배포 확인",
-            "개발 서버에서 API 응답·DB 저장·미인증 요청의 401 응답·Kafka 이벤트 수신 확인",
-            "인사평가 API의 Spring Boot 이관 코드 작성 중",
-        ],
-        architecture: ["알림 API · Kafka 사용자 이벤트", "Spring Boot 서비스 · PostgreSQL", "Jenkins 빌드 · ECR 이미지", "Helm · ArgoCD", "Kubernetes 개발 서버 · QA"],
-        challenges: [
-            {
-                title: "사용자 변경 정보를 알림 서비스에 반영",
-                problem: "다른 서비스에서 사용자 정보가 변경되면 알림 서비스의 사용자 정보도 갱신해야 했습니다.",
-                action: "Kafka로 사용자 변경 이벤트를 받아 알림 서비스의 사용자 정보 테이블에 반영하도록 구현했습니다.",
-                result: "개발 서버에서 Kafka 메시지 수신과 데이터 반영을 확인했습니다.",
-            },
-            {
-                title: "개발 서버에서 기능과 재배포 확인",
-                problem: "새 알림 서비스를 기존 Kubernetes와 CI/CD 환경에 배포하고 기능이 동작하는지 확인해야 했습니다.",
-                action: "서비스의 Helm·ArgoCD 구성을 추가했습니다. Jenkins 빌드와 이미지 생성을 확인하고 배포 후 API 응답과 DB 저장, 인증 처리를 검사했습니다.",
-                result: "개발 서버에서 알림 기능과 미인증 요청의 401 응답을 확인했습니다. 변경 후 다시 빌드하고 배포하는 과정도 검증했습니다.",
-            },
-        ],
-        achievements: ["알림 도메인의 Spring Boot API 및 Kafka 동기화 구현", "서비스 단위 배포 구성 추가와 개발 서버 기능·재배포 검증"],
-        techStack: ["Java", "Spring Boot", "PostgreSQL", "Kafka", "Kubernetes", "Helm", "ArgoCD", "Jenkins", "Amazon ECR"],
-        scopeNote:
-            "이미 구축된 VPC·Kubernetes·Jenkins·Kafka 환경에서 알림 서비스와 해당 서비스의 배포 구성을 담당했습니다. 현재 개발 서버 QA 단계이며 운영 트래픽 전환 전입니다. 인사평가 API의 이관 코드는 작성 중입니다.",
+        summary: "기존 Next.js 백엔드를 Spring Boot로 이관하는 팀 작업에 참여하고 있습니다. Gradle 기반 alarm 연습 모듈과 보안 필터, Flyway 초기 스키마를 구성하고 인사평가 API 이관을 준비하고 있습니다.",
+        background: "팀은 기존 Next.js 백엔드를 도메인별 Spring 서비스로 나누는 작업을 진행하고 있습니다. 본인은 기존 구조와 팀의 이관 방식을 학습하며 인사평가 API 이관을 준비합니다.",
+        metrics: [{ value: "이관 준비", label: "인사평가 API" }, { value: "연습 모듈", label: "Gradle · 보안 필터 · Flyway 초기 스키마" }],
+        responsibilities: ["Gradle 기반 alarm 연습 모듈 구성", "보안 필터와 Flyway 초기 스키마 구성", "기존 API와 이관 구조 학습 · 인사평가 API 이관 준비"],
+        challenges: [],
+        achievements: ["alarm 연습 모듈과 초기 스키마 구성"],
+        techStack: ["Java", "Spring Boot", "Gradle", "Flyway", "PostgreSQL"],
+        scopeNote: "초기 VPC·Kubernetes·Jenkins·Kafka는 시니어 개발자가 구축했고 users 이관은 팀원 담당입니다. 본인의 공개 범위는 이관 준비와 연습 모듈 구성이며 API·Kafka 연동·배포 완료 실적으로 표현하지 않습니다.",
     },
 ];
 

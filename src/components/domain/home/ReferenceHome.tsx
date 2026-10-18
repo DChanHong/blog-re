@@ -37,7 +37,7 @@ const homeJourney = [
         year: "2023",
         title: "화면과 API를 함께 개발하다",
         description:
-            "채용사이트와 법률 서비스의 사용자·관리자 화면과 API를 개발했습니다. Next.js를 사용해 지원서 제출과 상담 신청에 필요한 데이터 처리도 맡았습니다.",
+            "채용사이트의 사용자·관리자 화면과 제출 API를 개발했습니다. Next.js를 사용해 지원서 제출과 첨부파일에 필요한 데이터 처리도 맡았습니다.",
     },
     {
         year: "2024–2025",
@@ -52,7 +52,7 @@ const homeJourney = [
             "약 80개 홈페이지의 상담 위젯과 관리자 콘솔을 개발했습니다. 연결 복구와 상태 동기화를 개선했으며 기존 Go 서버의 API와 파일 처리 기능도 맡았습니다.",
     },
     {
-        year: "2026",
+        year: "재직 중",
         title: "인사평가와 관리자 기능을 개발하다",
         description:
             "인사평가 결과 전달과 이의제기 기능을 개발하고 대량 처리 오류를 개선했습니다. 외주 프로젝트에서는 관리자 기능과 운영 규칙을 정하고 반복되는 코드를 공통 보일러플레이트로 분리했습니다.",
@@ -61,7 +61,7 @@ const homeJourney = [
         year: "현재",
         title: "서비스 이관에 참여하고 AI 챗봇을 개발하다",
         description:
-            "Spring Boot 알림 서비스와 Kafka 연동을 구현해 개발 서버에서 동작과 배포를 확인했습니다. 개인 프로젝트로는 FastAPI와 LangGraph를 사용한 야구 직관 안내 챗봇을 개발하고 있습니다.",
+            "Spring Boot 인사평가 API 이관을 준비하며 Gradle 연습 모듈과 보안 필터, Flyway 초기 스키마를 구성했습니다. 개인 프로젝트로는 FastAPI와 LangGraph를 사용한 야구 직관 안내 챗봇을 개발하고 있습니다.",
     },
 ];
 
@@ -70,9 +70,9 @@ const toolkitGroups = [
     { title: "Backend & Data", technologies: "Node.js · Go · PostgreSQL · Prisma" },
     { title: "Realtime", technologies: "WebSocket · TanStack Query · Zustand" },
     {
-        title: "Service Deployment",
-        technologies: "Spring Boot · Kafka · Kubernetes · Helm · ArgoCD",
-        context: "서비스 이관 · 개발 서버 배포·검증",
+        title: "Spring Migration Practice",
+        technologies: "Java · Spring Boot · Gradle · Flyway",
+        context: "이관 준비 · 연습 모듈 구성",
     },
     {
         title: "AI Development",
@@ -176,7 +176,7 @@ export default function ReferenceHome({ writingSlot }: { writingSlot: ReactNode 
                         secondary="개발하고 운영해왔습니다."
                     >
                         채용사이트와 뉴스 CMS를 개발한 뒤 실시간 상담 서비스와 인사평가 시스템을
-                        맡았습니다. 현재는 Spring Boot 서비스 이관에 참여하고 개인 프로젝트로
+                        맡았습니다. 현재는 Spring Boot API 이관을 준비하고 개인 프로젝트로
                         야구 직관 안내 챗봇을 개발하고 있습니다.
                     </SectionHeading>
                     <ol className={styles.pathGrid} data-entrance="cards">
@@ -241,7 +241,7 @@ export default function ReferenceHome({ writingSlot }: { writingSlot: ReactNode 
                         title="개발에 사용한 기술과"
                         secondary="새롭게 배우는 것들."
                     >
-                        실무에서 사용한 기술과 서비스 이관에 적용한 기술을 정리했습니다.
+                        실무에서 사용한 기술과 현재 이관을 준비하며 연습하는 기술을 정리했습니다.
                         AI 관련 기술은 교육과 개인 프로젝트를 통해 배우고 있습니다.
                     </SectionHeading>
                     <div className={styles.toolkitGrid}>
