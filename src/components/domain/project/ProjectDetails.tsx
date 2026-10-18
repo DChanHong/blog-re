@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { resumeExperiences } from "@/data/resume";
 import type { ReactNode } from "react";
 import type { ProjectCaseStudy } from "@/data/projectCaseStudies";
 import styles from "./project-detail.module.css";
@@ -158,6 +159,15 @@ export default function ProjectDetails({
                             <p>{project.retrospective}</p>
                         </Section>
                     )}
+                    {project.id === "erp-groupware" && resumeExperiences.filter((entry) => ["electronic-approval", "manager-evaluation"].includes(entry.id)).map((entry) => (
+                        <div id={entry.id} key={entry.id} style={{ scrollMarginTop: "6rem" }}>
+                            <Section title={entry.title}>
+                                <p className={styles.period}>{entry.period}</p>
+                                <ul className={styles.bullets}>{entry.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}</ul>
+                                {entry.id === "manager-evaluation" && <p>실제 오픈·전환 범위와 개인 알림 운영 여부는 확인되지 않았습니다.</p>}
+                            </Section>
+                        </div>
+                    ))}
                     <Section title="사용 기술">
                         <ul className={styles.stack}>
                             {project.techStack.map((tech) => (
